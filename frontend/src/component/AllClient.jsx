@@ -134,7 +134,7 @@ function AllClient() {
 
                         </ul>
                         <span className="navbar-text">
-                            Navbar text with an inline element
+                            Admin Profile Icon Like Home Page
                         </span>
                     </div>
                 </div>
