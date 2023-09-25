@@ -17,7 +17,7 @@ function Conatct() {
             <div className='text-head' data-aos="zoom-in-up">
 
                 <div className='block-t'>
-                    <h1>Conatct Us</h1>
+                    <h1>Contact Us</h1>
                     <p>Find and book a great experience.</p>
                     <hr />
                 </div>
