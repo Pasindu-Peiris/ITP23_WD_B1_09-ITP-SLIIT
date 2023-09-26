@@ -10,7 +10,7 @@ function Nav() {
 
         <>
 
-            <nav className="navbar navbar-expand-lg  " style={{ height: "80px", backgroundColor: " #f1f1f3" }} >
+            <nav className="navbar navbar-expand-lg  " style={{height: "80px", backgroundColor: " #f1f1f3" }} >
 
                 <div className="container-4 ">
 
