@@ -114,7 +114,7 @@ function Login() {
             else if (result.data === "User Not Found") {
                 Notify2();
                 setTimeout(function () {
-                    window.location = '/add'
+                    window.location = '/Register'
                 }, 1500); // 2000 milliseconds (2 seconds)
             }
 
@@ -177,7 +177,7 @@ function Login() {
                                             <p className='mt-3 atag text-capitalize '><a href='/forget' className='ms-1'>Forget Password?</a></p>
                                         </div>
                                         <button type="submit" className="btn btn-primary w-100 mt-2 but-1">Log In</button>
-                                        <p className='mt-3 atag text-capitalize '>Not member yet?  <a href='/add' className='ms-1'>Create an account</a></p>
+                                        <p className='mt-3 atag text-capitalize '>Not member yet?  <a href='/Register' className='ms-1'>Create an account</a></p>
                                     </form>
                                 </div>
 
