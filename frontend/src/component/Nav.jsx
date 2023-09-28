@@ -54,11 +54,13 @@ function Nav() {
                             {
                                 Logedin === "true" ?
                                     <div className="d-flex mx-4">
-                                        <button className="btn btn-dark p-1" type="submit" style={{}}><a href="/profile" style={{ textDecoration: "none", color: "white", padding: "2px 5px ", fontSize: "1rem" }}> <img src={iconP} alt='' />  </a></button>
+                                        <button className="btn btn-dark p-1" type="submit" style={{}}><a href="/profile" style={{ textDecoration: "none", color: "white", padding: "2px 5px ", fontSize: "1.1rem" }}> <img src={iconP} alt='' />  </a></button>
+                                        <button className="btn btn-dark p-1 mx-3" type="submit" style={{}}><a href="/" style={{ textDecoration: "none", color: "white", padding: "2px 10px ", fontSize: "1.2rem" }}> <i class="fa-solid fa-car" style={{color:"#fff"}}></i> </a></button>
                                     </div> :
                                     <div className="d-flex mx-4">
                                         <button className="btn btn-dark p-1" type="submit"><a href="/Login" style={{ textDecoration: "none", color: "white", padding: "10px 20px ", fontSize: "1.1rem" }}>Log In</a></button>
                                     </div>
+    
                             }
 
 
