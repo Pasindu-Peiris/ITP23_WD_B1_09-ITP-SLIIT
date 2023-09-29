@@ -45,7 +45,6 @@ function UpadateUserClient() {
 
             axios.get('http://localhost:8090/client/gets/' + id).then((res) => {
 
-
                 setFname(res.data.fname);
                 setLname(res.data.lname);
                 setEmail(res.data.email);
@@ -68,7 +67,11 @@ function UpadateUserClient() {
         axios.put("http://localhost:8090/client/updated/" + id, { fname, lname, email }).then(result => {
 
             Notify();
-            window.location = '/profile'
+            setTimeout(function () {
+                 window.location = '/profile'
+            }, 1500); // 2000 milliseconds (2 seconds)
+
+            
 
 
         }).catch((err) => {

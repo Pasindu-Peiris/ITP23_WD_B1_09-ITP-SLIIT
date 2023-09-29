@@ -88,7 +88,7 @@ function AllClient() {
 
 
     //view All User
-    const [displayCount, setDisplayCount] = useState(5);
+    const [displayCount, setDisplayCount] = useState(10);
     const [isViewAll, setIsViewAll] = useState(false);
 
     const handleViewAllClick = () => {
@@ -184,7 +184,7 @@ function AllClient() {
                                     <tr key={index}>
 
                                         <td className="text-center">{count = index + 1}</td>
-                                        <td id="nextbinimg" ><img src={`http://localhost:8090/Upload/images/` + item.images} alt="profile" className="img-fluid rounded" width="40px" /></td>
+                                        <td id="nextbinimg" ><img src={`http://localhost:8090/Upload/images/` + item.images} alt="profile" className="img-fluid rounded" width="35px" /></td>
                                         <td>{item.fname}</td>
                                         <td>{item.lname}</td>
                                         <td>{item.email}</td>
