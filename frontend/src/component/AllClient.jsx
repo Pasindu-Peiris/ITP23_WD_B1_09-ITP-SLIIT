@@ -88,7 +88,7 @@ function AllClient() {
 
 
     //view All User
-    const [displayCount, setDisplayCount] = useState(5);
+    const [displayCount, setDisplayCount] = useState(10);
     const [isViewAll, setIsViewAll] = useState(false);
 
     const handleViewAllClick = () => {
