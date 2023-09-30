@@ -32,4 +32,10 @@ SLIIT Bsc(Hons) Information Technology 2 Year 2 Semester ITP Module [ IT2080 ] M
 # <h2>Team members :desktop_computer:</h2> 
 
 
+# <h2>Development technology :desktop_computer:</h2>
+
+<img align="center" alt="Coding" width="400" src="https://www.bigscal.com/wp-content/uploads/2022/09/Features-of-Mern-stack-development-services-You-Should-Know.png" style="margin-top:1000">
+
+
+
 
