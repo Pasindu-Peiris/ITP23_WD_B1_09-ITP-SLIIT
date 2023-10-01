@@ -15,7 +15,7 @@ const bookingSchema = new mongoose.Schema({
   },
   
   price: Number,
-  
+  model: String,
 });
 
 

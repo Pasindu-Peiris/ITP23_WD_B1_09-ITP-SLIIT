@@ -243,6 +243,7 @@ export default function Vehicles() {
             },
             price: totalprice,
             Vehicle_id : id,
+            model,
           });
 
           

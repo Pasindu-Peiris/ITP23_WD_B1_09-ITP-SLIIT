@@ -1,6 +1,5 @@
 import axios from "axios";
 import {useState} from "react";
-import '../pages/Vehicle.css';
 axios.defaults.baseURL = 'http://localhost:8090';
 
 export default function PhotosUploader({addedPhotos,onChange,clearPhotoValidationError}) {

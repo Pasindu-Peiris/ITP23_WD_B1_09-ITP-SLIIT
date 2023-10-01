@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './Vehicle.css';
 import { Link } from 'react-router-dom';
 
 function Owner() {

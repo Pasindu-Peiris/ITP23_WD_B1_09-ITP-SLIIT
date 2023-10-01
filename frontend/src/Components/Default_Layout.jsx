@@ -1,5 +1,4 @@
 import React from 'react'
-import '../pages/Vehicle.css';
 
 function Default_Layout(props) {
   return (

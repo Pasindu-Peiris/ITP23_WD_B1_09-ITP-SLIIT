@@ -4,13 +4,28 @@ import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import Default_Layout from "../Components/Default_Layout";
 import Swal from 'sweetalert2';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 axios.defaults.baseURL = 'http://localhost:8090';
+
 
 export default function IndexPage() {
   const { ownerId } = useParams();
   const [Vehicles, setVehicles] = useState([])
   const [records, setrecords] = useState([])
   const [statusFilter, setStatusFilter] = useState("all");
+
+  const generatePDF = () => {
+    const pdf = new jsPDF('p', 'mm', 'a4');
+    const page = document.getElementById('pdf-content');
+  
+    html2canvas(page).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      pdf.addImage(imgData, 'PNG', 10, 10, 190, 0);
+      pdf.save('vehicle-details.pdf');
+    });
+  };
+  
 
   function formatPriceWithComma(price) {
     if (typeof price !== 'number') {
@@ -130,6 +145,15 @@ export default function IndexPage() {
 
 
         <div className="flex">
+        <div className="flex justify-center">
+  <button
+    onClick={generatePDF}
+    className="inline-flex m-1 p-2 text-white bg-blue-500 rounded-2xl"
+  >
+    Generate PDF
+  </button>
+</div>
+
           <button
             onClick={() => handleStatusFilter("all")}
             className="inline-flex m-1 p-2 text-black border border-black rounded-2xl"
@@ -158,7 +182,7 @@ export default function IndexPage() {
 
 
       <div className=" grid gap-x-4 gap-y-4 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 py-2 px-2 mx-auto">
-
+      <div id="pdf-content">
         {records.length > 0 && records.map(Vehicle => (
           <Link to={`/Vehicle_2/${Vehicle._id}`} className="link-wrapper2">
             
@@ -245,6 +269,7 @@ export default function IndexPage() {
 
           </Link>
         ))}
+        </div>
       </div>
     </Default_Layout>
   );

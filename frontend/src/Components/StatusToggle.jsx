@@ -1,5 +1,4 @@
 import React from 'react';
-import '../pages/Vehicle.css';
 
 function StatusToggle({ status, onToggle }) {
   const isAvailable = status === 'Available';
