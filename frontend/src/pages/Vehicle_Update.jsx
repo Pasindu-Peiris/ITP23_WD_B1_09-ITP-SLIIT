@@ -1,5 +1,4 @@
 import react from 'react'
-import './Vehicle.css';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -34,6 +33,45 @@ function Vehicle_Update() {
   const [warningShown, setWarningShown] = useState(false);
 
   
+
+  const handleLicenseBlur = () => {
+    // Trigger validation for the license field when it loses focus
+    Form_Validation.validate(
+      {
+        type,
+        license,
+        model,
+        location,
+        year,
+        seat,
+        mileage,
+        transmission,
+        fuel,
+        perks,
+        photos,
+        price,
+        description,
+        status,
+      },
+      { abortEarly: false }
+    )
+      .then(() => {
+        // Validation passed for the license field
+        // You can perform any actions here
+      })
+      .catch((error) => {
+        if (error.name === 'ValidationError') {
+          const errors = {};
+          error.inner.forEach((err) => {
+            errors[err.path] = err.message;
+          });
+          setValidationErrors(errors);
+          // Handle license field validation errors here if needed
+        } else {
+          console.error(error);
+        }
+      });
+  };
 
   const navigate = useNavigate()
   const navigateBack = () => {
@@ -209,16 +247,20 @@ function Vehicle_Update() {
             <div className="flex items-center ">
             {preInput('--- Update existing Vehicle ---')}
             </div>
-            <StatusToggle status={status} onToggle={handleStatusToggle} />
+            <StatusToggle status={status} onKeyUp={handleLicenseBlur} onToggle={handleStatusToggle} />
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
 
             <div>
               {preInput('Vehicle Type', 'Select the type of Vehicle.')}
-              <select value={type} onChange={(e) => {
-                settype(e.target.value);
-                setValidationErrors({ ...validationErrors, type: '' });
+              <select value={type}
+              className='custom-input69 '
+               onBlur={handleLicenseBlur}
+               onChange={(e) => {
+                settype(e.target.value)
+                setValidationErrors({ ...validationErrors, type: '' }
+                );
               }}>
                 <option></option>
                 <option>Car</option>
@@ -227,8 +269,7 @@ function Vehicle_Update() {
                 <option>Van</option>
                 <option>Truck</option>
                 <option>Three-Wheeler</option>
-              </select
-              >
+              </select>
               {validationErrors.type && (
                 <p className="text-red-500 italic">* {validationErrors.type}</p>
               )}
@@ -240,12 +281,14 @@ function Vehicle_Update() {
 
               <input
                 type="text"
+                className='custom-input69 '
                 placeholder="e.g:-AB-2020"
                 value={license}
                 onChange={(e) => {
                   setlicense(e.target.value);
                   setValidationErrors({ ...validationErrors, license: '' });
                 }}
+                onKeyUp={handleLicenseBlur}
               />
               {validationErrors.license && (
                 <p className="text-red-500 italic">* {validationErrors.license}</p>
@@ -260,6 +303,8 @@ function Vehicle_Update() {
                 type="text"
                 placeholder=""
                 value={model}
+                className='custom-input69 '
+                onKeyUp={handleLicenseBlur}
                 onChange={(e) => {
                   setmodel(e.target.value);
                   setValidationErrors({ ...validationErrors, model: '' }); // Clear validation error
@@ -276,6 +321,8 @@ function Vehicle_Update() {
                 type="number"
                 placeholder=""
                 value={year}
+                className='custom-input69 '
+                onKeyUp={handleLicenseBlur}
                 onChange={(e) => {
                   setyear(e.target.value);
                   setValidationErrors({ ...validationErrors, year: '' });
@@ -293,8 +340,10 @@ function Vehicle_Update() {
               {preInput('Fuel Capacity', 'Enter Fuel Capacity in Litres.')}
               <input
                 type="number"
+                className='custom-input69 '
                 placeholder="e.g:-50"
                 value={fuel}
+                onKeyUp={handleLicenseBlur}
                 onChange={(e) => {
                   setfuel(e.target.value);
                   setValidationErrors({ ...validationErrors, fuel: '' }); // Clear validation error
@@ -310,8 +359,10 @@ function Vehicle_Update() {
               {preInput('Mileage', 'Enter Current Mileage of the Vehicle km/l.')}
               <input
                 type="number"
+                className='custom-input69 '
                 placeholder="e.g:-20000"
                 value={mileage}
+                onKeyUp={handleLicenseBlur}
                 onChange={(e) => {
                   setmileage(e.target.value);
                   setValidationErrors({ ...validationErrors, mileage: '' }); // Clear validation error
@@ -330,10 +381,13 @@ function Vehicle_Update() {
               {preInput('Transmission Type', '')}
               <div>
                 <input
+
                   type="radio"
                   name="transmission"
                   value="Auto"
+               
                   checked={transmission === "Auto"} // Check if "Auto" is selected
+                  onKeyUp={handleLicenseBlur}
                   onChange={(e) => {
                     settransmission("Auto");
                     setValidationErrors({ ...validationErrors, transmission: '' });
@@ -346,7 +400,9 @@ function Vehicle_Update() {
                   type="radio"
                   name="transmission"
                   value="Manual"
+                 
                   checked={transmission === "Manual"}
+                  onKeyUp={handleLicenseBlur}
                   onChange={(e) => {
                     settransmission("Manual");
                     setValidationErrors({ ...validationErrors, transmission: '' });
@@ -364,7 +420,9 @@ function Vehicle_Update() {
               <input
                 type="text"
                 placeholder=""
+                className='custom-input69 '
                 value={location}
+                onKeyUp={handleLicenseBlur}
                 onChange={(e) => {
                   setlocation(e.target.value);
                   setValidationErrors({ ...validationErrors, location: '' }); // Clear validation error
@@ -384,26 +442,26 @@ function Vehicle_Update() {
             <div></div>
           </div>
           {preInput('Additional Features', 'Select additional features if available.')}
-          <div className="grid mt-2 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
-            <Perks selected={perks} onChange={setperks} />
+          <div className="grid mt-2 gap-2 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-6">
+            <Perks selected={perks}  onKeyUp={handleLicenseBlur} onChange={setperks} />
           </div>
 
           <div>
             {preInput('Photos', 'Upload full size images of the vehicle both Interior and Exterior.')}
 
-            {/* Your custom component for handling photo selection (e.g., <Photos>) */}
-            <Photos_Update addedPhotos={photos} onChange={setphotos} clearPhotoValidationError={clearPhotoValidationError} />
+            
+            <Photos_Update addedPhotos={photos}  onKeyUp={handleLicenseBlur} onChange={setphotos} clearPhotoValidationError={clearPhotoValidationError} />
             {validationErrors.photos && (
               <p className="text-red-500 italic">* {validationErrors.photos}</p>
             )}
           </div>
 
           {preInput('Description', 'Enter some description of the Vehicle')}
-          <textarea placeholder='Write Here' className='h-25'
+          <textarea placeholder='Write Here' className='custom-input70'
             value={description} onChange={(e) => setdescription(e.target.value)} />
 
 
-          <div className="grid gap-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-2">
             
             
             <div>
@@ -412,9 +470,11 @@ function Vehicle_Update() {
               <input
                 type="number"
                 value={seat}
+                className='custom-input69 '
+                onKeyUp={handleLicenseBlur}
                 onChange={(e) => {
                   setseat(e.target.value);
-                  setValidationErrors({ ...validationErrors, seat: '' });
+                  setValidationErrors({ ...validationErrors, seat: '' }); 
                 }}
               />
               {validationErrors.seat && (
@@ -427,6 +487,8 @@ function Vehicle_Update() {
               <input
                 type="number"
                 value={price}
+                className='custom-input69 '
+                onKeyUp={handleLicenseBlur}
                 placeholder='e.g:-20000'
                 onChange={(e) => {
                   setprice(e.target.value);
@@ -438,6 +500,7 @@ function Vehicle_Update() {
               )}
             </div>
           </div>
+
 
 
 

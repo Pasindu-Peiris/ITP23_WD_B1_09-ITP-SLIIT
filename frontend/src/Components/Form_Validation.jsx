@@ -7,7 +7,8 @@ export const Form_Validation = Yup.object().shape({
     .matches(/^[A-Z]{2,3}-\d{4}$/, 'Invalid License Number Format (e.g., AB-1234)'),
 
     model: Yup.string().required('Model and Make is required'),
-    location: Yup.string().required('Location is required'),
+    location: Yup.string().required('Location is required')
+    .matches(/^[A-Za-z0-9\s]+$/, 'Invalid input Characters'),
     year: Yup.number()
         .integer('Year must be an integer')
         .min(1990, 'Year must be greater than or equal to 1990')
@@ -23,7 +24,11 @@ export const Form_Validation = Yup.object().shape({
         .min(0, 'Fuel Capacity must be greater than or equal to 0')
         .max(500, 'Fuel Capacity must be less than or equal to 500')
         .required('Fuel Capacity is required'),
-    price: Yup.number().integer('Price must be an integer').required('Price required'),
+        price: Yup.number()
+        .integer('Price must be an integer')
+        .min(400, 'Price must be at least Rs.200')
+        .max(5000, 'Price cannot exceed Rs.5,000')
+        .required('Price is required'),
     description: Yup.string(),
 
 

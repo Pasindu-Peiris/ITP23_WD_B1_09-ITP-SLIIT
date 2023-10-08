@@ -1,4 +1,3 @@
-@tailwind base;
 
 @tailwind components;
 
@@ -6,15 +5,27 @@
 
 @import 'antd/dist/antd.css';
 
-input[type="text"],input[type="password"],
-input[type="email"],input[type="number"],
-input[type="tel"],
-
-textarea{
-    @apply w-full border my-1 py-2 px-3 rounded-2xl;
+.custom-input70 {
+  
+  border: 2px solid #ccc;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 20px;
+  font-size: 16px;
+  width: 100%;
+  height: 100px;
 }
-textarea{
-    height: 140px;
+
+
+
+.custom-input69 {
+  
+  border: 2px solid #ccc;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 20px;
+  font-size: 16px;
+  width: 80%;
 }
 
 .bs1{
@@ -65,7 +76,13 @@ textarea{
   border-radius: 5%; 
   padding: 1%; 
   text-decoration: none;
+  
   color: inherit;
+}
+
+/* styles.css */
+body {
+  font-size: 16px; /* Set your base font size here */
 }
 
 
@@ -78,7 +95,6 @@ textarea{
 
 .link-wrapper2:hover {
   background-color: #ffffff !important;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 8px -2px, rgba(0, 0, 0, 0.25) 0px 0px 0px 1px;
   padding: 1%; 
   text-decoration: none;
   color: inherit;
@@ -194,7 +210,7 @@ input:checked + .slider:before {
 }
 
 .info-box {
-  border: 1px solid green;
+  border: 1px solid purple;
   padding: 20px; /* Increase the padding to adjust the height */
   text-align: center;
   border-radius: 10px;
@@ -209,32 +225,23 @@ input:checked + .slider:before {
   font-family: Arial, sans-serif; /* Corrected the font-family property */
 }
 
-/* Default font size for all screens */
-body {
-  font-size: 16px;
-}
-
-/* Adjust font size for small screens (sm) */
-@media screen and (max-width: 767px) {
-  body {
-    font-size: 14px; /* You can change this value for small screens */
-  }
-}
 
 .ant-btn {
   border-radius: 5px;
-  border-color: rgb(255, 0, 0);
-  color: rgb(255, 0, 0);
+  border-color: purple;
+  color: purple;
 }
 
 .ant-btn:hover {
+  color: #2196F3;
 
 }
 
 .ant-btn-primary {
   border-radius: 5px;
-  border-color: rgb(255, 0, 0);
-  color: rgb(255, 0, 0);
+  border-color: purple;
+  background-color: #FFFFFF;
+  color: purple;
 }
 
 .ant-btn-primary:hover {
@@ -245,21 +252,19 @@ body {
 
 
 .ant-modal-close-x{
-  border-color: #ff0800;
+  border-color: purple;
 }
 
 
 .ant-picker-range{
   border-radius: 5pt;
   width: 100%;
-  border-color: red;
+  border-color: purple;
 }
 
 .ant-modal-title{
   color: #000000;
 }
-
-
 
 
 

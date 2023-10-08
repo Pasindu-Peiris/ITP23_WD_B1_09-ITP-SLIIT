@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import './Vehicle.css';
 import { Link } from "react-router-dom";
 import Default_Layout from "../Components/Default_Layout";
 import { DatePicker, Modal, Button } from "antd";
 import moment from 'moment'
+import { debounce } from 'lodash';
 axios.defaults.baseURL = 'http://localhost:8090';
-
 
 function formatPriceWithComma(price) {
   if (typeof price !== 'number') {
@@ -82,11 +81,21 @@ export default function IndexPage() {
     }
   }
 
+  const debouncedHandleRangeChange = debounce(handleRangeChange, 100);
 
+
+  
   const disabledDate = (current) => {
-    // Disable dates before the current date
-    return current && current < moment().startOf('day');
+    // Get the current date
+    const currentDate = moment();
+  
+    // Calculate the date one month from now
+    const oneMonthFromNow = currentDate.clone().add(1, 'month').startOf('day');
+  
+    // Disable dates before the current date and after one month from now
+    return current && (current < currentDate.startOf('day') || current > oneMonthFromNow);
   };
+  
 
   const disabledTime = (current, type) => {
     if (type === 'start') {
@@ -204,7 +213,7 @@ export default function IndexPage() {
 
       <div className="py-2 px-2 mx-auto flex items-center">
         <input
-          className="placeholder-italic placeholder-text-slate-400 block bg-white w-full border border-slate-300 rounded-md h-10 py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+          className="placeholder-italic placeholder-text-slate-400 block bg-white w-full border border-black-300 rounded-lg h-10 py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
           placeholder="Search for anything..."
           type="text"
           name="search"
@@ -214,7 +223,7 @@ export default function IndexPage() {
 
 
         <select
-          className="block ml-2 bg-white border border-slate-300 rounded-md h-10 py-2 pl-3 pr-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+          className="ml-2 bg-purple-400 hover:bg-purple-500 py-2 px-2 border rounded h-10 text-l"
           onChange={(e) => setSelectedTypeFilter(e.target.value)}
         >
           <option value="">All Types</option>
@@ -226,7 +235,7 @@ export default function IndexPage() {
         </select>
 
         <button
-          className="ml-2 bg-red-400 hover:bg-red-500 text-white py-2 px-2 rounded h-10 text-l"
+          className="ml-2 bg-purple-400 hover:bg-purple-500 text-black py-2 px-2 rounded border h-10 text-l"
           onClick={handleSortModel}
         >
           <div className="flex items-center">
@@ -235,7 +244,7 @@ export default function IndexPage() {
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth={1}
-              stroke="white"
+              stroke="black"
               className="w-4 h-4 mr-1"
             >
               <path
@@ -244,13 +253,13 @@ export default function IndexPage() {
                 d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z"
               />
             </svg>
-            <span className="text-xs">
+            <span className="text-sm">
               <div className="flex"> <div>Model:&nbsp;</div> <div> {sortModelAscending ? "Ascending" : "Descending"}</div> </div>
             </span>
           </div>
         </button>
         <button
-          className="ml-2 bg-red-400 hover:bg-red-500 text-white py-2 px-2 rounded h-10 text-l"
+          className="ml-2 bg-purple-400 hover:bg-purple-500 text-black py-2 px-2 rounded border h-10 text-l"
           onClick={handleSortPrice}
         >
           <div className="flex items-center">
@@ -259,7 +268,7 @@ export default function IndexPage() {
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth={1}
-              stroke="white"
+              stroke="black"
               className="w-4 h-4 mr-1"
             >
 
@@ -269,7 +278,7 @@ export default function IndexPage() {
                 d={sortPriceAscending ? "M5 15l7-7 7 7" : "M5 9l7 7 7-7"}
               />
             </svg>
-            <span className="text-xs">
+            <span className="text-sm">
               <div className="flex"> <div>Price:&nbsp;</div> <div> {sortPriceAscending ? "Ascending" : "Descending"}</div> </div>
             </span>
           </div>
@@ -288,7 +297,7 @@ export default function IndexPage() {
           <RangePicker
             showTime={{ format: "HH:mm" }}
             format="MMM DD YYYY HH:mm"
-            onChange={handleRangeChange}
+            onChange={debouncedHandleRangeChange}
             disabledDate={disabledDate}
             disabledTime={disabledTime}
             defaultValue={[moment(), moment()]}
@@ -322,11 +331,11 @@ export default function IndexPage() {
                 </div>
                 <div className="flex">
                   <div>
-                    <h2 className="font-bold">{Vehicle.type} : {Vehicle.model}</h2>
+                    <h2 className="font-bold text-lg text-center">{Vehicle.type} : {Vehicle.model}</h2>
                   </div>
                   <div className="ml-auto">
-                    <div className="black-box">
-                      <h2 className="font-bold white-text">Rs.&nbsp;{formatPriceWithComma(Vehicle.price)} / hour</h2>
+                    <div className="black-box shadow">
+                      <h2 className="font-bold white-text text-sm text-justify">Rs.&nbsp;{formatPriceWithComma(Vehicle.price)} / hour</h2>
                     </div>
                   </div>
                 </div>
@@ -336,7 +345,7 @@ export default function IndexPage() {
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 20" fill="currentColor" className="w-4 h-4">
                     <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6.5 6.326a6.52 6.52 0 01-1.5 .174 6.487 6.487 0 01-5.011-2.36l.49-.98a.423.423 0 01.614-.164l.294.196a.992.992 0 001.491-1.139l-.197-.593a.252.252 0 01.126-.304l1.973-.987a.938.938 0 00.361-1.359.375.375 0 01.239-.576l.125-.025A2.421 2.421 0 0012.327 6.6l.05-.149a1 1 0 00-.242-1.023l-1.489-1.489a.5.5 0 01-.146-.353v-.067a6.5 6.5 0 015.392 9.23 1.398 1.398 0 00-.68-.244l-.566-.566a1.5 1.5 0 00-1.06-.439h-.172a1.5 1.5 0 00-1.06.44l-.593.592a.501.501 0 01-.13.093l-1.578.79a1 1 0 00-.553.894v.191a1 1 0 001 1h.5a.5.5 0 01.5.5v.326z" clipRule="evenodd" />
                   </svg>
-                  <h3 className="text-sm text-gray-500 ml-2">Location: {Vehicle.location}</h3>
+                  <h3 className="text-sm text-black ml-2">Location: {Vehicle.location}</h3>
                 </div>
               </Link>
             ))}

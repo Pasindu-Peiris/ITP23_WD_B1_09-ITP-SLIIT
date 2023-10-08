@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import './Vehicle.css';
 import { Link, useParams, useNavigate } from "react-router-dom";
 import AddressLink from "../Components/AddressLink.jsx";
 import Default_Layout from "../Components/Default_Layout.jsx";
 import Swal from 'sweetalert2';
 import {Navigate} from "react-router-dom";
 import { DatePicker, Modal, Button, message } from 'antd'
+import { debounce } from 'lodash';
 import moment from 'moment'
+
 
 axios.defaults.baseURL = 'http://localhost:8090';
 
@@ -52,6 +53,8 @@ export default function Vehicles() {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [isModalVisible, setIsModalVisible] = useState(false);
 
+  
+
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentTime(new Date());
@@ -78,7 +81,8 @@ export default function Vehicles() {
     return totalHours * price;
   };
 
-  function handleRangeChange(value) {
+ function handleRangeChange(value) {
+  try {
     if (value !== null && value.length === 2) {
       const from = moment(value[0]);
       const to = moment(value[1]);
@@ -90,8 +94,14 @@ export default function Vehicles() {
     } else {
       console.error('Invalid value for date range:', value);
     }
+  } catch (error) {
+    console.error('An error occurred in handleRangeChange:', error);
+    // Handle the error as needed, e.g., show an error message to the user
   }
   
+}
+
+const debouncedHandleRangeChange = debounce(handleRangeChange, 100);
 
  
   
@@ -243,7 +253,6 @@ export default function Vehicles() {
             },
             price: totalprice,
             Vehicle_id : id,
-            model,
           });
 
           
@@ -262,10 +271,16 @@ export default function Vehicles() {
 
  
 
-  const disabledDate = (current) => {
-    // Disable dates before the current date
-    return current && current < moment().startOf('day');
-  };
+    const disabledDate = (current) => {
+  // Get the current date
+  const currentDate = moment();
+
+  // Calculate the date one month from now
+  const oneMonthFromNow = currentDate.clone().add(1, 'month').startOf('day');
+
+  // Disable dates before the current date and after one month from now
+  return current && (current < currentDate.startOf('day') || current > oneMonthFromNow);
+};
 
   const disabledTime = (current, type) => {
     if (type === 'start') {
@@ -325,7 +340,7 @@ export default function Vehicles() {
           </div>
           <button
             onClick={() => setShowAllPhotos(true)}
-            className="flex gap-1 absolute bottom-2 right-2 py-2 px-4 bg-white rounded-2xl shadow shadow-md shadow-gray-500"
+            className="flex gap-1 absolute bottom-2 right-2 py-2 px-4 bg-white rounded-2xl shadow border shadow-gray-500"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -433,7 +448,7 @@ export default function Vehicles() {
                 <RangePicker
       showTime={{ format: 'HH:mm' }}
       format="MMM DD YYYY HH:mm"
-      onChange={handleRangeChange}
+      onChange={debouncedHandleRangeChange}
       disabledDate={disabledDate}
       disabledTime={disabledTime}
       defaultValue={[moment(), moment()]} 

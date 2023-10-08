@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import './App.css';
+import './index.css'
 import Nav from './component/Nav';
 import Register from './component/Register';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -115,7 +116,6 @@ function App() {
       <Route  path='/IndexPage_Update/:ownerId' element={<IndexPage_Update/>}/>
       <Route Route path='/Vehicle_Form/:ownerId' element={<Vehicle_Form/>}/>
       <Route Route path='/Vehicle_Update/:id' element={<Vehicle_Update/>}/>
-
       </Routes> 
       </BrowserRouter>
 

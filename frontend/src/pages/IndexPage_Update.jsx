@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import './Vehicle.css';
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import Default_Layout from "../Components/Default_Layout";
 import Swal from 'sweetalert2';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
-axios.defaults.baseURL = 'http://localhost:8090';
+import '../index.css'
 
+axios.defaults.baseURL = 'http://localhost:8090';
 
 export default function IndexPage() {
   const { ownerId } = useParams();
@@ -15,22 +15,13 @@ export default function IndexPage() {
   const [records, setrecords] = useState([])
   const [statusFilter, setStatusFilter] = useState("all");
 
-  const generatePDF = () => {
-    const pdf = new jsPDF('p', 'mm', 'a4');
-    const page = document.getElementById('pdf-content');
+ 
   
-    html2canvas(page).then((canvas) => {
-      const imgData = canvas.toDataURL('image/png');
-      pdf.addImage(imgData, 'PNG', 10, 10, 190, 0);
-      pdf.save('vehicle-details.pdf');
-    });
-  };
-  
-
   function formatPriceWithComma(price) {
     if (typeof price !== 'number') {
       return price;
     }
+
 
     const priceString = price.toString();
 
@@ -44,6 +35,20 @@ export default function IndexPage() {
     return `${firstPart},${lastThreeDigits}`;
   }
 
+  
+
+  const generatePDF = () => {
+    const pdf = new jsPDF('p', 'mm', 'a4');
+    const page = document.getElementById('pdf-content');
+  
+    html2canvas(page).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const imgWidth = 190; 
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      pdf.addImage(imgData, 'PNG', 10, 10, imgWidth, imgHeight);
+      pdf.save('vehicle-details.pdf');
+    });
+  };
 
   // useEffect(() => {
   //   axios.get('/getVehicles/').then(res => {
@@ -53,6 +58,7 @@ export default function IndexPage() {
   //     };
   //   });
   // }, []);
+  
   useEffect(() => {
     
     axios.get('/vehicles/getVehicles/' + ownerId )
@@ -93,6 +99,7 @@ export default function IndexPage() {
     });
   };
 
+ 
 
   const handleStatusFilter = (status) => {
     setStatusFilter(status);
@@ -115,7 +122,7 @@ export default function IndexPage() {
   return (
     <Default_Layout>
       <div className="flex-1 px-2">
-        <label className="relative block">
+        <label className="relative block py-2">
           <span className="sr-only">Search</span>
           <span className="absolute inset-y-0 left-0 flex items-center pl-2 m-2 p-2">
             <svg className="h-5 w-5 fill-slate-300" viewBox="0 0 20 20"></svg>
@@ -132,7 +139,7 @@ export default function IndexPage() {
 
       <div className="flex items-center justify-center">
         <Link to={`/Vehicle_Form/${ownerId}`}>
-          <div className="inline-flex items-center m-1 p-2 text-white bg-red-500 rounded-2xl">
+          <div className="inline-flex items-center m-1 p-2 text-black bg-green-500 rounded-xl">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
               <path fillRule="evenodd" d="M12 3.75a.75.75 0 01.75.75v6.75h6.75a.75.75 0 010 1.5h-6.75v6.75a.75.75 0 01-1.5 0v-6.75H4.5a.75.75 0 010-1.5h6.75V4.5a.75.75 0 01.75-.75z" clipRule="evenodd" />
             </svg>
@@ -144,31 +151,27 @@ export default function IndexPage() {
 
 
 
-        <div className="flex">
-        <div className="flex justify-center">
-  <button
-    onClick={generatePDF}
-    className="inline-flex m-1 p-2 text-white bg-blue-500 rounded-2xl"
-  >
-    Generate PDF
-  </button>
-</div>
+        <div className="flex flex-1">
+
+        <button className=" flex-1 w-32 m-1 p-2 text-black bg-purple-400 border rounded-xl"
+        onClick={generatePDF}>Generate Report
+        </button>
 
           <button
             onClick={() => handleStatusFilter("all")}
-            className="inline-flex m-1 p-2 text-black border border-black rounded-2xl"
+            className="flex-1 w-32 m-1 p-2 text-black border bg-purple-400  rounded-xl"
           >
             All Vehicles
           </button>
           <button
             onClick={() => handleStatusFilter("Available")}
-            className="inline-flex m-1 p-2 text-black border border-black rounded-2xl"
+            className="flex-1 w-32 m-1 p-2 text-black border bg-purple-400  rounded-xl"
           >
             Available
           </button>
           <button
             onClick={() => handleStatusFilter("Unavailable")}
-            className="inline-flex m-1 p-2 text-black border border-black rounded-2xl"
+            className="flex-1 w-32 m-1 p-2 text-black border bg-purple-400 rounded-xl"
           >
             Unavailable
           </button>
@@ -182,7 +185,8 @@ export default function IndexPage() {
 
 
       <div className=" grid gap-x-4 gap-y-4 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 py-2 px-2 mx-auto">
-      <div id="pdf-content">
+
+      <div id="pdf-content" className="p-1">
         {records.length > 0 && records.map(Vehicle => (
           <Link to={`/Vehicle_2/${Vehicle._id}`} className="link-wrapper2">
             
@@ -200,20 +204,20 @@ export default function IndexPage() {
   )}
 </h3>
 
-              <h2 className="text-xl font-semibold">- {Vehicle.type} : {Vehicle.model} - {Vehicle.year} -</h2>
+              <h2 className="font-semibold text-base">- {Vehicle.type} : {Vehicle.model} - {Vehicle.year} -</h2>
               
              
                 <h3 className="text-sm text-black-500 ">Owner Name :&nbsp; {Vehicle.owner_id.name}</h3>
-                <h3 className="text-sm text-black-500">Current Mileage : &nbsp; {Vehicle.mileage}</h3>
+                <h3 className="text-sm text-black-500 ">Current Mileage : &nbsp; {Vehicle.mileage}</h3>
 
-                <div className="flex items-center">
+                {/* <div className="flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 20" fill="currentColor" className="w-4 h-4">
                     <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6.5 6.326a6.52 6.52 0 01-1.5 .174 6.487 6.487 0 01-5.011-2.36l.49-.98a.423.423 0 01.614-.164l.294.196a.992.992 0 001.491-1.139l-.197-.593a.252.252 0 01.126-.304l1.973-.987a.938.938 0 00.361-1.359.375.375 0 01.239-.576l.125-.025A2.421 2.421 0 0012.327 6.6l.05-.149a1 1 0 00-.242-1.023l-1.489-1.489a.5.5 0 01-.146-.353v-.067a6.5 6.5 0 015.392 9.23 1.398 1.398 0 00-.68-.244l-.566-.566a1.5 1.5 0 00-1.06-.439h-.172a1.5 1.5 0 00-1.06.44l-.593.592a.501.501 0 01-.13.093l-1.578.79a1 1 0 00-.553.894v.191a1 1 0 001 1h.5a.5.5 0 01.5.5v.326z" clipRule="evenodd" />
                   </svg>
                   
                   <h3 className="text-sm text-gray-500 ml-2">Location : &nbsp; {Vehicle.location}</h3>
                   
-                </div>
+                </div> */}
               
 
               
@@ -236,7 +240,7 @@ export default function IndexPage() {
         <div> <div className="flex justify-between">
   <div className="flex items-center">
     
-    <h2 className="font-semibold">Rs.&nbsp;{formatPriceWithComma(Vehicle.price)} / hour</h2>
+    <h2 className="font-semibold text-sm">Rs.&nbsp;{formatPriceWithComma(Vehicle.price)} / hour</h2>
   </div>
 
   <div className="flex items-center space-x-2">
@@ -269,7 +273,7 @@ export default function IndexPage() {
 
           </Link>
         ))}
-        </div>
+         </div>
       </div>
     </Default_Layout>
   );
