@@ -466,7 +466,7 @@ function Vehicle_Update() {
             
             <div>
               
-            {preInput('Number of Seats')}
+              <h3 className="mt-2 -mb-1 py-2">Number of Seats</h3>
               <input
                 type="number"
                 value={seat}
@@ -483,7 +483,7 @@ function Vehicle_Update() {
             </div>
             <div>
               
-            {preInput('Price Per hour')}
+              <h3 className="mt-2 -mb-1 py-2">Price per hour</h3>
               <input
                 type="number"
                 value={price}
