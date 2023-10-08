@@ -69,14 +69,14 @@ function Home() {
                             <div className="conti ">
 
                                 <div className='item-1'>
-                                    <a href='#!' data-aos="zoom-in-down">
+                                    <a href='/vehicle_main' data-aos="zoom-in-down">
                                         <img src={img1} alt='' />
                                         <p>SEE MORE</p>
                                     </a>
                                 </div>
 
                                 <div className='item-1'>
-                                    <a href='#!' data-aos="zoom-in-down">
+                                    <a href='/vehicle_main' data-aos="zoom-in-down">
                                         <img src={img2} alt='' />
                                         <p>SEE MORE</p>
                                     </a>
@@ -84,7 +84,7 @@ function Home() {
 
 
                                 <div className='item-1'>
-                                    <a href='#!' data-aos="zoom-in-down">
+                                    <a href='/vehicle_main' data-aos="zoom-in-down">
                                         <img src={img3} alt='' />
                                         <p>SEE MORE</p>
                                     </a>
@@ -92,7 +92,7 @@ function Home() {
 
 
                                 <div className='item-1'>
-                                    <a href='#!' data-aos="zoom-in-down">
+                                    <a href='/vehicle_main' data-aos="zoom-in-down">
                                         <img src={img4} alt='' />
                                         <p>SEE MORE</p>
                                     </a>
@@ -101,14 +101,14 @@ function Home() {
 
 
                                 <div className='item-1'>
-                                    <a href='#!' data-aos="zoom-in-down">
+                                    <a href='/vehicle_main' data-aos="zoom-in-down">
                                         <img src={img5} alt='' />
                                         <p>SEE MORE</p>
                                     </a>
                                 </div>
 
                                 <div className='item-1'>
-                                    <a href='#! ' data-aos="zoom-in-down">
+                                    <a href='/vehicle_main' data-aos="zoom-in-down">
                                         <img src={img6} alt='' />
                                         <p>SEE MORE</p>
                                     </a>
@@ -153,7 +153,7 @@ function Home() {
                                                                     <div>
                                                                         <h4 class="mb-3" style={{ color: "#6351ce" }}>Vehicle rental</h4>
                                                                         <p class="text-secondary mb-3">You can get vehicle easily from Rapid travels </p>
-                                                                        <a href="!#" className='but mt-2' style={{ color: "#171616" }}>SEE MORE</a>
+                                                                        <a href="/vehicle_main" className='but mt-2' style={{ color: "#171616" }}>SEE MORE</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
