@@ -21,11 +21,14 @@ import 'aos/dist/aos.css';
 import Loading from './Preload';
 import Conatct from './Conatct';
 
+import SlideBarV from './VSlide';
+
 
 
 function Home() {
 
 
+    // eslint-disable-next-line no-unused-vars
     const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -114,11 +117,11 @@ function Home() {
                                     </a>
                                 </div>
 
-
-
                             </div>
 
+                            <SlideBarV />
 
+                           
                             <div className='block-t py-5' data-aos="zoom-in-up">
                                 <h1>Why Are We</h1>
                                 <p>Find and book a great experience.</p>
@@ -131,13 +134,13 @@ function Home() {
                                     <div class="container">
                                         <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
                                             <div class="col-12 col-lg-6 col-xl-5" >
-                                                <img src={abimg2} class="img-fluid rounded" loading="lazy" alt="" data-aos="fade-right" />
+                                                <img src={abimg2} class="img-fluid rounded" loading="lazy" alt="" data-aos="fade-right" style={{ height:"550px"}}/>
                                             </div>
                                             <div class="col-12 col-lg-6 col-xl-7">
                                                 <div class="row justify-content-xl-center" >
                                                     <div class="col-12 col-xl-11" data-aos="fade-left">
 
-                                                        <p class="lead fs-5 text-secondary mb-5 text-capitalize fw-semibold">About Rapaid Travels</p>
+                                                        <p class=" fs-5  mb-5 text-capitalize fw-bold">About Rapaid Travels</p>
 
 
                                                         <p class="mb-4" style={{ fontSize: "1.1rem", textAlign: "justify" }} id='new-twxt'>Rapid Travels is a domestic tours and travel management company which provides domestic tours and travel services within Sri Lanka. The system is an integrated management system which combines multiple management systems namely rental management system, flight management system, boat tours reservation system and finally bus reservation system.   </p>
@@ -148,10 +151,10 @@ function Home() {
                                                             <div class="col-12 col-md-6">
                                                                 <div class="d-flex">
                                                                     <div class=" text-primary">
-                                                                        <img src={img11} alt='' width={"50px"} className='mx-3' />
+                                                                        <img src={img11} alt='' width={"50px"} className='me-3'/>
                                                                     </div>
                                                                     <div>
-                                                                        <h4 class="mb-3" style={{ color: "#6351ce" }}>Vehicle rental</h4>
+                                                                        <h4 class="mb-3" style={{ color: "" }}>Vehicle rental</h4>
                                                                         <p class="text-secondary mb-3">You can get vehicle easily from Rapid travels </p>
                                                                         <a href="/vehicle_main" className='but mt-2' style={{ color: "#171616" }}>SEE MORE</a>
                                                                     </div>
@@ -161,11 +164,11 @@ function Home() {
                                                                 <div class="d-flex">
                                                                     <div class=" text-primary">
 
-                                                                        <img src={img10} alt='' width={"50px"} className='mx-3' />
+                                                                        <img src={img10} alt='' width={"50px"} className='me-3' />
 
                                                                     </div>
                                                                     <div>
-                                                                        <h4 class="mb-3" style={{ color: "#6351ce" }}>Tours and travel</h4>
+                                                                        <h4 class="mb-3" style={{ color: "" }}>Tours and travel</h4>
                                                                         <p class="text-secondary mb-3">Domestic tours and travel services within Sri Lanka</p>
                                                                         <a href="!#" className='but mt-3' style={{ color: "#171616" }}>SEE MORE</a>
                                                                     </div>
@@ -180,10 +183,9 @@ function Home() {
                                     </div>
                                 </section>
 
-
-
                             </div>
 
+                            
 
 
                             <div className='text-head' data-aos="zoom-in-up">
@@ -316,8 +318,6 @@ function Home() {
                                                                     </div>
                                                                 </div>
 
-
-
                                                             </div>
                                                         </div>
                                                     </div>
@@ -335,9 +335,16 @@ function Home() {
 
                             <div id='Contact'>
                                 <Conatct />
+                                
                             </div>
 
+                            
+
                             <Footer />
+
+                            
+
+                            
 
 
                         </>
@@ -353,4 +360,4 @@ function Home() {
     )
 }
 
-export default Home
+export default Home;

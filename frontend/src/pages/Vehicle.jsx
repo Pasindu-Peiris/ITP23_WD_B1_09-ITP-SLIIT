@@ -494,7 +494,7 @@ const debouncedHandleRangeChange = debounce(handleRangeChange, 100);
 
                 <button
                   onClick={updateStatus}
-                  className={`primary mt-4 ${totalprice === 0 ? "bg-red-400" : "bg-green-400"} py-2 px-2 border rounded-xl`}
+                  className={`primary mt-4 ${totalprice === 0 ? "bg-red-400" : "bg-green-400"} py-2 px-2 border-t rounded-xl`}
                   disabled={totalprice <= 0}>
                   Book this Vehicle 
                   {totalprice > 0 && (

@@ -40,7 +40,7 @@ function Owner() {
 
   return (
     <div>
-      {/* <h1>Add a New Owner</h1>
+      <h1>Add a New Owner</h1>
       <form onSubmit={handleSubmit}>
         <label>
           Owner Name:
@@ -52,19 +52,19 @@ function Owner() {
           />
         </label>
         <button type="submit">Add Owner</button>
-      </form> */}
+      </form>
 
-      {/* <h2>Owners List</h2> */}
+      <h2>Owners List</h2>
       <ul>
         {owners.map((owner) => (
-          <div key={owner._id}>
-            {/* {owner.name} */}
+          <li key={owner._id}>
+            {owner.name}
             <Link to={`/IndexPage_Update/${owner._id}`}>
               <div className='p-4'>
               <button className='button-24 p-2'>Manage Company Vehicles</button>
               </div>
             </Link>
-          </div>
+          </li>
         ))}
       </ul>
     </div>

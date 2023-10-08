@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../App.css';
@@ -61,6 +62,8 @@ function UpadateUserClient() {
     }, [])
 
 
+
+
     const Update = (e) => {
 
         e.preventDefault();
@@ -68,10 +71,8 @@ function UpadateUserClient() {
 
             Notify();
             setTimeout(function () {
-                 window.location = '/profile'
+                window.location = '/profile'
             }, 1500); // 2000 milliseconds (2 seconds)
-
-            
 
 
         }).catch((err) => {
@@ -82,6 +83,54 @@ function UpadateUserClient() {
     }
 
 
+
+    //handle error messages
+    const errPrint = (fname) => {
+        if (fname.length < 3) {
+            document.getElementById('error').innerHTML = "Name must be more than 3 characters";
+            document.getElementById('error').style.color = "red";
+        } else if (/^\d/.test(fname)) {
+            document.getElementById('error').innerHTML = "Name must not start with number";
+            document.getElementById('error').style.color = "red";
+        }
+        else {
+            document.getElementById('error').innerHTML = "Done";
+            document.getElementById('error').style.color = "#00a550 ";
+        }
+    }
+
+    const errPrint2 = (lname) => {
+        if (lname.length < 3) {
+            document.getElementById('error2').innerHTML = "Name must be more than 3 characters";
+            document.getElementById('error2').style.color = "red";
+        } else if (/^\d/.test(lname)) {
+            document.getElementById('error2').innerHTML = "Name must not start with number";
+            document.getElementById('error2').style.color = "red";
+        }
+        else {
+            document.getElementById('error2').innerHTML = "Done";
+            document.getElementById('error2').style.color = "#00a550 ";
+        }
+    }
+
+    const isEmailValid = (email) =>{
+        const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+        return emailPattern.test(email);
+    }
+
+    const emailCheck = (email) => {
+
+        if(isEmailValid(email)){
+            document.getElementById('error3').innerHTML = "Done";
+            document.getElementById('error3').style.color = "#00a550 ";
+        }else{
+            document.getElementById('error3').innerHTML = "Enter Invalid Email";
+            document.getElementById('error3').style.color = "red";
+        }
+
+    }
+
+    
 
     return (
         <div class="new-12">
@@ -118,9 +167,17 @@ function UpadateUserClient() {
                                 onChange={(e) => {
 
                                     setFname(e.target.value);
+
                                 }}
 
+                                onKeyUp={(e) => {
+                                    errPrint(e.target.value);
+                                }}
+
+
+
                             />
+                            <div className='py-2 ' style={{ color: "red" }} id='error'></div>
                         </div>
                         <div className="mb-4">
                             <label for="lname" className="form-label px-1">Last Name</label>
@@ -130,19 +187,29 @@ function UpadateUserClient() {
 
                                     setLname(e.target.value);
                                 }}
+
+                                onKeyUp={(e) => {
+                                    errPrint2(e.target.value);
+                                }}
                             />
+                            <div className='py-2 ' style={{ color: "red" }} id='error2'></div>
                         </div>
                         <div className="mb-4">
                             <label for="email" className="form-label px-1">Email</label>
-                            <input type="email" className="form-control" id="email" name="email" placeholder='Email' required autoComplete='off' value={email} disabled
-                                pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" title='Please Enter Valid Email'
+                            <input type="email" className="form-control" id="email" name="email" placeholder='Email' required autoComplete='off' value={email}
+                                pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" title='Please Enter Valid Email' disabled
                                 onChange={(e) => {
 
                                     setEmail(e.target.value);
                                 }}
 
+                                onKeyUp={(e) => {
+                                    emailCheck(e.target.value);
+                                }}
+
                             />
 
+                        <div className='py-2 ' style={{ color: "red" }} id='error3'></div>
                         </div>
 
                         <button type="submit" className="btn btn-primary w-100 mt-2 but-1">Update Details</button>
