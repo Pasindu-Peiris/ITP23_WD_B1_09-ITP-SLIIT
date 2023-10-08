@@ -36,6 +36,32 @@ function Login() {
         });
     }
 
+    //validation
+    const isEmailValid = (email) => {
+        const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+        return emailPattern.test(email);
+      }
+    
+      const emailCheck = (email) => {
+    
+        if (isEmailValid(email)) {
+          document.getElementById('error3').innerHTML = "Success";
+          document.getElementById('error3').style.color = "#009150";
+          document.getElementById('email').style.border = "2px solid #1a191a00";
+        }
+        else {
+          document.getElementById('error3').innerHTML = "Enter Invalid Email";
+          document.getElementById('error3').style.color = "red";
+          document.getElementById('email').style.border = "2px solid red";
+    
+        }
+        setTimeout(function () {
+          document.getElementById('error3').innerHTML = " ";
+        }, 6000); // 2000 milliseconds (2 seconds)
+    
+      }
+    
+
     function Notify() {
         toast.success('Password reset link sent to your email', {
             autoClose: 1500,
@@ -106,12 +132,6 @@ function Login() {
 
                                 <div className="card-header  px-5 pt-3  pb-1">
 
-                                    <nav aria-label="breadcrumb">
-                                        <ol class="breadcrumb">
-                                            <li class="breadcrumb-item active" aria-current="page" style={{ fontSize: "1.1rem" }}><i class="fa-solid fa-caret-left" style={{ fontSize: "1.1rem" }}></i><a href="/" className='text-dark' style={{ fontSize: "1.1rem", textDecoration: "none" }}>HOME</a></li>
-                                        </ol>
-                                    </nav>
-
                                     <h3 className='text-capitalize py-2'>Forget Password</h3>
                                     <p>Lost your password? <br></br> Please enter your email address. You will receive a link to create a new password via email.</p>
 
@@ -121,12 +141,16 @@ function Login() {
                                     <form onSubmit={fogetpasshadle}>
 
                                         <div className="mb-4">
-                                            <label for="email" className="form-label px-1">Email</label>
+                                            <label for="email" className="form-label px-1 d-flex align-items-center justify-content-between ">Email <div className='' style={{ color: "red" }} id='error3'></div></label>
                                             <input type="email" className="form-control" id="email" name="email" placeholder='Email' required autoComplete='off' pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" title='Please Enter Valid Email'
 
                                                 onChange={(e) => {
 
                                                     setEmail(e.target.value);
+                                                }}
+
+                                                onKeyUp={(e) => {
+                                                    emailCheck(e.target.value)
                                                 }}
 
                                             />

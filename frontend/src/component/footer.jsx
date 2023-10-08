@@ -98,22 +98,22 @@ function Footer() {
 
                             <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 fotter-col">
 
-                                <h6 className="text-uppercase fw-bold">Products</h6>
+                                <h6 className="text-uppercase fw-bold">Careers</h6>
                                 <hr
                                     className="mb-4 mt-0 d-inline-block mx-auto"
                                     style={{ width: "60px", backgroundColor: "#7c4dff", height: "2px" }}
                                 />
                                 <p>
-                                    <a href="#!" className="text-white">MDBootstrap</a>
+                                    <a href="#!" className="text-white">Become Vehicle Owner</a>
                                 </p>
                                 <p>
-                                    <a href="#!" className="text-white">MDWordPress</a>
+                                    <a href="#!" className="text-white">Become Driver</a>
                                 </p>
                                 <p>
-                                    <a href="#!" className="text-white">BrandFlow</a>
+                                    <a href="#!" className="text-white">Become Staff</a>
                                 </p>
                                 <p>
-                                    <a href="#!" className="text-white">Bootstrap Angular</a>
+                                   
                                 </p>
                             </div>
 
@@ -121,7 +121,7 @@ function Footer() {
 
                             <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4 fotter-col">
 
-                                <h6 className="text-uppercase fw-bold">Useful links</h6>
+                                <h6 className="text-uppercase fw-bold">Account details</h6>
                                 <hr
                                     className="mb-4 mt-0 d-inline-block mx-auto"
                                     style={{ width: "60px", backgroundColor: "#7c4dff", height: "2px" }}
@@ -130,13 +130,13 @@ function Footer() {
                                     <a href="/profile" className="text-white">Your Account</a>
                                 </p>
                                 <p>
-                                    <a href="#!" className="text-white">Become an Affiliate</a>
+                                    <a href="#!" className="text-white">Your Booking</a>
                                 </p>
                                 <p>
-                                    <a href="#!" className="text-white">Shipping Rates</a>
+                                    
                                 </p>
                                 <p>
-                                    <a href="#!" className="text-white">Help</a>
+                                    
                                 </p>
                             </div>
 
@@ -150,7 +150,7 @@ function Footer() {
                                     className="mb-4 mt-0 d-inline-block mx-auto"
                                     style={{ width: "60px", backgroundColor: "#7c4dff", height: "2px" }}
                                 />
-                                <p><i className="fas fa-home mr-3"></i> New York, NY 10012, US</p>
+                                <p><i className="fas fa-home mr-3"></i> SLIIT Malabe Campus</p>
                                 <p><i className="fas fa-envelope mr-3"></i> RapidTravels@example.com</p>
                                 <p><i className="fas fa-phone mr-3"></i> + 01 234 567 88</p>
                                 <p><i className="fas fa-print mr-3"></i> + 01 234 567 89</p>

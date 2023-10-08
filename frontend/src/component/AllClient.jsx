@@ -242,7 +242,7 @@ function AllClient() {
                 </div>
                 <div class="offcanvas-body">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0 mt-3">
-                        <li className="nav-item px-4 fs-5" style={{ margin: "20px 0px", border: "1px solid #000" }}>
+                        <li className="nav-item px-4 fs-5" style={{ margin: "10px 0px", border: "1px solid #000" }}>
                             <a className="nav-link active" aria-current="page" href="/AllClient">Client Details</a>
                         </li>
                         <li className="nav-item px-4 fs-5" style={{ margin: "10px 0px", border: "1px solid #000" }}>
@@ -254,7 +254,7 @@ function AllClient() {
 
                     </ul>
 
-                    <a className="nav-link nav-item px-3 fs-5 pt-5" href="!#" style={{ color: "red", paddingTop: "800px" }}>Log Out</a>
+                    <a className="nav-link nav-item px-3 fs-5 pt-5" href="/Dashboard" style={{ color: "red", paddingTop: "800px" }}>Log Out</a>
 
                 </div>
             </div>
