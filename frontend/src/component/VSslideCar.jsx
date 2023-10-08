@@ -13,7 +13,7 @@ const responsive = {
     },
     desktop: {
         breakpoint: { max: 3000, min: 1024 },
-        items: 4
+        items: 3
     },
     tablet: {
         breakpoint: { max: 1024, min: 464 },
@@ -39,7 +39,7 @@ function SlideBarCar() {
         <>
 
             <div className='block-t py-5' data-aos="zoom-in-up">
-                <h1>Explore the Tour</h1>
+                <h1>Explore the Vehicle</h1>
                 <p>Find and book a great experience.</p>
                 <hr />
             </div>
@@ -115,26 +115,15 @@ function SlideBarCar() {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className='cardBlock-1 m-x-4'>
-                                            <div class=" m-3">
-                                                <div class="card" id='cardv '>
-                                                    <div class="img-wrapper"><img src="https://codingyaar.com/wp-content/uploads/headshot-2-scaled.jpg" class="d-block w-100" alt="..." /> </div>
-                                                    <div class="card-body" id="tit-card">
-                                                        <h5 class="card-title" >Card title 2</h5>
-                                                        <p class="card-text">Some quick example text to build on the card title and make up
-                                                            the bulk of the
-                                                            card's content.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        
                                     </Carousel>
 
                                 </div>
 
-
-
-                                
+                                <div className='d-flex align-content-center justify-content-center pt-5'>
+                                    <button className='btn btn-dark px-3 py-2'>SEE MORE</button>
+                                </div>
+    
                             </div>
                         </div>
                     </div>

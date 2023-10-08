@@ -141,7 +141,7 @@ function Home() {
                                     <div class="card-body cart" >
                                         <img src={img7} alt='' />
                                         <h5 class="card-title p-3">Easy & Fast Booking</h5>
-                                        <p class="card-text" style={{fontSize: "1rem", textAlign: "center"}} id='new-twxt'>We've designed our platform to make the reservation process quick. </p>
+                                        <p class="card-text" style={{ fontSize: "1rem", textAlign: "center" }} id='new-twxt'>We've designed our platform to make the reservation process quick. </p>
                                         <p class="card-text"><small class="text-body-secondary"></small></p>
                                     </div>
                                 </div>
@@ -181,10 +181,10 @@ function Home() {
                                 <section class="py-3 py-md-5 py-xl-8 ">
                                     <div class="container">
                                         <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
-                                            <div class="col-12 col-lg-6 col-xl-5" >
-                                                <img src={abimg2} class="img-fluid rounded" loading="lazy" alt="" data-aos="fade-right" style={{ width:"400px" }} />
+                                            <div class="col-12 col-lg-6 col-xl-6" >
+                                                <img src={abimg2} class="img-fluid rounded" loading="lazy" alt="" data-aos="fade-right" style={{ width: "400px" }} />
                                             </div>
-                                            <div class="col-12 col-lg-6 col-xl-7">
+                                            <div class="col-12 col-lg-6 col-xl-6">
                                                 <div class="row justify-content-xl-center" >
                                                     <div class="col-12 col-xl-11" data-aos="fade-left">
 

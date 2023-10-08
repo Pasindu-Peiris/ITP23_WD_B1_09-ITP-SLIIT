@@ -52,10 +52,10 @@ function SlideBar() {
                         <div class="container-fluid">
                             <div class="row">
 
-                                <div class="col-md-5" data-aos="fade-up">
+                                <div class="col-md-4" data-aos="fade-up">
                                     <div class="testimonial-title">
-                                        <i class="fa-solid fa-quote-left py-3" style={{ color: "#171716" }}></i>
-                                        <h2 class="fw-bold display-6 ">Don't just dream about it, plan it. Travel.</h2>
+                                        <i class="fa-solid fa-quote-left pb-4" style={{ color: "#28242bd6" }}></i>
+                                        <h2 class="fw-bold display-6 ">Don't just dream about it, plan it. <br></br>Travel.</h2>
                                     </div>
                                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -68,7 +68,7 @@ function SlideBar() {
                                 </div>
 
 
-                                <div className='col-md-7' data-aos="fade-up">
+                                <div className='col-md-8' data-aos="fade-up">
                                     <Carousel responsive={responsive}
                                         autoPlay
                                         autoPlaySpeed={2000}
@@ -76,7 +76,7 @@ function SlideBar() {
                                         <div className='cardBlock-1'>
                                             <div class=" m-3">
                                                 <div class="card" id='cardv '>
-                                                    <div class="img-wrapper"><img src="https://cdn.getyourguide.com/img/tour/64b9217e98354.jpeg/97.jpg" class="d-block w-100" alt="..." /> </div>
+                                                    <div class="img-wrapper"><img src="https://preview.redq.io/turbo/wp-content/uploads/2023/06/Group-48095922.png" class="d-block w-100" alt="..." /> </div>
                                                     <div class="card-body" id="tit-card">
                                                         <h5 class="card-title" >Card title 2</h5>
                                                         <p class="card-text">Some quick example text to build on the card title and make up
@@ -90,7 +90,7 @@ function SlideBar() {
                                         <div className='cardBlock-1'>
                                             <div class=" m-3">
                                                 <div class="card" id='cardv '>
-                                                    <div class="img-wrapper"><img src="https://codingyaar.com/wp-content/uploads/headshot-2-scaled.jpg" class="d-block w-100" alt="..." /> </div>
+                                                    <div class="img-wrapper"><img src="https://preview.redq.io/turbo/wp-content/uploads/2023/06/Group-48095914.png" class="d-block w-100" alt="..." /> </div>
                                                     <div class="card-body" id="tit-card">
                                                         <h5 class="card-title" >Card title 2</h5>
                                                         <p class="card-text">Some quick example text to build on the card title and make up
@@ -104,7 +104,7 @@ function SlideBar() {
                                         <div className='cardBlock-1'>
                                             <div class=" m-3">
                                                 <div class="card" id='cardv '>
-                                                    <div class="img-wrapper"><img src="https://cdn.getyourguide.com/img/tour/5dde55f2dd9da.jpeg/145.jpg" class="d-block w-100" alt="..." /> </div>
+                                                    <div class="img-wrapper"><img src="https://preview.redq.io/turbo/wp-content/uploads/2023/06/Group-48095917.png" class="d-block w-100" alt="..." /> </div>
                                                     <div class="card-body" id="tit-card">
                                                         <h5 class="card-title" >Card title 2</h5>
                                                         <p class="card-text">Some quick example text to build on the card title and make up
@@ -118,20 +118,7 @@ function SlideBar() {
                                         <div className='cardBlock-1'>
                                             <div class=" m-3">
                                                 <div class="card" id='cardv '>
-                                                    <div class="img-wrapper"><img src="https://codingyaar.com/wp-content/uploads/headshot-2-scaled.jpg" class="d-block w-100" alt="..." /> </div>
-                                                    <div class="card-body" id="tit-card">
-                                                        <h5 class="card-title" >Card title 2</h5>
-                                                        <p class="card-text">Some quick example text to build on the card title and make up
-                                                            the bulk of the
-                                                            card's content.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className='cardBlock-1 m-x-4'>
-                                            <div class=" m-3">
-                                                <div class="card" id='cardv '>
-                                                    <div class="img-wrapper"><img src="https://cdn.getyourguide.com/img/tour/5c3d893d4e411.jpeg/98.jpg" class="d-block w-100" alt="..." /> </div>
+                                                    <div class="img-wrapper"><img src="https://preview.redq.io/turbo/wp-content/uploads/2023/06/Group-48095915.png" class="d-block w-100" alt="..." /> </div>
                                                     <div class="card-body" id="tit-card">
                                                         <h5 class="card-title" >Card title 2</h5>
                                                         <p class="card-text">Some quick example text to build on the card title and make up

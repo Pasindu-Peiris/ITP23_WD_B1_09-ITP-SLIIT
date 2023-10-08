@@ -551,6 +551,7 @@ hr {
 }
 
 .testimonial-title h2 {
+  color: #28242bd6;
   padding-left: 0;
 }
 
@@ -559,7 +560,7 @@ hr {
 }
 
 .fa-quote-left {
-  color    : var(--third-color);
+  color    : #28242bd6;
   font-size: 5.5em;
 }
 

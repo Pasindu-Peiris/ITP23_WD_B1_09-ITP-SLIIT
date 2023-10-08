@@ -74,7 +74,12 @@ const clientSchema = new Schema({
         type: String,
         default: "prof.png"
 
-    }
+    },
+    lastlogin: {
+        type: String,
+        default: formattedDate + " | " +"["+ formattedTime + " ]" // You can set a default value for the date if needed
+    },
+    
 
 
 

@@ -132,8 +132,49 @@ router.route("/login").post((req, res) => {
             bcrypt.compare(password, client.password).then((match) => {
                 if (match) {
 
+
+                    //function for data
+                    function getFormattedDate() {
+                        const today = new Date();
+                        const year = today.getFullYear();
+                        const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+                        const day = String(today.getDate()).padStart(2, '0');
+
+                        //return `${year}/${month}/${day}`;
+                        return `${month}/${day}/${year}`;
+
+                    }
+
+                    function getTime() {
+                        const now = new Date();
+                        const hours = now.getHours();
+                        const minutes = now.getMinutes();
+                        const seconds = now.getSeconds();
+
+                        return `${hours}:${minutes}:${seconds}`;
+                    }
+
+                    const formattedDate = getFormattedDate();
+                    console.log(formattedDate); // Output will be in "YYYY/MM/DD" format
+
+                    const formattedTime = getTime();
+                    console.log(formattedTime); // Output will be in "HH:MM:SS" format
+
+                    //time
+                    var timeSet = formattedDate + " | " + "[" + formattedTime + " ]";
+
+
                     const token2 = jwt.sign({ email }, "jwt_secret_key2", { expiresIn: '1d' });
                     res.json({ status: "Success", token: token2 });
+
+                    const lastlogin = Client.findByIdAndUpdate(client.id, { lastlogin: timeSet }).then((client) => {
+                        console.log("last login updated")
+
+                    }).catch((err) => {
+
+                        console.log("not login updated")
+                    })
+
 
                 } else {
                     res.json("password not match");
@@ -144,6 +185,10 @@ router.route("/login").post((req, res) => {
             res.json("User Not Found")
         }
     })
+
+
+
+
 
 
 

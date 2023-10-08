@@ -173,6 +173,7 @@ function AllClient() {
                                     <th scope="col">Last Name</th>
                                     <th scope="col">Email</th>
                                     <th colSpan="col">Register Date | Time</th>
+                                    <th colSpan="col">Last Login Date | Time</th>
                                     {isActionColumnVisible && <th scope="col" className="mx-auto-1">Action</th>}
                                 </tr>
                             </thead>
@@ -189,6 +190,7 @@ function AllClient() {
                                         <td>{item.lname}</td>
                                         <td>{item.email}</td>
                                         <td>{item.date}</td>
+                                        <td>{item.lastlogin}</td>
 
 
 
