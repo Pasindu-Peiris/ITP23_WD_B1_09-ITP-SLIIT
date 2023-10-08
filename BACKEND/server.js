@@ -38,7 +38,17 @@ connction.once("open", () => {
 const clientRoute = require("./routes/Client");
 app.use("/client", clientRoute);
 
+// vehicle
+const ownerRoutes = require('./routes/rownerRoutes');
+const vehicleRoutes = require('./routes/vehicleRoutes');
+const bookingRoutes = require('./routes/bookingRoutes');
 
+app.use('/rowners', ownerRoutes);
+app.use('/vehicles', vehicleRoutes);
+app.use('/bookings', bookingRoutes);
+
+//vehicle img
+app.use('/VehicleImg', express.static(__dirname + '/VehicleImg'));
 app.listen(PORT, () =>{
     console.log(`Sever is running on ${PORT}`);
 });

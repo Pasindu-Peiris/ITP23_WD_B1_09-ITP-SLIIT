@@ -30,7 +30,7 @@ function Nav() {
                             </li>
 
                             <li className="nav-item">
-                                <a className="nav-link" href="#!">Explore vehicle</a>
+                                <a className="nav-link" href="/vehicle_main">Explore vehicle</a>
                             </li>
 
                             <li className="nav-item">

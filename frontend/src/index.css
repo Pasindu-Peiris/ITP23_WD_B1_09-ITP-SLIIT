@@ -1,0 +1,276 @@
+
+@tailwind components;
+
+@tailwind utilities;
+
+@import 'antd/dist/antd.css';
+
+.custom-input70 {
+  
+  border: 2px solid #ccc;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 20px;
+  font-size: 16px;
+  width: 100%;
+  height: 100px;
+}
+
+
+
+.custom-input69 {
+  
+  border: 2px solid #ccc;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 20px;
+  font-size: 16px;
+  width: 80%;
+}
+
+.bs1{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+
+
+.button-24 {
+  background: #FF4742;
+  border: 1px solid #FF4742;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.button-24:hover,
+.button-24:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: #FF4742;
+}
+
+.button-24:active {
+  opacity: .5;
+}
+
+.link-wrapper:hover {
+  background-color: #ffffff !important;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 8px -2px, rgba(0, 0, 0, 0.25) 0px 0px 0px 1px;
+  border-radius: 5%; 
+  padding: 1%; 
+  text-decoration: none;
+  
+  color: inherit;
+}
+
+/* styles.css */
+body {
+  font-size: 16px; /* Set your base font size here */
+}
+
+
+
+.link-wrapper {
+  text-decoration: none;
+  color: inherit;
+
+}
+
+.link-wrapper2:hover {
+  background-color: #ffffff !important;
+  padding: 1%; 
+  text-decoration: none;
+  color: inherit;
+}
+
+
+
+.link-wrapper2 {
+  text-decoration: none;
+  color: inherit;
+  border-radius: 10px;
+
+}
+
+.link-wrapper3:hover {
+  background-color: #ffffff !important;
+  text-decoration: none;
+  color: inherit;
+}
+
+.p2{
+  padding-top: 2px;
+}
+
+.p1{
+  padding-top: 1px;
+}
+
+
+.link-wrapper3 {
+  text-decoration: none;
+  color: inherit;
+
+}
+
+.black-box {
+  background-color: black;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.white-text {
+  color: white;
+}
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 22px; 
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: red;
+  -webkit-transition: .2s;
+  transition: .2s;
+  border-radius: 22px; 
+  width: 40px; 
+  height: 22px; 
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px; 
+  width: 18px; 
+  left: 2px; 
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: green;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(18px); 
+  -ms-transform: translateX(18px); 
+  transform: translateX(18px); 
+}
+
+
+.status-text.available-text {
+  color: green;
+}
+
+.status-text.unavailable-text {
+  color: red;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.info-box {
+  border: 1px solid purple;
+  padding: 20px; /* Increase the padding to adjust the height */
+  text-align: center;
+  border-radius: 10px;
+  height: 75px; /* Increase the height as desired */
+}
+
+.info-label {
+  font-weight: bold;
+}
+
+.info-value {
+  font-family: Arial, sans-serif; /* Corrected the font-family property */
+}
+
+
+.ant-btn {
+  border-radius: 5px;
+  border-color: purple;
+  color: purple;
+}
+
+.ant-btn:hover {
+  color: #2196F3;
+
+}
+
+.ant-btn-primary {
+  border-radius: 5px;
+  border-color: purple;
+  background-color: #FFFFFF;
+  color: purple;
+}
+
+.ant-btn-primary:hover {
+  background-color: #FFFFFF;
+  color: #2196F3;
+}
+
+
+
+.ant-modal-close-x{
+  border-color: purple;
+}
+
+
+.ant-picker-range{
+  border-radius: 5pt;
+  width: 100%;
+  border-color: purple;
+}
+
+.ant-modal-title{
+  color: #000000;
+}
+
+
+
+
+
+
+
+
+

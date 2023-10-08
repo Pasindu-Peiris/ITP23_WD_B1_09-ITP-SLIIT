@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import './App.css';
+import './index.css'
 import Nav from './component/Nav';
 import Register from './component/Register';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -16,6 +17,13 @@ import Profile from './component/profile';
 import UpadateUserClient from './component/userUpdateClient';
 import ClientDisplay from './component/tableDisplayClients';
 import TableNew from './component/tableNewDis';
+import Vehicle_Form from "./pages/Vehicle_Form";
+import Vehicle_Update from "./pages/Vehicle_Update"
+import IndexPage from "./pages/IndexPage"
+import IndexPage_Update from "./pages/IndexPage_Update"
+import Vehicle from "./pages/Vehicle"
+import Vehicle_2 from "./pages/Vehicle_2"
+import Owner from "./pages/rowner";
 
 function App() {
   return (
@@ -95,6 +103,20 @@ function App() {
         <Routes>
           <Route path='/Table' element={<TableNew/>}></Route>
         </Routes>
+      </BrowserRouter>
+
+      {/* vehicles */}
+      <BrowserRouter>
+      <Routes>
+
+      <Route  path='/Vehicle_main' element={<IndexPage/>}/>
+      <Route  path='/Vehicle/:id' element={<Vehicle/>}/>
+      <Route  path='/Vehicle_2/:id' element={<Vehicle_2/>}/>
+      <Route  path='/owner/' element={<Owner/>}/>
+      <Route  path='/IndexPage_Update/:ownerId' element={<IndexPage_Update/>}/>
+      <Route Route path='/Vehicle_Form/:ownerId' element={<Vehicle_Form/>}/>
+      <Route Route path='/Vehicle_Update/:id' element={<Vehicle_Update/>}/>
+      </Routes> 
       </BrowserRouter>
 
 
