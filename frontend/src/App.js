@@ -17,6 +17,7 @@ import Profile from './component/profile';
 import UpadateUserClient from './component/userUpdateClient';
 import ClientDisplay from './component/tableDisplayClients';
 import TableNew from './component/tableNewDis';
+<<<<<<< Updated upstream
 import Vehicle_Form from "./pages/Vehicle_Form";
 import Vehicle_Update from "./pages/Vehicle_Update"
 import IndexPage from "./pages/IndexPage"
@@ -24,6 +25,10 @@ import IndexPage_Update from "./pages/IndexPage_Update"
 import Vehicle from "./pages/Vehicle"
 import Vehicle_2 from "./pages/Vehicle_2"
 import Owner from "./pages/rowner";
+=======
+import AdminDashboard from './component/AdminDashboard';
+import VSlide from './component/VSlide';
+>>>>>>> Stashed changes
 
 function App() {
   return (
@@ -117,6 +122,19 @@ function App() {
       <Route Route path='/Vehicle_Form/:ownerId' element={<Vehicle_Form/>}/>
       <Route Route path='/Vehicle_Update/:id' element={<Vehicle_Update/>}/>
       </Routes> 
+      </BrowserRouter>
+
+
+      <BrowserRouter>
+        <Routes>
+          <Route path='/Dashboard-admin-rapidTravles' element={<AdminDashboard/>}></Route>
+        </Routes>
+      </BrowserRouter>
+
+      <BrowserRouter>
+        <Routes>
+          <Route path='/Slide' element={<VSlide/>}></Route>
+        </Routes>
       </BrowserRouter>
 
 

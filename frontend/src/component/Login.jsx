@@ -88,6 +88,8 @@ function Login() {
         });
     }
 
+
+
     axios.defaults.withCredentials = true;
     function loginhadle(e) {
 
@@ -122,6 +124,56 @@ function Login() {
 
     }
 
+
+    //validation for email and password
+    const isEmailValid = (email) => {
+        const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+        return emailPattern.test(email);
+      }
+    
+      const emailCheck = (email) => {
+    
+        if (isEmailValid(email)) {
+          document.getElementById('error3').innerHTML = "Success";
+          document.getElementById('error3').style.color = "#009150";
+          document.getElementById('email').style.border = "2px solid #1a191a00";
+        }
+        else {
+          document.getElementById('error3').innerHTML = "Enter Invalid Email";
+          document.getElementById('error3').style.color = "red";
+          document.getElementById('email').style.border = "2px solid red";
+    
+        }
+        setTimeout(function () {
+          document.getElementById('error3').innerHTML = " ";
+        }, 6000); // 2000 milliseconds (2 seconds)
+    
+      }
+    
+    
+      const passwordCheck = (password) => {
+    
+        if (/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/.test(password)) {
+          document.getElementById('error4').innerHTML = "Password matched";
+          document.getElementById('error4').style.color = "#009150";
+          document.getElementById('password').style.border = "2px solid #1a191a00";
+    
+        }
+        else {
+          document.getElementById('error4').innerHTML = "Password not matched";
+          document.getElementById('error4').style.color = "red";
+          document.getElementById('password').style.border = "2px solid red";
+    
+        }
+    
+        setTimeout(function () {
+          document.getElementById('error4').innerHTML = " ";
+        }, 6000); // 2000 milliseconds (2 seconds)
+      }
+
+      
+    
+
     return (
 
         <>
@@ -152,7 +204,7 @@ function Login() {
                                     <form onSubmit={loginhadle}>
 
                                         <div className="mb-4">
-                                            <label for="email" className="form-label px-1">Email</label>
+                                            <label for="email" className="form-label px-1 d-flex align-items-center justify-content-between">Email <div className='' style={{ color: "red" }} id='error3'></div></label>
                                             <input type="email" className="form-control" id="email" name="email" placeholder='Email' required autoComplete='off'
 
                                                 onChange={(e) => {
@@ -160,17 +212,27 @@ function Login() {
                                                     setEmail(e.target.value);
                                                 }}
 
+                                                onKeyUp={(e) => {
+                                                    emailCheck(e.target.value)
+                                                  }}
+
                                             />
                                         </div>
 
                                         <div className="mb-4">
-                                            <label for="password" className="form-label px-1">Password</label>
+                                            <label for="password" className="form-label px-1 d-flex align-items-center justify-content-between">Password <div className='' style={{ color: "red" }} id='error4'></div></label>
                                             <input type="password" className="form-control" id="password" name="password" placeholder='Password' required autoComplete='off'
 
                                                 onChange={(e) => {
 
                                                     setPassword(e.target.value);
                                                 }}
+
+                                                onKeyUp={(e) => {
+
+                                                    passwordCheck(e.target.value);
+                          
+                                                  }}
 
 
                                             />

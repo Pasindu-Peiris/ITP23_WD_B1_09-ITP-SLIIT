@@ -285,12 +285,12 @@ router.route("/uploadprofile/:id").post(upload.single('file'), (req, res) => {
     let uid = req.params.id;
 
 
-   /* const UpdatedClient = {
-            
-        images: req.file.filename
-    }*/
+    /* const UpdatedClient = {
+             
+         images: req.file.filename
+     }*/
 
-    const updatep = Client.findByIdAndUpdate(uid, {images: req.file.filename} ).then((client) => {
+    const updatep = Client.findByIdAndUpdate(uid, { images: req.file.filename }).then((client) => {
         console.log("updated profile")
         console.log(req.file);
         res.status(200).send({ status: "User Updated", user: client })
@@ -327,7 +327,7 @@ router.route("/deleteprofile/:id").post((req, res) => {
     let uid = req.params.id;
 
 
-    const updatep = Client.findByIdAndUpdate(uid, {images : "prof.png"}).then((client) => {
+    const updatep = Client.findByIdAndUpdate(uid, { images: "prof.png" }).then((client) => {
         console.log("Remove profile")
         console.log("rome profile client.js side");
         res.status(200).send({ status: "User Updated", user: client })
@@ -341,9 +341,52 @@ router.route("/deleteprofile/:id").post((req, res) => {
 
 });
 
+//send message from contact form to admin
+router.route("/contact").post((req, res) => {
+
+    const name = req.body.name;
+    const email = req.body.email;
+    const message = req.body.message;
+    const subject = req.body.subject;
+    const phone = req.body.phone;
 
 
+    if (name == " " || email == " " || message == " ") {
+        res.json("Please fill all the fields");
+    } else {
+        //NodeMailer
+        var nodemailer2 = require('nodemailer');
 
+
+        var transporter2 = nodemailer2.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'randyruch5@gmail.com',
+                pass: 'luxlrqakfenxkyzi'
+            }
+        });
+
+        var mailOptions2 = {
+            from: 'randyruch5@gmail.com',
+            to: 'pasindupeiris829@gmail.com',
+            subject: 'Client Message from Rapid Travels',
+            html: `<h2>${subject}</h2>
+            <p><b>Client Name    :<b>  ${name}</p>
+            <p><b>Client Phone   :<b> ${phone}</p>
+            <p><b>Client Email   :<b> ${email}</p>
+            <p><b>Client Message :<b><br/><br/> ${message}</p>`
+
+        };
+
+        transporter2.sendMail(mailOptions2, function (error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                return res.send({ msg: "Success" })
+            }
+        });
+    }
+});
 
 
 
