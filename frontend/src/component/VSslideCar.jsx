@@ -9,11 +9,11 @@ const responsive = {
     superLargeDesktop: {
         // the naming can be any, depends on you.
         breakpoint: { max: 4000, min: 3000 },
-        items: 2
+        items: 4
     },
     desktop: {
         breakpoint: { max: 3000, min: 1024 },
-        items: 2
+        items: 4
     },
     tablet: {
         breakpoint: { max: 1024, min: 464 },
@@ -27,7 +27,7 @@ const responsive = {
 
 
 
-function SlideBar() {
+function SlideBarCar() {
 
     useEffect(() => {
         AOS.init({ duration: 1000 });
@@ -44,7 +44,7 @@ function SlideBar() {
                 <hr />
             </div>
 
-            <div className='container-fluid ' id='Slidebar'>
+            <div className='container-fluide ' id=''>
 
 
                 <div class="testimonial-slider container-fluid">
@@ -52,23 +52,10 @@ function SlideBar() {
                         <div class="container-fluid">
                             <div class="row">
 
-                                <div class="col-md-5" data-aos="fade-up">
-                                    <div class="testimonial-title">
-                                        <i class="fa-solid fa-quote-left py-3" style={{ color: "#171716" }}></i>
-                                        <h2 class="fw-bold display-6 ">Don't just dream about it, plan it. Travel.</h2>
-                                    </div>
-                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Previous</span>
-                                    </button>
-                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Next</span>
-                                    </button>
-                                </div>
+                                
 
 
-                                <div className='col-md-7' data-aos="fade-up">
+                                <div className='col-md-12 '>
                                     <Carousel responsive={responsive}
                                         autoPlay
                                         autoPlaySpeed={2000}
@@ -76,7 +63,7 @@ function SlideBar() {
                                         <div className='cardBlock-1'>
                                             <div class=" m-3">
                                                 <div class="card" id='cardv '>
-                                                    <div class="img-wrapper"><img src="https://cdn.getyourguide.com/img/tour/64b9217e98354.jpeg/97.jpg" class="d-block w-100" alt="..." /> </div>
+                                                    <div class="img-wrapper"><img src="https://preview.redq.io/turbo/wp-content/uploads/2023/06/Group-48095922.png" class="d-block w-100" alt="..." /> </div>
                                                     <div class="card-body" id="tit-card">
                                                         <h5 class="card-title" >Card title 2</h5>
                                                         <p class="card-text">Some quick example text to build on the card title and make up
@@ -90,7 +77,7 @@ function SlideBar() {
                                         <div className='cardBlock-1'>
                                             <div class=" m-3">
                                                 <div class="card" id='cardv '>
-                                                    <div class="img-wrapper"><img src="https://codingyaar.com/wp-content/uploads/headshot-2-scaled.jpg" class="d-block w-100" alt="..." /> </div>
+                                                    <div class="img-wrapper"><img src="https://preview.redq.io/turbo/wp-content/uploads/2023/06/Group-48095914.png" class="d-block w-100" alt="..." /> </div>
                                                     <div class="card-body" id="tit-card">
                                                         <h5 class="card-title" >Card title 2</h5>
                                                         <p class="card-text">Some quick example text to build on the card title and make up
@@ -104,7 +91,7 @@ function SlideBar() {
                                         <div className='cardBlock-1'>
                                             <div class=" m-3">
                                                 <div class="card" id='cardv '>
-                                                    <div class="img-wrapper"><img src="https://cdn.getyourguide.com/img/tour/5dde55f2dd9da.jpeg/145.jpg" class="d-block w-100" alt="..." /> </div>
+                                                    <div class="img-wrapper"><img src="https://preview.redq.io/turbo/wp-content/uploads/2023/06/Group-48095917.png" class="d-block w-100" alt="..." /> </div>
                                                     <div class="card-body" id="tit-card">
                                                         <h5 class="card-title" >Card title 2</h5>
                                                         <p class="card-text">Some quick example text to build on the card title and make up
@@ -118,7 +105,7 @@ function SlideBar() {
                                         <div className='cardBlock-1'>
                                             <div class=" m-3">
                                                 <div class="card" id='cardv '>
-                                                    <div class="img-wrapper"><img src="https://codingyaar.com/wp-content/uploads/headshot-2-scaled.jpg" class="d-block w-100" alt="..." /> </div>
+                                                    <div class="img-wrapper"><img src="https://preview.redq.io/turbo/wp-content/uploads/2023/06/Group-48095915.png" class="d-block w-100" alt="..." /> </div>
                                                     <div class="card-body" id="tit-card">
                                                         <h5 class="card-title" >Card title 2</h5>
                                                         <p class="card-text">Some quick example text to build on the card title and make up
@@ -131,7 +118,7 @@ function SlideBar() {
                                         <div className='cardBlock-1 m-x-4'>
                                             <div class=" m-3">
                                                 <div class="card" id='cardv '>
-                                                    <div class="img-wrapper"><img src="https://cdn.getyourguide.com/img/tour/5c3d893d4e411.jpeg/98.jpg" class="d-block w-100" alt="..." /> </div>
+                                                    <div class="img-wrapper"><img src="https://codingyaar.com/wp-content/uploads/headshot-2-scaled.jpg" class="d-block w-100" alt="..." /> </div>
                                                     <div class="card-body" id="tit-card">
                                                         <h5 class="card-title" >Card title 2</h5>
                                                         <p class="card-text">Some quick example text to build on the card title and make up
@@ -144,6 +131,10 @@ function SlideBar() {
                                     </Carousel>
 
                                 </div>
+
+
+
+                                
                             </div>
                         </div>
                     </div>
@@ -158,4 +149,4 @@ function SlideBar() {
 
 }
 
-export default SlideBar;
+export default SlideBarCar;

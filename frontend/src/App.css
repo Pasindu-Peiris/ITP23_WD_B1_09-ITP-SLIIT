@@ -394,7 +394,7 @@ hr {
   width                : 100%;
   height               : auto;
   padding              : 10px 0px;
-  margin               : 50px 0px 0px 0px;
+  margin               : 40px 0px 0px 0px;
   background-image     : url(./img/ab-bg2.svg);
   background-position  : center;
   background-repeat    : no-repeat;
@@ -551,7 +551,7 @@ hr {
 }
 
 .testimonial-title h2 {
-  padding-left: 0.2em;
+  padding-left: 0;
 }
 
 .card {

@@ -20,7 +20,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Loading from './Preload';
 import Conatct from './Conatct';
-
+import SlideBarCar from './VSslideCar'
 import SlideBarV from './VSlide';
 
 
@@ -121,7 +121,55 @@ function Home() {
 
                             <SlideBarV />
 
-                           
+
+                            <div className='text-head' data-aos="zoom-in-up">
+
+                                <div className='block-t'>
+                                    <h1>Why Choose Us</h1>
+                                    <p>Find and book a great experience.</p>
+                                    <hr />
+                                </div>
+
+
+                            </div>
+
+
+                            <div class="card-group container contbox-5">
+
+                                <div class=" card card-1" data-aos="fade-up">
+
+                                    <div class="card-body cart" >
+                                        <img src={img7} alt='' />
+                                        <h5 class="card-title p-3">Easy & Fast Booking</h5>
+                                        <p class="card-text" style={{fontSize: "1rem", textAlign: "center"}} id='new-twxt'>We've designed our platform to make the reservation process quick. </p>
+                                        <p class="card-text"><small class="text-body-secondary"></small></p>
+                                    </div>
+                                </div>
+
+                                <div class="card card-1" data-aos="fade-up">
+
+                                    <div class="card-body cart">
+                                        <img src={img8} alt='' />
+                                        <h5 class="card-title p-3">Customer Satisfaction</h5>
+                                        <p class="card-text" style={{ fontSize: "1rem", textAlign: "center" }} id='new-twxt'>Happy customers often share their positive experiences to our company.</p>
+                                        <p class="card-text"><small class="text-body-secondary"></small></p>
+                                    </div>
+                                </div>
+
+                                <div class=" card card-1" data-aos="fade-up">
+
+                                    <div class="card-body cart">
+                                        <img src={img9} alt='' />
+                                        <h5 class="card-title p-3">Many Pickup Location</h5>
+                                        <p class="card-text" style={{ fontSize: "1rem", textAlign: "center" }} id='new-twxt'>We make your pickup experience simple and convenient.</p>
+                                        <p class="card-text"><small class="text-body-secondary"></small></p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
                             <div className='block-t py-5' data-aos="zoom-in-up">
                                 <h1>Why Are We</h1>
                                 <p>Find and book a great experience.</p>
@@ -134,7 +182,7 @@ function Home() {
                                     <div class="container">
                                         <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
                                             <div class="col-12 col-lg-6 col-xl-5" >
-                                                <img src={abimg2} class="img-fluid rounded" loading="lazy" alt="" data-aos="fade-right" style={{ height:"550px"}}/>
+                                                <img src={abimg2} class="img-fluid rounded" loading="lazy" alt="" data-aos="fade-right" style={{ width:"400px" }} />
                                             </div>
                                             <div class="col-12 col-lg-6 col-xl-7">
                                                 <div class="row justify-content-xl-center" >
@@ -151,7 +199,7 @@ function Home() {
                                                             <div class="col-12 col-md-6">
                                                                 <div class="d-flex">
                                                                     <div class=" text-primary">
-                                                                        <img src={img11} alt='' width={"50px"} className='me-3'/>
+                                                                        <img src={img11} alt='' width={"50px"} className='me-3' />
                                                                     </div>
                                                                     <div>
                                                                         <h4 class="mb-3" style={{ color: "" }}>Vehicle rental</h4>
@@ -185,54 +233,10 @@ function Home() {
 
                             </div>
 
-                            
+                            <SlideBarCar />
 
 
-                            <div className='text-head' data-aos="zoom-in-up">
 
-                                <div className='block-t'>
-                                    <h1>Why Choose Us</h1>
-                                    <p>Find and book a great experience.</p>
-                                    <hr />
-                                </div>
-
-
-                            </div>
-
-
-                            <div class="card-group container contbox-5">
-
-                                <div class=" card card-1" data-aos="fade-up">
-
-                                    <div class="card-body cart" >
-                                        <img src={img7} alt='' />
-                                        <h5 class="card-title p-3">Easy & Fast Booking</h5>
-                                        <p class="card-text" style={{ fontSize: "1rem", textAlign: "center" }} id='new-twxt'>We've designed our platform to make the reservation process quick. </p>
-                                        <p class="card-text"><small class="text-body-secondary"></small></p>
-                                    </div>
-                                </div>
-
-                                <div class="card card-1" data-aos="fade-up">
-
-                                    <div class="card-body cart">
-                                        <img src={img8} alt='' />
-                                        <h5 class="card-title p-3">Customer Satisfaction</h5>
-                                        <p class="card-text" style={{ fontSize: "1rem", textAlign: "center" }} id='new-twxt'>Happy customers often share their positive experiences to our company.</p>
-                                        <p class="card-text"><small class="text-body-secondary"></small></p>
-                                    </div>
-                                </div>
-
-                                <div class=" card card-1" data-aos="fade-up">
-
-                                    <div class="card-body cart">
-                                        <img src={img9} alt='' />
-                                        <h5 class="card-title p-3">Many Pickup Location</h5>
-                                        <p class="card-text" style={{ fontSize: "1rem", textAlign: "center" }} id='new-twxt'>We make your pickup experience simple and convenient.</p>
-                                        <p class="card-text"><small class="text-body-secondary"></small></p>
-                                    </div>
-                                </div>
-
-                            </div>
 
                             <div className='text-head' data-aos="zoom-in-up" id='faq'>
 
@@ -335,16 +339,16 @@ function Home() {
 
                             <div id='Contact'>
                                 <Conatct />
-                                
+
                             </div>
 
-                            
+
 
                             <Footer />
 
-                            
 
-                            
+
+
 
 
                         </>

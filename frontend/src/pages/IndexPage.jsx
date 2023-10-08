@@ -7,6 +7,7 @@ import moment from 'moment'
 import { debounce } from 'lodash';
 axios.defaults.baseURL = 'http://localhost:8090';
 
+
 function formatPriceWithComma(price) {
   if (typeof price !== 'number') {
     return price;
@@ -314,13 +315,13 @@ export default function IndexPage() {
 
 
 
-      <div className="mt-8 grid gap-x-6 gap-y-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-4 mx-auto">
+      <div className="mt-8 grid gap-x-6 gap-y-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-4 mx-auto container">
         {records.length > 0 &&
           records
             .filter((Vehicle) => Vehicle.status === 'Available')
             .map((Vehicle) => (
               <Link to={`/Vehicle/${Vehicle._id}`} key={Vehicle._id} className="link-wrapper">
-                <div className="bg-gray-500 mb-2 rounded-2xl flex">
+                <div className="bg-gray-500 mb-2 rounded-2xl flex ">
                   {Vehicle.photos?.[0] && (
                     <img
                       className="rounded-2xl h-64 w-full object-cover"
