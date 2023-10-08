@@ -65,6 +65,14 @@ export default function Vehicles() {
     };
   }, []);
 
+  window.onerror = function (message, source, lineno, colno, error) {
+    if (message.includes("ResizeObserver loop completed with undelivered notifications")) {
+      // This is the specific error message we want to ignore.
+      return true; // Returning true suppresses the error message.
+    }
+    // Handle other errors as needed or leave them unhandled.
+  };
+
   
     
   
