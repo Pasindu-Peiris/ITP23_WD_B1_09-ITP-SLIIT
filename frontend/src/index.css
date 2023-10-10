@@ -1,11 +1,11 @@
-/*
+
 @tailwind components;
 
 @tailwind utilities;
 
 @import 'antd/dist/antd.css';
 
-*/
+
 .custom-input70 {
   
   border: 2px solid #ccc;

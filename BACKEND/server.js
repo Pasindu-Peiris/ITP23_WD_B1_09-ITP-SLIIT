@@ -47,6 +47,11 @@ app.use('/rowners', ownerRoutes);
 app.use('/vehicles', vehicleRoutes);
 app.use('/bookings', bookingRoutes);
 
+//vehicle owner 
+
+const vehicleOwnerRouter = require("./routes/vehicleOwner.js");
+app.use("/vehicleOwner", vehicleOwnerRouter);
+
 //vehicle img
 app.use('/VehicleImg', express.static(__dirname + '/VehicleImg'));
 app.listen(PORT, () =>{

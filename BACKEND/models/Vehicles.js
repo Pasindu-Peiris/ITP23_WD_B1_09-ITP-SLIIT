@@ -1,9 +1,13 @@
 const mongoose = require('mongoose');
 
 const VehicleSchema = new mongoose.Schema({
+  // owner_id: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: 'ROwner',
+  // },
   owner_id: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'ROwner',
+    ref: 'VehicleOwner',
   },
   type: {
     type: String,
