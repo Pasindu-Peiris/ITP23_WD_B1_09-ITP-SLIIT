@@ -50,10 +50,7 @@ function SlideBarCar() {
                 <div class="testimonial-slider container-fluid">
                     <div id="carouselExampleControls" class="carousel carousel-dark">
                         <div class="container-fluid">
-                            <div class="row">
-
-                                
-
+                            <div class="row"  data-aos="fade-up">
 
                                 <div className='col-md-12 '>
                                     <Carousel responsive={responsive}
@@ -121,7 +118,7 @@ function SlideBarCar() {
                                 </div>
 
                                 <div className='d-flex align-content-center justify-content-center pt-5'>
-                                    <button className='btn btn-dark px-3 py-2'>SEE MORE</button>
+                                    <button className='btn btn-outline-dark px-3 pt-1'>VIEW ALL</button>
                                 </div>
     
                             </div>
