@@ -3,6 +3,7 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import backgroundImage from './2446691.jpg';
+import Default_Layout from "./Default_Layout.jsx";
 
 export default function ViewVehicleOwner() {
     const { id } = useParams();
@@ -58,17 +59,8 @@ export default function ViewVehicleOwner() {
     };
 
     return (
-        <div style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            backgroundImage: `url(${backgroundImage})`,
-            backgroundRepeat: 'no-repeat',
-            backgroundAttachment: 'fixed',
-            backgroundSize: 'cover',
-          }}>
+        <Default_Layout>
+        <div>
             <div className='container mt-5'>
                 
                 <div className='row d-flex justify-content-center mb-5 align-middle h-100 mt-5'>
@@ -141,5 +133,6 @@ export default function ViewVehicleOwner() {
                 </Modal.Footer>
             </Modal>
         </div>
+        </Default_Layout>
     );
 }

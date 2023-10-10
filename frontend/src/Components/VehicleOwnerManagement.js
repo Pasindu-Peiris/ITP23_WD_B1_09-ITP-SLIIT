@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilePdf, faEye, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { PDFDocument, rgb } from 'pdf-lib';
+import Default_Layout from "./Default_Layout";
 import { Link } from 'react-router-dom';
 import backgroundImage from './1096643.jpg';
 
@@ -48,6 +49,7 @@ export default function VehicleOwnerManagement() {
     };
 
     return (
+<Default_Layout>
         <div style={{
             position: 'fixed',
             top: 0,
@@ -128,5 +130,6 @@ export default function VehicleOwnerManagement() {
                 </div>
             </div>
         </div>
+        </Default_Layout>
     );
 }
