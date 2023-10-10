@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import './App.css';
 import './index.css'
+import "bootstrap/dist/css/bootstrap.min.css";
 import Nav from './component/Nav';
 import Register from './component/Register';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -26,6 +27,12 @@ import Vehicle_2 from "./pages/Vehicle_2"
 import Owner from "./pages/rowner";
 import AdminDashboard from './component/AdminDashboard';
 import VSlide from './component/VSlide';
+import Signin from './Components/Signin';
+import SignUp from './Components/SignUp';
+import HomeVehicleOwner from './Components/HomeVehicleOwner';
+import VehicleOwnerManagement from './Components/VehicleOwnerManagement';
+import ViewVehicleOwner from './Components/ViewVehicleOwner';
+import UpdateVehicleOwner from './Components/UpdateVehicleOwner';
 
 function App() {
   return (
@@ -119,6 +126,18 @@ function App() {
       <Route Route path='/Vehicle_Form/:ownerId' element={<Vehicle_Form/>}/>
       <Route Route path='/Vehicle_Update/:id' element={<Vehicle_Update/>}/>
       </Routes> 
+      </BrowserRouter>
+
+      <BrowserRouter>
+        <Routes>
+          <Route path="/vehicle_owner" element={ <VehicleOwnerManagement/>} />
+          <Route path="/vehicleowner/signin" element={ <Signin/>} />
+          <Route path="/vehicleowner/signup" element={ <SignUp/>} />
+          <Route path="/homeVehicleOwner" element={ <HomeVehicleOwner/>} />
+          <Route path="/updatevehicleowner/:id" element={ <UpdateVehicleOwner/>} />
+          <Route path="/vehicleownersmanager" element={ <VehicleOwnerManagement/>} />
+          <Route path="/vehicleowner/:id" element={ <ViewVehicleOwner/>} />
+        </Routes>
       </BrowserRouter>
 
 
