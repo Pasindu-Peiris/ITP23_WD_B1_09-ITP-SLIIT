@@ -91,7 +91,7 @@ function SlideBarCar() {
                                                                     src={'http://localhost:8090/' + Vehicle.photos?.[0]}
                                                                     class="d-block w-100"
                                                                     alt="..."
-                                                                    style={{ width: '300', height: '300'}}
+                                                                    style={{ }}
                                                                 />
                                                             )}
                                                         </div>
@@ -126,7 +126,7 @@ function SlideBarCar() {
 
                                                             <div className='d-flex align-content-center justify-content-between' style={{borderTop:"1px solid #d7d7d7"}}>
                                                                 <div className='sec-11'>
-                                                                    <p className='fs-6 pt-4 fw-bold'>From $8.00/day</p>
+                                                                    <p className='fs-6 pt-4 fw-bold'>From ${Vehicle.price} /day</p>
                                                                 </div>
 
                                                                 <div className='sec-11 pt-3'>
