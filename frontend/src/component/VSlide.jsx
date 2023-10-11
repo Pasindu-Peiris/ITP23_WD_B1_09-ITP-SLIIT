@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../App.css';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import axios from "axios";
 
 const responsive = {
     superLargeDesktop: {
@@ -29,11 +30,20 @@ const responsive = {
 
 function SlideBar() {
 
+    const [tours, setTours] = useState([]);
+
     useEffect(() => {
         AOS.init({ duration: 1000 });
+        
+        axios.get("http://localhost:8090/tour/all").then((res) => {
+            console.log(res);
+            setTours(res.data);
+           
+        }).catch((err) => {
+            alert(err.message);
+        })
+
     }, [])
-
-
 
     return (
         <>
@@ -73,61 +83,23 @@ function SlideBar() {
                                         autoPlay
                                         autoPlaySpeed={2000}
                                         infinite>
-                                        <div className='cardBlock-1'>
-                                            <div class=" m-3">
-                                                <div class="card" id='cardv '>
-                                                    <div class="img-wrapper"><img src="https://preview.redq.io/turbo/wp-content/uploads/2023/06/Group-48095922.png" class="d-block w-100" alt="..." /> </div>
-                                                    <div class="card-body" id="tit-card">
-                                                        <h5 class="card-title" >Card title 2</h5>
-                                                        <p class="card-text">Some quick example text to build on the card title and make up
-                                                            the bulk of the
-                                                            card's content.</p>
+                                        {tours.map((tour) => {
+                                            return(
+                                                <div className='cardBlock-1'>
+                                                    <div class=" m-3">
+                                                        <div class="card" id='cardv '>
+                                                            <div class="img-wrapper">
+                                                                <img src={`http://localhost:8090/images/` + tour.image} class="d-block w-100" alt={tour.image} />
+                                                            </div>
+                                                            <div class="card-body" id="tit-card">
+                                                                <h5 class="card-title" ><strong>{tour.tourName}</strong></h5>
+                                                                <p class="card-text" style={{ fontSize: "20px", float: "right" }}>Rs. {tour.totalCost.toFixed(2)}/=</p>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-
-                                        <div className='cardBlock-1'>
-                                            <div class=" m-3">
-                                                <div class="card" id='cardv '>
-                                                    <div class="img-wrapper"><img src="https://preview.redq.io/turbo/wp-content/uploads/2023/06/Group-48095914.png" class="d-block w-100" alt="..." /> </div>
-                                                    <div class="card-body" id="tit-card">
-                                                        <h5 class="card-title" >Card title 2</h5>
-                                                        <p class="card-text">Some quick example text to build on the card title and make up
-                                                            the bulk of the
-                                                            card's content.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div className='cardBlock-1'>
-                                            <div class=" m-3">
-                                                <div class="card" id='cardv '>
-                                                    <div class="img-wrapper"><img src="https://preview.redq.io/turbo/wp-content/uploads/2023/06/Group-48095917.png" class="d-block w-100" alt="..." /> </div>
-                                                    <div class="card-body" id="tit-card">
-                                                        <h5 class="card-title" >Card title 2</h5>
-                                                        <p class="card-text">Some quick example text to build on the card title and make up
-                                                            the bulk of the
-                                                            card's content.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div className='cardBlock-1'>
-                                            <div class=" m-3">
-                                                <div class="card" id='cardv '>
-                                                    <div class="img-wrapper"><img src="https://preview.redq.io/turbo/wp-content/uploads/2023/06/Group-48095915.png" class="d-block w-100" alt="..." /> </div>
-                                                    <div class="card-body" id="tit-card">
-                                                        <h5 class="card-title" >Card title 2</h5>
-                                                        <p class="card-text">Some quick example text to build on the card title and make up
-                                                            the bulk of the
-                                                            card's content.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                            )
+                                        })}
                                     </Carousel>
 
                                 </div>

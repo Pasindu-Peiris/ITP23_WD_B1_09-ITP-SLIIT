@@ -145,9 +145,7 @@ function App() {
           <Route path='/Booking' element={<Book/>}></Route>
         </Routes>
       </BrowserRouter>
-
-
-
+      
     </div>
 
   );
