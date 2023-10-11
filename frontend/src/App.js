@@ -17,7 +17,6 @@ import Profile from './component/profile';
 import UpadateUserClient from './component/userUpdateClient';
 import ClientDisplay from './component/tableDisplayClients';
 import TableNew from './component/tableNewDis';
-<<<<<<< Updated upstream
 import Vehicle_Form from "./pages/Vehicle_Form";
 import Vehicle_Update from "./pages/Vehicle_Update"
 import IndexPage from "./pages/IndexPage"
@@ -25,10 +24,8 @@ import IndexPage_Update from "./pages/IndexPage_Update"
 import Vehicle from "./pages/Vehicle"
 import Vehicle_2 from "./pages/Vehicle_2"
 import Owner from "./pages/rowner";
-=======
 import AdminDashboard from './component/AdminDashboard';
 import VSlide from './component/VSlide';
->>>>>>> Stashed changes
 
 function App() {
   return (
