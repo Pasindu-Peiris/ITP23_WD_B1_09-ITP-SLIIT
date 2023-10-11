@@ -168,8 +168,8 @@ function Conatct() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-12 col-lg-6">
-                            <div className="bg-white border rounded shadow-sm overflow-hidden" data-aos="fade-left" style={{ width: "550px", marginLeft: "140px" }}>
+                        <div className="col-12 col-lg-6 p-5" >
+                            <div className="bg-white border rounded shadow-sm overflow-hidden" data-aos="fade-left" style={{  marginLeft: "0px" }}>
 
                                 <form style={{ backgroundColor: " #f1f1f3" }} onSubmit={sendMessage}>
 

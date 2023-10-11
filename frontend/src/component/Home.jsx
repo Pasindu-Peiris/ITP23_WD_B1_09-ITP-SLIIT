@@ -26,6 +26,7 @@ import Conatct from './Conatct';
 import SlideBarCar from './VSslideCar'
 import SlideBarV from './VSlide';
 import AboutUS from './AboutUs';
+import Nav2 from './Nav2'
 
 
 
@@ -64,14 +65,12 @@ function Home() {
                             <Nav />
                             <div className='home-hero' style={{}}>
 
-                                <div className='text-home' data-aos="zoom-in-up">
+                                <div className='text-home' data-aos="zoom-in-up" id='home-s1'>
                                     <h1>MAKE YOUR RIDE EASY & FAST <br /> WITH Rapid Travels</h1>
                                     <p>Rent a car to move from local hosts in 190+ countries.</p>
                                 </div>
 
                             </div>
-
-
 
                             <div className="conti ">
 
@@ -124,8 +123,9 @@ function Home() {
                             </div>
 
                             <SlideBarV />
-                            <SlideBarCar />
                             <div id='about'><AboutUS /></div>
+                            <SlideBarCar />
+                            
                             
 
 
