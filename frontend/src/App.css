@@ -574,7 +574,8 @@ hr {
 }
 
 #tit-card {
-  background-color: var(--primary-color);
+  background-color: #fdfdfdec;
+  
 }
 
 @media (min-width: 576px) {
