@@ -263,11 +263,12 @@ function Home() {
                                                             <div class="accordion accordion-flush" id="accordionExample">
                                                                 <div class="accordion-item mb-4 shadow-sm">
                                                                     <h2 class="accordion-header" id="headingOne">
-                                                                        <button class="accordion-button bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" id='new-twxt' style={{ fontSize: "1.1rem", textAlign: "justify" }}>
+
+                                                                        <button style={{ fontSize: "1.1rem", textAlign: "justify" }} id='new-twxt' class="accordion-button collapsed bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                                                                             How Do I Change My Billing Information?
                                                                         </button>
                                                                     </h2>
-                                                                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                                                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                                                         <div class="accordion-body" style={{ fontSize: "1.1rem", textAlign: "justify" }} id='new-twxt'>
                                                                             Morbi non dui tristique, porttitor tellus vitae, dapibus risus. Suspendisse eros erat, rhoncus sit amet lobortis vel, lacinia fermentum tortor. Sed nec pellentesque urna.
                                                                         </div>
