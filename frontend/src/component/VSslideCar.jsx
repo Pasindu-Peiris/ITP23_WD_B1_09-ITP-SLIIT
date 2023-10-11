@@ -70,13 +70,8 @@ function SlideBarCar() {
                         <div class="container-fluid">
                             <div class="row" data-aos="fade-up">
 
-<<<<<<< Updated upstream
                             <div className='d-flex align-content-center justify-content-end'>
                                     <a className='btn btn-dark p-2 mx-3' href='/Vehicle_main' > View All </a>
-=======
-                                <div className='d-flex align-content-center justify-content-end'>
-                                    <button className='btn btn-dark p-2 mx-3'>VIEW ALL </button>
->>>>>>> Stashed changes
                                 </div>
 
                                 <div className='col-md-12 '>
@@ -102,14 +97,9 @@ function SlideBarCar() {
 
 
                                                         <div class="card-body" id="tit-card">
-<<<<<<< Updated upstream
                                                             <h5 class="card-title" >
                                                                 {Vehicle.model}</h5>
-                                                            {Vehicle.description && Vehicle.description.length > 100
-=======
-                                                            <h5 class="card-title" >{Vehicle.model}</h5>
                                                             {/*Vehicle.description && Vehicle.description.length > 100
->>>>>>> Stashed changes
                                                                 ? `${Vehicle.description.slice(0, 100)}...`
                                                                 : Vehicle.description*/}
 
