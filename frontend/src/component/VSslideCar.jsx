@@ -41,6 +41,7 @@ function SlideBarCar() {
 
     useEffect(() => {
         axios.get('http://localhost:8090/vehicles/getVehicles').then(res => {
+            // eslint-disable-next-line no-lone-blocks
             {
                 setVehicles(res.data)
             };
