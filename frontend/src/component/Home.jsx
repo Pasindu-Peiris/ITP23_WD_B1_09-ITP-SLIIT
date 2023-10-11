@@ -22,6 +22,7 @@ import Loading from './Preload';
 import Conatct from './Conatct';
 import SlideBarCar from './VSslideCar'
 import SlideBarV from './VSlide';
+import AboutUS from './AboutUs';
 
 
 
@@ -120,6 +121,9 @@ function Home() {
                             </div>
 
                             <SlideBarV />
+                            <SlideBarCar />
+                            <div id='about'><AboutUS /></div>
+                            
 
 
                             <div className='text-head' data-aos="zoom-in-up">
@@ -170,70 +174,10 @@ function Home() {
 
 
 
-                            <div className='block-t py-5' data-aos="zoom-in-up">
-                                <h1>Why Are We</h1>
-                                <p>Find and book a great experience.</p>
-                                <hr />
-                            </div>
+                           
 
-                            <div className='section-about container-fluid section-about-2' id='about'>
-
-                                <section class="py-3 py-md-5 py-xl-8 ">
-                                    <div class="container">
-                                        <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
-                                            <div class="col-12 col-lg-6 col-xl-6" >
-                                                <img src={abimg2} class="img-fluid rounded" loading="lazy" alt="" data-aos="fade-right" style={{ width: "400px" }} />
-                                            </div>
-                                            <div class="col-12 col-lg-6 col-xl-6">
-                                                <div class="row justify-content-xl-center" >
-                                                    <div class="col-12 col-xl-11" data-aos="fade-left">
-
-                                                        <p class=" fs-5  mb-5 text-capitalize fw-bold">About Rapaid Travels</p>
-
-
-                                                        <p class="mb-4" style={{ fontSize: "1.1rem", textAlign: "justify" }} id='new-twxt'>Rapid Travels is a domestic tours and travel management company which provides domestic tours and travel services within Sri Lanka. The system is an integrated management system which combines multiple management systems namely rental management system, flight management system, boat tours reservation system and finally bus reservation system.   </p>
-                                                        <p class="mb-5" style={{ fontSize: "1.1rem", textAlign: "justify" }} id='new-twxt' >Rapid Travels provides easy and effective solutions for domestic travels and tours reducing the major risk factors which arise physically and the components which directly and in-directly interact with the system. The company’s mission is to operate using innovative technology to improve the customer experience and expand the business while bringing positive change to the market.</p>
-
-
-                                                        <div class="row gy-4 gy-md-0 gx-xxl-5X">
-                                                            <div class="col-12 col-md-6">
-                                                                <div class="d-flex">
-                                                                    <div class=" text-primary">
-                                                                        <img src={img11} alt='' width={"50px"} className='me-3' />
-                                                                    </div>
-                                                                    <div>
-                                                                        <h4 class="mb-3" style={{ color: "" }}>Vehicle rental</h4>
-                                                                        <p class="text-secondary mb-3">You can get vehicle easily from Rapid travels </p>
-                                                                        <a href="/vehicle_main" className='but mt-2' style={{ color: "#171616" }}>SEE MORE</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12 col-md-6">
-                                                                <div class="d-flex">
-                                                                    <div class=" text-primary">
-
-                                                                        <img src={img10} alt='' width={"50px"} className='me-3' />
-
-                                                                    </div>
-                                                                    <div>
-                                                                        <h4 class="mb-3" style={{ color: "" }}>Tours and travel</h4>
-                                                                        <p class="text-secondary mb-3">Domestic tours and travel services within Sri Lanka</p>
-                                                                        <a href="!#" className='but mt-3' style={{ color: "#171616" }}>SEE MORE</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-
-                            </div>
-
-                            <SlideBarCar />
+                            
+                          
 
 
 

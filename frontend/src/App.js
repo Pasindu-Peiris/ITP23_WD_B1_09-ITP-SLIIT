@@ -26,6 +26,8 @@ import Vehicle_2 from "./pages/Vehicle_2"
 import Owner from "./pages/rowner";
 import AdminDashboard from './component/AdminDashboard';
 import VSlide from './component/VSlide';
+import About from './component/AboutUs';
+
 
 function App() {
   return (
@@ -107,6 +109,7 @@ function App() {
         </Routes>
       </BrowserRouter>
 
+
       {/* vehicles */}
       <BrowserRouter>
       <Routes>
@@ -132,6 +135,12 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/Slide' element={<VSlide/>}></Route>
+        </Routes>
+      </BrowserRouter>
+
+      <BrowserRouter>
+        <Routes>
+          <Route path='/About' element={<About/>}></Route>
         </Routes>
       </BrowserRouter>
 

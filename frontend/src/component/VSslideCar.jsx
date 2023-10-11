@@ -44,7 +44,7 @@ function SlideBarCar() {
                 <hr />
             </div>
 
-            <div className='container-fluide ' id=''>
+            <div className='container-fluide' id='Slidebar-'>
 
 
                 <div class="testimonial-slider container-fluid">
@@ -52,6 +52,10 @@ function SlideBarCar() {
                         <div class="container-fluid">
                             <div class="row"  data-aos="fade-up">
 
+                            <div className='d-flex align-content-center justify-content-end'>
+                                    <button className='btn btn-dark p-2 mx-3'>VIEW ALL </button>
+                                </div>
+    
                                 <div className='col-md-12 '>
                                     <Carousel responsive={responsive}
                                         autoPlay
@@ -117,10 +121,6 @@ function SlideBarCar() {
 
                                 </div>
 
-                                <div className='d-flex align-content-center justify-content-center pt-5'>
-                                    <button className='btn btn-outline-dark px-3 pt-1'>VIEW ALL</button>
-                                </div>
-    
                             </div>
                         </div>
                     </div>

@@ -81,10 +81,6 @@ function Conatct() {
 
     
 
-
-
-
-
     return (
         <div className='py-1'>
             <div className='text-head' data-aos="zoom-in-up">
@@ -99,12 +95,12 @@ function Conatct() {
             </div>
 
             <section className=" p-3 py-md-5 py-xl-8 " >
-                <div className="container" >
+                <div className="container-fluid" >
                     <div className="row gy-3 gy-md-4 gy-lg-0 align-items-md-center ">
                         <div className="col-12 col-lg-6" data-aos="fade-right">
                             <div className="row justify-content-xl-center">
                                 <div className="col-12 col-xl-11" data-aos="fade-right">
-                                    <h2 className="h1 mb-3">Get in touch</h2>
+                                    <h2 className="h1 mb-5">Get in touch</h2>
                                     <p className="lead fs-5 text-secondary mb-5">We're always on the lookout to work with new clients. If you're interested in working with us, please get in touch in one of the following ways.</p>
                                     <div className="d-flex mb-5">
                                         <div className="me-4 text-primary">
@@ -173,7 +169,7 @@ function Conatct() {
                             </div>
                         </div>
                         <div className="col-12 col-lg-6">
-                            <div className="bg-white border rounded shadow-sm overflow-hidden" data-aos="fade-left" style={{ width: "540px", marginLeft: "100px" }}>
+                            <div className="bg-white border rounded shadow-sm overflow-hidden" data-aos="fade-left" style={{ width: "550px", marginLeft: "140px" }}>
 
                                 <form style={{ backgroundColor: " #f1f1f3" }} onSubmit={sendMessage}>
 

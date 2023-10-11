@@ -559,9 +559,11 @@ hr {
   box-shadow: none;
 }
 
-.fa-quote-left {
+.fa-quote-left,
+.fa-quote-right {
   color    : #28242bd6;
   font-size: 5.5em;
+
 }
 
 .carousel-control-prev,
@@ -608,6 +610,12 @@ hr {
     left: 5em;
   }
 }
+
+
+
+
+
+
 /*Vehicle Owner Css*/
 .App {
   text-align: center;
