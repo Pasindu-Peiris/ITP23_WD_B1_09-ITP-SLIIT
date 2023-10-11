@@ -5,6 +5,7 @@ import "react-multi-carousel/lib/styles.css";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import axios from "axios";
+import Seat from '../img/seat.png'
 
 const responsive = {
     superLargeDesktop: {
@@ -34,11 +35,11 @@ function SlideBar() {
 
     useEffect(() => {
         AOS.init({ duration: 1000 });
-        
+
         axios.get("http://localhost:8090/tour/all").then((res) => {
             console.log(res);
             setTours(res.data);
-           
+
         }).catch((err) => {
             alert(err.message);
         })
@@ -84,7 +85,7 @@ function SlideBar() {
                                         autoPlaySpeed={2000}
                                         infinite>
                                         {tours.map((tour) => {
-                                            return(
+                                            return (
                                                 <div className='cardBlock-1'>
                                                     <div class=" m-3">
                                                         <div class="card" id='cardv '>
@@ -92,8 +93,12 @@ function SlideBar() {
                                                                 <img src={`http://localhost:8090/images/` + tour.image} class="d-block w-100" alt={tour.image} />
                                                             </div>
                                                             <div class="card-body" id="tit-card">
-                                                                <h5 class="card-title" ><strong>{tour.tourName}</strong></h5>
-                                                                <p class="card-text" style={{ fontSize: "20px", float: "right" }}>Rs. {tour.totalCost.toFixed(2)}/=</p>
+                                                            <span className='fs-6 text-secondary fw-bold p-0'>DAY TRIP</span>
+                                                                <h5 class="card-title py-1 d-flex align-items-center justify-content-between" ><strong>{tour.tourName}</strong> <font className='fs-6'> <img src={Seat} alt='' width={35}/></font></h5>
+                                                              
+                                                                <span className='fs-6 fw-bold'><font className='text-danger'>Date : {tour.date}</font> | Small Group</span>
+
+                                                                <p class="card-text fw-bold " style={{ fontSize: "1.1rem", float: "right" }}>Rs. {tour.totalCost.toFixed(2)}/=</p>
                                                             </div>
                                                         </div>
                                                     </div>
