@@ -26,7 +26,6 @@ import Conatct from './Conatct';
 import SlideBarCar from './VSslideCar'
 import SlideBarV from './VSlide';
 import AboutUS from './AboutUs';
-import Nav2 from './Nav2'
 
 
 
