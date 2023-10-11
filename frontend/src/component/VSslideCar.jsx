@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../App.css';
+import axios from 'axios';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import AOS from 'aos';
@@ -27,7 +28,19 @@ const responsive = {
 
 
 
+
+
 function SlideBarCar() {
+
+    const [Vehicles, setVehicles] = useState([])
+
+    useEffect(() => {
+        axios.get('http://localhost:8090/vehicles/getVehicles').then(res => {
+            {
+                setVehicles(res.data)
+            };
+        });
+    }, []);
 
     useEffect(() => {
         AOS.init({ duration: 1000 });
@@ -57,68 +70,41 @@ function SlideBarCar() {
                                 </div>
     
                                 <div className='col-md-12 '>
+                               
                                     <Carousel responsive={responsive}
                                         autoPlay
                                         autoPlaySpeed={2000}
                                         infinite>
-                                        <div className='cardBlock-1'>
-                                            <div class=" m-3">
-                                                <div class="card" id='cardv '>
-                                                    <div class="img-wrapper"><img src="https://preview.redq.io/turbo/wp-content/uploads/2023/06/Group-48095922.png" class="d-block w-100" alt="..." /> </div>
-                                                    <div class="card-body" id="tit-card">
-                                                        <h5 class="card-title" >Card title 2</h5>
-                                                        <p class="card-text">Some quick example text to build on the card title and make up
-                                                            the bulk of the
-                                                            card's content.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        {Vehicles.length > 0 && Vehicles.map((Vehicle, index) => (
+                                            <div className='cardBlock-1' key={index}>
+                                                <div class=" m-3">
+                                                    <div class="card" id='cardv '>
+                                                        <div class="img-wrapper rounded-2xl">
+                                                            {Vehicle.photos?.[0] && (
+                                                                <img
+                                                                    src={'http://localhost:8090/' + Vehicle.photos?.[0]}
+                                                                    class="d-block w-100"
+                                                                    alt="..."
+                                                                    style={{ width: '300' }}
+                                                                />
+                                                            )}
+                                                        </div>
 
-                                        <div className='cardBlock-1'>
-                                            <div class=" m-3">
-                                                <div class="card" id='cardv '>
-                                                    <div class="img-wrapper"><img src="https://preview.redq.io/turbo/wp-content/uploads/2023/06/Group-48095914.png" class="d-block w-100" alt="..." /> </div>
-                                                    <div class="card-body" id="tit-card">
-                                                        <h5 class="card-title" >Card title 2</h5>
-                                                        <p class="card-text">Some quick example text to build on the card title and make up
-                                                            the bulk of the
-                                                            card's content.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
 
-                                        <div className='cardBlock-1'>
-                                            <div class=" m-3">
-                                                <div class="card" id='cardv '>
-                                                    <div class="img-wrapper"><img src="https://preview.redq.io/turbo/wp-content/uploads/2023/06/Group-48095917.png" class="d-block w-100" alt="..." /> </div>
-                                                    <div class="card-body" id="tit-card">
-                                                        <h5 class="card-title" >Card title 2</h5>
-                                                        <p class="card-text">Some quick example text to build on the card title and make up
-                                                            the bulk of the
-                                                            card's content.</p>
+                                                        <div class="card-body" id="tit-card">
+                                                            <h5 class="card-title" >{Vehicle.model}</h5>
+                                                            {Vehicle.description && Vehicle.description.length > 100
+                                                                ? `${Vehicle.description.slice(0, 100)}...`
+                                                                : Vehicle.description}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        <div className='cardBlock-1'>
-                                            <div class=" m-3">
-                                                <div class="card" id='cardv '>
-                                                    <div class="img-wrapper"><img src="https://preview.redq.io/turbo/wp-content/uploads/2023/06/Group-48095915.png" class="d-block w-100" alt="..." /> </div>
-                                                    <div class="card-body" id="tit-card">
-                                                        <h5 class="card-title" >Card title 2</h5>
-                                                        <p class="card-text">Some quick example text to build on the card title and make up
-                                                            the bulk of the
-                                                            card's content.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
+
+                                        ))}
                                     </Carousel>
-
+                               
                                 </div>
 
                             </div>
