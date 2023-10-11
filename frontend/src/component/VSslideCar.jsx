@@ -5,6 +5,11 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import ABS from '../img/abs.png'
+import AirBags from '../img/air.png'
+import Aud from '../img/Auid.png'
+import CKIT from '../img/ckit.png'
+
 
 const responsive = {
     superLargeDesktop: {
@@ -14,7 +19,7 @@ const responsive = {
     },
     desktop: {
         breakpoint: { max: 3000, min: 1024 },
-        items: 3
+        items: 4
     },
     tablet: {
         breakpoint: { max: 1024, min: 464 },
@@ -63,14 +68,14 @@ function SlideBarCar() {
                 <div class="testimonial-slider container-fluid">
                     <div id="carouselExampleControls" class="carousel carousel-dark">
                         <div class="container-fluid">
-                            <div class="row"  data-aos="fade-up">
+                            <div class="row" data-aos="fade-up">
 
                             <div className='d-flex align-content-center justify-content-end'>
-                                    <button className='btn btn-dark p-2 mx-3'>VIEW ALL </button>
+                                    <a className='btn btn-dark p-2 mx-3' href='/Vehicle_main' > View All </a>
                                 </div>
-    
+
                                 <div className='col-md-12 '>
-                               
+
                                     <Carousel responsive={responsive}
                                         autoPlay
                                         autoPlaySpeed={2000}
@@ -85,17 +90,49 @@ function SlideBarCar() {
                                                                     src={'http://localhost:8090/' + Vehicle.photos?.[0]}
                                                                     class="d-block w-100"
                                                                     alt="..."
-                                                                    style={{ width: '300' }}
+                                                                    style={{ width: '300', height: '300'}}
                                                                 />
                                                             )}
                                                         </div>
 
 
                                                         <div class="card-body" id="tit-card">
-                                                            <h5 class="card-title" >{Vehicle.model}</h5>
-                                                            {Vehicle.description && Vehicle.description.length > 100
+                                                            <h5 class="card-title" >
+                                                                {Vehicle.model}</h5>
+                                                            {/*Vehicle.description && Vehicle.description.length > 100
                                                                 ? `${Vehicle.description.slice(0, 100)}...`
-                                                                : Vehicle.description}
+                                                                : Vehicle.description*/}
+
+                                                            <div className='d-flex align-content-center justify-content-between mt-3' >
+                                                                <div className='sec-11'>
+                                                                    <p><img src={ABS} alt='' width={40} className='pe-2' />ABS </p>
+                                                                </div>
+                                                                <div className='sec-11'>
+                                                                    <p><img src={AirBags} alt='' width={40} className='pe-2' />Air-conditions</p>
+                                                                </div>
+
+                                                            </div>
+
+                                                            <div className='d-flex align-content-center justify-content-between'>
+                                                                <div className='sec-11'>
+                                                                    <p><img src={CKIT} width={40} className='pe-2' alt='' />Car Kit</p>
+                                                                </div>
+
+                                                                <div className='sec-11'>
+                                                                    <p><img src={Aud} alt='' width={40} className='pe-2' />Audio system </p>
+                                                                </div>
+                                                            </div>
+
+                                                            <div className='d-flex align-content-center justify-content-between' style={{borderTop:"1px solid #d7d7d7"}}>
+                                                                <div className='sec-11'>
+                                                                    <p className='fs-6 pt-4 fw-bold'>From $8.00/day</p>
+                                                                </div>
+
+                                                                <div className='sec-11 pt-3'>
+                                                                    <a href='/VehicleDetails' className='btn btn-dark p-2'>Book Now</a>
+                                                                </div>
+                                                            </div>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -104,7 +141,7 @@ function SlideBarCar() {
 
                                         ))}
                                     </Carousel>
-                               
+
                                 </div>
 
                             </div>
