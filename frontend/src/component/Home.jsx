@@ -8,10 +8,13 @@ import img6 from '../img/boat.png';
 import img7 from '../img/easy.png';
 import img8 from '../img/good.png';
 import img9 from '../img/loc.png';
+// eslint-disable-next-line no-unused-vars
 import img10 from '../img/te.png';
+// eslint-disable-next-line no-unused-vars
 import img11 from '../img/te2.png';
 // eslint-disable-next-line no-unused-vars
 import abimg1 from '../img/carAbout-1.png';
+// eslint-disable-next-line no-unused-vars
 import abimg2 from '../img/carAbout-2.webp';
 import Nav from './Nav';
 import Footer from './footer';
@@ -61,14 +64,12 @@ function Home() {
                             <Nav />
                             <div className='home-hero' style={{}}>
 
-                                <div className='text-home' data-aos="zoom-in-up">
+                                <div className='text-home' data-aos="zoom-in-up" id='home-s1'>
                                     <h1>MAKE YOUR RIDE EASY & FAST <br /> WITH Rapid Travels</h1>
                                     <p>Rent a car to move from local hosts in 190+ countries.</p>
                                 </div>
 
                             </div>
-
-
 
                             <div className="conti ">
 
@@ -121,8 +122,9 @@ function Home() {
                             </div>
 
                             <SlideBarV />
-                            <SlideBarCar />
                             <div id='about'><AboutUS /></div>
+                            <SlideBarCar />
+                            
                             
 
 
