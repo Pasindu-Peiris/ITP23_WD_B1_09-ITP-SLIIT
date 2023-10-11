@@ -54,9 +54,16 @@ app.use("/vehicleOwner", vehicleOwnerRouter);
 
 //vehicle img
 app.use('/VehicleImg', express.static(__dirname + '/VehicleImg'));
+
+//tours
+const tourRouter = require("./routes/tourRoutes.js");
+
+app.use("/tour" , tourRouter);
+
 app.listen(PORT, () =>{
     console.log(`Sever is running on ${PORT}`);
 });
+
 
 
 
