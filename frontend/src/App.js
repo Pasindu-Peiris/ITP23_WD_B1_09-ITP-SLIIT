@@ -31,7 +31,7 @@ import Book from './component/Bookingdetails'
 import Dropclient from './component/ADDDROP';
 import AllDrop from './component/AllDropClient'
 import TourDetails from './component/TourDetails'
-
+import VSlide2 from './component/VSSlider2'
 
 function App() {
   return (
@@ -149,7 +149,7 @@ function App() {
           <Route path='/Booking' element={<Book/>}></Route>
           <Route path='/Drop' element={<Dropclient/>}></Route>
           <Route path='/AllDrop' element={<AllDrop/>}></Route>
-         
+         <Route path='/SliderVS' element={<VSlide2/>}></Route>
         </Routes>
       </BrowserRouter>
 
