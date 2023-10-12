@@ -1,3 +1,4 @@
+
 /* eslint-disable no-unused-vars */
 import axios from "axios";
 import React, { useState, useEffect, useRef } from "react";
@@ -7,7 +8,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useReactToPrint } from 'react-to-print';
 
 
-function AllClient() {
+
+function AllDropClient() {
 
 
     function Notify() {
@@ -35,103 +37,40 @@ function AllClient() {
         });
     }
 
-    const [client, setClient] = useState([]);
+  
     const [searchBlock, setSearch] = useState("");
     const [dropClient, setDropClient] = useState([]);
 
     useEffect(() => {
 
-        //get all users
-        function getClients() {
+        //get all drop client
+        function getdropClients() {
 
-            axios.get("http://localhost:8090/client/").then((res) => {
-                setClient(res.data)
-                console.log(res)
-            }).catch((err) => {
-                alert("Can't get Clients");
-            })
+            axios.get("http://localhost:8090/dropClient/getDropclients/").then((res) => {
+
+                setDropClient(res.data);
+            }).catch((err) => { alert(err); }   );
 
         }
 
-        getClients();
+        getdropClients();
 
 
 
     }, [])
 
-
-
-    //delete user
-    /* const hadelDelete = (id) => {
-        axios.delete("http://localhost:8090/client/delete/" + id).then((res) => {
-
-            Notify();
-            setTimeout(function () {
-                window.location.reload();
-            }, 2000); // 2000 milliseconds (2 seconds)
-
-
-        }).catch((err) => {
-            alert("User Not Deleted");
-        })
-    } */
-
-
-
-    //get client data using id
+    //delete drop client
     const hadelDelete = (id) => {
-        axios.get("http://localhost:8090/client/deleted/" + id).then((res) => {
-
-            //set data to delete function and drop client
-            hadeldropclient(res.data)
-            hadelDeleteRow(res.data._id)
-
-        }).catch((err) => {
-            alert("User Not Deleted");
-        })
-    }
-
-    //delete user
-    const hadelDeleteRow = (id) => {
-        axios.delete("http://localhost:8090/client/delete/" + id).then((res) => {
-
-            Notify();
-            setTimeout(function () {
-                window.location.reload();
-            }, 2000); // 2000 milliseconds (2 seconds)
-
-
-        }).catch((err) => {
-            alert("User Not Deleted");
-        })
-
-    }
-
-    //add drop client
-    function hadeldropclient(dropClient){
-
-
-        const newDropclient = {
-            fname: dropClient.fname,
-            lname: dropClient.lname,
-            email: dropClient.email,
-            password: dropClient.password,
-            date: dropClient.date,
-            lastlogin: dropClient.lastlogin,
-            images: dropClient.images,
-
-        }
-
-
-        axios.post('http://localhost:8090/dropclient/adddropclient/', newDropclient)
-            .then((res) => {
-                console.log(res.data)
-            }).catch((err) => {
-                console.log(err)
-            })
-        
-    }
+            
+            axios.delete(`http://localhost:8090/dropClient/deletedrop/${id}`).then((res) => {
+                Notify();
+                setTimeout(function () {
+                    window.location.reload();
+                }, 2000); // 2000 milliseconds (2 seconds)
     
+    
+            }).catch((err) => { alert(err); }   );
+    }
 
 
 
@@ -146,7 +85,7 @@ function AllClient() {
             item.fname.toUpperCase().includes(searchBlock) ||
             item.lname.toUpperCase().includes(searchBlock));
     }
-    let searchData = search(client);
+    let searchData = search(dropClient);
 
 
     //view All User
@@ -158,6 +97,7 @@ function AllClient() {
     };
 
 
+    
     //PDF Create
     let [isActionColumnVisible, setIsActionColumnVisible] = useState(true);
 
@@ -173,12 +113,13 @@ function AllClient() {
 
     });
 
+
     var count = 0;
 
-    const  Activity = "true"
+
+
 
     return (
-
         <>
 
             <nav className="navbar navbar-expand-lg bg-light" style={{ height: "10px" }}>
@@ -207,7 +148,7 @@ function AllClient() {
 
                 <div className="container-box-2 container-fluid px-5">
 
-                    <h2 className="bg-dark text-white p-1 rounded">Client Details</h2>
+                    <h2 className="bg-danger text-white p-1 rounded">Drop Client Details</h2>
 
                     <form className="d-flex" >
                         <input onChange={(e) => setSearch(e.target.value)} className="form-control me-2 btn-lg" type="search" placeholder="Search [ Name | Email ]" aria-label="Search" style={{ width: "500px", backgroundColor: "#f1f1f1", height: "50px" }} />
@@ -230,13 +171,12 @@ function AllClient() {
                             <thead className="table-dark">
                                 <tr>
                                     <th className="text-center">Count</th>
-                                    <th scope="col">Profile Image</th>
+                                    <th scope="col">Profile Images</th>
                                     <th scope="col">First Name</th>
                                     <th scope="col">Last Name</th>
                                     <th scope="col">Email</th>
-                                    <th colSpan="col">Register Date</th>
-                                    <th scope="col">Status</th>
-                                    <th colSpan="col">Last Login Date | Time</th>
+                                    <th colSpan="col">Deleted Date | Time</th>
+                                    
                                     {isActionColumnVisible && <th scope="col" className="mx-auto-1">Action</th>}
                                 </tr>
                             </thead>
@@ -252,17 +192,11 @@ function AllClient() {
                                         <td>{item.fname}</td>
                                         <td>{item.lname}</td>
                                         <td>{item.email}</td>
-                                        <td>{item.date}</td>
-                                        <td>{ item.status === 'true' ? <span className="px-2  text-dark rounded-4 bg-warning p-1">Online</span> : <span className="px-2 text-light rounded-4 bg-danger p-1">Offline</span>  }</td>
-                                        <td>{item.lastlogin}</td>
-
-
+                                        <td>{item.deleteddate}</td>
+                                    
 
                                         {isActionColumnVisible && (
                                             <td className="mx-auto-1">
-
-                                                <a href={`/get/${item._id}`} className="btn btn-success cix">Update</a>
-
 
                                                 <button type="button" className="btn btn-danger" onClick={
                                                     (e) => hadelDelete(item._id)}
@@ -286,7 +220,7 @@ function AllClient() {
                     </div>
 
                 </div>
-                
+
                 <div className=" d-flex align-items-center justify-content-center pb-4">
                     <button
                         className="btn  text-dark btn-link"
@@ -331,7 +265,10 @@ function AllClient() {
 
         </>
 
+
+
+
     )
 }
 
-export default AllClient;
+export default AllDropClient;
