@@ -611,6 +611,17 @@ hr {
   }
 }
 
+#block-scopAdmin:hover{
+  background-color: var(--secondary-color);
+  transition: all ease ease-out 0.2s;
+  color: #fff;
+}
+#block-scopAdmin{
+  background-color:#6351ce24;
+  transition: all ease ease-out 0.2s;
+
+}
+
 
 
 

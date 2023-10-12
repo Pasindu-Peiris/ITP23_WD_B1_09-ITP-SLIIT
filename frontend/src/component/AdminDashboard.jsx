@@ -16,12 +16,21 @@ function AdminDashboard() {
                         <span className="navbar-toggler-icon"></span>
                     </button>
 
-                    <div className="collapse navbar-collapse" id="navbarText">
+                    <div className="collapse navbar-collapse" id="navbarText Logo">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 
                         </ul>
                         <span className="navbar-text">
                             Admin Profile Icon Like Home Page
+                        </span>
+                    </div>
+
+                    <div className="collapse navbar-collapse" id="navbarText">
+                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+
+                        </ul>
+                        <span className="navbar-text">
+                            Admin Profile
                         </span>
                     </div>
                 </div>
@@ -39,35 +48,35 @@ function AdminDashboard() {
                 </div>
                 <div class="offcanvas-body">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0 mt-3">
-                        <li className="nav-item px-4 fs-5" style={{ margin: "10px 0px", border: "1px solid #000" }}>
+                        <li className="nav-item px-4 fs-5 rounded-2" id="block-scopAdmin" style={{ margin: "10px 0px", border: "0px solid #000" }}>
                             <a className="nav-link active" aria-current="page" href="!#">Booking And Reservation </a>
                         </li>
-                        <li className="nav-item px-4 fs-5" style={{ margin: "10px 0px", border: "1px solid #000" }}>
+                        <li className="nav-item px-4 fs-5 rounded-2" id="block-scopAdmin" style={{ margin: "10px 0px", border: "0px solid #000" }}>
                             <a className="nav-link" href="!#">Tours And Route Planning</a>
                         </li>
-                        <li className="nav-item px-4 fs-5" style={{ margin: "10px 0px", border: "1px solid #000" }}>
-                           <a className="nav-link" href="/AllClient">Client Management </a>
+                        <li className="nav-item px-4 fs-5 rounded-2" id="block-scopAdmin" style={{ margin: "10px 0px", border: "0px solid #000" }}>
+                            <a className="nav-link" href="/AllClient">Client Management </a>
                         </li>
-                        <li className="nav-item px-4 fs-5" style={{ margin: "10px 0px", border: "1px solid #000" }}>
+                        <li className="nav-item px-4 fs-5 rounded-2" id="block-scopAdmin" style={{ margin: "10px 0px", border: "0px solid #000" }}>
                             <a className="nav-link active" aria-current="page" href="/AllClient">Finance Management </a>
                         </li>
-                        <li className="nav-item px-4 fs-5" style={{ margin: "10px 0px", border: "1px solid #000" }}>
+                        <li className="nav-item px-4 fs-5 rounded-2" id="block-scopAdmin" style={{ margin: "10px 0px", border: "0px solid #000" }}>
                             <a className="nav-link active" aria-current="page" href="/AllClient">Vehicle Management</a>
                         </li>
-                        <li className="nav-item px-4 fs-5" style={{ margin: "10px 0px", border: "1px solid #000" }}>
+                        <li className="nav-item px-4 fs-5 rounded-2" id="block-scopAdmin" style={{ margin: "10px 0px", border: "0px solid #000" }}>
                             <a className="nav-link active" aria-current="page" href="/AllClient">Staff Management </a>
                         </li>
-                        <li className="nav-item px-4 fs-5" style={{ margin: "10px 0px", border: "1px solid #000" }}>
+                        <li className="nav-item px-4 fs-5 rounded-2" id="block-scopAdmin" style={{ margin: "10px 0px", border: "0px solid #000" }}>
                             <a className="nav-link active" aria-current="page" href="/AllClient">Vehicle Owner Management </a>
                         </li>
-                        <li className="nav-item px-4 fs-5" style={{ margin: "10px 0px", border: "1px solid #000" }}>
+                        <li className="nav-item px-4 fs-5 rounded-2" id="block-scopAdmin" style={{ margin: "10px 0px", border: "0px solid #000" }}>
                             <a className="nav-link active" aria-current="page" href="/AllClient">Driver Management</a>
                         </li>
 
                     </ul>
 
-                    <a className="nav-link nav-item px-3 fs-5 pt-5" href="!#" style={{ color: "red", paddingTop: "100px" }}>Log Out</a>
 
+                    <button id="logout" type="button" class="btn btn-outline-danger" style={{ marginTop: "40px" }}><i class="fa-solid fa-right-from-bracket"></i>&nbsp;&nbsp;<b>Log Out</b></button>
                 </div>
             </div>
 
