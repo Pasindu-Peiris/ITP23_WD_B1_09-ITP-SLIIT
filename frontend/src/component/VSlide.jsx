@@ -50,7 +50,7 @@ function SlideBar() {
         <>
             <div id="tour">
                 <div className='block-t py-5' data-aos="zoom-in-up">
-                    <h1>Explore the Tour</h1>
+                    <h1>Explore Tours</h1>
                     <p>Find and book a great experience.</p>
                     <hr />
                 </div>

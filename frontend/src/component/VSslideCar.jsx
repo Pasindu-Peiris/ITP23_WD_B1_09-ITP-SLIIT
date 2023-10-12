@@ -58,7 +58,7 @@ function SlideBarCar() {
         <>
             <div id="vehicles">
                 <div className='block-t py-5' data-aos="zoom-in-up">
-                    <h1>Explore the Vehicle</h1>
+                    <h1>Explore Vehicles</h1>
                     <p>Find and book a great experience.</p>
                     <hr />
                 </div>
