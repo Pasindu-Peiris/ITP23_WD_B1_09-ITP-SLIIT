@@ -71,6 +71,9 @@ function SlideBarCar() {
                             <div class="container-fluid">
                                 <div class="row" data-aos="fade-up">
 
+                                <div className='d-flex align-content-center justify-content-end'>
+                                        <a className='btn btn-dark p-2 mx-3' href='/Vehicle_main' > View All </a>
+                                    </div>
                                     <div className='col-md-12 '>
 
                                         <Carousel responsive={responsive}
@@ -140,9 +143,7 @@ function SlideBarCar() {
                                         </Carousel>
 
                                     </div>
-                                    <div className='d-flex align-content-center justify-content-end'>
-                                        <a className='btn btn-dark p-2 mx-3' href='/Vehicle_main' > View All </a>
-                                    </div>
+                                   
 
                                 </div>
                             </div>
