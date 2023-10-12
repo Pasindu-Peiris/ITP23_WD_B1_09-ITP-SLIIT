@@ -56,100 +56,100 @@ function SlideBarCar() {
 
     return (
         <>
+            <div id="vehicles">
+                <div className='block-t py-5' data-aos="zoom-in-up">
+                    <h1>Explore the Vehicle</h1>
+                    <p>Find and book a great experience.</p>
+                    <hr />
+                </div>
 
-            <div className='block-t py-5' data-aos="zoom-in-up">
-                <h1>Explore the Vehicle</h1>
-                <p>Find and book a great experience.</p>
-                <hr />
-            </div>
-
-            <div className='container-fluide' id='Slidebar-'>
-
-
-                <div class="testimonial-slider container-fluid">
-                    <div id="carouselExampleControls" class="carousel carousel-dark">
-                        <div class="container-fluid">
-                            <div class="row" data-aos="fade-up">
-
-                            <div className='d-flex align-content-center justify-content-end'>
-                                    <a className='btn btn-dark p-2 mx-3' href='/Vehicle_main' > View All </a>
-                                </div>
-
-                                <div className='col-md-12 '>
-
-                                    <Carousel responsive={responsive}
-                                        autoPlay
-                                        autoPlaySpeed={2000}
-                                        infinite>
-                                        {Vehicles.length > 0 && Vehicles.map((Vehicle, index) => (
-                                            <div className='cardBlock-1' key={index}>
-                                                <div class=" m-3">
-                                                    <div class="card" id='cardv '>
-                                                        <div class="img-wrapper rounded-2xl">
-                                                            {Vehicle.photos?.[0] && (
-                                                                <img
-                                                                    src={'http://localhost:8090/' + Vehicle.photos?.[0]}
-                                                                    class="d-block w-100"
-                                                                    alt="..."
-                                                                    style={{ }}
-                                                                />
-                                                            )}
-                                                        </div>
+                <div className='container-fluide' id='Slidebar-'>
 
 
-                                                        <div class="card-body" id="tit-card">
-                                                            <h5 class="card-title" >
-                                                                {Vehicle.model}</h5>
-                                                            {/*Vehicle.description && Vehicle.description.length > 100
+                    <div class="testimonial-slider container-fluid">
+                        <div id="carouselExampleControls" class="carousel carousel-dark">
+                            <div class="container-fluid">
+                                <div class="row" data-aos="fade-up">
+
+                                    <div className='col-md-12 '>
+
+                                        <Carousel responsive={responsive}
+                                            autoPlay
+                                            autoPlaySpeed={2000}
+                                            infinite>
+                                            {Vehicles.length > 0 && Vehicles.map((Vehicle, index) => (
+                                                <div className='cardBlock-1' key={index}>
+                                                    <div class=" m-3">
+                                                        <div class="card" id='cardv '>
+                                                            <div class="img-wrapper rounded-2xl">
+                                                                {Vehicle.photos?.[0] && (
+                                                                    <img
+                                                                        src={'http://localhost:8090/' + Vehicle.photos?.[0]}
+                                                                        class="d-block w-100"
+                                                                        alt="..."
+                                                                        style={{}}
+                                                                    />
+                                                                )}
+                                                            </div>
+
+
+                                                            <div class="card-body" id="tit-card">
+                                                                <h5 class="card-title" >
+                                                                    {Vehicle.model}</h5>
+                                                                {/*Vehicle.description && Vehicle.description.length > 100
                                                                 ? `${Vehicle.description.slice(0, 100)}...`
                                                                 : Vehicle.description*/}
 
-                                                            <div className='d-flex align-content-center justify-content-between mt-3' >
-                                                                <div className='sec-11'>
-                                                                    <p><img src={ABS} alt='' width={40} className='pe-2' />ABS </p>
+                                                                <div className='d-flex align-content-center justify-content-between mt-3' >
+                                                                    <div className='sec-11'>
+                                                                        <p><img src={ABS} alt='' width={40} className='pe-2' />ABS </p>
+                                                                    </div>
+                                                                    <div className='sec-11'>
+                                                                        <p><img src={AirBags} alt='' width={40} className='pe-2' />Air-conditions</p>
+                                                                    </div>
+
                                                                 </div>
-                                                                <div className='sec-11'>
-                                                                    <p><img src={AirBags} alt='' width={40} className='pe-2' />Air-conditions</p>
+
+                                                                <div className='d-flex align-content-center justify-content-between'>
+                                                                    <div className='sec-11'>
+                                                                        <p><img src={CKIT} width={40} className='pe-2' alt='' />Car Kit</p>
+                                                                    </div>
+
+                                                                    <div className='sec-11'>
+                                                                        <p><img src={Aud} alt='' width={40} className='pe-2' />Audio system </p>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div className='d-flex align-content-center justify-content-between' style={{ borderTop: "1px solid #d7d7d7" }}>
+                                                                    <div className='sec-11'>
+                                                                        <p className='fs-6 pt-4 fw-bold'>From Rs.{Vehicle.price} /day</p>
+                                                                    </div>
+
+                                                                    <div className='sec-11 pt-3'>
+                                                                        <a href='/VehicleDetails' className='btn btn-dark p-2'>Book Now</a>
+                                                                    </div>
                                                                 </div>
 
                                                             </div>
-
-                                                            <div className='d-flex align-content-center justify-content-between'>
-                                                                <div className='sec-11'>
-                                                                    <p><img src={CKIT} width={40} className='pe-2' alt='' />Car Kit</p>
-                                                                </div>
-
-                                                                <div className='sec-11'>
-                                                                    <p><img src={Aud} alt='' width={40} className='pe-2' />Audio system </p>
-                                                                </div>
-                                                            </div>
-
-                                                            <div className='d-flex align-content-center justify-content-between' style={{borderTop:"1px solid #d7d7d7"}}>
-                                                                <div className='sec-11'>
-                                                                    <p className='fs-6 pt-4 fw-bold'>From Rs.{Vehicle.price} /day</p>
-                                                                </div>
-
-                                                                <div className='sec-11 pt-3'>
-                                                                    <a href='/VehicleDetails' className='btn btn-dark p-2'>Book Now</a>
-                                                                </div>
-                                                            </div>
-
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
 
 
-                                        ))}
-                                    </Carousel>
+                                            ))}
+                                        </Carousel>
+
+                                    </div>
+                                    <div className='d-flex align-content-center justify-content-end'>
+                                        <a className='btn btn-dark p-2 mx-3' href='/Vehicle_main' > View All </a>
+                                    </div>
 
                                 </div>
-
                             </div>
                         </div>
                     </div>
-                </div>
 
+                </div>
             </div>
         </>
 
