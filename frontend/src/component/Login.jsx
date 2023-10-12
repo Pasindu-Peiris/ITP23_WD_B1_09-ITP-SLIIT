@@ -89,6 +89,7 @@ function Login() {
     }
 
 
+    var count = 0;  
 
     axios.defaults.withCredentials = true;
     function loginhadle(e) {
@@ -115,9 +116,18 @@ function Login() {
             }
             else if (result.data === "User Not Found") {
                 Notify2();
-                setTimeout(function () {
-                    window.location = '/Register'
-                }, 1500); // 2000 milliseconds (2 seconds)
+
+                count = count + 1;
+
+                //if user ender wrong password 3 times then redirect to register page
+                if(count === 3){
+                    setTimeout(function () {
+                        count = 0;
+                        window.location = '/Register'
+                    }, 1500); // 2000 milliseconds (2 seconds)
+                }
+
+               
             }
 
         }).catch((err) => console.log(err))

@@ -35,8 +35,15 @@ connction.once("open", () => {
     console.log("Mongodb conncted!");
 });
 
+//client
 const clientRoute = require("./routes/Client");
 app.use("/client", clientRoute);
+
+//drop client
+const dropc = require("./routes/DropClient");
+app.use("/dropclient", dropc)
+
+
 
 // vehicle
 const ownerRoutes = require('./routes/rownerRoutes');
@@ -57,7 +64,6 @@ app.use('/VehicleImg', express.static(__dirname + '/VehicleImg'));
 
 //tours
 const tourRouter = require("./routes/tourRoutes.js");
-
 app.use("/tour" , tourRouter);
 
 app.listen(PORT, () =>{

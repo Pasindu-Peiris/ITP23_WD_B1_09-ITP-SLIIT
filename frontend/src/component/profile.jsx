@@ -113,8 +113,18 @@ function Profile() {
 
     //logout function
     function logout() {
+
+        let id = userData._id;
+
         localStorage.removeItem("token");
         window.localStorage.clear();
+
+        axios.post("http://localhost:8090/client/logout/" + id ).then((res) => {
+            console.log(res);
+        }).catch((err) => {
+            console.log(err);
+        });
+
         window.location = '/'
     }
 

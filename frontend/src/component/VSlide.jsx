@@ -37,7 +37,7 @@ function SlideBar() {
         AOS.init({ duration: 1000 });
 
         axios.get("http://localhost:8090/tour/all").then((res) => {
-            console.log(res);
+            //console.log(res);
             setTours(res.data);
 
         }).catch((err) => {

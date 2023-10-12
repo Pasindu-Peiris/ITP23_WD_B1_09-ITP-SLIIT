@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-
 function getFormattedDate() {
     const today = new Date();
     const year = today.getFullYear();
@@ -29,34 +28,33 @@ const formattedTime = getTime();
 console.log(formattedTime); // Output will be in "HH:MM:SS" format
 
 
-const clientSchema = new Schema({
-
+const dropclientSchema = new Schema({
 
     fname: {
         type: String,
-        required: true,
-        match: /^[a-zA-Z][a-zA-Z0-9]*$/
+       
+        //match: /^[a-zA-Z][a-zA-Z0-9]*$/
 
 
     },
     lname: {
         type: String,
-        required: true,
-        match: /^[a-zA-Z][a-zA-Z0-9]*$/
+       
+        //match: /^[a-zA-Z][a-zA-Z0-9]*$/
 
 
     },
     email: {
         type: String,
-        required: true,
-        unique: true,
-        match: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
+       
+        //unique: true,
+        ////match: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
 
 
     },
     password: {
         type: String,
-        required: true,
+       
 
         /*validate: {
             validator: function(value) {
@@ -66,9 +64,9 @@ const clientSchema = new Schema({
         }*/
 
     },
-    date: {
+    deleteddate: {
         type: String,
-        default: formattedDate  // You can set a default value for the date if needed
+        default: formattedDate + " | " +"["+ formattedTime + " ]" // You can set a default value for the date if needed
     },
     images: {
         type: String,
@@ -79,16 +77,13 @@ const clientSchema = new Schema({
         type: String,
         default: formattedDate + " | " +"["+ formattedTime + " ]" // You can set a default value for the date if needed
     },
-    status:{
-        type:String,
-        default: "false"
-    }
     
 
+   
 
 
 })
 
-const Client = mongoose.model("Client", clientSchema);
+const dropclient = mongoose.model("dropclient",dropclientSchema);
 
-module.exports = Client;
+module.exports = dropclient;
