@@ -20,7 +20,7 @@ function AboutUS() {
         <div className=''>
 
             <div className='block-t py-5' data-aos="zoom-in-up">
-                <h1>Why Are Rapaid Travels</h1>
+                <h1>Why Rapaid Travels</h1>
                 <p>Find and book a great experience.</p>
                 <hr />
             </div>
