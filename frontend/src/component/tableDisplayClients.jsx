@@ -197,7 +197,7 @@ function TableNewDis() {
 
 
 
-            <div className="text-1-bx row">
+            <div className="text-1-bx row" style={{ bottom: "0px" }}>
                 <button className="btn btn-warning fs-5" type="button" style={{ padding: "10px" }} onClick={handlePrint2}> Genarate Report </button>
             </div>
 
@@ -209,22 +209,25 @@ function TableNewDis() {
                 </div>
                 <div class="offcanvas-body">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0 mt-3">
-                        <li className="nav-item px-4 fs-5" style={{ margin: "20px 0px", border: "1px solid #000" }}>
+                        <li className="nav-item px-4 fs-5" style={{ margin: "10px 0px", border: "1px solid #000" }}>
                             <a className="nav-link active" aria-current="page" href="/AllClient">Client Details</a>
                         </li>
                         <li className="nav-item px-4 fs-5" style={{ margin: "10px 0px", border: "1px solid #000" }}>
                             <a className="nav-link" href="/ClientDisplay">Report Genarate</a>
                         </li>
                         <li className="nav-item px-4 fs-5" style={{ margin: "10px 0px", border: "1px solid #000" }}>
-                            <a className="nav-link" href="!#">Delete Client Details</a>
+                            <a className="nav-link" href="/AllDrop">Delete Client Details</a>
                         </li>
 
                     </ul>
 
-                    <a className="nav-link nav-item px-3 fs-5 pt-5" href="!#" style={{ color: "red", paddingTop: "800px" }}>Log Out</a>
+                    <a className="nav-link nav-item px-3 fs-5 pt-5" href="/Dashboard-admin-rapidTravles" style={{ color: "red", paddingTop: "800px" }}>Log Out</a>
 
                 </div>
             </div>
+
+
+
 
 
 

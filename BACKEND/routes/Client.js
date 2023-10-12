@@ -2,6 +2,7 @@ const router = require("express").Router();
 const Client = require("../models/client");
 let client = require("../models/client");
 const bcrypt = require('bcrypt');
+let dropclient = require("../models/dropclients");
 
 
 router.route("/add").post((req, res) => {
@@ -167,7 +168,8 @@ router.route("/login").post((req, res) => {
                     const token2 = jwt.sign({ email }, "jwt_secret_key2", { expiresIn: '1d' });
                     res.json({ status: "Success", token: token2 });
 
-                    const lastlogin = Client.findByIdAndUpdate(client.id, { lastlogin: timeSet }).then((client) => {
+                    //update lastlogin and status
+                    const lastlogin = Client.findByIdAndUpdate(client.id, { lastlogin: timeSet, status:true }).then((client) => {
                         console.log("last login updated")
 
                     }).catch((err) => {
@@ -185,11 +187,6 @@ router.route("/login").post((req, res) => {
             res.json("User Not Found")
         }
     })
-
-
-
-
-
 
 
 })
@@ -432,6 +429,42 @@ router.route("/contact").post((req, res) => {
         });
     }
 });
+
+
+
+//delete user and update to dropclient
+//get one client in admin
+router.route("/deleted/:id").get(async (req, res) => {
+
+    let cid = req.params.id;
+
+    const user = await Client.findById(cid).then((client) => {
+        res.json(client)
+
+    }).catch((err) => {
+        console.log("err")
+        res.status(500).send({ status: "Error With get One" })
+    })
+})
+
+
+//after logout change status to false
+router.route("/logout/:id").post((req, res) => {
+
+    const id = req.params.id;
+
+
+        const updateS = Client.findByIdAndUpdate(id, {status:"false"}).then(() =>{
+            console.log("status updated")
+            res.status(200).send({status:"status updated"})
+        }).catch((err) =>{
+            console.log("status not updated")
+            res.status(500).send({status:"status not updated"})
+        })
+
+})
+
+
 
 
 
