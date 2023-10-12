@@ -126,7 +126,7 @@ function SlideBarCar() {
 
                                                             <div className='d-flex align-content-center justify-content-between' style={{borderTop:"1px solid #d7d7d7"}}>
                                                                 <div className='sec-11'>
-                                                                    <p className='fs-6 pt-4 fw-bold'>From ${Vehicle.price} /day</p>
+                                                                    <p className='fs-6 pt-4 fw-bold'>From Rs.{Vehicle.price} /day</p>
                                                                 </div>
 
                                                                 <div className='sec-11 pt-3'>
