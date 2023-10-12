@@ -27,7 +27,8 @@ import Owner from "./pages/rowner";
 import AdminDashboard from './component/AdminDashboard';
 import VSlide from './component/VSlide';
 import About from './component/AboutUs';
-import Book from './component/Bookingdetails'
+import Book from './component/Bookingdetails';
+import TourDetails from './component/TourDetails';
 
 
 function App() {
@@ -143,6 +144,14 @@ function App() {
         <Routes>
           <Route path='/About' element={<About/>}></Route>
           <Route path='/Booking' element={<Book/>}></Route>
+        </Routes>
+      </BrowserRouter>
+
+      {/*Tour*/}
+
+      <BrowserRouter>
+        <Routes>
+          <Route path='/TourDetails/:id' element={<TourDetails />}></Route>
         </Routes>
       </BrowserRouter>
       

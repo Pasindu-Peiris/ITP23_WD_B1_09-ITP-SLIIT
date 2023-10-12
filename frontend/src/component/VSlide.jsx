@@ -88,19 +88,21 @@ function SlideBar() {
                                             return (
                                                 <div className='cardBlock-1'>
                                                     <div class=" m-3">
-                                                        <div class="card" id='cardv '>
-                                                            <div class="img-wrapper">
-                                                                <img src={`http://localhost:8090/images/` + tour.image} class="d-block w-100" alt={tour.image} />
-                                                            </div>
-                                                            <div class="card-body" id="tit-card">
-                                                            <span className='fs-6 text-secondary fw-bold p-0'>DAY TRIP</span>
-                                                                <h5 class="card-title py-1 d-flex align-items-center justify-content-between" ><strong>{tour.tourName}</strong> <font className='fs-6'> <img src={Seat} alt='' width={35}/></font></h5>
-                                                              
-                                                                <span className='fs-6 fw-bold'><font className='text-danger'>Date : {tour.date}</font> | Small Group</span>
+                                                        <a href={'/TourDetails/' + tour._id} style={{ textDecoration: "none" }}>
+                                                            <div class="card" id='cardv '>
+                                                                <div class="img-wrapper">
+                                                                    <img src={`http://localhost:8090/images/` + tour.image} class="d-block w-100" alt={tour.image} />
+                                                                </div>
+                                                                <div class="card-body" id="tit-card">
+                                                                    <span className='fs-6 text-secondary fw-bold p-0'>DAY TRIP</span>
+                                                                    <h5 class="card-title py-1 d-flex align-items-center justify-content-between" ><strong>{tour.tourName}</strong> <font className='fs-6'> <img src={Seat} alt='' width={35} /></font></h5>
 
-                                                                <p class="card-text fw-bold " style={{ fontSize: "1.1rem", float: "right" }}>Rs. {tour.totalCost.toFixed(2)}/=</p>
+                                                                    <span className='fs-6 fw-bold'><font className='text-danger'>Date : {tour.date}</font> | Small Group</span>
+
+                                                                    <p class="card-text fw-bold " style={{ fontSize: "1.1rem", float: "right" }}>Rs. {tour.totalCost.toFixed(2)}/=</p>
+                                                                </div>
                                                             </div>
-                                                        </div>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             )
