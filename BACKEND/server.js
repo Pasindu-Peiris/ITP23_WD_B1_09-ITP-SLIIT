@@ -66,6 +66,17 @@ app.use('/VehicleImg', express.static(__dirname + '/VehicleImg'));
 const tourRouter = require("./routes/tourRoutes.js");
 app.use("/tour" , tourRouter);
 
+//Finance
+const driverRoutes = require("./routes/DriverSalary");
+const staffRoutes = require("./routes/StaffSalary");
+const vehicleOwnerRoutes = require("./routes/VehicleOwnerSalary");
+const incomeRoutes = require("./routes/Incomes");
+
+app.use("/finance", driverRoutes);
+app.use("/finance", staffRoutes);
+app.use("/finance", vehicleOwnerRoutes);
+app.use("/finance", incomeRoutes);
+
 app.listen(PORT, () =>{
     console.log(`Sever is running on ${PORT}`);
 });

@@ -37,6 +37,15 @@ import AddTour from './component/AddTour';
 import EditTour from './component/EditTour';
 import GetTours from './component/GetTours';
 
+// Finance
+import DriverSalary from "./component/Finance/DriverSalary";
+import DriverDetails from "./component/Finance/DriverDetails";
+import StaffDetails from "./component/Finance/StaffDetails";
+import StaffSalary from "./component/Finance/StaffSalary";
+import VehicleOwnerSalary from "./component/Finance/VehicleOwnerSalary";
+import VehicleOwnerDetails from "./component/Finance/VehicleOwnerDetails";
+import AllIncomes from "./component/Finance/AllIncomes";
+
 function App() {
   return (
 
@@ -158,6 +167,26 @@ function App() {
           <Route path='/Drop' element={<Dropclient/>}></Route>
           <Route path='/AllDrop' element={<AllDrop/>}></Route>
          <Route path='/SliderVS' element={<VSlide2/>}></Route>
+        </Routes>
+      </BrowserRouter>
+
+
+      {/* Finance Management */}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/AllDriverSal" element={<DriverSalary />}></Route>
+          <Route path="/AllDriverList" element={<DriverDetails />}></Route>
+          <Route path="/AllStaffList" element={<StaffDetails />}></Route>
+          <Route path="/AllStaffSal" element={<StaffSalary />}></Route>
+          <Route
+            path="/AllVehicleOwnerSal"
+            element={<VehicleOwnerSalary />}
+          ></Route>
+          <Route
+            path="/AllVehicleOwnerList"
+            element={<VehicleOwnerDetails />}
+          ></Route>
+          <Route path="/AllIncomes" element={<AllIncomes />}></Route>
         </Routes>
       </BrowserRouter>
 
