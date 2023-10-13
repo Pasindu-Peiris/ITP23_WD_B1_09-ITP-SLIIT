@@ -111,16 +111,10 @@ function TourDetails() {
                         <p className="fs-6 fw-bold">Distance :  </p>
                         <p className="text-justify mx-3">{distance}Km</p>
                     </div>
-                  
 
                     <div className="d-flex">
-                        <p className="fs-6 fw-bold">Distance :  </p>
-                        <p className="text-justify mx-3">{distance}Km</p>
-                    </div>
-                   
-                    <div className="d-flex">
                         <p className="fs-6 fw-bold">Cost : </p>
-                        <p className="text-justify mx-3">{totalCost}</p>
+                        <p className="text-justify mx-3">{totalCost?.toFixed(2)} /=</p>
                     </div>
 
                     <div className="d-flex">
@@ -185,7 +179,7 @@ function TourDetails() {
                     <div className="mt-3 d-flex align-items-start justify-content-start ">
                         <img src={img15} alt="" width={38} className="d-block mb-5" />
                         <div className="d-block ">
-                            <p className=" mx-4 fw-bold" style={{ fontSize: "1.1rem" }}>Duration 20 - 55 minutesn</p>
+                            <p className=" mx-4 fw-bold" style={{ fontSize: "1.1rem" }}>Duration 20 - 55 minutes</p>
                             <div>
                                 <p className="fs-6 mx-4">Check availability to see starting times.</p>
                             </div>
