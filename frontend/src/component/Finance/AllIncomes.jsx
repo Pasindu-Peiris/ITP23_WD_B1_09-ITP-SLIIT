@@ -19,9 +19,7 @@ function AllIncomes() {
   //Get all incomes
   async function getIncomes() {
     try {
-      const response = await axios.get(
-        "http://localhost:8090/finance/getIncomes/"
-      );
+      const response = await axios.get("http://localhost:8090/client/userdata");
       setIncomes(response.data);
     } catch (error) {
       console.error("Error with GET request:", error);
@@ -106,25 +104,25 @@ function AllIncomes() {
                 </thead>
                 <tbody>
                   {incomes
-                    .filter((booking) => {
+                    .filter((userData) => {
                       return (
                         search.toLowerCase() === "" ||
-                        booking.booking_id?.name
+                        userData.userData_id?.name
                           .toLowerCase()
                           .includes(search.toLowerCase())
                       );
                     })
-                    .map((booking, index) => {
-                      const { booking_id } = booking;
-                      if (booking_id) {
+                    .map((userData, index) => {
+                      const { userData_id } = userData;
+                      if (userData_id) {
                         return (
-                          <tr key={booking._id}>
+                          <tr key={userData._id}>
                             <td>{index + 1}</td>
-                            <td>{booking_id.name}</td>
-                            <td>{booking_id.nic}</td>
-                            <td>{booking_id.email}</td>
-                            <td>{booking_id.date}</td>
-                            <td>Rs.{booking_id.amount}</td>
+                            <td>{userData_id.name}</td>
+                            <td>{userData_id.nic}</td>
+                            <td>{userData_id.email}</td>
+                            <td>{userData_id.date}</td>
+                            <td>Rs.{userData_id.amount}</td>
                           </tr>
                         );
                       }
