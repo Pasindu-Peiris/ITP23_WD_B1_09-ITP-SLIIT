@@ -114,7 +114,7 @@ function TourDetails() {
 
                     <div className="d-flex">
                         <p className="fs-6 fw-bold">Cost : </p>
-                        <p className="text-justify mx-3">{totalCost?.toFixed(2)} /=</p>
+                        <p className="text-justify mx-3">{parseFloat(totalCost)?.toFixed(2)} /=</p>
                     </div>
 
                     <div className="d-flex">
