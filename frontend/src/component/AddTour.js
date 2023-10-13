@@ -76,6 +76,119 @@ function AddTour() {
         })
     })()
 
+    //handle validation
+    const errTourPrint = (tourName) => {
+        if(/\d/.test(tourName)){
+            document.getElementById("tourNameError").innerHTML ="*tour name should not contain numbers"
+            document.getElementById("tourName").style.boxShadow= "2px solid red"
+           
+        }else if(tourName.length < 5){
+            document.getElementById("tourNameError").innerHTML = "*tour name must be more than 5 characters"
+            document.getElementById("tourName").style.border = "2px solid red"
+            
+        }else{
+            document.getElementById("tourNameError").innerHTML = `<i class="fa-solid fa-check fa-xl" style="color: #008000;"></i>`
+            document.getElementById("tourName").style.border = "2px solid green"
+        }
+    }
+
+    const errOriginPrint = (origin) => {
+        if(/\d/.test(origin)){
+            document.getElementById("originError").innerHTML ="*origin should not contain numbers"
+            document.getElementById("origin").style.boxShadow= "2px solid red"
+           
+        }else if(origin.length < 5){
+            document.getElementById("originError").innerHTML = "*origin must be more than 5 characters"
+            document.getElementById("origin").style.border = "2px solid red"
+            
+        }else{
+            document.getElementById("originError").innerHTML = `<i class="fa-solid fa-check fa-xl" style="color: #008000;"></i>`
+            document.getElementById("origin").style.border = "2px solid green"
+        }
+    }
+
+    const errDestinationPrint = (destination) => {
+        if(/\d/.test(destination)){
+            document.getElementById("destinationError").innerHTML ="*destination should not contain numbers"
+            document.getElementById("destination").style.boxShadow= "2px solid red"
+           
+        }else if(destination.length < 5){
+            document.getElementById("destinationError").innerHTML = "*destination must be more than 5 characters"
+            document.getElementById("destination").style.border = "2px solid red"
+            
+        }else{
+            document.getElementById("destinationError").innerHTML = `<i class="fa-solid fa-check fa-xl" style="color: #008000;"></i>`
+            document.getElementById("destination").style.border = "2px solid green"
+        }
+    }
+
+    const errDistancePrint = (distance) => {
+        if(/[^0-9.]|(?<=\..*)\./g.test(distance)){
+            document.getElementById("distanceError").innerHTML ="*distance should only contain numbers"
+            document.getElementById("distance").style.border= "2px solid red"
+
+        }else if(!(distance)){
+            document.getElementById("distanceError").innerHTML ="*distance should only contain numbers"
+            document.getElementById("distance").style.border= "2px solid red"
+
+        }else{
+            document.getElementById("distanceError").innerHTML = `<i class="fa-solid fa-check fa-xl" style="color: #008000;"></i>`
+            document.getElementById("distance").style.border = "2px solid green"
+        }
+    }
+
+    const errAdditionalExpensesPrint = (additionalExpenses) => {
+        if(/[^0-9.]|(?<=\..*)\./g.test(additionalExpenses)){
+            document.getElementById("additionalExpensesError").innerHTML ="*expenses should only contain numbers"
+            document.getElementById("additionalExpenses").style.border= "2px solid red"
+
+        }else if(!(additionalExpenses)){
+            document.getElementById("additionalExpensesError").innerHTML ="*expenses should only contain numbers"
+            document.getElementById("additionalExpenses").style.border= "2px solid red"
+
+        }else{
+            document.getElementById("additionalExpensesError").innerHTML = `<i class="fa-solid fa-check fa-xl" style="color: #008000;"></i>`
+            document.getElementById("additionalExpenses").style.border = "2px solid green"
+
+        }
+    }
+
+    const errDate = (date) => {
+        if(!(date)){
+            document.getElementById("dateError").innerHTML ="*date required"
+            document.getElementById("date").style.border= "2px solid red"
+
+        }else{
+            document.getElementById("dateError").innerHTML = `<i class="fa-solid fa-check fa-xl" style="color: #008000;"></i>`
+            document.getElementById("date").style.border = "2px solid green"
+
+        }
+    }
+
+    const errDescription = (description) => {
+        if(!(description)){
+            document.getElementById("descriptionError").innerHTML ="*description required"
+            document.getElementById("description").style.border= "2px solid red"
+
+        }else{
+            document.getElementById("descriptionError").innerHTML = `<i class="fa-solid fa-check fa-xl" style="color: #008000;"></i>`
+            document.getElementById("description").style.border = "2px solid green"
+
+        }
+    }
+
+    const errImage = (image) => {
+        if(!(image)){
+            document.getElementById("imageError").innerHTML ="*image required"
+            document.getElementById("image").style.border= "2px solid red"
+
+        }else{
+            document.getElementById("imageError").innerHTML = `<i class="fa-solid fa-check fa-xl" style="color: #008000;"></i>`
+            document.getElementById("image").style.border = "2px solid green"
+
+        }
+    }
+
     return (
         <>
         <ToursAndRoutePlanning/>
@@ -83,32 +196,56 @@ function AddTour() {
             <div className="container" style={{ height : "auto",width: "30%", marginLeft: "18%", marginTop: "50px"}}>
             <h4 style={{marginTop: "-40px"}} className="fw-bold"><u>Add Tour</u></h4>
                 <div>
-                    <label for="tourName" class="form-label">Tour Name</label>
-                    <input type="text" class="form-control" id="tourName" placeholder="Enter tour name" pattern="[A-Za-z._%+\-\s]{5,}"  required onChange={(e) => {
+                    <label for="tourName" className="form-label px-1 d-flex align-items-center justify-content-between">Tour Name<div className="" id="tourNameError" style={{color: "red", fontSize: "15px", float:"right"}}></div></label>
+                    <input type="text" class="form-control" id="tourName" name="tourName" placeholder="Enter tour name" pattern="[A-Za-z._%+\-\s]{5,}"  required 
+                    onChange={(e) => {
                         setTourName(e.target.value);
 
-                    }} />
+                    }} 
+                    
+                    onKeyUp={(e) =>{
+                        errTourPrint(e.target.value);
+
+                    }}/>
                 </div>
                 <div>
-                    <label for="origin" class="form-label">Origin</label>
-                    <input type="text" class="form-control" id="origin" placeholder="Enter origin" pattern="[A-Za-z._%+\-\s]{4,}" required onChange={(e) => {
+                    <label for="origin" class="form-label form-label px-1 d-flex align-items-center justify-content-between">Origin<div className="" id="originError" style={{color: "red", fontSize: "15px", float:"right"}}></div></label>
+                    <input type="text" class="form-control" id="origin" name="origin" placeholder="Enter origin" pattern="[A-Za-z._%+\-\s]{5,}" required 
+                    onChange={(e) => {
                         setOrigin(e.target.value);
 
-                    }} />
+                    }} 
+                    
+                    onKeyUp={(e) => {
+                        errOriginPrint(e.target.value);
+
+                    }}/>
                 </div>
                 <div>
-                    <label for="destination" class="form-label">Destination</label>
-                    <input type="text" class="form-control" id="destination" placeholder="Enter destination" pattern="[A-Za-z._%+\-\s]{4,}" required onChange={(e) => {
+                    <label for="destination" class="form-label form-label px-1 d-flex align-items-center justify-content-between">Destination<div className="" id="destinationError" style={{color: "red", fontSize: "15px", float:"right"}}></div></label>
+                    <input type="text" class="form-control" id="destination" name="destination" placeholder="Enter destination" pattern="[A-Za-z._%+\-\s]{5,}" required 
+                    onChange={(e) => {
                         setDestination(e.target.value);
 
-                    }} />
+                    }} 
+                    
+                    onKeyUp={(e) =>{
+                        errDestinationPrint(e.target.value);
+
+                    }}/>
                 </div>
                 <div>
-                    <label for="distance" class="form-label">Distance</label>
-                    <input type="text" name="distance" class="form-control" id="distance" placeholder="Enter distance" pattern="^\d+(?:\.\d{1,2})?$" step="0.01" required onChange={(e) => {
+                    <label for="distance" class="form-label form-label px-1 d-flex align-items-center justify-content-between">Distance<div className="" id="distanceError" style={{color: "red", fontSize: "15px", float:"right"}}></div></label>
+                    <input type="text" name="distance" class="form-control" id="distance" placeholder="Enter distance" pattern="^\d+(?:\.\d{1,2})?$" step="0.01" required 
+                    onChange={(e) => {
                         setDistance(e.target.value);
 
-                    }} />
+                    }} 
+                    
+                    onKeyUp={(e) =>{
+                        errDistancePrint(e.target.value);
+
+                    }}/>
                 </div>
                 <div>
                     <label for="cost" class="form-label">Cost (Rs.)</label>
@@ -118,11 +255,17 @@ function AddTour() {
                     }} />
                 </div>
                 <div>
-                    <label for="additionalExpenses" class="form-label">Additional Expenses (Rs.)</label>
-                    <input type="text" name="additionalC" class="form-control" id="additionalC" placeholder="Enter additional expenses" pattern="^\d+(?:\.\d{1,2})?$" step="0.01" required onChange={(e) => {
+                    <label for="additionalExpenses" class="form-label form-label px-1 d-flex align-items-center justify-content-between">Add.Expenses (Rs.)<div className="" id="additionalExpensesError" style={{color: "red", fontSize: "15px", float:"right"}}></div></label>
+                    <input type="text" name="additionalExpenses" class="form-control" id="additionalExpenses" placeholder="Enter additional expenses" pattern="^\d+(?:\.\d{1,2})?$" step="0.01" required 
+                    onChange={(e) => {
                         setAdditionalExpenses(e.target.value);
 
-                    }} />
+                    }}
+                    
+                    onKeyUp={(e) =>{
+                        errAdditionalExpensesPrint(e.target.value);
+
+                    }}/>
                 </div>
             </div>
             <div className="container" style={{width: "30%", marginRight: "18%", height: "auto"}}>
@@ -134,22 +277,39 @@ function AddTour() {
                     }} />
                 </div>
                 <div>
-                    <label for="date" class="form-label">Tour Date</label>
-                    <input name="date" type="date" class="form-control"  required onChange={(e) => {
+                    <label for="date" class="form-label form-label px-1 d-flex align-items-center justify-content-between">Tour Date<div className="" id="dateError" style={{color: "red", fontSize: "15px", float:"right"}}></div></label>
+                    <input type="date" id="date" name="date" class="form-control"  required 
+                    onChange={(e) => {
                         setDate(e.target.value);
 
-                    }} />
+                    }} 
+                    
+                    onSelect={(e) =>{
+                        errDate(e.target.value);
+
+                    }}/>
                 </div>
                 <div>
-                    <label for="description" class="form-label">Description</label>
-                    <textarea id="description" class="form-control"  rows="5" cols="100" pattern="[a-z0-9._%+\-]{,500}" required placeholder="Enter description here...." onChange={(e) => {
+                    <label for="description" class="form-label form-label px-1 d-flex align-items-center justify-content-between">Description<div className="" id="descriptionError" style={{color: "red", fontSize: "15px", float:"right"}}></div></label>
+                    <textarea id="description" name="description" class="form-control"  rows="5" cols="100" pattern="[a-z0-9._%+\-]{,500}" required placeholder="Enter description here...." 
+                    onChange={(e) => {
                         setDescription(e.target.value);
 
-                    }} />
+                    }} 
+                    onKeyUp={(e) =>{
+                        errDescription(e.target.value);
+
+                    }}/>
                 </div>
                 <div>
-                    <label for="image" class="form-label" style={{marginTop: "15px"}}>Upload Image</label>
-                    <input type="file" filename="file" class="form-control" id="image" required onChange={onChangeFile} />
+                    <label for="image" class="form-label form-label px-1 d-flex align-items-center justify-content-between" style={{marginTop: "15px"}}>Upload Image<div className="" id="imageError" style={{color: "red", fontSize: "15px", float:"right"}}></div></label>
+                    <input type="file" id="image" name="image" filename="file" class="form-control" required 
+                    onChange={onChangeFile} 
+                    
+                    onMouseLeave={(e) =>{
+                        errImage(e.target.value);
+
+                    }}/>
                 </div>
                 <button id="submit" type="submit" class="btn btn-dark"><strong>Add</strong></button>&nbsp;&nbsp;&nbsp;&nbsp;
                 <button id="reset" type="reset" class="btn btn-danger"><strong>Reset</strong></button>
