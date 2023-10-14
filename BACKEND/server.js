@@ -77,6 +77,12 @@ app.use("/finance", staffRoutes);
 app.use("/finance", vehicleOwnerRoutes);
 app.use("/finance", incomeRoutes);
 
+//staff
+app.use("/uploads",express.static("./uploads"));
+
+const router = require("./routes/router");
+app.use(router);
+
 app.listen(PORT, () =>{
     console.log(`Sever is running on ${PORT}`);
 });

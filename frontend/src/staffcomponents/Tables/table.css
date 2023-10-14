@@ -1,0 +1,48 @@
+.img_parent img{
+    width: 35px;
+    border-radius: 50%;
+}
+
+.action{
+    background: none !important;
+    border: none;
+}
+.dropdown-toggle::after{
+    display: none;
+}
+
+.dropdown_btn{
+    background: none !important;
+    border: none;
+}
+
+.dots{
+    font-size: 20px;
+    margin-top: 5px;
+}
+
+/* styles.css */
+
+/* styles.css */
+
+.generate-pdf-button {
+    background-color: #ff0000; /* Green background */
+    color: white; /* White text */
+    border: none; /* No border */
+    padding: 10px 20px; /* Padding */
+    text-align: center; /* Centered text */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Make it inline */
+    font-size: 16px; /* Font size */
+    font-weight: bold; /* Bold text */
+    border-radius: 5px; /* Optional: Rounded corners */
+    cursor: pointer; /* Cursor on hover */
+    transition: background-color 0.3s; /* Smooth background color transition */
+    margin: 10px; /* Add margin around the button */
+  }
+  
+  .generate-pdf-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+  
+  

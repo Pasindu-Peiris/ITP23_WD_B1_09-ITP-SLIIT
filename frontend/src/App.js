@@ -50,6 +50,14 @@ import VehicleOwnerSalary from "./component/Finance/VehicleOwnerSalary";
 import VehicleOwnerDetails from "./component/Finance/VehicleOwnerDetails";
 import AllIncomes from "./component/Finance/AllIncomes";
 
+//staff
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from "./staffcomponents/Headers/Headers";
+import Home_staff from "./pages/Home/Home";
+import Register_staff from "./pages/Register/Register";
+import Edit_staff from "./pages/Edit/Edit";
+import Profile_staff from "./pages/Profile/Profile";
+
 function App() {
   return (
 
@@ -196,7 +204,15 @@ function App() {
         </Routes>
       </BrowserRouter>
 
-     
+      {/* staff */}
+      <BrowserRouter>
+      <Routes>
+        <Route path='/staff' element={<Home_staff />} />
+        <Route path='/register_staff' element={<Register_staff />} />
+        <Route path='/edit/:id' element={<Edit_staff />} />
+        <Route path='/userprofile/:id' element={<Profile_staff />} />
+      </Routes>
+    </BrowserRouter>
     
       
     </div>
