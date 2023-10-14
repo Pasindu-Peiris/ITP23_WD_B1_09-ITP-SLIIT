@@ -15,9 +15,9 @@ import DriverPieChart from "./charts/DriverPieChart";
 function AdminDashboard() {
 
     return (
-        <>
+        <div className='container-fluid ' style={{ top: "0px", right: "0px" }} >
 
-            <nav className="navbar navbar-expand-lg bg-light" style={{ height: "10px" }}>
+            <nav className="navbar navbar-expand-lg bg-light" style={{ height: "15px" }}>
 
                 <div className="container-fluid px-5">
 
@@ -32,52 +32,27 @@ function AdminDashboard() {
 
                         </ul>
                         <span className="navbar-text">
-                             <img src = {Logo} width="250" height="60" alt="Logo"/>
+                            <img src={Logo} width="225" alt="Logo" />
                         </span>
                     </div>
 
                     <div className="collapse navbar-collapse" id="navbarText">
-                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                        <ul className="navbar-nav me-auto mb-2 ">
 
                         </ul>
                         <span className="navbar-text">
-                           <a href = "#"><i className="fa-solid fa-circle-user fa-2xl" style={{color: "#000000"}}></i></a>
+                            <a href="!#"><i className="fa-solid fa-circle-user fa-2xl" style={{ color: "#000000" }}></i></a>
                         </span>
                     </div>
                 </div>
             </nav>
 
-            <div className='container mt-5' style={{ height: "80vh", width: "100%", display: "flex" }}>
-                <div>
-                   <BookingPieChart/>
-                </div>
-                <div>
-                   <ClientsPieChart/>
-                </div>
-                <div>
-                   <FinanceLineChart/>
-                </div>
-                <div>
-                   <ToursBarChart/>
-                </div>
-                <div>
-                   <VehiclePieChart/>
-                </div>
-                <div>
-                   <StaffPieChart/>
-                </div>
-                <div>
-                   <VehicleOwnerPieChart/>
-                </div>
-                <div>
-                   <DriverPieChart/>
-                </div>    
-            </div>
+
 
 
             <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
                 <div class="offcanvas-header">
-                    <img src = {SideNavLogo} width="40" height="45" alt="sideNavLogo"/><h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">RapidTravels</h5>
+                    <img src={SideNavLogo} width="40" height="45" alt="sideNavLogo" /><h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">RapidTravels</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
@@ -115,8 +90,92 @@ function AdminDashboard() {
             </div>
 
 
+            <div className='row px-5 col-12 ' style={{ height: "auto", width: "100%", top: "0px", right: "0px" }}>
 
-        </>
+
+                <div className='container-fluid col-12 mx-auto bg-primary px-5 rounded-3' style={{ width: "100%", height: "35vh" }}>
+                    <h1 className="text-center mt-5 fw-bolder">Welcome to Dashboard</h1>
+                </div>
+
+                <div className='container-fluid row mx-auto px-5 d-flex align-content-center justify-content-center' style={{ marginTop: "100px" }}>
+
+                    <div class="card mx-3 p-2" style={{ width: "18rem", marginTop: "-180px" }}>
+                        <div class="">
+                            <div className='d-flex align-items-center justify-content-between px-3'>
+                                <h5 class="card-title fs-4">Client</h5>
+                                <h6 class="card-subtitle mb-2 mt-2 text-muted"><i class="fa-solid fa-user p-3 rounded-2" style={{ color: "#fff", fontSize: "1.5rem", backgroundColor: "#272727" }}></i></h6>
+                            </div>
+                            <div className='px-3'>
+                                <p class="card-text fs-1 fw-bolder d-block aline-item-center justify-center">10</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="card mx-3 p-2" style={{ width: "18rem", marginTop: "-180px" }}>
+                        <div class="">
+                            <div className='d-flex align-items-center justify-content-between px-3'>
+                                <h5 class="card-title fs-4">Client</h5>
+                                <h6 class="card-subtitle mb-2 mt-2 text-muted"><i class="fa-solid fa-user p-3 rounded-2" style={{ color: "#fff", fontSize: "1.5rem", backgroundColor: "#272727" }}></i></h6>
+                            </div>
+                            <div className='px-3'>
+                                <p class="card-text fs-1 fw-bolder d-block aline-item-center justify-center">10</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="card mx-3 p-2" style={{ width: "18rem", marginTop: "-180px" }}>
+                        <div class="">
+                            <div className='d-flex align-items-center justify-content-between px-3'>
+                                <h5 class="card-title fs-4">Client</h5>
+                                <h6 class="card-subtitle mb-2 mt-2 text-muted"><i class="fa-solid fa-user p-3 rounded-2" style={{ color: "#fff", fontSize: "1.5rem", backgroundColor: "#272727" }}></i></h6>
+                            </div>
+                            <div className='px-3'>
+                                <p class="card-text fs-1 fw-bolder d-block aline-item-center justify-center">10</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="card mx-3 p-2" style={{ width: "18rem", marginTop: "-180px" }}>
+                        <div class="">
+                            <div className='d-flex align-items-center justify-content-between px-3'>
+                                <h5 class="card-title fs-4">Client</h5>
+                                <h6 class="card-subtitle mb-2 mt-2 text-muted"><i class="fa-solid fa-user p-3 rounded-2" style={{ color: "#fff", fontSize: "1.5rem", backgroundColor: "#272727" }}></i></h6>
+                            </div>
+                            <div className='px-3'>
+                                <p class="card-text fs-1 fw-bolder d-block aline-item-center justify-center">10</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+
+
+
+
+                <div className='container-fluid row mx-auto px-5' style={{ marginTop: "60px" }}>
+                    <div className='col-4'>
+                        <BookingPieChart />
+                    </div >
+                    <div className='col-4'>
+                        <ClientsPieChart />
+                    </div>
+                    <div className='col-4'>
+                        <DriverPieChart />
+                    </div >
+                </div>
+
+
+            </div>
+
+
+
+        </div>
     )
 
 
