@@ -58,11 +58,19 @@ import Register_staff from "./pages/Register/Register";
 import Edit_staff from "./pages/Edit/Edit";
 import Profile_staff from "./pages/Profile/Profile";
 
+<<<<<<< Updated upstream
 //owner
 import SignUp from './Components/SignUp';
 import VehicleOwnerManagement from './Components/VehicleOwnerManagement';
 import ViewVehicleOwner from './Components/ViewVehicleOwner';
 import UpdateVehicleOwner from './Components/UpdateVehicleOwner';
+=======
+//driver
+import Home_driver from "./driverpages/home/Home";
+import Edit_driver from "./driverpages/edit/Edit";
+import Delete_driver from "./driverpages/delete/Delete";
+import Add_driver from "./driverpages/add/Add";
+>>>>>>> Stashed changes
 
 function App() {
   return (
@@ -231,7 +239,16 @@ function App() {
         </Routes>
       </BrowserRouter>
     
-      
+      {/* driver */}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/driver" element={<Home_driver />} />
+          <Route path="/add_driver" element={<Add_driver />} />
+          <Route path="/driver/edit/:id" element={<Edit_driver />} />
+          <Route path="/driver/delete/:id" element={<Delete_driver />} />
+        </Routes>
+      </BrowserRouter>
+
     </div>
 
   );

@@ -3,6 +3,7 @@ const  mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const path = require("path");
 const app = express();
 require("dotenv").config();
 const cookieParser = require("cookie-parser");
@@ -82,6 +83,11 @@ app.use("/uploads",express.static("./uploads"));
 
 const router = require("./routes/router");
 app.use(router);
+
+//driver
+const driverRoute = require("./routes/drivers");
+app.use("/images", express.static(path.join(__dirname, "/images")));
+app.use("/api/drivers", driverRoute);
 
 app.listen(PORT, () =>{
     console.log(`Sever is running on ${PORT}`);
