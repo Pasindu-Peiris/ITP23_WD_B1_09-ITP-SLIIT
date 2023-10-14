@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Logo from "./logothisal.jpg";
 import backgroundImage from './1587206.jpg';
+import Swal from 'sweetalert2';
 
 export default function SignUp() {
     const navigate = useNavigate();
@@ -33,11 +34,15 @@ export default function SignUp() {
             });
 
             if (response.ok) {
-                setRegistrationSuccess(true); // Set the success status to true
-                // Assuming successful form submission, navigate to "/vehicleownersmanager"
-                navigate('/vehicleownersmanager');
-                alert('Registration successful.'); 
-            } else {
+              Swal.fire(
+                  'Success!',
+                  'Registration successful.',
+                  'success'
+              ).then(() => {
+                  // Assuming successful form submission, navigate to "/vehicleownersmanager"
+                  navigate('/vehicleownersmanager');
+              });
+          } else {
                 console.error('Failed to submit form');
             }
         } catch (error) {
