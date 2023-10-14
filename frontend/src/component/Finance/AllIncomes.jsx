@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useState, useEffect, useRef } from "react";
 import ReactToPrint from "react-to-print";
+import MainLayout from "./MainLayout";
+
 import {
   Table,
   Col,
@@ -37,6 +39,7 @@ function AllIncomes() {
 
   return (
     <>
+    <MainLayout></MainLayout>
       <Container className="mt-5">
         <Row>
           <Col xs={12} md={8}>
