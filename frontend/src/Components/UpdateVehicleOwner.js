@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
+import backgroundImage from './1096642.jpg';
+import Swal from 'sweetalert2';
+
 
 export default function UpdateVehicleOwner() {
     const navigate = useNavigate();
@@ -48,12 +51,27 @@ export default function UpdateVehicleOwner() {
             });
 
             if (response.ok) {
-                navigate(`/vehicleowner/${id}`);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: 'Owner updated successfully!',
+                }).then(() => {
+                    navigate(`/vehicleowner/${id}`);
+                });
             } else {
-                console.error('Failed to update owner');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Failed to update owner!',
+                });
             }
         } catch (error) {
             console.error('Error updating owner:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'An error occurred. Please try again later!',
+            });
         }
     };
 
@@ -140,9 +158,11 @@ export default function UpdateVehicleOwner() {
         if (contact === '') {
           contactInput.setCustomValidity('Contact number is required.');
           contactError.textContent = 'Contact number is required.';
+          contactError.style.color = 'red';
         } else if (!contactRegex.test(contact)) {
           contactInput.setCustomValidity('Enter a valid contact number.');
           contactError.textContent = 'Enter a valid contact number.';
+          contactError.style.color = 'red';
         } else {
           contactInput.setCustomValidity('');
           contactError.textContent = '';
@@ -150,12 +170,12 @@ export default function UpdateVehicleOwner() {
       }
 
     return (
+        <div style={{ backgroundImage: `url(${backgroundImage})`, height: '100vh', backgroundRepeat: 'no-repeat', backgroundAttachment: 'fixed', backgroundSize: 'cover', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <div>
             <div className='container mt-5'>
                 <div className='row d-flex justify-content-center align-middle h-100 mt-5'>
-                    <div className='col-4 shadow-lg p-3 mb-5 bg-white rounded'>
+                    <div className='col-15 shadow-lg p-3 mb-5 bg-white rounded'>
                         <h3>Update Vehicle Owner</h3>
-                        <h4>Details</h4>
                         <br />
                         <form className='text-start' onSubmit={handleSubmit}>
                             <div className="">
@@ -224,13 +244,14 @@ export default function UpdateVehicleOwner() {
                                 />
                                 <span id="contact-error" className="error"></span>
                             </div>
-
+                            <div className="mb-3" />
                             <button type="submit" className="btn btn-primary col-12">Update</button>
-                            <p>Want to go back? <Link to="/vehicleownersmanager"><span className='text-primary'>Back</span></Link></p>
+                            {/*<p>Want to go back? <Link to="/vehicleownersmanager"><span className='text-primary'>Back</span></Link></p>*/}
                         </form>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     );
 }

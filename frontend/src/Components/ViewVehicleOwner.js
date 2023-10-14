@@ -3,6 +3,10 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import backgroundImage from './2446691.jpg';
+import Swal from 'sweetalert2';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowAltCircleLeft } from '@fortawesome/free-solid-svg-icons';
+
 
 export default function ViewVehicleOwner() {
     const { id } = useParams();
@@ -44,15 +48,24 @@ export default function ViewVehicleOwner() {
                 method: 'DELETE',
             });
 
-            if (response.ok) {
-                // Redirect to the manager page after removal
+            if (response.ok){
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                );
                 navigate('/vehicleownersmanager');
             } else {
                 console.error('Failed to remove owner');
             }
         } catch (error) {
             console.error('Error removing owner:', error);
-        } finally {
+            Swal.fire(
+                'Error!',
+                'An error occurred. Please try again later.',
+                'error'
+            );
+        }  finally {
             setShowModal(false);
         }
     };
@@ -70,35 +83,38 @@ export default function ViewVehicleOwner() {
             backgroundSize: 'cover',
           }}>
             <div className='container mt-5'>
-                <div className='row d-flex justify-content-center mb-5 align-middle h-100 mt-5'>
-                    <div className='col-4 shadow-lg p-3 mb-5 bg-white rounded'>
-                        <h3>Vehicle Owner Details</h3>
-                        <br />
-                        <div className='text-start'>
-                            {/* Owner Details */}
-                            <div className="form-group">
-                                <label>Name: </label>
-                                <span>{ownerDetails.name}</span>
-                            </div>
-                            <div className="form-group">
-                                <label>Email address: </label>
-                                <span>{ownerDetails.email}</span>
-                            </div>
-                            <div className="form-group">
-                                <label>Location: </label>
-                                <span>{ownerDetails.location}</span>
-                            </div>
-                            <div className="form-group">
-                                <label>Contact Number: </label>
-                                <span>{ownerDetails.contact}</span>
-                            </div>
-                            <div className="form-group">
-                                <label>NIC: </label>
-                                <span>{ownerDetails.nic}</span>
-                            </div>
-
-                            {/* Back Button */}
-                            <p>Want to go back? <Link to="/vehicleownersmanager"><span className='text-primary'>Back</span></Link></p>
+    <div className='row d-flex justify-content-center mb-5 align-middle h-100 mt-5'>
+        <div className='col-6 shadow-lg p-4 mb-5 bg-white rounded'>
+            <h3 style={{ fontSize: '24px' }}>Vehicle Owner Details</h3>
+            <br />
+            <div className='text-start'>
+                {/* Owner Details */}
+                <div className="form-group mb-4">
+                    <label style={{ fontWeight: 'bold', fontSize: '18px' }}>Name:</label>
+                    <span style={{ fontSize: '16px' }}>{ownerDetails.name}</span>
+                </div>
+                <div className="form-group mb-4">
+                    <label style={{ fontWeight: 'bold', fontSize: '18px' }}>Email Address:</label>
+                    <span style={{ fontSize: '16px' }}>{ownerDetails.email}</span>
+                </div>
+                <div className="form-group mb-4">
+                    <label style={{ fontWeight: 'bold', fontSize: '18px' }}>Location:</label>
+                    <span style={{ fontSize: '16px' }}>{ownerDetails.location}</span>
+                </div>
+                <div className="form-group mb-4">
+                    <label style={{ fontWeight: 'bold', fontSize: '18px' }}>Contact Number:</label>
+                    <span style={{ fontSize: '16px' }}>{ownerDetails.contact}</span>
+                </div>
+                <div className="form-group mb-4">
+                    <label style={{ fontWeight: 'bold', fontSize: '18px' }}>NIC:</label>
+                    <span style={{ fontSize: '16px' }}>{ownerDetails.nic}</span>
+                    <div className='container mt-2'>
+                 {/* Back Button */}
+                            <p>Want to go back?  <Link to="/vehicleownersmanager">
+            <FontAwesomeIcon icon={faArrowAltCircleLeft} style={{ marginRight: '0.5em' }} />
+            <span className='text-primary'>Back</span>
+        </Link></p>
+                        </div>
                         </div>
 
                         {/* Update and Remove Buttons */}
@@ -117,7 +133,7 @@ export default function ViewVehicleOwner() {
                 </div>
                 <div className='row d-flex justify-content-center mt-5 align-middle h-100 mt-5'>
                     <div className='col-3 shadow-lg p-3 mb-5 bg-white rounded'>
-                    <a href={`/IndexPage_Update/${id}`} className='btn btn-primary col-12'>Manage Vehicles</a>
+                    <a href={`/IndexPage_Update/${id}`} className='btn btn-primary col-12' style={{ marginTop: '-10px' }}>Manage Vehicles</a>
 
                         
                     </div>
@@ -142,6 +158,7 @@ export default function ViewVehicleOwner() {
                     </Button>
                 </Modal.Footer>
             </Modal>
+        </div>
         </div>
     );
 }
