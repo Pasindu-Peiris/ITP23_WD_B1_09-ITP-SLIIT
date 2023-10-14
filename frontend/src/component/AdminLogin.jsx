@@ -104,7 +104,7 @@ function LoginAdmin() {
 
                     window.localStorage.setItem("token2", result.data.token);
                     window.localStorage.setItem("Logedina", true);
-                    window.location = '/Drop';
+                    window.location = '/Dashboard-admin-rapidTravles';
 
                 }, 1500); // 2000 milliseconds (2 seconds)
 
