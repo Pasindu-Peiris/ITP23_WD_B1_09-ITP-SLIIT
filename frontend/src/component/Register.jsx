@@ -204,7 +204,7 @@ function Register() {
 
                 <div className="card-header  px-5 pt-3  pb-1">
 
-                  <h3 className='text-capitalize'>Register</h3>
+                  <h3 className='text-capitalize fw-bold'>Register</h3>
                   <p>Welcome Back! Please enter your details</p>
 
                 </div>

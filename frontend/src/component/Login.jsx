@@ -204,7 +204,7 @@ function Login() {
 
                                     
 
-                                    <h3 className='text-capitalize'>Log in</h3>
+                                    <h3 className='text-capitalize fw-bold '>Log In</h3>
                                     <p>Welcome Back! Please enter your details</p>
 
                                 </div>
