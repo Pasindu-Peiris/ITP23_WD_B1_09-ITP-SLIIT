@@ -38,8 +38,14 @@ import EditTour from './component/EditTour';
 import GetTours from './component/GetTours';
 
 //charts
-import PieChart from './component/charts/PieChart';
-import BarChart from './component/charts/BarChart';
+import BookingPieChart from './component/charts/BookingPieChart';
+import ToursBarChart from './component/charts/ToursBarChart';
+import ClientsPieChart from './component/charts/ClientsPieChart';
+import FinanceLineChart from './component/charts/FinanceLineChart';
+import VehiclePieChart from './component/charts/VehiclePieChart';
+import StaffPieChart from './component/charts/StaffPieChart';
+import VehicleOwnerPieChart from './component/charts/VehicleOwnerPieChart';
+import DriverPieChart from './component/charts/DriverPieChart';
 
 // Finance
 import DriverSalary from "./component/Finance/DriverSalary";
@@ -77,9 +83,12 @@ import UpdateBooking from './component/UpdateBooking';
 import AllReservations from './component/AllReservations';
 import UpdateReservation from './component/UpdateReservation';
 
+<<<<<<< Updated upstream
 
 import ADlog from './component/AdminLogin'
 
+=======
+>>>>>>> Stashed changes
 
 function App() {
   return (
@@ -186,8 +195,14 @@ function App() {
           <Route path="/addTour" element={<AddTour/>}></Route>
           <Route path="/editTours/:id" element={<EditTour/>}></Route>
           <Route path="/getTours" element={<GetTours/>}></Route>
-          <Route path="/pieChart" element={<PieChart/>}></Route>
-          <Route path="/barChart" element={<BarChart/>}></Route>
+          <Route path="/bookingPieChart" element={<BookingPieChart/>}></Route>
+          <Route path="/toursBarChart" element={<ToursBarChart/>}></Route>
+          <Route path="/clientsPieChart" element={<ClientsPieChart/>}></Route>
+          <Route path="/financeLineChart" element={<FinanceLineChart/>}></Route>
+          <Route path="/vehiclePieChart" element={<VehiclePieChart/>}></Route>
+          <Route path="/staffPieChart" element={<StaffPieChart/>}></Route>
+          <Route path="/vehicleOwnerPieChart" element={<VehicleOwnerPieChart/>}></Route>
+          <Route path="/driverPieChart" element={<DriverPieChart/>}></Route>
         </Routes>
       </BrowserRouter>
 

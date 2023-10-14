@@ -1,4 +1,3 @@
-
 import React, { Component } from "react";
 import Chart from "react-apexcharts"
 
@@ -8,6 +7,14 @@ class App extends Component {
 
     this.state = {
       options: {
+        colors:['#6351ce'],
+
+        grid: {
+          row: {
+            colors: ['#6351ce80']
+          }
+        },
+
         chart: {
           id: "basic-bar"
         },
@@ -27,15 +34,15 @@ class App extends Component {
   render() {
     return (
         <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+            <div class="card-body bg-transparent">
+                <h5 class="card-title">Financial Income</h5>
                 <div className="app">
                     <div className="row">
                         <div className="mixed-chart">
                             <Chart
                                 options={this.state.options}
                                 series={this.state.series}
-                                type="bar"
+                                type="line"
                                 width="500"
                             />
                         </div>

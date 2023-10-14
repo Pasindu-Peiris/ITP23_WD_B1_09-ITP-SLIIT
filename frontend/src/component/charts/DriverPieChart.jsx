@@ -7,9 +7,12 @@ class Donut extends Component {
     super(props);
 
     this.state = {
-      options: {},
-      series: [44, 55, 41, 17, 15],
-      labels: ['A', 'B', 'C', 'D', 'E']
+      options: {
+        colors:['#6351ce', '#6351ce80'],
+        
+      },
+      series: [44, 55],
+      labels: ['A', 'B']
     }
   }
 
@@ -17,8 +20,8 @@ class Donut extends Component {
 
     return (
         <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+            <div class="card-body bg-transparent">
+                <h5 class="card-title">Active & Inactive Drivers</h5>
                 <div className="donut">
                     <Chart options={this.state.options} series={this.state.series} type="donut" width="380" />
                 </div>

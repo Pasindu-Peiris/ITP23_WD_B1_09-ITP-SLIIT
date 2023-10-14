@@ -191,7 +191,7 @@ function LoginAdmin() {
 
                                     
 
-                                    <h3 className='text-capitalize fw-bold py-2'>Admin Log in Rapid Travel</h3>
+                                    <h3 className='text-capitalize fw-bold py-2'>Admin Login</h3>
                                     <p>Welcome Back! Please enter your details</p>
 
                                 </div>
