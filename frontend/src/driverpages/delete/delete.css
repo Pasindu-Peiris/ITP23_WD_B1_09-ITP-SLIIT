@@ -79,3 +79,14 @@
   margin: 20px 0;
 }
 
+.dbottomButton {
+  width: 200px;
+  border-radius: 15px;
+  font-size: 1.2rem;
+  margin-right: 20px;
+  padding: 0.5em;
+  background-color: rgb(66, 12, 54);
+  color: white; /* Modified text color to white */
+  margin-left: 5px;
+  border: 0;
+}
