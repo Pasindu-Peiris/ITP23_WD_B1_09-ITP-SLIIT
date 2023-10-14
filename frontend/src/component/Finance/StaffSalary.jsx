@@ -120,7 +120,10 @@ function AllStaffSal() {
                         element;
                       if (element_id) {
                         return (
-                          <tr key={element._id}>
+                          <tr
+                            key={element._id}
+                            style={{ backgroundColor: "#6553cfa3" }}
+                          >
                             <td>{index + 1}</td>
                             <td>{element_id.name}</td>
                             <td>{element_id.nic}</td>

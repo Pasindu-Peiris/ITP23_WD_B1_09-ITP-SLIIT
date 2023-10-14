@@ -116,7 +116,10 @@ function AllVehicleOwnerSal() {
                       const { vehicleOwner_id, bonus, netSal } = vehicleOwner;
                       if (vehicleOwner_id) {
                         return (
-                          <tr key={vehicleOwner._id}>
+                          <tr
+                            key={vehicleOwner._id}
+                            style={{ backgroundColor: "#6553cfa3" }}
+                          >
                             <td>{index + 1}</td>
                             <td>{vehicleOwner_id.name}</td>
                             <td>{vehicleOwner_id.nic}</td>

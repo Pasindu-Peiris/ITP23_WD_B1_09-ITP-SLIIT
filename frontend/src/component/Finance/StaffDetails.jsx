@@ -17,9 +17,7 @@ function AllStaffDetails() {
   //get all Staff List
   async function getStaffDetails() {
     try {
-      const response = await axios.get(
-        "http://localhost:8090/user/details"
-      );
+      const response = await axios.get("http://localhost:8090/user/details");
       setStaffDetails(response.data);
     } catch (error) {
       console.error("Error with GET request:", error);
@@ -119,7 +117,7 @@ function AllStaffDetails() {
                   const { element_id } = element;
                   if (element_id) {
                     return (
-                      <tr key={index}>
+                      <tr key={index} style={{ backgroundColor: "#6553cfa3" }}>
                         <td>{index + 1}</td>
                         <td>{element_id.name}</td>
                         <td>{element_id.nic}</td>

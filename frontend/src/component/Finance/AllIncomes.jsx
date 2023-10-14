@@ -119,7 +119,10 @@ function AllIncomes() {
                       const { userData_id } = userData;
                       if (userData_id) {
                         return (
-                          <tr key={userData._id}>
+                          <tr
+                            key={userData._id}
+                            style={{ backgroundColor: "#6553cfa3" }}
+                          >
                             <td>{index + 1}</td>
                             <td>{userData_id.name}</td>
                             <td>{userData_id.nic}</td>
