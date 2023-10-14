@@ -83,12 +83,9 @@ import UpdateBooking from './component/UpdateBooking';
 import AllReservations from './component/AllReservations';
 import UpdateReservation from './component/UpdateReservation';
 
-<<<<<<< Updated upstream
 
 import ADlog from './component/AdminLogin'
 
-=======
->>>>>>> Stashed changes
 
 function App() {
   return (
@@ -99,7 +96,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/Register' element={<Register />}></Route>
-          <Route path='/ADlog' element={<ADlog />}></Route>
+          <Route path='/Admin-login-rapid-travels' element={<ADlog />}></Route>
         </Routes>
       </BrowserRouter>
 
