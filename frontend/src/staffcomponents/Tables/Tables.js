@@ -63,6 +63,8 @@ const Tables = ({ userdata, deleteUser, userGet, handlePrevious, handleNext, pag
                     <th>NIC</th>
                     <th>Role</th>
                     <th>Gender</th>
+
+          
               
                     
                     <th>Profile</th>
@@ -84,6 +86,8 @@ const Tables = ({ userdata, deleteUser, userGet, handlePrevious, handleNext, pag
                           <td>{element.nic}</td>
                           <td>{element.role}</td>
                           <td>{element.gender === "Male" ? "M" : "F"}</td>
+
+                        
                           <td className='img_parent'>
                             <img src={`${BASE_URL}/uploads/${element.profile}`} alt="img" />
                           </td>

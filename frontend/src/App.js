@@ -96,7 +96,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/Register' element={<Register />}></Route>
-          <Route path='/ADlog' element={<ADlog />}></Route>
+          <Route path='/Admin-login-rapid-travels' element={<ADlog />}></Route>
         </Routes>
       </BrowserRouter>
 
