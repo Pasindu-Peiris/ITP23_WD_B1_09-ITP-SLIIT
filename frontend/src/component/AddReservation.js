@@ -112,9 +112,9 @@ export default function ReservationForm() {
   }
 
   return (
-    <div>
+    <div className=" " style={{backgroundColor:"#f1f1f3"}}>
     <Nav/>    
-    <div className="form-container">
+    <div className="form-container container card w-50" style={{padding:"50px"}}>
       
         
       <h1>Vehicle Reservation Form</h1>

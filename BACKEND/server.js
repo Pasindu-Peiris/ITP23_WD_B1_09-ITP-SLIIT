@@ -98,6 +98,11 @@ const driverRoute = require("./routes/drivers");
 app.use("/images", express.static(path.join(__dirname, "/images")));
 app.use("/api/drivers", driverRoute);
 
+
+//admin
+const adminRoute = require("./routes/Admin");
+app.use("/admin", adminRoute);
+
 app.listen(PORT, () =>{
     console.log(`Sever is running on ${PORT}`);
 });

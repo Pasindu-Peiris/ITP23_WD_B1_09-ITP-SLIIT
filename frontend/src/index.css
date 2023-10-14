@@ -1,7 +1,7 @@
 
-@tailwind components;
+/*@tailwind components;
 
-@tailwind utilities;
+@tailwind utilities;*/
 
 
 
@@ -80,10 +80,6 @@
   color: inherit;
 }
 
-/* styles.css */
-body {
-  font-size: 16px; /* Set your base font size here */
-}
 
 
 

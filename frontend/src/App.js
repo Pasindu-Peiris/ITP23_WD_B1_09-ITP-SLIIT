@@ -50,7 +50,6 @@ import VehicleOwnerSalary from "./component/Finance/VehicleOwnerSalary";
 import VehicleOwnerDetails from "./component/Finance/VehicleOwnerDetails";
 import AllIncomes from "./component/Finance/AllIncomes";
 
-<<<<<<< Updated upstream
 //staff
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from "./staffcomponents/Headers/Headers";
@@ -70,7 +69,6 @@ import Home_driver from "./driverpages/home/Home";
 import Edit_driver from "./driverpages/edit/Edit";
 import Delete_driver from "./driverpages/delete/Delete";
 import Add_driver from "./driverpages/add/Add";
-=======
 //AddBookings
 import AddBookings from "./component/AddBooking";
 import AddReservation from "./component/AddReservation";
@@ -79,7 +77,9 @@ import UpdateBooking from './component/UpdateBooking';
 import AllReservations from './component/AllReservations';
 import UpdateReservation from './component/UpdateReservation';
 
->>>>>>> Stashed changes
+
+import ADlog from './component/AdminLogin'
+
 
 function App() {
   return (
@@ -90,6 +90,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/Register' element={<Register />}></Route>
+          <Route path='/ADlog' element={<ADlog />}></Route>
         </Routes>
       </BrowserRouter>
 
@@ -227,7 +228,6 @@ function App() {
         </Routes>
       </BrowserRouter>
 
-<<<<<<< Updated upstream
       {/* staff */}
       <BrowserRouter>
       <Routes>
@@ -248,7 +248,6 @@ function App() {
           <Route path="/vehicleowner/:id" element={ <ViewVehicleOwner/>} />
         </Routes>
       </BrowserRouter>
-=======
       
       {/*Bookings and Reservations*/}
       <BrowserRouter>
@@ -294,7 +293,6 @@ function App() {
       </BrowserRouter>
 
      
->>>>>>> Stashed changes
     
       {/* driver */}
       <BrowserRouter>
