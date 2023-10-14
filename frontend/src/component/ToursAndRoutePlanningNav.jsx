@@ -1,6 +1,7 @@
 import '../App.css'
 import Logo from "../tourImages/Logo.png";
 import SideNavLogo from "../tourImages/sideNavico.png";
+// eslint-disable-next-line no-unused-vars
 import AddTour from './AddTour';
 
 function ToursAndRoutePlanning() {
