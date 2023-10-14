@@ -699,7 +699,21 @@ uneditable-input:focus {
 
 }
 
+.my-actions { margin: 0 2em; }
+.order-1 { order: 1; }
+.order-2 { order: 2; }
+.order-3 { order: 3; }
 
+.right-gap {
+  margin-right: auto;
+}
 
+.colored-toast.swal2-icon-success {
+  background-color: #a5dc86 !important;
+}
+
+.colored-toast.swal2-icon-warning {
+  background-color: #f8bb86 !important;
+}
 
 /*--------------------------mobile res---------------------------------------------------------------------------------------*/

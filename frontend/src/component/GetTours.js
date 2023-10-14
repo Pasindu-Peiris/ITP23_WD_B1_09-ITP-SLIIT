@@ -3,6 +3,7 @@ import React, {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
 import axios from "axios";
 import ToursAndRoutePlanning from "./ToursAndRoutePlanningNav";
+import Swal from "sweetalert2";
 
 function GetTours(){
 
@@ -20,17 +21,35 @@ function GetTours(){
             })
         },[])
 
-    const handleDelete = (id) =>{
-        axios.delete("http://localhost:8090/tour/deleteTour/"+id).then(res => {console.log(res)
-        window.location.reload()
-
-    }).catch(err => console.log(err))
-    
-    }
-
     const filter = (event) =>{
         setRecords(tours.filter(f => f.tourName.toLowerCase().includes(event.target.value)))
 
+    }
+
+    const handleDelete = (id) =>{
+        Swal.fire({
+            title: 'Are you sure you want to delete this tour?',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Yes',
+            denyButtonText: 'No',
+            customClass: {
+              actions: 'my-actions',
+              cancelButton: 'order-1 right-gap',
+              confirmButton: 'order-2',
+              denyButton: 'order-3',
+            }
+          }).then((result) => {
+              if (result.isConfirmed) {
+                  axios.delete("http://localhost:8090/tour/deleteTour/" + id).then(res => {
+                      console.log(res)
+                      window.location.reload()
+                  }).catch(err => console.log(err))
+                  Swal.fire('Tour Deleted!', '', 'success')
+              } else if (result.isDenied) {
+                  Swal.fire('Tour is not deleted', '', 'info')
+              }
+          })
     }
 
     return (

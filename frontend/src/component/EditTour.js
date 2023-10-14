@@ -3,6 +3,7 @@ import React, {useState, useEffect} from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import ToursAndRoutePlanning from "./ToursAndRoutePlanningNav";
+import Swal from "sweetalert2";
 
 function EditTour(){
     const {id} = useParams();
@@ -59,12 +60,16 @@ function EditTour(){
         formData.append("image", fileName);
 
         axios.put("http://localhost:8090/tour/updateTour/"+id, formData).then(() => {
-            alert("Tour Updated");
+            editedNotificationSuccss();
 
-            window.location = "/getTours"
+            setTimeout(function () {
+
+                window.location = "/getTours"
+
+            }, 3000);
 
         }).catch((err) => {
-            alert(err);
+            editedNotificationUnsuccess();
 
         })
 
@@ -183,6 +188,42 @@ function EditTour(){
             document.getElementById("image").style.border = "2px solid green"
 
         }
+    }
+
+    async function editedNotificationSuccss(){
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-right',
+            iconColor: 'white',
+            customClass: {
+              popup: 'colored-toast'
+            },
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true
+          })
+          await Toast.fire({
+            icon: 'success',
+            title: 'Tour Edited'
+          })
+    }
+
+    async function editedNotificationUnsuccess(){
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-right',
+            iconColor: 'white',
+            customClass: {
+              popup: 'colored-toast'
+            },
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true
+          })
+          await Toast.fire({
+            icon: 'warning',
+            title: 'Tour Edit Unsuccessful'
+          })
     }
 
     return (
@@ -307,7 +348,7 @@ function EditTour(){
 
                     }}/>
                 </div>
-                <button id="submit" type="submit" class="btn btn-dark"><strong>Add</strong></button>&nbsp;&nbsp;&nbsp;&nbsp;
+                <button id="submit" type="submit" class="btn btn-dark"><strong>Edit</strong></button>&nbsp;&nbsp;&nbsp;&nbsp;
                 <button id="reset" type="reset" class="btn btn-danger"><strong>Reset</strong></button>
             </div>
         </form>
