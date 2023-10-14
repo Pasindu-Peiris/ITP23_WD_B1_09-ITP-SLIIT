@@ -53,6 +53,22 @@ body {
   overflow: hidden;
 }
 
+
+#sec-from-admin {
+  width: 100%;
+  height: 110vh;
+  background-image: url(./img/home3.webp);
+  background-size: cover;
+  background-position: left center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 00px;
+  padding: 0px;
+  overflow: hidden;
+}
+
 .container-2 {
   width: 600px;
   height: auto;
@@ -117,7 +133,7 @@ body {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .nav-list ul li {

@@ -14,7 +14,7 @@ function Nav() {
 
                 <div className="container-4 ">
 
-                    <a className="navbar-brand" href="/"> <img src={logo} alt='' width={'225px'} /></a>
+                    <a className="navbar-brand ms-5" href="/"> <img src={logo} alt='' width={'225px'} /></a>
 
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
@@ -55,7 +55,7 @@ function Nav() {
                                 Logedin === "true" ?
                                     <div className="d-flex mx-4">
                                         <button className="btn btn-dark p-1" type="submit" style={{}}><a href="/profile" style={{ textDecoration: "none", color: "white", padding: "2px 5px ", fontSize: "1.1rem" }}> <img src={iconP} alt='' />  </a></button>
-                                        <button className="btn btn-dark p-1 mx-3" type="submit" style={{}}><a href="/" style={{ textDecoration: "none", color: "white", padding: "2px 10px ", fontSize: "1.2rem" }}> <i class="fa-solid fa-car" style={{color:"#fff"}}></i> </a></button>
+                                        <button className="btn btn-dark p-1 mx-3" type="submit" style={{}}><a href="/AllReservations" style={{ textDecoration: "none", color: "white", padding: "2px 10px ", fontSize: "1.2rem" }}> <i class="fa-solid fa-car" style={{color:"#fff"}}></i> </a></button>
                                     </div> :
                                     <div className="d-flex mx-4">
                                         <button className="btn btn-dark p-1" type="submit"><a href="/Login" style={{ textDecoration: "none", color: "white", padding: "10px 20px ", fontSize: "1.1rem" }}>Log In</a></button>

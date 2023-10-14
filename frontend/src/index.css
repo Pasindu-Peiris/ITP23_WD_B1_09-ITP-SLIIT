@@ -1,7 +1,7 @@
 
-@tailwind components;
+/*@tailwind components;
 
-@tailwind utilities;
+@tailwind utilities;*/
 
 
 
@@ -80,10 +80,6 @@
   color: inherit;
 }
 
-/* styles.css */
-body {
-  font-size: 16px; /* Set your base font size here */
-}
 
 
 
@@ -265,8 +261,29 @@ input:checked + .slider:before {
 .ant-modal-title{
   color: #000000;
 }
+/* 
+:root {
+  --clr-grey-10: hsl(0, 0%, 93%);
+  --white: #fff;
+}
 
+html,
+body {
+height: 100%;
+}
 
+*,
+::after,
+::before {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: var(--clr-grey-10);
+} */
 
 
 

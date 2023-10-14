@@ -38,8 +38,14 @@ import EditTour from './component/EditTour';
 import GetTours from './component/GetTours';
 
 //charts
-import PieChart from './component/charts/PieChart';
-import BarChart from './component/charts/BarChart';
+import BookingPieChart from './component/charts/BookingPieChart';
+import ToursBarChart from './component/charts/ToursBarChart';
+import ClientsPieChart from './component/charts/ClientsPieChart';
+import FinanceLineChart from './component/charts/FinanceLineChart';
+import VehiclePieChart from './component/charts/VehiclePieChart';
+import StaffPieChart from './component/charts/StaffPieChart';
+import VehicleOwnerPieChart from './component/charts/VehicleOwnerPieChart';
+import DriverPieChart from './component/charts/DriverPieChart';
 
 // Finance
 import DriverSalary from "./component/Finance/DriverSalary";
@@ -64,6 +70,26 @@ import VehicleOwnerManagement from './Components/VehicleOwnerManagement';
 import ViewVehicleOwner from './Components/ViewVehicleOwner';
 import UpdateVehicleOwner from './Components/UpdateVehicleOwner';
 
+//driver
+import Home_driver from "./driverpages/home/Home";
+import Edit_driver from "./driverpages/edit/Edit";
+import Delete_driver from "./driverpages/delete/Delete";
+import Add_driver from "./driverpages/add/Add";
+//AddBookings
+import AddBookings from "./component/AddBooking";
+import AddReservation from "./component/AddReservation";
+import AllBookings from './component/AllBookings';
+import UpdateBooking from './component/UpdateBooking';
+import AllReservations from './component/AllReservations';
+import UpdateReservation from './component/UpdateReservation';
+
+<<<<<<< Updated upstream
+
+import ADlog from './component/AdminLogin'
+
+=======
+>>>>>>> Stashed changes
+
 function App() {
   return (
 
@@ -73,6 +99,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/Register' element={<Register />}></Route>
+          <Route path='/ADlog' element={<ADlog />}></Route>
         </Routes>
       </BrowserRouter>
 
@@ -168,8 +195,14 @@ function App() {
           <Route path="/addTour" element={<AddTour/>}></Route>
           <Route path="/editTours/:id" element={<EditTour/>}></Route>
           <Route path="/getTours" element={<GetTours/>}></Route>
-          <Route path="/pieChart" element={<PieChart/>}></Route>
-          <Route path="/barChart" element={<BarChart/>}></Route>
+          <Route path="/bookingPieChart" element={<BookingPieChart/>}></Route>
+          <Route path="/toursBarChart" element={<ToursBarChart/>}></Route>
+          <Route path="/clientsPieChart" element={<ClientsPieChart/>}></Route>
+          <Route path="/financeLineChart" element={<FinanceLineChart/>}></Route>
+          <Route path="/vehiclePieChart" element={<VehiclePieChart/>}></Route>
+          <Route path="/staffPieChart" element={<StaffPieChart/>}></Route>
+          <Route path="/vehicleOwnerPieChart" element={<VehicleOwnerPieChart/>}></Route>
+          <Route path="/driverPieChart" element={<DriverPieChart/>}></Route>
         </Routes>
       </BrowserRouter>
 
@@ -230,8 +263,62 @@ function App() {
           <Route path="/vehicleowner/:id" element={ <ViewVehicleOwner/>} />
         </Routes>
       </BrowserRouter>
-    
       
+      {/*Bookings and Reservations*/}
+      <BrowserRouter>
+        <Routes>
+          <Route path='/addBookings' element={<AddBookings />}></Route>
+        </Routes>
+      </BrowserRouter>
+
+      
+
+      <BrowserRouter>
+        <Routes>
+          <Route path='/AllBookings' element={<AllBookings />}></Route>
+        </Routes>
+      </BrowserRouter>
+
+      <BrowserRouter>
+        <Routes>
+          
+          <Route path ='/getBooking/:id' element={<UpdateBooking/>}></Route>
+        </Routes>
+      </BrowserRouter>
+
+
+
+      <BrowserRouter>
+        <Routes>
+          <Route path='/addReservations' element={<AddReservation />}></Route>
+        </Routes>
+      </BrowserRouter>
+
+      <BrowserRouter>
+        <Routes>
+          <Route path='/AllReservations' element={<AllReservations/>}></Route>
+        </Routes>
+      </BrowserRouter>
+
+      <BrowserRouter>
+        <Routes>
+          
+          <Route path ='/getReservation/:id' element={<UpdateReservation/>}></Route>
+        </Routes>
+      </BrowserRouter>
+
+     
+    
+      {/* driver */}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/driver" element={<Home_driver />} />
+          <Route path="/add_driver" element={<Add_driver />} />
+          <Route path="/driver/edit/:id" element={<Edit_driver />} />
+          <Route path="/driver/delete/:id" element={<Delete_driver />} />
+        </Routes>
+      </BrowserRouter>
+
     </div>
 
   );

@@ -1,8 +1,15 @@
 import '../App.css'
 import Logo from "../tourImages/Logo.png";
 import SideNavLogo from "../tourImages/sideNavico.png";
-import PieChart from "./charts/PieChart";
-import BarChart from "./charts/BarChart";
+import BookingPieChart from "./charts/BookingPieChart";
+import ToursBarChart from "./charts/ToursBarChart";
+import ClientsPieChart from "./charts/ClientsPieChart";
+import FinanceLineChart from "./charts/FinanceLineChart";
+import VehiclePieChart from "./charts/VehiclePieChart";
+import StaffPieChart from "./charts/StaffPieChart";
+import VehicleOwnerPieChart from "./charts/VehicleOwnerPieChart";
+import DriverPieChart from "./charts/DriverPieChart";
+
 
 
 function AdminDashboard() {
@@ -42,16 +49,29 @@ function AdminDashboard() {
 
             <div className='container mt-5' style={{ height: "80vh", width: "100%", display: "flex" }}>
                 <div>
-                   <PieChart/>
+                   <BookingPieChart/>
                 </div>
                 <div>
-                   <PieChart/>
+                   <ClientsPieChart/>
                 </div>
                 <div>
-                   <BarChart/>
+                   <FinanceLineChart/>
                 </div>
-
-                
+                <div>
+                   <ToursBarChart/>
+                </div>
+                <div>
+                   <VehiclePieChart/>
+                </div>
+                <div>
+                   <StaffPieChart/>
+                </div>
+                <div>
+                   <VehicleOwnerPieChart/>
+                </div>
+                <div>
+                   <DriverPieChart/>
+                </div>    
             </div>
 
 

@@ -1,0 +1,73 @@
+.dcardsWrapper {
+  display: flex;
+  background-color: var(--white);
+  margin: 5px 5rem;
+  margin-bottom: 10px;
+  padding: 0.5rem;
+  border-radius: 10px;
+  justify-content: center;
+}
+
+.dcards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 4rem;
+  padding: 0 5rem;
+  justify-content: center;
+  width: 80vw;
+}
+
+.dcard {
+  border: 2px solid rgb(66, 12, 54);
+  background-color: rgb(252, 216, 255);
+  border-radius: 10px;
+  width: 250px;
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 0.1em;
+  padding-right: 10px;
+  align-items: center;
+  text-align: center;
+}
+
+.dcard img {
+  width: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  height: 120px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.dcard .text {
+  margin-top: 10px;
+  padding: 0 20px 20px;
+  text-align: left;
+}
+
+.dbtnContainer {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.dcardBtn {
+  background-color: rgb(66, 12, 54);
+  padding: 10px;
+  border: 0;
+  color: white;
+  width: 80px;
+  border-radius: 10px;
+  text-decoration: none;
+  margin-left: 10px;
+  font-size: 1rem;
+  padding: 0.2em;
+}
+
+.dlabel {
+  width: 150px;
+  display: inline-block;
+  font-weight: bolder;
+}
+
+
