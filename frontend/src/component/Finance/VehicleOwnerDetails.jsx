@@ -17,7 +17,7 @@ function AllVehicleOwnerDetails() {
   //get all Vehicle Owner's List
   async function getVehicleOwnerDetails() {
     try {
-      const response = await axios.get("http://localhost:8090/vehicleOwner/");
+      const response = await axios.get("http://localhost:8090/vehicleOwner//");
       setVehicleOwnerDetails(response.data);
     } catch (error) {
       console.error("Error with GET request:", error);
