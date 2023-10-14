@@ -1,11 +1,9 @@
 import '../App.css'
 import Logo from "../tourImages/Logo.png";
 import SideNavLogo from "../tourImages/sideNavico.png";
-import PieChart from "./charts/PieChart";
-import BarChart from "./charts/BarChart";
+import AddTour from './AddTour';
 
-
-function AdminDashboard() {
+function ToursAndRoutePlanning() {
 
     return (
         <>
@@ -40,53 +38,20 @@ function AdminDashboard() {
                 </div>
             </nav>
 
-            <div className='container mt-5' style={{ height: "80vh", width: "100%", display: "flex" }}>
-                <div>
-                   <PieChart/>
-                </div>
-                <div>
-                   <PieChart/>
-                </div>
-                <div>
-                   <BarChart/>
-                </div>
-
-                
-            </div>
-
-
             <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
                 <div class="offcanvas-header">
-                    <img src = {SideNavLogo} width="40" height="45" alt="sideNavLogo"/><h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">RapidTravels</h5>
+                    <img src = {SideNavLogo} width="40" height="45" alt="sideNavLogo"/><h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel"></h5>
+                    <h5>Tours And Route Planning</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item px-4 fs-5 rounded-2" id="block-scopAdmin" style={{ margin: "10px 0px", border: "0px solid #000" }}>
-                            <a className="nav-link active fw-bold" aria-current="page" href="!#">Booking And Reservation </a>
+                            <a className="nav-link active fw-bold" aria-current="page" href={`/addTour/`}>Add Tours</a>
                         </li>
                         <li className="nav-item px-4 fs-5 rounded-2" id="block-scopAdmin" style={{ margin: "10px 0px", border: "0px solid #000" }}>
-                            <a className="nav-link fw-bold" href="/addTour">Tours And Route Planning</a>
+                            <a className="nav-link fw-bold" href={`/getTours`}>Manage Tours</a>
                         </li>
-                        <li className="nav-item px-4 fs-5 rounded-2" id="block-scopAdmin" style={{ margin: "10px 0px", border: "0px solid #000" }}>
-                            <a className="nav-link fw-bold" href="/AllClient">Client Management </a>
-                        </li>
-                        <li className="nav-item px-4 fs-5 rounded-2" id="block-scopAdmin" style={{ margin: "10px 0px", border: "0px solid #000" }}>
-                            <a className="nav-link active fw-bold" aria-current="page" href="/AllClient">Finance Management </a>
-                        </li>
-                        <li className="nav-item px-4 fs-5 rounded-2" id="block-scopAdmin" style={{ margin: "10px 0px", border: "0px solid #000" }}>
-                            <a className="nav-link active fw-bold" aria-current="page" href="/AllClient">Vehicle Management</a>
-                        </li>
-                        <li className="nav-item px-4 fs-5 rounded-2" id="block-scopAdmin" style={{ margin: "10px 0px", border: "0px solid #000" }}>
-                            <a className="nav-link active fw-bold" aria-current="page" href="/AllClient">Staff Management </a>
-                        </li>
-                        <li className="nav-item px-4 fs-5 rounded-2" id="block-scopAdmin" style={{ margin: "10px 0px", border: "0px solid #000" }}>
-                            <a className="nav-link active fw-bold" aria-current="page" href="/AllClient">Vehicle Owner Management </a>
-                        </li>
-                        <li className="nav-item px-4 fs-5 rounded-2" id="block-scopAdmin" style={{ margin: "10px 0px", border: "0px solid #000" }}>
-                            <a className="nav-link active fw-bold" aria-current="page" href="/AllClient">Driver Management</a>
-                        </li>
-
                     </ul>
 
 
@@ -104,4 +69,4 @@ function AdminDashboard() {
 }
 
 
-export default AdminDashboard;
+export default ToursAndRoutePlanning;

@@ -29,9 +29,26 @@ import VSlide from './component/VSlide';
 import About from './component/AboutUs';
 import Book from './component/Bookingdetails'
 import Dropclient from './component/ADDDROP';
-import AllDrop from './component/AllDropClient'
-import TourDetails from './component/TourDetails'
-import VSlide2 from './component/VSSlider2'
+import AllDrop from './component/AllDropClient';
+import TourDetails from './component/TourDetails';
+import VSlide2 from './component/VSSlider2';
+import ToursAndRoutePlanning from './component/ToursAndRoutePlanningNav';
+import AddTour from './component/AddTour';
+import EditTour from './component/EditTour';
+import GetTours from './component/GetTours';
+
+//charts
+import PieChart from './component/charts/PieChart';
+import BarChart from './component/charts/BarChart';
+
+// Finance
+import DriverSalary from "./component/Finance/DriverSalary";
+import DriverDetails from "./component/Finance/DriverDetails";
+import StaffDetails from "./component/Finance/StaffDetails";
+import StaffSalary from "./component/Finance/StaffSalary";
+import VehicleOwnerSalary from "./component/Finance/VehicleOwnerSalary";
+import VehicleOwnerDetails from "./component/Finance/VehicleOwnerDetails";
+import AllIncomes from "./component/Finance/AllIncomes";
 
 function App() {
   return (
@@ -133,6 +150,12 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/Dashboard-admin-rapidTravles' element={<AdminDashboard/>}></Route>
+          <Route path="/Tours-and-route-planning" element={<ToursAndRoutePlanning/>}></Route>
+          <Route path="/addTour" element={<AddTour/>}></Route>
+          <Route path="/editTours/:id" element={<EditTour/>}></Route>
+          <Route path="/getTours" element={<GetTours/>}></Route>
+          <Route path="/pieChart" element={<PieChart/>}></Route>
+          <Route path="/barChart" element={<BarChart/>}></Route>
         </Routes>
       </BrowserRouter>
 
@@ -150,6 +173,26 @@ function App() {
           <Route path='/Drop' element={<Dropclient/>}></Route>
           <Route path='/AllDrop' element={<AllDrop/>}></Route>
          <Route path='/SliderVS' element={<VSlide2/>}></Route>
+        </Routes>
+      </BrowserRouter>
+
+
+      {/* Finance Management */}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/AllDriverSal" element={<DriverSalary />}></Route>
+          <Route path="/AllDriverList" element={<DriverDetails />}></Route>
+          <Route path="/AllStaffList" element={<StaffDetails />}></Route>
+          <Route path="/AllStaffSal" element={<StaffSalary />}></Route>
+          <Route
+            path="/AllVehicleOwnerSal"
+            element={<VehicleOwnerSalary />}
+          ></Route>
+          <Route
+            path="/AllVehicleOwnerList"
+            element={<VehicleOwnerDetails />}
+          ></Route>
+          <Route path="/AllIncomes" element={<AllIncomes />}></Route>
         </Routes>
       </BrowserRouter>
 
