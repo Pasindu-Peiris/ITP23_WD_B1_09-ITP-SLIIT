@@ -37,6 +37,10 @@ import AddTour from './component/AddTour';
 import EditTour from './component/EditTour';
 import GetTours from './component/GetTours';
 
+//charts
+import PieChart from './component/charts/PieChart';
+import BarChart from './component/charts/BarChart';
+
 // Finance
 import DriverSalary from "./component/Finance/DriverSalary";
 import DriverDetails from "./component/Finance/DriverDetails";
@@ -150,6 +154,8 @@ function App() {
           <Route path="/addTour" element={<AddTour/>}></Route>
           <Route path="/editTours/:id" element={<EditTour/>}></Route>
           <Route path="/getTours" element={<GetTours/>}></Route>
+          <Route path="/pieChart" element={<PieChart/>}></Route>
+          <Route path="/barChart" element={<BarChart/>}></Route>
         </Routes>
       </BrowserRouter>
 
