@@ -233,8 +233,8 @@ function AddTour() {
             <div className="container" style={{ height : "auto",width: "30%", marginLeft: "18%", marginTop: "50px"}}>
             <h4 style={{marginTop: "-40px"}} className="fw-bold"><u>Add Tour</u></h4>
                 <div>
-                    <label for="tourName" className="form-label px-1 d-flex align-items-center justify-content-between">Tour Name<div className="" id="tourNameError" style={{color: "red", fontSize: "15px", float:"right"}}></div></label>
-                    <input type="text" class="form-control" id="tourName" name="tourName" placeholder="Enter tour name" pattern="[A-Za-z._%+\-\s]{5,}"  required 
+                    <label for="tourName" className="labsh form-label px-1 d-flex align-items-center justify-content-between">Tour Name<div className="" id="tourNameError" style={{color: "red", fontSize: "15px", float:"right"}}></div></label>
+                    <input type="text" class="form-control inputSh" id="tourName" name="tourName" placeholder="Enter tour name" pattern="[A-Za-z._%+\-\s]{5,}"  required 
                     onChange={(e) => {
                         setTourName(e.target.value);
 
@@ -246,8 +246,8 @@ function AddTour() {
                     }}/>
                 </div>
                 <div>
-                    <label for="origin" class="form-label form-label px-1 d-flex align-items-center justify-content-between">Origin<div className="" id="originError" style={{color: "red", fontSize: "15px", float:"right"}}></div></label>
-                    <input type="text" class="form-control" id="origin" name="origin" placeholder="Enter origin" pattern="[A-Za-z._%+\-\s]{5,}" required 
+                    <label for="origin" class=" labsh form-label form-label px-1 d-flex align-items-center justify-content-between">Origin<div className="" id="originError" style={{color: "red", fontSize: "15px", float:"right"}}></div></label>
+                    <input type="text" class="form-control inputSh" id="origin" name="origin" placeholder="Enter origin" pattern="[A-Za-z._%+\-\s]{5,}" required 
                     onChange={(e) => {
                         setOrigin(e.target.value);
 
@@ -259,8 +259,8 @@ function AddTour() {
                     }}/>
                 </div>
                 <div>
-                    <label for="destination" class="form-label form-label px-1 d-flex align-items-center justify-content-between">Destination<div className="" id="destinationError" style={{color: "red", fontSize: "15px", float:"right"}}></div></label>
-                    <input type="text" class="form-control" id="destination" name="destination" placeholder="Enter destination" pattern="[A-Za-z._%+\-\s]{5,}" required 
+                    <label for="destination" class="labsh form-label form-label px-1 d-flex align-items-center justify-content-between">Destination<div className="" id="destinationError" style={{color: "red", fontSize: "15px", float:"right"}}></div></label>
+                    <input type="text" class="form-control inputSh" id="destination" name="destination" placeholder="Enter destination" pattern="[A-Za-z._%+\-\s]{5,}" required 
                     onChange={(e) => {
                         setDestination(e.target.value);
 
@@ -272,8 +272,8 @@ function AddTour() {
                     }}/>
                 </div>
                 <div>
-                    <label for="distance" class="form-label form-label px-1 d-flex align-items-center justify-content-between">Distance<div className="" id="distanceError" style={{color: "red", fontSize: "15px", float:"right"}}></div></label>
-                    <input type="text" name="distance" class="form-control" id="distance" placeholder="Enter distance" pattern="^\d+(?:\.\d{1,2})?$" step="0.01" required 
+                    <label for="distance" class="labsh form-label form-label px-1 d-flex align-items-center justify-content-between">Distance<div className="" id="distanceError" style={{color: "red", fontSize: "15px", float:"right"}}></div></label>
+                    <input type="text" name="distance" class="form-control inputSh" id="distance" placeholder="Enter distance" pattern="^\d+(?:\.\d{1,2})?$" step="0.01" required 
                     onChange={(e) => {
                         setDistance(e.target.value);
 
@@ -285,15 +285,15 @@ function AddTour() {
                     }}/>
                 </div>
                 <div>
-                    <label for="cost" class="form-label">Cost (Rs.)</label>
-                    <input type="text" name="cost" class="form-control" value={distance ? parseFloat(distance) * 100 : .0} id="cost" disabled placeholder="Enter cost" pattern="^\d+(?:\.\d{1,2})?$" step="0.01" required onMouseOver={(e) => {
+                    <label for="cost" class="labsh form-label">Cost (Rs.)</label>
+                    <input type="text" name="cost" class="form-control inputSh" value={distance ? parseFloat(distance) * 100 : .0} id="cost" disabled placeholder="Enter cost" pattern="^\d+(?:\.\d{1,2})?$" step="0.01" required onMouseOver={(e) => {
                         setCost(e.target.value);
 
                     }} />
                 </div>
                 <div>
-                    <label for="additionalExpenses" class="form-label form-label px-1 d-flex align-items-center justify-content-between">Add.Expenses (Rs.)<div className="" id="additionalExpensesError" style={{color: "red", fontSize: "15px", float:"right"}}></div></label>
-                    <input type="text" name="additionalExpenses" class="form-control" id="additionalExpenses" placeholder="Enter additional expenses" pattern="^\d+(?:\.\d{1,2})?$" step="0.01" required 
+                    <label for="additionalExpenses" class="labsh form-label form-label px-1 d-flex align-items-center justify-content-between">Add.Expenses (Rs.)<div className="" id="additionalExpensesError" style={{color: "red", fontSize: "15px", float:"right"}}></div></label>
+                    <input type="text" name="additionalExpenses" class="form-control inputSh" id="additionalExpenses" placeholder="Enter additional expenses" pattern="^\d+(?:\.\d{1,2})?$" step="0.01" required 
                     onChange={(e) => {
                         setAdditionalExpenses(e.target.value);
 
@@ -307,15 +307,15 @@ function AddTour() {
             </div>
             <div className="container" style={{width: "30%", marginRight: "18%", height: "auto"}}>
                 <div style={{ marginTop: "30px", marginBottom: "8px" }}>
-                    <label for="totalCost" class="form-label">Total Cost (Rs.)</label>
-                    <input type="text" class="form-control" value={cost && additionalExpenses ? parseFloat(cost) + parseFloat(additionalExpenses) : .0} disabled id="result" required onMouseOver={(e) => {
+                    <label for="totalCost" class="form-label labsh">Total Cost (Rs.)</label>
+                    <input type="text" class="form-control inputSh" value={cost && additionalExpenses ? parseFloat(cost) + parseFloat(additionalExpenses) : .0} disabled id="result" required onMouseOver={(e) => {
                         setTotalCost(e.target.value);
 
                     }} />
                 </div>
                 <div>
-                    <label for="date" class="form-label form-label px-1 d-flex align-items-center justify-content-between">Tour Date<div className="" id="dateError" style={{color: "red", fontSize: "15px", float:"right"}}></div></label>
-                    <input type="date" id="date" name="date" class="form-control"  required 
+                    <label for="date" class="form-label form-label labsh px-1 d-flex align-items-center justify-content-between">Tour Date<div className="" id="dateError" style={{color: "red", fontSize: "15px", float:"right"}}></div></label>
+                    <input type="date" id="date" name="date" class="form-control inputSh"  required 
                     onChange={(e) => {
                         setDate(e.target.value);
 
@@ -327,8 +327,8 @@ function AddTour() {
                     }}/>
                 </div>
                 <div>
-                    <label for="description" class="form-label form-label px-1 d-flex align-items-center justify-content-between">Description<div className="" id="descriptionError" style={{color: "red", fontSize: "15px", float:"right"}}></div></label>
-                    <textarea id="description" name="description" class="form-control"  rows="5" cols="100" pattern="[a-z0-9._%+\-]{,500}" required placeholder="Enter description here...." 
+                    <label for="description" class="labsh form-label form-label px-1 d-flex align-items-center justify-content-between">Description<div className="" id="descriptionError" style={{color: "red", fontSize: "15px", float:"right"}}></div></label>
+                    <textarea id="description" name="description" class="form-control inputSh"  rows="5" cols="100" pattern="[a-z0-9._%+\-]{,500}" required placeholder="Enter description here...." 
                     onChange={(e) => {
                         setDescription(e.target.value);
 
@@ -339,8 +339,8 @@ function AddTour() {
                     }}/>
                 </div>
                 <div>
-                    <label for="image" class="form-label form-label px-1 d-flex align-items-center justify-content-between" style={{marginTop: "15px"}}>Upload Image<div className="" id="imageError" style={{color: "red", fontSize: "15px", float:"right"}}></div></label>
-                    <input type="file" id="image" name="image" filename="file" class="form-control" required 
+                    <label for="image" class="labsh form-label form-label px-1 d-flex align-items-center justify-content-between" style={{marginTop: "15px"}}>Upload Image<div className="" id="imageError" style={{color: "red", fontSize: "15px", float:"right"}}></div></label>
+                    <input type="file" id="image" name="image" filename="file" class="form-control inputSh" required 
                     onChange={onChangeFile} 
                     
                     onMouseLeave={(e) =>{

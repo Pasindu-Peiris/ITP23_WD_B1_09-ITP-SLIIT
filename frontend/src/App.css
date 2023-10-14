@@ -626,12 +626,13 @@ hr {
 
 /*--------------------------Shehan----------------------*/
 
-label {
+
+.labsh {
   margin-bottom: 10px;
 
 }
 
-input {
+.inputSh {
   margin-bottom: 15px;
 
 }
@@ -670,14 +671,14 @@ input {
 
 }
 
-input[type="text"]:focus,
-input[type="file"]:focus,
-input[type="date"]:focus,
-uneditable-input:focus {
+
+.inputSh input[type="text"]:focus,
+.inputSh input[type="file"]:focus,
+.inputSh input[type="date"]:focus,
+.uneditable-input:focus {
   border-color: #6351ce;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 15px #6553cfa3;
   outline: 0 none;
-
 }
 
 #search {
