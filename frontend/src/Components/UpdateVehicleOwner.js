@@ -140,9 +140,11 @@ export default function UpdateVehicleOwner() {
         if (contact === '') {
           contactInput.setCustomValidity('Contact number is required.');
           contactError.textContent = 'Contact number is required.';
+          contactError.style.color = 'red';
         } else if (!contactRegex.test(contact)) {
           contactInput.setCustomValidity('Enter a valid contact number.');
           contactError.textContent = 'Enter a valid contact number.';
+          contactError.style.color = 'red';
         } else {
           contactInput.setCustomValidity('');
           contactError.textContent = '';
@@ -224,7 +226,7 @@ export default function UpdateVehicleOwner() {
                                 />
                                 <span id="contact-error" className="error"></span>
                             </div>
-
+                            <div className="mb-3" />
                             <button type="submit" className="btn btn-primary col-12">Update</button>
                             <p>Want to go back? <Link to="/vehicleownersmanager"><span className='text-primary'>Back</span></Link></p>
                         </form>

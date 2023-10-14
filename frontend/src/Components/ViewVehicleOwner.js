@@ -77,23 +77,23 @@ export default function ViewVehicleOwner() {
                         <div className='text-start'>
                             {/* Owner Details */}
                             <div className="form-group">
-                                <label>Name: </label>
+                                <label>Name: &nbsp;</label>
                                 <span>{ownerDetails.name}</span>
                             </div>
                             <div className="form-group">
-                                <label>Email address: </label>
+                                <label>Email address: &nbsp;</label>
                                 <span>{ownerDetails.email}</span>
                             </div>
                             <div className="form-group">
-                                <label>Location: </label>
+                                <label>Location:&nbsp; </label>
                                 <span>{ownerDetails.location}</span>
                             </div>
                             <div className="form-group">
-                                <label>Contact Number: </label>
+                                <label>Contact Number:&nbsp; </label>
                                 <span>{ownerDetails.contact}</span>
                             </div>
                             <div className="form-group">
-                                <label>NIC: </label>
+                                <label>NIC: &nbsp;</label>
                                 <span>{ownerDetails.nic}</span>
                             </div>
 
