@@ -120,7 +120,10 @@ function AllDriverDetails() {
                   const { driver_id } = driver;
                   if (driver_id) {
                     return (
-                      <tr key={driver._id}>
+                      <tr
+                        key={driver._id}
+                        style={{ backgroundColor: "#6553cfa3" }}
+                      >
                         <td>{index + 1}</td>
                         <td>{driver_id.name}</td>
                         <td>{driver_id.nic}</td>

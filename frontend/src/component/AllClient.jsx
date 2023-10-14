@@ -8,7 +8,7 @@ import { useReactToPrint } from 'react-to-print';
 
 
 function AllClient() {
-
+   
 
     function Notify() {
         toast.success('User Deleted Successful', {
@@ -40,6 +40,9 @@ function AllClient() {
     const [dropClient, setDropClient] = useState([]);
 
     useEffect(() => {
+        
+
+        
 
         //get all users
         function getClients() {
@@ -54,10 +57,14 @@ function AllClient() {
         }
 
         getClients();
+       
+     
 
 
 
     }, [])
+
+    
 
 
 
@@ -261,13 +268,13 @@ function AllClient() {
                                         {isActionColumnVisible && (
                                             <td className="mx-auto-1">
 
-                                                <a href={`/get/${item._id}`} className="btn btn-success cix">Update</a>
+                                                <a href={`/get/${item._id}`} className="btn btn-success cix"><i class="fa-solid fa-pen-to-square" style={{color: "#ffffff"}}></i></a>
 
 
-                                                <button type="button" className="btn btn-danger" onClick={
+                                                <button type="button" className="btn btn-danger ms-2" onClick={
                                                     (e) => hadelDelete(item._id)}
                                                 >
-                                                    Delete
+                                                   <i class="fa-solid fa-trash" style={{color: "#ffffff"}}></i>
 
                                                 </button>
 
