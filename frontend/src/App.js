@@ -83,12 +83,9 @@ import UpdateBooking from './component/UpdateBooking';
 import AllReservations from './component/AllReservations';
 import UpdateReservation from './component/UpdateReservation';
 
-<<<<<<< Updated upstream
 
 import ADlog from './component/AdminLogin'
 
-=======
->>>>>>> Stashed changes
 
 function App() {
   return (

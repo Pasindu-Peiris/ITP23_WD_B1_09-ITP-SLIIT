@@ -38,7 +38,7 @@ function AllVehicleOwnerSal() {
       <MainLayout></MainLayout>
       <Container className="mt-5">
         <Row>
-          <Col xs={12} md={8}>
+          <Col xs={12} md={8} style={{ marginBottom: "20px" }}>
             <h1>Vehicle Owner Salary Details</h1>
           </Col>
 
@@ -59,8 +59,6 @@ function AllVehicleOwnerSal() {
             </Form>
           </Col>
         </Row>
-
-        <br />
 
         <Row>
           <Col xs={12}>

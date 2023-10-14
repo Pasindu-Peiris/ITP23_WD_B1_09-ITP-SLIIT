@@ -4,7 +4,7 @@ const DriverSalary = new mongoose.Schema(
     {
       driver_id: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "driverList",
+        ref: "Driver",
       },
       salaryPerKM: {
         type: Number,

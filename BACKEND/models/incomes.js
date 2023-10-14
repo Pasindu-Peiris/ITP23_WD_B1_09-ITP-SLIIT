@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const AllIncomes = new mongoose.Schema(
   {
-    userData_id: {
+    booking_id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Booking",
     },

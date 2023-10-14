@@ -38,7 +38,7 @@ function AllDriverSal() {
       <MainLayout></MainLayout>
       <Container className="mt-5">
         <Row>
-          <Col xs={12} md={8}>
+          <Col xs={12} md={8} style={{ marginBottom: "20px" }}>
             <h1>Driver Salary Details</h1>
           </Col>
           <Col xs={12} md={4} className="mt-md-0 mt-3">
@@ -58,8 +58,6 @@ function AllDriverSal() {
             </Form>
           </Col>
         </Row>
-
-        <br />
 
         <Row>
           <Col xs={12}>
@@ -94,8 +92,7 @@ function AllDriverSal() {
                   <tr>
                     <th></th>
                     <th>Name</th>
-                    <th>NIC</th>
-                    <th>Account Number</th>
+                    <th>Contact Number</th>
                     <th>Email</th>
                     <th>Bonus</th>
                     <th>Net Salary</th>
@@ -121,8 +118,7 @@ function AllDriverSal() {
                           >
                             <td>{index + 1}</td>
                             <td>{driver_id.name}</td>
-                            <td>{driver_id.nic}</td>
-                            <td>{driver_id.accountNumber}</td>
+                            <td>{driver_id.ContactNumber}</td>
                             <td>{driver_id.email}</td>
                             <td>{bonus}%</td>
                             <td>Rs.{netSal}</td>

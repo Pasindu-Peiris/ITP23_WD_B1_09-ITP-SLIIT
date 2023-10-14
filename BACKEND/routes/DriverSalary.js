@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const DriverSalary = require("../models/driverSalModel");
 
-
 // Middleware for CORS configuration
 router.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
@@ -16,9 +15,10 @@ router.use(express.json());
 
 // Add driver salary
 router.post("/addDriverSal", (req, res) => {
-  const { driver_id, bonus, mileage } = req.body;
+  const { driver_id, bonus } = req.body;
 
   // Salary Calculations
+  let mileage = 0;
   const salaryPerKM = 50;
   const netSalary =
     (salaryPerKM * mileage * bonus) / 100 + salaryPerKM * mileage;
@@ -31,7 +31,6 @@ router.post("/addDriverSal", (req, res) => {
     driver_id,
     salaryPerKM,
     bonus,
-    mileage,
     netSalary,
   });
 
