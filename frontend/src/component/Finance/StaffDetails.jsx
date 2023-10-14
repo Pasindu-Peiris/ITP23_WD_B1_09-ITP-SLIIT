@@ -18,7 +18,7 @@ function AllStaffDetails() {
   async function getStaffDetails() {
     try {
       const response = await axios.get(
-        "http://localhost:8090/finance/getStaffList/"
+        "http://localhost:8090/user/details"
       );
       setStaffDetails(response.data);
     } catch (error) {
@@ -119,7 +119,7 @@ function AllStaffDetails() {
                   const { element_id } = element;
                   if (element_id) {
                     return (
-                      <tr key={element._id}>
+                      <tr key={index}>
                         <td>{index + 1}</td>
                         <td>{element_id.name}</td>
                         <td>{element_id.nic}</td>
