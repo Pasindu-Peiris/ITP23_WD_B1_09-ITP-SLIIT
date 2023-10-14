@@ -54,7 +54,7 @@ function AdminDashboard() {
                             <a className="nav-link active fw-bold" aria-current="page" href="!#">Booking And Reservation </a>
                         </li>
                         <li className="nav-item px-4 fs-5 rounded-2" id="block-scopAdmin" style={{ margin: "10px 0px", border: "0px solid #000" }}>
-                            <a className="nav-link fw-bold" href="/Tours-and-route-planning">Tours And Route Planning</a>
+                            <a className="nav-link fw-bold" href="/addTour">Tours And Route Planning</a>
                         </li>
                         <li className="nav-item px-4 fs-5 rounded-2" id="block-scopAdmin" style={{ margin: "10px 0px", border: "0px solid #000" }}>
                             <a className="nav-link fw-bold" href="/AllClient">Client Management </a>
