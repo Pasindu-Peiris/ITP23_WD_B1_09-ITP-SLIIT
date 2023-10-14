@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Table, Col, Container, Row, Button, Form } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
+import MainLayout from "./MainLayout";
 
 function AllStaffDetails() {
   const [staffDetails, setStaffSal, setStaffDetails] = useState([]);
@@ -59,6 +60,7 @@ function AllStaffDetails() {
 
   return (
     <>
+      <MainLayout></MainLayout>
       <Container className="mt-5">
         <Row>
           <Col xs={6} className="mb-0">

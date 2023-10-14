@@ -82,17 +82,8 @@ function MainLayout() {
               <a
                 className="nav-link active fw-bold"
                 aria-current="page"
-                href="!#"
+                href="AllIncomes"
               >
-                Booking And Reservation{" "}
-              </a>
-            </li>
-            <li
-              className="nav-item px-4 fs-5 rounded-2"
-              id="block-scopAdmin"
-              style={{ margin: "10px 0px", border: "0px solid #000" }}
-            >
-              <a className="nav-link fw-bold" href="/AllIncomes">
                 All Incomes
               </a>
             </li>
@@ -101,8 +92,17 @@ function MainLayout() {
               id="block-scopAdmin"
               style={{ margin: "10px 0px", border: "0px solid #000" }}
             >
-              <a className="nav-link fw-bold" href="/AllClient">
-                Client Management{" "}
+              <a className="nav-link fw-bold" href="/AllStaffList">
+                Staff Details
+              </a>
+            </li>
+            <li
+              className="nav-item px-4 fs-5 rounded-2"
+              id="block-scopAdmin"
+              style={{ margin: "10px 0px", border: "0px solid #000" }}
+            >
+              <a className="nav-link fw-bold" href="/AllDriverList">
+                Driver Details
               </a>
             </li>
             <li
@@ -113,9 +113,9 @@ function MainLayout() {
               <a
                 className="nav-link active fw-bold"
                 aria-current="page"
-                href="/AllClient"
+                href="/AllVehicleOwnerList"
               >
-                Finance Management{" "}
+                Vehicle Owner Details
               </a>
             </li>
             <li
@@ -126,9 +126,9 @@ function MainLayout() {
               <a
                 className="nav-link active fw-bold"
                 aria-current="page"
-                href="/AllClient"
+                href="/AllStaffSal"
               >
-                Vehicle Management
+                Staff Salary Details
               </a>
             </li>
             <li
@@ -139,9 +139,9 @@ function MainLayout() {
               <a
                 className="nav-link active fw-bold"
                 aria-current="page"
-                href="/AllClient"
+                href="/AllDriverSal"
               >
-                Staff Management{" "}
+                Drivers Salary Details
               </a>
             </li>
             <li
@@ -152,24 +152,12 @@ function MainLayout() {
               <a
                 className="nav-link active fw-bold"
                 aria-current="page"
-                href="/AllClient"
+                href="/AllVehicleOwnerSal"
               >
-                Vehicle Owner Management{" "}
+                Vehicle Owners Salary Details
               </a>
             </li>
-            <li
-              className="nav-item px-4 fs-5 rounded-2"
-              id="block-scopAdmin"
-              style={{ margin: "10px 0px", border: "0px solid #000" }}
-            >
-              <a
-                className="nav-link active fw-bold"
-                aria-current="page"
-                href="/AllClient"
-              >
-                Driver Management
-              </a>
-            </li>
+            
           </ul>
 
           <button

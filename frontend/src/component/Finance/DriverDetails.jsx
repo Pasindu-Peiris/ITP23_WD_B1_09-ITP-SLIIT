@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useState, useEffect, useRef } from "react";
-import { Table, Col, Container, Row, Button , Form} from "react-bootstrap";
+import { Table, Col, Container, Row, Button, Form } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
+import MainLayout from "./MainLayout";
 
 function AllDriverDetails() {
   const [driverDetails, setDriverDetails] = useState([]);
@@ -53,6 +54,7 @@ function AllDriverDetails() {
 
   return (
     <>
+      <MainLayout></MainLayout>
       <Container className="mt-5">
         <Row>
           <Col xs={6} className="mb-0">
@@ -78,7 +80,11 @@ function AllDriverDetails() {
                 </Form>
               </Col>
               <Col xs={12} md={2} className="d-flex justify-content-end">
-                <Button variant="primary" className="btn-lg" onClick={handleSubmit}>
+                <Button
+                  variant="primary"
+                  className="btn-lg"
+                  onClick={handleSubmit}
+                >
                   Calculate
                 </Button>
               </Col>

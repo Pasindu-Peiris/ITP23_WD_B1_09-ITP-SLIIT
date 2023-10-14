@@ -39,7 +39,7 @@ function AllIncomes() {
 
   return (
     <>
-    <MainLayout></MainLayout>
+      <MainLayout></MainLayout>
       <Container className="mt-5">
         <Row>
           <Col xs={12} md={8}>
