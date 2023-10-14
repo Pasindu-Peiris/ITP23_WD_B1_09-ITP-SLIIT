@@ -51,12 +51,18 @@ import VehicleOwnerDetails from "./component/Finance/VehicleOwnerDetails";
 import AllIncomes from "./component/Finance/AllIncomes";
 
 //staff
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from "./staffcomponents/Headers/Headers";
 import Home_staff from "./pages/Home/Home";
 import Register_staff from "./pages/Register/Register";
 import Edit_staff from "./pages/Edit/Edit";
 import Profile_staff from "./pages/Profile/Profile";
+
+//owner
+import SignUp from './Components/SignUp';
+import VehicleOwnerManagement from './Components/VehicleOwnerManagement';
+import ViewVehicleOwner from './Components/ViewVehicleOwner';
+import UpdateVehicleOwner from './Components/UpdateVehicleOwner';
 
 function App() {
   return (
@@ -213,6 +219,17 @@ function App() {
         <Route path='/userprofile/:id' element={<Profile_staff />} />
       </Routes>
     </BrowserRouter>
+
+    {/* owner */}
+    <BrowserRouter>
+        <Routes>
+          <Route path="/vowner" element={ <VehicleOwnerManagement/>} />
+          <Route path="/vehicleowner/signup" element={ <SignUp/>} />
+          <Route path="/updatevehicleowner/:id" element={ <UpdateVehicleOwner/>} />
+          <Route path="/vehicleownersmanager" element={ <VehicleOwnerManagement/>} />
+          <Route path="/vehicleowner/:id" element={ <ViewVehicleOwner/>} />
+        </Routes>
+      </BrowserRouter>
     
       
     </div>
