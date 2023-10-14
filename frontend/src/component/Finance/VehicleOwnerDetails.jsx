@@ -120,7 +120,10 @@ function AllVehicleOwnerDetails() {
                   const { owner_id } = owner;
                   if (owner_id) {
                     return (
-                      <tr key={owner._id}>
+                      <tr
+                        key={owner._id}
+                        style={{ backgroundColor: "#6553cfa3" }}
+                      >
                         <td>{index + 1}</td>
                         <td>{owner_id.name}</td>
                         <td>{owner_id.nic}</td>
