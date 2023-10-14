@@ -60,8 +60,8 @@ const Tables = ({ userdata, deleteUser, userGet, handlePrevious, handleNext, pag
                     <th>ID</th>
                     <th>FullName</th>
                     <th>Email</th>
-                    <th>nic</th>
-                    <th>role</th>
+                    <th>NIC</th>
+                    <th>Role</th>
                     <th>Gender</th>
               
                     
