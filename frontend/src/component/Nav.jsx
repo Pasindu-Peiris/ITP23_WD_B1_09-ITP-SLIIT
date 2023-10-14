@@ -21,7 +21,7 @@ function Nav() {
                     </button>
 
 
-                    <div className="nav-list " id="navbarSupportedContent">
+                    <div className="nav-list px-4" id="navbarSupportedContent">
 
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 
