@@ -45,15 +45,14 @@ const dropc = require("./routes/DropClient");
 app.use("/dropclient", dropc)
 
 
-
 // vehicle
 const ownerRoutes = require('./routes/rownerRoutes');
 const vehicleRoutes = require('./routes/vehicleRoutes');
-const bookingRoutes = require('./routes/bookingRoutes');
+
 
 app.use('/rowners', ownerRoutes);
 app.use('/vehicles', vehicleRoutes);
-app.use('/bookings', bookingRoutes);
+
 
 //vehicle owner 
 
@@ -66,6 +65,16 @@ app.use('/VehicleImg', express.static(__dirname + '/VehicleImg'));
 //tours
 const tourRouter = require("./routes/tourRoutes.js");
 app.use("/tour" , tourRouter);
+
+//addbookings
+const bookingRouter = require("./routes/bookings.js");
+app.use("/booking",bookingRouter);
+
+//addReservations
+const reservationRouter = require("./routes/reservations.js");
+
+app.use("/reservation", reservationRouter);
+
 
 //Finance
 const driverRoutes = require("./routes/DriverSalary");

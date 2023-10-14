@@ -2,9 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-
-
-const bookingSchema = new Schema({
+const reservationSchema = new Schema({
     name: {
         type: String,
         required: true
@@ -13,7 +11,7 @@ const bookingSchema = new Schema({
         type: String,
         required: true,
         unique: true,
-        match: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/
+        match: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
     },
     address: {
         type: String,
@@ -24,23 +22,19 @@ const bookingSchema = new Schema({
         required: true
     },
     nic: {
-        type: String, // Add NIC field
-        required: true
-    },
-    vehicletype: {
-        type: String, // Add Vehicle Type field
-        required: true
-    },
-    pickupdate: {
         type: String,
         required: true
     },
-    returndate: {
+    vehicle: {
         type: String,
         required: true
     },
-    driver: {
-        type: String, // Add Driver field
+    noofguests: {
+        type: Number,
+        required: true
+    },
+    date: {
+        type: String,
         required: true
     },
     amount: {
@@ -49,6 +43,6 @@ const bookingSchema = new Schema({
     }
 });
 
-const Booking = mongoose.model("Booking", bookingSchema);
+const Reservation = mongoose.model("Reservation", reservationSchema);
 
-module.exports = Booking;
+module.exports = Reservation;
