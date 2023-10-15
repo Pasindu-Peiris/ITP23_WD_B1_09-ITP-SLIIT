@@ -121,9 +121,11 @@ function Home() {
 
                             </div>
 
-                            <SlideBarV />
-                            <div id='about'><AboutUS /></div>
+                          
                             <SlideBarCar />
+                            <div id='about'><AboutUS /></div>
+                           
+                            <SlideBarV />
 
 
 
