@@ -82,6 +82,24 @@ function UpadateUserClient() {
 
     }
 
+    const hadelDelte = () => {
+        axios.delete("http://localhost:8090/client/delete/" + id).then((res) => {
+
+            Notify();
+            setTimeout(function () {
+                window.location.reload();
+            }, 2000); // 2000 milliseconds (2 seconds)
+
+
+        }).catch((err) => {
+            alert("User Not Deleted");
+        })
+    }
+
+
+
+
+
 
 
     //handle error messages
@@ -113,17 +131,18 @@ function UpadateUserClient() {
         }
     }
 
-    const isEmailValid = (email) =>{
+    const isEmailValid = (email) => {
         const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
         return emailPattern.test(email);
     }
 
     const emailCheck = (email) => {
 
-        if(isEmailValid(email)){
+        if (isEmailValid(email)) {
             document.getElementById('error3').innerHTML = "Done";
             document.getElementById('error3').style.color = "#00a550 ";
-        }else{
+
+        } else {
             document.getElementById('error3').innerHTML = "Enter Invalid Email";
             document.getElementById('error3').style.color = "red";
         }
@@ -132,12 +151,34 @@ function UpadateUserClient() {
 
     
 
+    const isDeletecheck = () =>{
+
+        let box = document.getElementById('delete');
+       
+       
+        
+        if (box.value === 'Delete/Me') {
+            document.getElementById('error4').innerHTML = "Done";
+            document.getElementById('error4').style.color = "#00a550 ";
+            box.style.border = "2px solid green";
+            document.getElementById('btn4').disabled = false;
+        } else {
+            document.getElementById('error4').innerHTML = "Enter Delete/Me";
+            document.getElementById('error4').style.color = "red";
+            box.style.border = "2px solid red";
+            document.getElementById('btn4').disabled = true;
+        }
+        
+    }
+
+
+
     return (
         <div class="new-12">
             <Nav />
 
-            <div className='container pb-2' style={{ display: "flex", alignItems: "center", justifyContent: "flex-start", marginTop: "30px", backgroundColor: "" }}>
-                <nav aria-label="breadcrumb">
+            <div className='container pb-2 mt-5' style={{ display: "flex", alignItems: "center", justifyContent: "flex-start", marginTop: "30px", backgroundColor: "" }}>
+                <nav aria-label="breadcrumb ">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/" style={{ fontSize: "1.1rem", color: "#000" }}>Home</a></li>
                         <li class="breadcrumb-item"><a href="/profile" style={{ fontSize: "1.1rem", color: "#000" }}>Account Details</a></li>
@@ -161,7 +202,7 @@ function UpadateUserClient() {
                     <form onSubmit={Update} className='p-2'>
 
                         <div className="mb-4 mt-2">
-                            <label for="fname" className="form-label px-1">First Name</label>
+                            <label for="fname" className="form-label px-1 d-flex aline-item-center justify-content-between">First Name<div className=' ' style={{ color: "red" }} id='error'></div></label>
                             <input type="text" className="form-control" id="fname" name="fname" placeholder='First Name' required autoComplete='off' value={fname}
                                 pattern="^[a-zA-Z][a-zA-Z0-9]*$" title='Please Enter Valid Name'
                                 onChange={(e) => {
@@ -177,10 +218,10 @@ function UpadateUserClient() {
 
 
                             />
-                            <div className='py-2 ' style={{ color: "red" }} id='error'></div>
+
                         </div>
                         <div className="mb-4">
-                            <label for="lname" className="form-label px-1">Last Name</label>
+                            <label for="lname" className="form-label px-1 d-flex aline-item-center justify-content-between">Last Name<div className=' ' style={{ color: "red" }} id='error2'></div></label>
                             <input type="text" className="form-control" id="lname" name="lname" placeholder='Last Name' required autoComplete='off' value={lname}
                                 pattern="^[a-zA-Z][a-zA-Z0-9]*$" title='Please Enter Valid Name'
                                 onChange={(e) => {
@@ -192,10 +233,10 @@ function UpadateUserClient() {
                                     errPrint2(e.target.value);
                                 }}
                             />
-                            <div className='py-2 ' style={{ color: "red" }} id='error2'></div>
+
                         </div>
                         <div className="mb-4">
-                            <label for="email" className="form-label px-1">Email</label>
+                            <label for="email" className="form-label px-1 aline-item-center justify-between d-flex">Email <div className='py-2 ' style={{ color: "red" }} id='error3'></div></label>
                             <input type="email" className="form-control" id="email" name="email" placeholder='Email' required autoComplete='off' value={email}
                                 pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" title='Please Enter Valid Email' disabled
                                 onChange={(e) => {
@@ -209,8 +250,10 @@ function UpadateUserClient() {
 
                             />
 
-                        <div className='py-2 ' style={{ color: "red" }} id='error3'></div>
+
                         </div>
+
+                        <p><span className='text-danger' style={{ cursor: "pointer", textDecoration: "underline " }} onClick={hadelDelte}>Delete Account ?</span> </p>
 
                         <button type="submit" className="btn btn-primary w-100 mt-2 but-1">Update Details</button>
 
@@ -224,7 +267,38 @@ function UpadateUserClient() {
 
             </div>
 
+
+
+
+
+
             <ToastContainer />
+
+
+
+
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Launch static backdrop modal
+            </button>
+
+
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                       
+                        <div class="modal-body">
+                            <div className="mb-4 p-3">
+                                <label for="email" className="form-label text-danger d-flex align-items-center justify-content-between">DELETE <div className='' style={{ color: "red" }} id='error4'></div></label>
+                                <input  type="email" onKeyUp={isDeletecheck} className="form-control" id="delete" name="email" placeholder='Type Delete/Me' required autoComplete='off' />
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-danger" id='btn4' onClick={hadelDelte}>Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
 

@@ -275,7 +275,7 @@ function Profile() {
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-sm-9">
-                                                <button className='btn btn-success' style={{ padding: "4px" }}><a href={`/gets/${userData._id}`} className="btn btn-success cix">Update</a></button>
+                                                <button className='btn btn-success' style={{ padding: "4px" }}><a href={`/gets/${userData._id}`} className="btn btn-success cix"><i class="fa-solid fa-pen-to-square" style={{color:" #ffffff"}}></i></a></button>
 
                                             </div>
                                             <div class="col-sm-3">

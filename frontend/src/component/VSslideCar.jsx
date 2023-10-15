@@ -83,7 +83,7 @@ function SlideBarCar() {
                                             {Vehicles.length > 0 && Vehicles.map((Vehicle, index) => (
                                                 <div className='cardBlock-1' key={index}>
                                                     <div class="m-3">
-                                                        <div class="card" id='cardv '>
+                                                        <div class="card" id='cardv-1'>
                                                             <div class="img-wrapper rounded-2xl">
                                                                 {Vehicle.photos?.[0] && (
                                                                    <img
@@ -92,8 +92,8 @@ function SlideBarCar() {
                                                                    className='rounded-md'
                                                                    alt="..."
                                                                    style={{
-                                                                       width: "298px",  // Set the width to 100% of the container
-                                                                       height: "200px",  // Maintain the aspect ratio
+                                                                       width: "100%",  // Set the width to 100% of the container
+                                                                       height: "100%",  // Maintain the aspect ratio
                                                                    }}
                                                                />
                                                                
