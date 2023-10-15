@@ -1,5 +1,5 @@
 const router = require("express").Router();
-let Booking = require("../models/booking");
+let Booking = require("../models/Booking");
 
 router.route("/addBookings").post((req, res) => {
     const {

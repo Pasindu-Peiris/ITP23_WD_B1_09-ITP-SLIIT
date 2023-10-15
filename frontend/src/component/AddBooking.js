@@ -147,9 +147,9 @@ function sendData(e) {
 
 
   return (
-    <div>
+    <div className=" " style={{backgroundColor:"#f1f1f3"}}>
      <Nav/>
-    <div className="form-container">
+    <div className="form-container container card w-50" style={{padding:"50px"}}>
   
       <div className="header">
       <h1>Vehicle Booking Form</h1>
