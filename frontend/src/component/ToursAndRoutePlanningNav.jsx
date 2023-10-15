@@ -6,6 +6,10 @@ import AddTour from './AddTour';
 
 function ToursAndRoutePlanning() {
 
+    function logout(){
+        window.location = '/Admin-login-rapid-travels'
+    }
+
     return (
         <>
 
@@ -56,7 +60,7 @@ function ToursAndRoutePlanning() {
                     </ul>
 
 
-                    <button id="logout" type="button" class="btn btn-outline-danger" style={{ marginTop: "30px" }}><i class="fa-solid fa-right-from-bracket"></i>&nbsp;&nbsp;<b>Log Out</b></button>
+                    <button id="logout" type="button" onClick={logout} class="btn btn-outline-danger" style={{ marginTop: "30px" }}><i class="fa-solid fa-right-from-bracket"></i>&nbsp;&nbsp;<b>Log Out</b></button>
                 </div>
             </div>
 

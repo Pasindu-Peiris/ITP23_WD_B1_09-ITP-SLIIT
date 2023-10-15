@@ -306,7 +306,7 @@ function AddTour() {
                 </div>
             </div>
             <div className="container" style={{width: "30%", marginRight: "18%", height: "auto"}}>
-                <div style={{ marginTop: "30px", marginBottom: "8px" }}>
+                <div style={{ marginTop: "35px", marginBottom: "8px" }}>
                     <label for="totalCost" class="form-label labsh">Total Cost (Rs.)</label>
                     <input type="text" class="form-control inputSh" value={cost && additionalExpenses ? parseFloat(cost) + parseFloat(additionalExpenses) : .0} disabled id="result" required onMouseOver={(e) => {
                         setTotalCost(e.target.value);
