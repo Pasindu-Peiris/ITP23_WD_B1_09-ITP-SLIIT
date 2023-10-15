@@ -15,7 +15,23 @@ import './table.css';
 import Swal from 'sweetalert2';
 
 const Tables = ({ userdata, deleteUser, userGet, handlePrevious, handleNext, page, pageCount, setPage }) => {
-
+  const deleteUserWithConfirmation = (id) => {
+    Swal.fire({
+      title: 'Delete User',
+      text: 'Are you sure you want to delete this user?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Delete',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // User confirmed, proceed with the delete operation
+        deleteUser(id);
+      }
+    });
+  };
+  
   const handleChange = async (id, status) => {
     const response = await statuschangefunc(id, status);
     if (response.status === 200) {
@@ -143,7 +159,7 @@ const Tables = ({ userdata, deleteUser, userGet, handlePrevious, handleNext, pag
                                   </NavLink>
                                 </Dropdown.Item>
                                 <Dropdown.Item>
-                                  <div onClick={() => deleteUser(element._id)}>
+                                  <div onClick={() => deleteUserWithConfirmation(element._id)}>
                                     <i className="fa-solid fa-trash" style={{ color: "red" }}></i> <span>Delete</span>
                                   </div>
                                 </Dropdown.Item>
