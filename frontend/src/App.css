@@ -741,6 +741,13 @@ hr {
   background-color: #f8bb86 !important;
 }
 
+#dashCard{
+  border-color: #6351ce;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 10px 15px #6553cfa3;
+  outline: 0 none;
+
+}
+
 /* owner */
 .button-25 {
   background: #888888;

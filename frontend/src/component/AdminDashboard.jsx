@@ -261,7 +261,7 @@ function AdminDashboard() {
                     <h1 className="text-center mt-5 fw-bolder">Dashboard</h1>
                 </div>
                 <div className='container-fluid row mx-auto px-1 d-flex align-content-center justify-content-center' style={{ marginTop: "100px" }}>
-                    <div class="card mx-2 p-2" style={{ width: "18rem", marginTop: "-180px" }}>
+                    <div class="card mx-2 p-2" id="dashCard" style={{ width: "18rem", marginTop: "-180px" }}>
                         <div class="">
                             <div className='d-flex align-items-center justify-content-between px-3'>
                                 <h5 class="card-title fs-4">Tours</h5>
@@ -273,7 +273,7 @@ function AdminDashboard() {
                         </div>
                     </div>
 
-                    <div class="card mx-2 p-2" style={{ width: "18rem", marginTop: "-180px" }}>
+                    <div class="card mx-2 p-2" id="dashCard" style={{ width: "18rem", marginTop: "-180px" }}>
                         <div class="">
                             <div className='d-flex align-items-center justify-content-between px-3'>
                                 <h5 class="card-title fs-4">Clients</h5>
@@ -286,7 +286,7 @@ function AdminDashboard() {
                     </div>
 
 
-                    <div class="card mx-2 p-2" style={{ width: "18rem", marginTop: "-180px" }}>
+                    <div class="card mx-2 p-2" id="dashCard" style={{ width: "18rem", marginTop: "-180px" }}>
                         <div class="">
                             <div className='d-flex align-items-center justify-content-between px-3'>
                                 <h5 class="card-title fs-4">Vehicles</h5>
@@ -299,7 +299,7 @@ function AdminDashboard() {
                     </div>
 
 
-                    <div class="card mx-2 p-2" style={{ width: "18rem", marginTop: "-180px" }}>
+                    <div class="card mx-2 p-2" id="dashCard" style={{ width: "18rem", marginTop: "-180px" }}>
                         <div class="">
                             <div className='d-flex align-items-center justify-content-between px-3'>
                                 <h5 class="card-title fs-4">Drivers</h5>
@@ -354,7 +354,7 @@ function AdminDashboard() {
             </div>
 
             <div className='container-fluid rounded-top px-5 text-center bg-dark d-flex aline-item-center justify-content-center' style={{height:"10vh"}}>
-                <p className='fw-bold fs-5 mt-4 text-light'>Rapid Travels</p>
+                <p className='fw-bold fs-5 mt-4 text-light'>Rapid Travels PVT.(Ltd)</p>
             </div>
 
 

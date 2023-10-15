@@ -4,10 +4,9 @@ import {Link} from "react-router-dom";
 import axios from "axios";
 import ToursAndRoutePlanning from "./ToursAndRoutePlanningNav";
 import Swal from "sweetalert2";
-import {useReactToPrint} from "react-to-print";
+import { useReactToPrint } from "react-to-print";
 
 function GetTours(){
-    const componentPDF = useRef();
 
     const [tours, setTours] = useState([]);
     const [records, setRecords] = useState([tours]);
@@ -27,12 +26,6 @@ function GetTours(){
         setRecords(tours.filter(f => f.tourName.toLowerCase().includes(event.target.value)))
 
     }
-
-    const generatePDF = useReactToPrint({
-        content: ()=>componentPDF.current,
-        documentTitle: "publishedTours",
-        
-    })
 
     const handleDelete = (id) =>{
         Swal.fire({
@@ -60,53 +53,67 @@ function GetTours(){
           })
     }
 
-    return (
-        <><ToursAndRoutePlanning />
-            <div className="container" style={{ fontSize: "18px" }}>
-                <br /><br />
-                <div >
-                    <input type="search" id="search" className="form-control" placeholder="Search" onChange={filter} />
-                    <button id="report" class="btn btn-outline-dark"><strong>Generate Report</strong></button>
-                </div>
-                <br />
-                <div ref={componentPDF} style={{width: "100%"}}>
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th scope="col">Tour Name</th>
-                                <th scope="col">Origin</th>
-                                <th scope="col">Destination</th>
-                                <th scope="col">Distance</th>
-                                <th scope="col" class="text-center">Cost</th>
-                                <th scope="col" class="text-center">Add.Expenses</th>
-                                <th scope="col" class="text-center">Total Cost</th>
-                                <th scope="col" class="text-center">Date</th>
-                                <th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {records && records.map((tour) => {
-                                return (
-                                    <tr>
-                                        <td>{tour.tourName}</td>
-                                        <td>{tour.origin}</td>
-                                        <td>{tour.destination}</td>
-                                        <td class="text-center">{tour.distance?.toFixed(2)} km</td>
-                                        <td class="text-center">Rs.{tour.cost?.toFixed(2)}</td>
-                                        <td class="text-center">Rs.{tour.additionalExpenses?.toFixed(2)}</td>
-                                        <td class="text-center">Rs.{tour.totalCost?.toFixed(2)}</td>
-                                        <td class="text-center">{tour.date}</td>
-                                        <td><Link to={`/editTours/${tour._id}`}><button id="btn" type="button" class="btn btn-outline-dark"><i class="fa fa-pen-to-square"></i></button></Link>&nbsp;&nbsp;
-                                            <button id="btn" type="button" class="btn btn-outline-danger" onClick={(e) => handleDelete(tour._id)}><i class="fa fa-trash "></i></button> </td>
+    let [actionColumnVisible, setActionColumnVisible] = useState(true);
 
-                                    </tr>
-                                )
-                            })
-                            }
-                        </tbody>
-                    </table>
-                </div>
+    const componentRef = useRef();
+
+    const handleReport = useReactToPrint({
+        onBeforeGetContent: () => setActionColumnVisible(false),
+
+        content: () => componentRef.current,
+
+        onAfterPrint: () => setActionColumnVisible(true),
+
+    });
+
+    return (
+        <><ToursAndRoutePlanning/>
+        <div className="container" style={{fontSize:"18px"}}>
+            <br/><br/>
+            <div >
+                <input type="search" id="search" className="form-control" placeholder="Search" onChange={filter} />
+                <button id="report" class="btn btn-outline-dark" onClick={handleReport}><strong>Generate Report</strong></button>
             </div>
+            <br/>
+            <div ref={componentRef}>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Tour Name</th>
+                        <th scope="col">Origin</th>
+                        <th scope="col">Destination</th>
+                        <th scope="col">Distance</th>
+                        <th scope="col" class = "text-center">Cost</th>
+                        <th scope="col" class = "text-center">Add.Expenses</th>
+                        <th scope="col" class = "text-center">Total Cost</th> 
+                        <th scope="col" class = "text-center">Date</th> 
+                        {actionColumnVisible && <th>&nbsp;&nbsp;&nbsp;&nbsp;</th> }                   
+                    </tr>
+                </thead>
+                <tbody>
+                    {records && records.map((tour) => {
+                        return (
+                            <tr>
+                                <td>{tour.tourName}</td>
+                                <td>{tour.origin}</td>
+                                <td>{tour.destination}</td>
+                                <td class = "text-center">{tour.distance?.toFixed(2)} km</td>
+                                <td class = "text-center">Rs.{tour.cost?.toFixed(2)}</td>
+                                <td class = "text-center">Rs.{tour.additionalExpenses?.toFixed(2)}</td>
+                                <td class = "text-center">Rs.{tour.totalCost?.toFixed(2)}</td>
+                                <td class = "text-center">{tour.date}</td>
+                                {actionColumnVisible && (
+                                <td><Link to={`/editTours/${tour._id}`}><button id = "btn" type="button" class="btn btn-outline-dark"><i class="fa fa-pen-to-square"></i></button></Link>&nbsp;&nbsp;
+                                <button id = "btn" type="button" class="btn btn-outline-danger" onClick={(e) => handleDelete(tour._id)}><i class="fa fa-trash "></i></button> </td>
+                                )}         
+                            </tr>
+                        )
+                    })
+                    }
+                </tbody>
+            </table>
+            </div>
+        </div>
         </>
     );
 }
