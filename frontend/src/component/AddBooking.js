@@ -41,20 +41,36 @@ export default function BookingForm() {
    const {vid} = useParams();
    const [model, setModel] = useState()
    const [totalamount, setTotalamount] = useState()
+   const [bookedTimeSlots, setBookedTimeSlots] = useState([]);
 
+   useEffect(() => {
+     return () => {
+     }
+   }, [])
+   
    useEffect(() => {
     axios
       .get("/vehicles/upVehicles/" + vid)
       .then((result) => {
         console.log(result);
-        setTotalamount(result.data.totalAmount)
-        setModel(result.data.model);
-        
+        setTotalamount(result.data.totalamount);
+        setBookedTimeSlots(result.data.bookedTimeSlots);
+  
+        if (result.data.bookedTimeSlots.length > 0) {
+          const lastBooking = result.data.bookedTimeSlots[result.data.bookedTimeSlots.length - 1];
+          setPickupDate(lastBooking.from);
+          setReturnDate(lastBooking.to);
+        }
+  
+        setVehicleType(result.data.model);
+  
+        console.log(model); // You can keep this line here if you want to log 'model'
       })
       .catch((err) => console.log(err));
-      console.log(model);
-
   }, []);
+  
+
+  
   
 
 
@@ -251,45 +267,50 @@ function sendData(e) {
           />
           <p className="error-message">{nicError}</p>
         </div>
-        <div className="form-group1">
-          <label htmlFor="vehicletype">Select Vehicle</label>
-          <input
-            type="text"
-            className="form-control"
-            id="nic"
-            value = {model}
-            placeholder="Enter NIC"
-            onChange={(e) => {
-              setNic(e.target.value);
-            }}
-          />
+              <div className="form-group1">
+                <label htmlFor="vehicletype">Vehicle Model</label>
+                <input
+  type="text"
+  className="form-control"
+  id="vehicleType"
+  value={vehicletype}
+  placeholder=""
+  onChange={(e) => {
+    setVehicleType(e.target.value);
+  }}
+/>
+
         </div>
-        <div className="form-group">
-          <label htmlFor="pickupdate">Pickup Date</label>
-          <input
-            type="text"
-            className="form-control"
-            id="nic"
-            value = {model}
-            placeholder="Enter NIC"
-            onChange={(e) => {
-              setNic(e.target.value);
-            }}
-          />
-        </div>
-        <div className="form-group1">
-          <label htmlFor="returndate">Return Date</label>
-          <input
-            type="text"
-            className="form-control"
-            id="nic"
-            value = {model}
-            placeholder="Enter NIC"
-            onChange={(e) => {
-              setNic(e.target.value);
-            }}
-          />
-        </div>
+        
+
+<div className="form-group">
+  <label htmlFor="pickupdate">Pickup Date</label>
+  <input
+    type="text"
+    className="form-control"
+    id="pickupdate"
+    value={pickupdate}
+    placeholder="Pickup Date"
+    onChange={(e) => {
+      setPickupDate(e.target.value);
+    }}
+  />
+</div>
+
+<div className="form-group1">
+  <label htmlFor="returndate">Return Date</label>
+  <input
+    type="text"
+    className="form-control"
+    id="returndate"
+    value={returndate}
+    placeholder="Return Date"
+    onChange={(e) => {
+      setReturnDate(e.target.value);
+    }}
+  />
+</div>
+
         <div className="form-group1">
           <label htmlFor="driver">Do you want a Driver</label>
           
@@ -314,7 +335,9 @@ function sendData(e) {
     placeholder="Enter Total Amount"
     value={totalamount} // Bind to the amount state
                 readOnly // Make it non-editable
-   
+                onChange={(e) => {
+                  setAmount(e.target.value);
+                }}
   />
 </div>
 <h2>Payment Information</h2>

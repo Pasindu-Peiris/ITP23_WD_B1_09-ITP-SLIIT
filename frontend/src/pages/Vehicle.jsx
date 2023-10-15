@@ -4,7 +4,6 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import AddressLink from "../Components/AddressLink.jsx";
 import Default_Layout from "../Components/Default_Layout.jsx";
 import Swal from 'sweetalert2';
-import {Navigate} from "react-router-dom";
 import { DatePicker, Modal, Button, message } from 'antd'
 import { debounce } from 'lodash';
 import moment from 'moment'
@@ -252,25 +251,8 @@ const debouncedHandleRangeChange = debounce(handleRangeChange, 100);
           
   
           
+          navigate(`/AddBookings/${id}`)
          
-         
-            
-          // const bookingResponse = await axios.post('/bookings/createBookings/', {
-          //   bookedTimeSlots : {
-          //     from,
-          //     to
-          //   },
-          //   price: totalprice,
-          //   Vehicle_id : id,
-          // });
-
-          
-          
-          // console.log(bookingResponse);
-          
-          navigate('/');
-          // const bookingId = bookingResponse.data._id;
-          // setRedirect(`/account/bookings/${bookingId}`);
         } catch (error) {
           console.error('Error updating status or creating booking:', error);
         }
@@ -510,11 +492,7 @@ const debouncedHandleRangeChange = debounce(handleRangeChange, 100);
                     <span> Rs. {totalprice}</span>
                   )}
                 </button>
-                <Link to={`/AddBookings/${id}`}>
-              <div className='p-4'>
-              <button className='button-24 p-2'>Manage Company Vehicles</button>
-              </div>
-            </Link>
+               
               </div>
             </div>
 

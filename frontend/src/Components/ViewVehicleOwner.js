@@ -94,23 +94,23 @@ export default function ViewVehicleOwner() {
                             {/* Owner Details */}
                             <div className="form-group mb-4">
                                 <label style={{ fontWeight: 'bold', fontSize: '18px' }}>Name:</label>
-                                <span style={{ fontSize: '16px' }}>{ownerDetails.name}</span>
+                                <span style={{ fontSize: '16px' }}>&nbsp;&nbsp;{ownerDetails.name}</span>
                             </div>
                             <div className="form-group mb-4">
                                 <label style={{ fontWeight: 'bold', fontSize: '18px' }}>Email Address:</label>
-                                <span style={{ fontSize: '16px' }}>{ownerDetails.email}</span>
+                                <span style={{ fontSize: '16px' }}>&nbsp;&nbsp;{ownerDetails.email}</span>
                             </div>
                             <div className="form-group mb-4">
                                 <label style={{ fontWeight: 'bold', fontSize: '18px' }}>Location:</label>
-                                <span style={{ fontSize: '16px' }}>{ownerDetails.location}</span>
+                                <span style={{ fontSize: '16px' }}>&nbsp;&nbsp;{ownerDetails.location}</span>
                             </div>
                             <div className="form-group mb-4">
                                 <label style={{ fontWeight: 'bold', fontSize: '18px' }}>Contact Number:</label>
-                                <span style={{ fontSize: '16px' }}>{ownerDetails.contact}</span>
+                                <span style={{ fontSize: '16px' }}>&nbsp;&nbsp;{ownerDetails.contact}</span>
                             </div>
                             <div className="form-group mb-4">
                                 <label style={{ fontWeight: 'bold', fontSize: '18px' }}>NIC:</label>
-                                <span style={{ fontSize: '16px' }}>{ownerDetails.nic}</span>
+                                <span style={{ fontSize: '16px' }}>&nbsp;&nbsp;{ownerDetails.nic}</span>
                             </div>
                             <div className="container mt-2">
                                 {/* Back Button */}
@@ -141,9 +141,10 @@ export default function ViewVehicleOwner() {
                 </div>
                 <div className="row d-flex justify-content-center mt-5 align-middle h-100 mt-5">
                     <div className="col-3 shadow-lg p-3 mb-5 bg-white rounded">
-                        <Link to={`/IndexPage_Update/${id}`} className="btn btn-primary col-12" style={{ marginTop: '-10px' }}>
+                        <a href={`/IndexPage_Update/${id}`} className="btn btn-primary col-12" style={{ marginTop: '-10px' }}>
                             Manage Vehicles
-                        </Link>
+                        </a>
+
                     </div>
                 </div>
             </div>
