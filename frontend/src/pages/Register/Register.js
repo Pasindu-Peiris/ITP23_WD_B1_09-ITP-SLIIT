@@ -62,18 +62,21 @@ const Register = () => {
       newErrors.lname = "";
     }
 
-    if (nic && !/^[0-9]{10}$/.test(nic)) {
-      newErrors.fname = "First name should contain only letters!";
-    } else {
-      newErrors.fname = "";
-    }
   
-
   if (email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     newErrors.email = "";
 } else {
     newErrors.email = "Enter a valid email address!";
+
 }
+
+if (nic && !/^[0-9]{10}$/.test(nic)) {
+  newErrors.nic = "NIC number should contain 10 digits!";
+} else {
+  newErrors.nic= "";
+}
+
+
 
 
     if (mobile && !/^[0-9]{10}$/.test(mobile)) {
