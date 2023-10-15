@@ -13,6 +13,11 @@ const VehicleSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+
+  totalamount:{
+    type: String,
+  },
+
   license: {
     type: String,
     required: true,
