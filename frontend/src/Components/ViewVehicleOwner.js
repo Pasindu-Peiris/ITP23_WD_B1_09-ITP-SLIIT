@@ -87,7 +87,16 @@ export default function ViewVehicleOwner() {
         >
             <div className="container mt-5">
                 <div className="row d-flex justify-content-center mb-5 align-middle h-100 mt-5">
-                    <div className="col-6 shadow-lg p-4 mb-5 bg-white rounded">
+                    <div className="col-6 shadow-lg p-4 mb-5 rounded"
+                         style={{
+                            border: '1px solid #eaeaea',
+                            borderRadius: '25px', // Increased border radius
+                            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+                            background: '#f8f9fa', // Light color background
+                            color: '#000000', // Black text color
+                            position: 'relative', // Set the position to relative
+                        }}
+                    >
                         <h3 style={{ fontSize: '24px' }}>Vehicle Owner Details</h3>
                         <br />
                         <div className="text-start">
@@ -125,16 +134,14 @@ export default function ViewVehicleOwner() {
                         </div>
 
                         {/* Update and Remove Buttons */}
-                        <div className="row">
-                            <div className="col-6">
-                                <Link to={`/updatevehicleowner/${id}`}>
-                                    <button className="btn btn-dark">Update</button>
-                                </Link>
-                            </div>
-                            <div className="col-6">
-                                <button className="btn btn-danger" onClick={handleRemoveConfirmation}>
-                                    Remove
-                                </button>
+                        <div className="row text-center">
+    <div className="col-6">
+        <Link to={`/updatevehicleowner/${id}`}>
+            <button className="btn btn-dark" style={{marginRight: '5px'}}>Update</button>
+        </Link>
+    </div>
+    <div className="col-6">
+        <button className="btn btn-danger" onClick={handleRemoveConfirmation}>Remove</button>
                             </div>
                         </div>
                     </div>
@@ -144,7 +151,6 @@ export default function ViewVehicleOwner() {
                         <a href={`/IndexPage_Update/${id}`} className="btn btn-primary col-12" style={{ marginTop: '-10px' }}>
                             Manage Vehicles
                         </a>
-
                     </div>
                 </div>
             </div>
