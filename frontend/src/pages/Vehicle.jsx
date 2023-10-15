@@ -254,13 +254,12 @@ const debouncedHandleRangeChange = debounce(handleRangeChange, 100);
          
          
             
-          const bookingResponse = await axios.post('/bookings/createBookings/', {
-            bookedTimeSlots : {
-              from,
-              to
-            },
-            price: totalprice,
-            Vehicle_id : id,
+          const bookingResponse = await axios.post('/booking/addBookings/', {
+           
+              pickupdate:bookedTimeSlots.from ,
+              returndate:bookedTimeSlots.to,
+              amount: totalprice,
+              vehicletype:model,
           });
 
           
