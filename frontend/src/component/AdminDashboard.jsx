@@ -343,7 +343,7 @@ function AdminDashboard() {
                     </div >
                 </div>
 
-                <div className='container-fluid row mx-auto px-6' style={{ marginTop: "60px"}}>
+                <div className='container-fluid row mx-auto px-6 pb-5' style={{ marginTop: "60px"}}>
                     <div className='col-4'>
                         <DriverPieChart />
                     </div>
@@ -352,6 +352,12 @@ function AdminDashboard() {
                     </div>
                 </div>
             </div>
+
+            <div className='container rounded-top px-5 text-center bg-dark d-flex aline-item-center justify-content-center' style={{height:"10vh"}}>
+                <p className='fw-bold fs-5 mt-4 text-light'>Rapid Travels</p>
+            </div>
+
+
         </div>
     )
 
