@@ -100,7 +100,9 @@ const Tables = ({ userdata, deleteUser, userGet, handlePrevious, handleNext, pag
                     <th>Email</th>
                     <th>NIC</th>
                     <th>Role</th>
+                    <th>Mobile</th>
                     <th>Gender</th>
+                    
 
           
               
@@ -123,6 +125,7 @@ const Tables = ({ userdata, deleteUser, userGet, handlePrevious, handleNext, pag
                           <td>{element.email}</td>
                           <td>{element.nic}</td>
                           <td>{element.role}</td>
+                          <td>{element.mobile}</td>
                           <td>{element.gender === "Male" ? "M" : "F"}</td>
 
                         
