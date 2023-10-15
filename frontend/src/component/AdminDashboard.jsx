@@ -353,7 +353,7 @@ function AdminDashboard() {
                 </div>
             </div>
 
-            <div className='container rounded-top px-5 text-center bg-dark d-flex aline-item-center justify-content-center' style={{height:"10vh"}}>
+            <div className='container-fluid rounded-top px-5 text-center bg-dark d-flex aline-item-center justify-content-center' style={{height:"10vh"}}>
                 <p className='fw-bold fs-5 mt-4 text-light'>Rapid Travels</p>
             </div>
 
