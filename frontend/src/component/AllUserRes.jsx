@@ -13,7 +13,7 @@ function AllUserRes() {
     const [res, setRes] = useState('');
     const [uid, setuid] = useState("");
     const [res2, setRes2] = useState('');
-    const [res3, setRes3] = useState([]);
+    const [res3, setRes3] = useState('');
 
 
     //get data user id to From
