@@ -8,11 +8,12 @@ class Donut extends Component {
 
     this.state = {
       options: {
-        colors:['#6351ce', '#6351ce80'],
+        colors:['#3f37c9','#F26E01'],
+        labels: ['Active Employees', 'Inactive Employees'],
         
       },
-      series: [44, 55],
-      labels: ['A', 'B']
+      series: [20, 5],
+      
     }
   }
 
@@ -21,9 +22,9 @@ class Donut extends Component {
     return (
         <div class="card">
             <div class="card-body bg-transparent">
-                <h5 class="card-title">Active & Inactive Employees</h5>
+                <h5 class="card-title fw-bold">Employee Status</h5>
                 <div className="donut">
-                    <Chart options={this.state.options} series={this.state.series} type="donut" width="380" />
+                    <Chart options={this.state.options} series={this.state.series} type="donut" width="380" height="175" />
                 </div>
             </div>
         </div>

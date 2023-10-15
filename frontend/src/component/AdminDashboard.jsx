@@ -265,7 +265,7 @@ function AdminDashboard() {
                         <div class="">
                             <div className='d-flex align-items-center justify-content-between px-3'>
                                 <h5 class="card-title fs-4">Tours</h5>
-                                <h6 class="card-subtitle mb-2 mt-2 text-muted"><i class="fa-solid fa-user p-3 rounded-2" style={{ color: "#fff", fontSize: "1.5rem", backgroundColor: "#272727" }}></i></h6>
+                                <h6 class="card-subtitle mb-2 mt-2 text-muted"><i class="fa-solid fa-location-dot p-3 rounded-2" style={{ color: "#fff", fontSize: "1.5rem", backgroundColor: "#272727" }}></i></h6>
                             </div>
                             <div className='px-3'>
                                 <p class="card-text fs-1 fw-bolder d-block aline-item-center justify-center">{tourCounter}</p>
@@ -276,8 +276,8 @@ function AdminDashboard() {
                     <div class="card mx-2 p-2" style={{ width: "18rem", marginTop: "-180px" }}>
                         <div class="">
                             <div className='d-flex align-items-center justify-content-between px-3'>
-                                <h5 class="card-title fs-4">Vehicles</h5>
-                                <h6 class="card-subtitle mb-2 mt-2 text-muted"><i class="fa-solid fa-user p-3 rounded-2" style={{ color: "#fff", fontSize: "1.5rem", backgroundColor: "#272727" }}></i></h6>
+                                <h5 class="card-title fs-4">Clients</h5>
+                                <h6 class="card-subtitle mb-2 mt-2 text-muted"><i class="fa-solid fa-users p-3 rounded-2" style={{ color: "#fff", fontSize: "1.5rem", backgroundColor: "#272727" }}></i></h6>
                             </div>
                             <div className='px-3'>
                                 <p class="card-text fs-1 fw-bolder d-block aline-item-center justify-center">{clientCounter}</p>
@@ -289,8 +289,8 @@ function AdminDashboard() {
                     <div class="card mx-2 p-2" style={{ width: "18rem", marginTop: "-180px" }}>
                         <div class="">
                             <div className='d-flex align-items-center justify-content-between px-3'>
-                                <h5 class="card-title fs-4">Client</h5>
-                                <h6 class="card-subtitle mb-2 mt-2 text-muted"><i class="fa-solid fa-user p-3 rounded-2" style={{ color: "#fff", fontSize: "1.5rem", backgroundColor: "#272727" }}></i></h6>
+                                <h5 class="card-title fs-4">Vehicles</h5>
+                                <h6 class="card-subtitle mb-2 mt-2 text-muted"><i class="fa-solid fa-car p-3 rounded-2" style={{ color: "#fff", fontSize: "1.5rem", backgroundColor: "#272727" }}></i></h6>
                             </div>
                             <div className='px-3'>
                                 <p class="card-text fs-1 fw-bolder d-block aline-item-center justify-center">{vehicleCounter}</p>
@@ -319,26 +319,43 @@ function AdminDashboard() {
 
 
 
-                <div className='container-fluid row mx-auto px-5' style={{ marginTop: "60px" }}>
+                <div className='container-fluid row mx-auto px-6' style={{ marginTop: "60px" }}>
                     <div className='col-4'>
                         <BookingPieChart />
-                    </div >
-                    <div className='col-4'>
-                        <ClientsPieChart />
                     </div>
                     <div className='col-4'>
-                        <DriverPieChart />
+                        <ClientsPieChart/>
+                    </div>
+                    <div className='col-4'>
+                        <ToursBarChart/>
                     </div >
                 </div>
 
+                <div className='container-fluid row mx-auto px-6' style={{ marginTop: "-245px" }}>
+                    <div className='col-4'>
+                        <VehiclePieChart />
+                    </div>
+                    <div className='col-4'>
+                        <StaffPieChart />
+                    </div>
+                    <div className='col-4'>
+                        
+                    </div >
+                </div>
 
+                <div className='container-fluid row mx-auto px-6 pb-5' style={{ marginTop: "60px"}}>
+                    <div className='col-4'>
+                        <DriverPieChart />
+                    </div>
+                    <div className='col-8'>
+                        <FinanceLineChart/>
+                    </div>
+                </div>
             </div>
 
-
-
-
-
-
+            <div className='container-fluid rounded-top px-5 text-center bg-dark d-flex aline-item-center justify-content-center' style={{height:"10vh"}}>
+                <p className='fw-bold fs-5 mt-4 text-light'>Rapid Travels</p>
+            </div>
 
 
         </div>

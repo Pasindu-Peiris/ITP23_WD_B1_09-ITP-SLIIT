@@ -8,11 +8,12 @@ class Donut extends Component {
 
     this.state = {
       options: {
-        colors:['#ef233c', '#16db65'],
+        colors:['#16db65', '#ef233c'],
+        labels: ['Completed', 'Canceled'],
         
       },
-      series: [44, 55],
-      labels: ['A', 'B']
+      series: [10, 5],
+      
     }
   }
 
@@ -23,7 +24,7 @@ class Donut extends Component {
             <div class="card-body bg-transparent">
                 <h5 class="card-title fw-bold">Bookings & Reservations</h5>
                 <div className="donut">
-                    <Chart options={this.state.options} series={this.state.series} type="donut" width="350"  />
+                    <Chart options={this.state.options} series={this.state.series} type="donut" width="350" height="175"  />
                 </div>
             </div>
         </div>
