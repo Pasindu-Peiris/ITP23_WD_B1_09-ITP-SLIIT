@@ -12,6 +12,8 @@ import { statuschangefunc } from "../../services/Apis";
 import { ToastContainer, toast } from "react-toastify";
 import './table.css';
 
+import Swal from 'sweetalert2';
+
 const Tables = ({ userdata, deleteUser, userGet, handlePrevious, handleNext, page, pageCount, setPage }) => {
 
   const handleChange = async (id, status) => {
@@ -37,6 +39,26 @@ const Tables = ({ userdata, deleteUser, userGet, handlePrevious, handleNext, pag
     document.body.appendChild(tempLink);
     tempLink.click();
     document.body.removeChild(tempLink);
+
+    Swal.fire({
+      icon: 'success',
+      iconColor: '#4caf50',
+      title: 'CSV file generated!',
+      text: 'The CSV file has been successfully generated and downloaded.',
+
+      customClass: {
+        container: 'futuristic-swal-container',
+        title: 'futuristic-swal-title',
+        content: 'futuristic-swal-content',
+      },
+     
+      showConfirmButton: true,
+      confirmButtonColor: '#4caf50', 
+
+    });
+
+
+
   };
 
   return (
