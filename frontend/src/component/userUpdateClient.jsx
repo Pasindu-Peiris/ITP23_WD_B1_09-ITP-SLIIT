@@ -7,6 +7,7 @@ import Nav from './Nav'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
 function UpadateUserClient() {
 
     const { id } = useParams();
@@ -14,8 +15,8 @@ function UpadateUserClient() {
     const [lname, setLname] = useState(" ");
     const [email, setEmail] = useState(" ");
 
-    function Notify() {
-        toast.success('Successful Updated', {
+    function Notify(message) {
+        toast.success(message, {
             autoClose: 1500,
             hideProgressBar: false,
             closeOnClick: true,
@@ -39,6 +40,7 @@ function UpadateUserClient() {
         });
     }
 
+    const [uid, setUid] = useState(" ");
 
     useEffect(() => {
 
@@ -49,6 +51,7 @@ function UpadateUserClient() {
                 setFname(res.data.fname);
                 setLname(res.data.lname);
                 setEmail(res.data.email);
+                setUid(res.data._id);
                 console.log(res)
 
             }).catch((err) => {
@@ -58,6 +61,9 @@ function UpadateUserClient() {
         }
 
         updateClients();
+
+
+
 
     }, [])
 
@@ -69,7 +75,7 @@ function UpadateUserClient() {
         e.preventDefault();
         axios.put("http://localhost:8090/client/updated/" + id, { fname, lname, email }).then(result => {
 
-            Notify();
+            Notify("Successful Updated Account");
             setTimeout(function () {
                 window.location = '/profile'
             }, 1500); // 2000 milliseconds (2 seconds)
@@ -82,19 +88,101 @@ function UpadateUserClient() {
 
     }
 
-    const hadelDelte = () => {
-        axios.delete("http://localhost:8090/client/delete/" + id).then((res) => {
 
-            Notify();
-            setTimeout(function () {
-                window.location.reload();
-            }, 2000); // 2000 milliseconds (2 seconds)
+  
 
+
+
+    //delete function
+    // const hadelDelte = () => {
+    //     axios.delete("http://localhost:8090/client/delete/" + id).then((res) => {
+
+    //         Notify("Successful Deleted Account");
+    //         logout();
+    //         setTimeout(function () {
+    //             window.location.reload();
+    //         }, 3000); // 2000 milliseconds (2 seconds)
+
+
+
+    //     }).catch((err) => {
+    //         alert("User Not Deleted");
+    //     })
+    // }
+
+
+
+
+    //get client data using id
+    const hadelDelete = (id) => {
+        axios.get("http://localhost:8090/client/deleted/" + id).then((res) => {
+
+            //set data to delete function and drop client
+            hadeldropclient(res.data)
+            hadelDeleteRow(res.data._id)
 
         }).catch((err) => {
             alert("User Not Deleted");
         })
     }
+
+    //delete user
+    const hadelDeleteRow = (id) => {
+        axios.delete("http://localhost:8090/client/delete/" + id).then((res) => {
+
+            Notify("Successful Deleted Account");
+            logout();
+            
+
+
+        }).catch((err) => {
+            alert("User Not Deleted");
+        })
+
+    }
+
+    //add drop client
+    function hadeldropclient(dropClient) {
+
+
+        const newDropclient = {
+            fname: dropClient.fname,
+            lname: dropClient.lname,
+            email: dropClient.email,
+            password: dropClient.password,
+            date: dropClient.date,
+            lastlogin: dropClient.lastlogin,
+            images: dropClient.images,
+
+        }
+
+
+        axios.post('http://localhost:8090/dropclient/adddropclient/', newDropclient)
+            .then((res) => {
+                console.log(res.data)
+            }).catch((err) => {
+                console.log(err)
+            })
+
+    }
+
+
+      //logout function
+      function logout() {
+
+        localStorage.removeItem("token");
+        localStorage.removeItem('Logedin')
+
+        setTimeout(function () {
+            window.location = '/'
+        }, 2500); // 2000 milliseconds (2 seconds)
+
+
+
+
+    }
+
+
 
 
 
@@ -149,27 +237,23 @@ function UpadateUserClient() {
 
     }
 
-    
 
-    const isDeletecheck = () =>{
+    //dispaly Button Delete
+    const checkDelete = (values) => {
 
-        let box = document.getElementById('delete');
-       
-       
-        
-        if (box.value === 'Delete/Me') {
-            document.getElementById('error4').innerHTML = "Done";
-            document.getElementById('error4').style.color = "#00a550 ";
-            box.style.border = "2px solid green";
-            document.getElementById('btn4').disabled = false;
-        } else {
-            document.getElementById('error4').innerHTML = "Enter Delete/Me";
-            document.getElementById('error4').style.color = "red";
-            box.style.border = "2px solid red";
-            document.getElementById('btn4').disabled = true;
+        let block = document.getElementById('Blovk');
+
+        if(values === 'Delete' || values === 'delete'){
+            block.style.display = 'block';
+        }else{
+            block.style.display = 'none';
         }
-        
     }
+
+
+
+
+
 
 
 
@@ -177,17 +261,17 @@ function UpadateUserClient() {
         <div class="new-12">
             <Nav />
 
-            <div className='container pb-2 mt-5' style={{ display: "flex", alignItems: "center", justifyContent: "flex-start", marginTop: "30px", backgroundColor: "" }}>
+            <div className='container pb-1 mt-4' style={{ display: "flex", alignItems: "center", justifyContent: "flex-start", marginTop: "30px", backgroundColor: "" }}>
                 <nav aria-label="breadcrumb ">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/" style={{ fontSize: "1.1rem", color: "#000" }}>Home</a></li>
-                        <li class="breadcrumb-item"><a href="/profile" style={{ fontSize: "1.1rem", color: "#000" }}>Account Details</a></li>
+                        <li class="breadcrumb-item "><a href="/" style={{ fontSize: "1.1rem", color: "#000", textDecoration: "none" }}>Home</a></li>
+                        <li class="breadcrumb-item"><a href="/profile" style={{ fontSize: "1.1rem", color: "#000", textDecoration: "none" }}>Account Details</a></li>
                         <li class="breadcrumb-item active" aria-current="page" style={{ fontSize: "1.1rem" }}>Update Details</li>
                     </ol>
                 </nav>
             </div>
 
-            <div className='row d-flex justify-content-center' id='con-2'>
+            <div className='row d-flex justify-content-center pt-3' id='con-2'>
 
 
                 <div class="container card" id='col-new-1'>
@@ -253,7 +337,11 @@ function UpadateUserClient() {
 
                         </div>
 
-                        <p><span className='text-danger' style={{ cursor: "pointer", textDecoration: "underline " }} onClick={hadelDelte}>Delete Account ?</span> </p>
+
+                        <p class="btn p-0" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><span className='text-danger' style={{ cursor: "pointer", textDecoration: "underline " }}>Delete Account ?</span> </p>
+
+
+
 
                         <button type="submit" className="btn btn-primary w-100 mt-2 but-1">Update Details</button>
 
@@ -262,6 +350,50 @@ function UpadateUserClient() {
 
 
                 <div className='col-6' id='col-new-2'></div>
+
+
+
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+
+                            <div class="modal-body">
+
+                            <div className="mb-4 p-3">
+                                            <label for="email" className="form-label px-1 d-flex align-items-center justify-content-between">Delete <div className='' style={{ color: "red" }} id='error5'></div></label>
+                                            <input type="text" className="form-control" id="delete"  placeholder='Type `Delete` to delete' required autoComplete='off'
+
+                                        
+
+                                                onKeyUp={(e) => {
+                                                    checkDelete(e.target.value)
+                                                  }}
+
+                                            />
+                                        </div>
+                                <div class="modal-footer">
+                                    
+
+
+                                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+
+
+
+                                    <div className='' id='Blovk' style={{display:"none"}}>
+                                    <button type="button" className="btn btn-danger ms-2" onClick={
+                                        (e) => hadelDelete(uid)}
+                                    >
+                                        <i class="fa-solid fa-trash" style={{ color: "#ffffff" }}></i>
+
+                                    </button>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
 
 
 
@@ -277,28 +409,9 @@ function UpadateUserClient() {
 
 
 
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                Launch static backdrop modal
-            </button>
 
 
-            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                       
-                        <div class="modal-body">
-                            <div className="mb-4 p-3">
-                                <label for="email" className="form-label text-danger d-flex align-items-center justify-content-between">DELETE <div className='' style={{ color: "red" }} id='error4'></div></label>
-                                <input  type="email" onKeyUp={isDeletecheck} className="form-control" id="delete" name="email" placeholder='Type Delete/Me' required autoComplete='off' />
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-danger" id='btn4' onClick={hadelDelte}>Delete</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
 
 

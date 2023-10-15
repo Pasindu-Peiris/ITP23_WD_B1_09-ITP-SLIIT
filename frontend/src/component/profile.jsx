@@ -195,10 +195,10 @@ function Profile() {
 
                             <div class="col-lg-5">
 
-                                <nav aria-label="breadcrumb">
+                                <nav aria-label="breadcrumb ">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item "><a href="/" className='text-dark' style={{ fontSize: "1.1rem" }}>Home</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page" style={{ fontSize: "1.1rem" }}>Account Details</li>
+                                        <li class="breadcrumb-item "><a href="/" className='text-dark' style={{ fontSize: "1.1rem" , textDecoration:"none"}}>Home</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page" style={{ fontSize: "1.1rem", textDecoration:"none" }}>Account Details</li>
                                     </ol>
                                 </nav>
 
