@@ -10,6 +10,8 @@ import StaffPieChart from "./charts/StaffPieChart";
 import VehicleOwnerPieChart from "./charts/VehicleOwnerPieChart";
 import DriverPieChart from "./charts/DriverPieChart";
 import React, { useEffect, useState } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -20,6 +22,82 @@ function AdminDashboard() {
 
     const [admin, setAdmin] = useState('');
     const [adminMess, setAdminMess] = useState('');
+
+    const[tours, setTours] = useState([]);
+    const[clients, setClient] = useState([]);
+    const[vehicles, setVehicles] = useState([]);
+    const[drivers, setDrivers] = useState([]);
+    
+    let tourCounter = 0;
+    const tourCount = tours.map(tour => {
+        tourCounter++;
+
+    })
+
+
+    let clientCounter = 0;
+    const clientCount = clients.map(client => {
+        clientCounter++;
+
+    })
+
+    let vehicleCounter = 0;
+    const vehicleCount = vehicles.map(vehicle => {
+        vehicleCounter++;
+
+    })
+
+    let driverCounter = 0;
+    const driverCount = drivers.map(driver => {
+        driverCounter++;
+
+    })
+
+    useEffect(() => {
+        AOS.init({ duration: 1000 });
+
+        axios.get("http://localhost:8090/tour/all").then((res) => {
+            //console.log(res);
+            setTours(res.data);
+
+        }).catch((err) => {
+            alert(err.message);
+        })
+
+    }, [])
+
+    useEffect(() => {
+
+        //get all users
+        function getClients() {
+
+            axios.get("http://localhost:8090/client/").then((res) => {
+                setClient(res.data)
+                console.log(res)
+            }).catch((err) => {
+                alert("Can't get Clients");
+            })
+
+        }
+
+        getClients();
+
+    }, [])
+
+    useEffect(() => {
+        axios.get('http://localhost:8090/vehicles/getVehicles').then(res => {
+          setVehicles(res.data);
+    
+        });
+      }, []);
+
+    useEffect(() => {
+        axios.get("http://localhost:8090/api/drivers").then(res =>{
+            setDrivers(res.data);
+        });
+        
+    },[]);
+    
 
 
     useEffect(() => {
@@ -192,24 +270,31 @@ function AdminDashboard() {
                 </div>
             </div>
 
-
             <div className='row px-5 col-12 ' style={{ height: "auto", width: "100%", top: "0px", right: "0px" }}>
-
-
-                <div className='container-fluid col-12 mx-auto bg-primary px-5 rounded-3' style={{ width: "100%", height: "35vh" }}>
-                    <h1 className="text-center mt-5 fw-bolder">Welcome to Dashboard</h1>
+                <div className='container-fluid col-12 mx-auto px-5 rounded-3' style={{ width: "100%", height: "35vh", backgroundColor: "#6553cfa3"}}>
+                    <h1 className="text-center mt-5 fw-bolder">Dashboard</h1>
                 </div>
-
                 <div className='container-fluid row mx-auto px-1 d-flex align-content-center justify-content-center' style={{ marginTop: "100px" }}>
+                    <div class="card mx-2 p-2" style={{ width: "18rem", marginTop: "-180px" }}>
+                        <div class="">
+                            <div className='d-flex align-items-center justify-content-between px-3'>
+                                <h5 class="card-title fs-4">Tours</h5>
+                                <h6 class="card-subtitle mb-2 mt-2 text-muted"><i class="fa-solid fa-user p-3 rounded-2" style={{ color: "#fff", fontSize: "1.5rem", backgroundColor: "#272727" }}></i></h6>
+                            </div>
+                            <div className='px-3'>
+                                <p class="card-text fs-1 fw-bolder d-block aline-item-center justify-center">{tourCounter}</p>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="card mx-2 p-2" style={{ width: "18rem", marginTop: "-180px" }}>
                         <div class="">
                             <div className='d-flex align-items-center justify-content-between px-3'>
-                                <h5 class="card-title fs-4">Client</h5>
+                                <h5 class="card-title fs-4">Vehicles</h5>
                                 <h6 class="card-subtitle mb-2 mt-2 text-muted"><i class="fa-solid fa-user p-3 rounded-2" style={{ color: "#fff", fontSize: "1.5rem", backgroundColor: "#272727" }}></i></h6>
                             </div>
                             <div className='px-3'>
-                                <p class="card-text fs-1 fw-bolder d-block aline-item-center justify-center">10</p>
+                                <p class="card-text fs-1 fw-bolder d-block aline-item-center justify-center">{clientCounter}</p>
                             </div>
                         </div>
                     </div>
@@ -222,7 +307,7 @@ function AdminDashboard() {
                                 <h6 class="card-subtitle mb-2 mt-2 text-muted"><i class="fa-solid fa-user p-3 rounded-2" style={{ color: "#fff", fontSize: "1.5rem", backgroundColor: "#272727" }}></i></h6>
                             </div>
                             <div className='px-3'>
-                                <p class="card-text fs-1 fw-bolder d-block aline-item-center justify-center">10</p>
+                                <p class="card-text fs-1 fw-bolder d-block aline-item-center justify-center">{vehicleCounter}</p>
                             </div>
                         </div>
                     </div>
@@ -231,24 +316,11 @@ function AdminDashboard() {
                     <div class="card mx-2 p-2" style={{ width: "18rem", marginTop: "-180px" }}>
                         <div class="">
                             <div className='d-flex align-items-center justify-content-between px-3'>
-                                <h5 class="card-title fs-4">Client</h5>
+                                <h5 class="card-title fs-4">Drivers</h5>
                                 <h6 class="card-subtitle mb-2 mt-2 text-muted"><i class="fa-solid fa-user p-3 rounded-2" style={{ color: "#fff", fontSize: "1.5rem", backgroundColor: "#272727" }}></i></h6>
                             </div>
                             <div className='px-3'>
-                                <p class="card-text fs-1 fw-bolder d-block aline-item-center justify-center">10</p>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="card mx-2 p-2" style={{ width: "18rem", marginTop: "-180px" }}>
-                        <div class="">
-                            <div className='d-flex align-items-center justify-content-between px-3'>
-                                <h5 class="card-title fs-4">Client</h5>
-                                <h6 class="card-subtitle mb-2 mt-2 text-muted"><i class="fa-solid fa-user p-3 rounded-2" style={{ color: "#fff", fontSize: "1.5rem", backgroundColor: "#272727" }}></i></h6>
-                            </div>
-                            <div className='px-3'>
-                                <p class="card-text fs-1 fw-bolder d-block aline-item-center justify-center">10</p>
+                                <p class="card-text fs-1 fw-bolder d-block aline-item-center justify-center">{driverCounter}</p>
                             </div>
                         </div>
                     </div>

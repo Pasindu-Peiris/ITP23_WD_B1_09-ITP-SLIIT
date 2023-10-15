@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import Nav from "./Nav";
 
@@ -37,6 +38,26 @@ export default function BookingForm() {
   const [cvvError, setCvvError] = useState("");
 
 
+   const {vid} = useParams();
+   const [model, setModel] = useState()
+   const [totalamount, setTotalamount] = useState()
+
+   useEffect(() => {
+    axios
+      .get("/vehicles/upVehicles/" + vid)
+      .then((result) => {
+        console.log(result);
+        setTotalamount(result.data.totalAmount)
+        setModel(result.data.model);
+        
+      })
+      .catch((err) => console.log(err));
+      console.log(model);
+
+  }, []);
+  
+
+
 
   const Validate = () => {
     const newErrors ={};
@@ -52,14 +73,12 @@ export default function BookingForm() {
 function sendData(e) {
   e.preventDefault();
 
-  // Calculate the total amount with driver charge
-  let totalAmount = 1500; // Base amount
 
   if (driver === "Yes") {
-    totalAmount += 200; // Add 200 for the driver
+    totalamount += 200; // Add 200 for the driver
   }
 
-  setAmount(totalAmount); // Update the amount state
+  setAmount(totalamount); // Update the amount state
 
   // Validate email format
   const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -147,6 +166,7 @@ function sendData(e) {
 
 
   return (
+    
     <div className=" " style={{backgroundColor:"#f1f1f3"}}>
      <Nav/>
     <div className="form-container container card w-50" style={{padding:"50px"}}>
@@ -158,7 +178,7 @@ function sendData(e) {
     <div className="form-content">
     <div className="booking-form-container" >
       <h2>Booking Information</h2>
-    
+     
       <form onSubmit={sendData}>
         <div className="form-group1">
           <label htmlFor="name">Full Name</label>
@@ -233,39 +253,40 @@ function sendData(e) {
         </div>
         <div className="form-group1">
           <label htmlFor="vehicletype">Select Vehicle</label>
-          <select
+          <input
+            type="text"
             className="form-control"
-            id="vehicletype"
+            id="nic"
+            value = {model}
+            placeholder="Enter NIC"
             onChange={(e) => {
-              setVehicleType(e.target.value);
+              setNic(e.target.value);
             }}
-          >
-            <option value="">Select Vehicle Type</option>
-            <option value="BMWX3">BMWX3</option>
-            <option value="GTR R34">GTR R34</option>
-            <option value="JEEP 2">JEEP 2</option>
-            <option value="DISCOVERY 4">DISCOVERY 4</option>
-          </select>
+          />
         </div>
         <div className="form-group">
           <label htmlFor="pickupdate">Pickup Date</label>
           <input
-            type="date"
+            type="text"
             className="form-control"
-            id="pickupdate"
+            id="nic"
+            value = {model}
+            placeholder="Enter NIC"
             onChange={(e) => {
-              setPickupDate(e.target.value);
+              setNic(e.target.value);
             }}
           />
         </div>
         <div className="form-group1">
           <label htmlFor="returndate">Return Date</label>
           <input
-            type="date"
+            type="text"
             className="form-control"
-            id="returndate"
+            id="nic"
+            value = {model}
+            placeholder="Enter NIC"
             onChange={(e) => {
-              setReturnDate(e.target.value);
+              setNic(e.target.value);
             }}
           />
         </div>
@@ -291,7 +312,7 @@ function sendData(e) {
     className="form-control"
     id="totalAmount"
     placeholder="Enter Total Amount"
-    value={amount} // Bind to the amount state
+    value={totalamount} // Bind to the amount state
                 readOnly // Make it non-editable
    
   />
@@ -346,7 +367,8 @@ function sendData(e) {
             />
             <p className="error-message">{cvvError}</p>
           </div>
-
+        
+     
 
 
 
