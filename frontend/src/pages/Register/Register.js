@@ -46,60 +46,45 @@ const Register = () => {
     { value: 'InActive', label: 'InActive' },
   ];
 
-  const validateInputs = () => {
-    const { fname, lname, nic, role, email, mobile, location } = inputdata;
-    const newErrors = {};
+  const validateInputs = (data) => {
+  const { fname, lname, nic, role, email, mobile, location } = inputdata;
+  const newErrors = {};
 
-    if (fname && !/^[A-Za-z]+$/.test(fname)) {
-      newErrors.fname = "First name should contain only letters!";
-    } else {
-      newErrors.fname = "";
-    }
+  if (fname && !/^[A-Za-z]+$/.test(fname)) {
+    newErrors.fname = "First name should contain only letters!";
+  }
 
-    if (lname && !/^[A-Za-z]+$/.test(lname)) {
-      newErrors.lname = "Last name should contain only letters!";
-    } else {
-      newErrors.lname = "";
-    }
+  if (lname && !/^[A-Za-z]+$/.test(lname)) {
+    newErrors.lname = "Last name should contain only letters!";
+  }
 
-  
-  if (email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    newErrors.email = "";
-} else {
+  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     newErrors.email = "Enter a valid email address!";
+  }
 
-}
+  if (nic && !/^[0-9]{10}$/.test(nic)) {
+    newErrors.nic = "NIC number should contain 10 digits!";
+  }
 
-if (nic && !/^[0-9]{10}$/.test(nic)) {
-  newErrors.nic = "NIC number should contain 10 digits!";
-} else {
-  newErrors.nic= "";
-}
+  if (mobile && !/^[0-9]{10}$/.test(mobile)) {
+    newErrors.mobile = "Mobile number should contain 10 digits!";
+  }
 
+  if (location && !/^[A-Za-z]+$/.test(location)) {
+    newErrors.location = "Location should contain only letters!";
+  }
 
+  return newErrors;
+};
 
+const setInputValue = (e) => {
+  const { name, value } = e.target;
+  const updatedData = { ...inputdata, [name]: value };
+  setInputData(updatedData);
+  const validationErrors = validateInputs(updatedData);
+  setErrors(validationErrors);
+};
 
-    if (mobile && !/^[0-9]{10}$/.test(mobile)) {
-      newErrors.mobile = "Mobile number should contain 10 digits!";
-    } else {
-      newErrors.mobile = "";
-    }
-
-    if (location && !/^[A-Za-z]+$/.test(location)) {
-      newErrors.location = "Location should contain only letters!";
-    } else {
-      newErrors.location = "";
-    }
-
-    setErrors(newErrors);
-    return !Object.values(newErrors).some((error) => error !== "");
-  };
-
-  const setInputValue = (e) => {
-    const { name, value } = e.target;
-    setInputData({ ...inputdata, [name]: value });
-    validateInputs();
-  };
 
   const setStatusValue = (e) => {
     setStatus(e.value);
@@ -109,7 +94,7 @@ if (nic && !/^[0-9]{10}$/.test(nic)) {
     setImage(e.target.files[0]);
   };
 
-  const submitUserData = async(e) => {
+  const submitUserData = async (e) => {
     e.preventDefault();
 
     if (validateInputs()) {
@@ -193,10 +178,10 @@ if (nic && !/^[0-9]{10}$/.test(nic)) {
 
                 {/* new */}
                 <Form.Group className="mb-3 col-lg-6" controlId="formBasicLastName">
-  <Form.Label>NIC</Form.Label>
-  <Form.Control type="text" name='nic' value={inputdata.nic} onChange={setInputValue} placeholder='Enter NIC' />
-  <Form.Text className="text-danger">{errors.nic}</Form.Text>
-</Form.Group>
+                  <Form.Label>NIC</Form.Label>
+                  <Form.Control type="text" name='nic' value={inputdata.nic} onChange={setInputValue} placeholder='Enter NIC' />
+                  <Form.Text className="text-danger">{errors.nic}</Form.Text>
+                </Form.Group>
 
 
 
@@ -204,29 +189,29 @@ if (nic && !/^[0-9]{10}$/.test(nic)) {
 
 
 
-<Form.Group className="mb-3 col-lg-6" controlId="formBasicEmail">
-  <Form.Label>Role</Form.Label>
-  <Form.Select name='role' value={inputdata.role} onChange={setInputValue}>
-    <option value="">Select Role</option>
-    <option value="Admin">Admin</option>
-    <option value="user">User</option>
-    <option value="Data Analyst">Data Analyst</option>
-    <option value="Seo Specialist">Seo Specialist</option>
-    <option value="Intern">Intern</option>
-    <option value="Database Administrator">Database Administrator</option>
-    <option value="Social Media Manager">Social Media Manager</option>
-    <option value="Graphic Designer">Graphic Designer</option>
-    <option value="Cyber Security Analyst">Cyber Security Analyst</option>
-  </Form.Select>
-  <Form.Text className="text-danger">{errors.role}</Form.Text>
-</Form.Group>
+                <Form.Group className="mb-3 col-lg-6" controlId="formBasicEmail">
+                  <Form.Label>Role</Form.Label>
+                  <Form.Select name='role' value={inputdata.role} onChange={setInputValue}>
+                    <option value="">Select Role</option>
+                    <option value="Admin">Admin</option>
+                    <option value="user">User</option>
+                    <option value="Data Analyst">Data Analyst</option>
+                    <option value="Seo Specialist">Seo Specialist</option>
+                    <option value="Intern">Intern</option>
+                    <option value="Database Administrator">Database Administrator</option>
+                    <option value="Social Media Manager">Social Media Manager</option>
+                    <option value="Graphic Designer">Graphic Designer</option>
+                    <option value="Cyber Security Analyst">Cyber Security Analyst</option>
+                  </Form.Select>
+                  <Form.Text className="text-danger">{errors.role}</Form.Text>
+                </Form.Group>
 
 
 
-                    <Form.Group className="mb-3 col-lg-6" controlId="formBasicEmail">
+                <Form.Group className="mb-3 col-lg-6" controlId="formBasicEmail">
                   <Form.Label>Email address</Form.Label>
                   <Form.Control type="email" name='email' value={inputdata.email} onChange={setInputValue} placeholder='Enter Email' />
-                  
+
                   <Form.Text className="text-danger">{errors.email}</Form.Text>
 
                 </Form.Group>
@@ -256,7 +241,7 @@ if (nic && !/^[0-9]{10}$/.test(nic)) {
                 </Form.Group>
                 <Form.Group className="mb-3 col-lg-6" controlId="formBasicEmail">
                   <Form.Label>Select Your Status</Form.Label>
-                  <Select options={options}  onChange={setStatusValue} />
+                  <Select options={options} onChange={setStatusValue} />
                 </Form.Group>
                 <Form.Group className="mb-3 col-lg-6" controlId="formBasicEmail">
                   <Form.Label>Select Your Profile</Form.Label>
@@ -276,7 +261,7 @@ if (nic && !/^[0-9]{10}$/.test(nic)) {
 
 
 
-               
+
 
 
 
