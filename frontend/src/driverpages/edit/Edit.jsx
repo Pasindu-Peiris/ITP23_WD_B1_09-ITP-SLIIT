@@ -140,13 +140,13 @@ export default function Edit() {
     id="licenseNumber"
     value={driver.licenseNumber}
     onChange={updateDriver}
-    pattern="[A-Za-z][0-9]{0,9}"
-    title="Enter a valid License Number (1 letter followed by up to 9 digits)." 
+    pattern="[A-Za-z][0-9]{7}$"
+    title="Enter a valid License Number (1 letter followed by up to 7 digits)." 
     required
-    className={`daddInputs ${driver.licenseNumber.match(/^[A-Za-z][0-9]{0,9}$/) ? '' : 'error'}`}
+    className={`daddInputs ${driver.licenseNumber.match(/^[A-Za-z][0-9]{7}$/) ? '' : 'error'}`}
   />
-  {driver.licenseNumber && !driver.licenseNumber.match(/^[A-Za-z][0-9]{0,9}$/) && (
-    <div className="errorMessage" style={{ color: 'red' }}>Enter a valid License Number (1 letter followed by up to 9 digits)</div>
+  {driver.licenseNumber && !driver.licenseNumber.match(/^[A-Za-z][0-9]{7}$/) && (
+    <div className="errorMessage" style={{ color: 'red' }}>Enter a valid License Number (1 letter followed by 7 digits)</div>
   )}
 </div>
 
