@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import "./delete.css";
 import Message from "../../drivercomponents/message/Message";
 import Header from "../../drivercomponents/header/Header";
+import Swal from "sweetalert2";
 
 export default function Delete() {
   const navigate = useNavigate();
@@ -39,9 +40,19 @@ export default function Delete() {
     setMessage({ show, type, msg });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (window.confirm("Are you sure you want to delete this Driver record?")) {
+  
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+  }).then(async (result) => {
+    if (result.isConfirmed) {
       try {
         await axios.delete("http://localhost:8090/api/drivers/" + driver._id);
         showMessage(true, "info", "Successfully deleted driver information");
@@ -50,7 +61,8 @@ export default function Delete() {
         showMessage(true, "error", error);
       }
     }
-  };
+  })
+};
 
   const clearDriverInfo = () => {
     setDriver({

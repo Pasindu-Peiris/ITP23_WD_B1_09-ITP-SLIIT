@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from 'axios'
 import { useNavigate } from "react-router-dom";
 import "./queryfilter.css";
+import Swal from 'sweetalert2';
 
 export default function QueryFilter({ searchDriver, getDrivers }) {
   // State information for the filter by LicenseNumber or CONTACT or both
@@ -64,6 +65,24 @@ export default function QueryFilter({ searchDriver, getDrivers }) {
     };
   
     getDrivers();
+//     Swal.fire({
+//       icon: 'success',
+//       title: 'CSV file generated!',
+//       text: 'The CSV file has been successfully generated and downloaded.',
+//     });
+Swal.fire({
+  icon: 'success',
+  title: '<span style="color: white; font-family: Arial, sans-serif; font-size: 24px;">CSV file generated!</span>',
+  html: '<span style="color: #a8a8a8; font-family: Arial, sans-serif; font-size: 16px;">The CSV file has been successfully generated and downloaded.</span>',
+  showConfirmButton: false,
+  background: '#420c36',
+  timer: 3000,
+  customClass: {
+    title: 'my-title-class',
+    popup: 'my-popup-class'
+  }
+});
+
   }
 
   // Display the filter jsx
