@@ -3,6 +3,7 @@ const Reservation = require("../models/reservation");
 
 router.route("/addReservations").post((req, res) => {
     const {
+        uid,
         name,
         email,
         address,
@@ -15,6 +16,7 @@ router.route("/addReservations").post((req, res) => {
     } = req.body;
 
     const newReservation = new Reservation({
+        uid,
         name,
         email,
         address,
@@ -51,6 +53,7 @@ router.route("/AllReservations").get((req, res) => {
 router.route("/update/:id").put(async (req, res) => {
     let resId = req.params.id;
     const {
+        uid,
         name,
         email,
         address,
@@ -63,6 +66,7 @@ router.route("/update/:id").put(async (req, res) => {
     } = req.body;
 
     const updateReservation = {
+        uid,
         name,
         email,
         address,
@@ -106,5 +110,23 @@ router.route("/getReservation/:id").get(async (req, res) => {
         res.status(500).send({ status: "Error with get reservation", error: err.message });
     }
 });
+
+
+//find reservation by userId
+router.route("/getReservationd/:uid").get(async (req, res) => {
+    let resId = req.params.uid;
+
+    try {
+        const reservation = await Reservation.find({resId});
+        res.status(200).send({ status: "Reservation fetched", reservation });
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).send({ status: "Error with get reservation", error: err.message });
+    }
+});
+
+
+
+
 
 module.exports = router;
