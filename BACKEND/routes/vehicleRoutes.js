@@ -72,24 +72,32 @@ router.put('/updateVehicles/:id', (req, res) => {
         .catch(err => res.json(err));
 });
 
-router.put('/addTime/:id', (req, res) => {
+router.put('/addTime/:id', async (req, res) => {
     const id = req.params.id;
 
-    VehicleModel.findById(id)
-        .then(vehicle => {
-            if (!vehicle) {
-                return res.status(404).json({ message: 'Vehicle not found' });
-            }
-            vehicle.bookedTimeSlots.push(req.body.bookedTimeSlots);
-            return vehicle.save();
-        })
-        .then(updatedVehicle => {
-            res.status(201).json(updatedVehicle);
-        })
-        .catch(err => {
-            res.status(400).json(err);
-        });
+    try {
+        const vehicle = await VehicleModel.findById(id);
+
+        if (!vehicle) {
+            return res.status(404).json({ message: 'Vehicle not found' });
+        }
+
+        // Assuming req.body.totalamount and req.body.bookedTimeSlots are not arrays
+        // If totalamount is not an array, set it directly
+        vehicle.totalamount = req.body.totalamount;
+
+        // If bookedTimeSlots is an array, you can still push to it
+        if (Array.isArray(req.body.bookedTimeSlots)) {
+            vehicle.bookedTimeSlots.push(...req.body.bookedTimeSlots);
+        }
+
+        const updatedVehicle = await vehicle.save();
+        res.status(201).json(updatedVehicle);
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
 });
+
 
 router.delete('/deleteVehicle/:id', (req, res) => {
     const id = req.params.id;

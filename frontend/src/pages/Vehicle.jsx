@@ -242,6 +242,7 @@ const debouncedHandleRangeChange = debounce(handleRangeChange, 100);
               from,
               to
             },
+            totalamount: totalprice,
             
             
           });
@@ -254,18 +255,18 @@ const debouncedHandleRangeChange = debounce(handleRangeChange, 100);
          
          
             
-          const bookingResponse = await axios.post('/bookings/createBookings/', {
-            bookedTimeSlots : {
-              from,
-              to
-            },
-            price: totalprice,
-            Vehicle_id : id,
-          });
+          // const bookingResponse = await axios.post('/bookings/createBookings/', {
+          //   bookedTimeSlots : {
+          //     from,
+          //     to
+          //   },
+          //   price: totalprice,
+          //   Vehicle_id : id,
+          // });
 
           
           
-          console.log(bookingResponse);
+          // console.log(bookingResponse);
           
           navigate('/');
           // const bookingId = bookingResponse.data._id;
@@ -509,6 +510,11 @@ const debouncedHandleRangeChange = debounce(handleRangeChange, 100);
                     <span> Rs. {totalprice}</span>
                   )}
                 </button>
+                <Link to={`/AddBookings/${id}`}>
+              <div className='p-4'>
+              <button className='button-24 p-2'>Manage Company Vehicles</button>
+              </div>
+            </Link>
               </div>
             </div>
 

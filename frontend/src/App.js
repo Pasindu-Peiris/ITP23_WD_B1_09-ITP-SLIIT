@@ -266,7 +266,7 @@ function App() {
       {/*Bookings and Reservations*/}
       <BrowserRouter>
         <Routes>
-          <Route path='/addBookings' element={<AddBookings />}></Route>
+          <Route path='/addBookings/:vid' element={<AddBookings />}></Route>
         </Routes>
       </BrowserRouter>
 
