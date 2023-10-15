@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Nav from './Nav';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { useParams } from 'react-router-dom';
 
@@ -19,6 +21,38 @@ function UpdateReservation() { // Changed the component name
         amount: "" // Changed the field name
     });
 
+    const [errors, setErrors] = useState({
+        name: "",
+        email: "",
+        address: "",
+        phone: "",
+        nic: ""
+    });
+
+    function Notify(message, type) {
+        toast[type](message, {
+            autoClose: 1500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            position: "top-right",
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            style: {
+                width: '300px',
+                height: '100px',
+                fontSize: '22px',
+                alignItems: 'center',
+                fontFamily: "Ropa Sans",
+                display: 'flex',
+                justifyContent: 'center',
+                color: 'white',
+            },
+            bodyClassName: 'custom-toast-body'
+        });
+    }    
+
     // date format
     const formatDate = (dateStr) => {
         const date = new Date(dateStr);
@@ -26,6 +60,39 @@ function UpdateReservation() { // Changed the component name
         const month = String(date.getMonth() + 1).padStart(2, "0");
         const day = String(date.getDate()).padStart(2, "0");
         return `${year}-${month}-${day}`;
+    };
+
+
+    // Function to validate name (letters only, no numbers or special characters)
+const validateName = (name) => {
+    const nameRegex = /^[A-Za-z\s]+$/;
+    return nameRegex.test(name);
+};
+
+// Function to validate address (letters and spaces only, no numbers or special characters)
+const validateAddress = (address) => {
+    const addressRegex = /^[A-Za-z\s.,]+$/;
+    return addressRegex.test(address);
+};
+
+
+    // Function to validate email format
+    const validateEmail = (email) => {
+        // Regular expression for a valid email address
+        const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+        return emailRegex.test(email);
+    };
+
+    // Function to validate phone format (only digits, no spaces, and exactly 9 digits)
+    const validatePhone = (phone) => {
+        const phoneRegex = /^\d{9}$/;
+        return phoneRegex.test(phone);
+    };
+
+    // Function to validate NIC format (either 12 digits or 9 digits followed by 'v' or 'V')
+    const validateNIC = (nic) => {
+        const nicRegex = /^\d{12}$|^\d{9}[vV]$/;
+        return nicRegex.test(nic);
     };
 
     useEffect(() => {
@@ -58,14 +125,38 @@ function UpdateReservation() { // Changed the component name
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setReservation({ ...reservation, [name]: value });
+
+        // Validate email, phone, and NIC
+        const newErrors = { ...errors };
+        
+        if (name === 'name' && !validateName(value)) {
+            newErrors.name = "please Enter valid Name";
+        }
+        else if (name === 'address' && !validateAddress(value)) {
+            newErrors.address = "Please Enter valid Address";
+        }
+        else if (name === 'email' && !validateEmail(value)) {
+            newErrors.email = "Invalid email format";
+        } else if (name === 'phone' && !validatePhone(value)) {
+            newErrors.phone = "Invalid phone format (9 digits required)";
+        } else if (name === 'nic' && !validateNIC(value)) {
+            newErrors.nic = "Invalid NIC format (12 digits or 9 digits followed by 'v' or 'V')";
+        } else {
+            // Clear the error message if input is valid
+            newErrors[name] = "";
+        }
+
+        setErrors(newErrors);
     }
 
     const Update = (e) => {
         e.preventDefault();
         axios.put("http://localhost:8090/reservation/update/" + id, reservation) // Changed the API endpoint
             .then(result => {
-                alert("Reservation Updated");
-                window.location = '/AllReservations'; // Updated the redirection URL
+                Notify('Reservation Updated Successfully', 'success');
+                setTimeout(() => {
+                window.location = '/AllReservations';
+            }, 2000);
             })
             .catch((err) => {
                 alert("Reservation Not Updated");
@@ -98,6 +189,7 @@ function UpdateReservation() { // Changed the component name
                                 value={reservation.name} // Changed the field name
                                 onChange={handleInputChange}
                             />
+                             {errors.name && <div className="error-message" style={{ color: 'red' }}>{errors.name}</div>}
                         </div>
                         <br></br>
 
@@ -114,6 +206,7 @@ function UpdateReservation() { // Changed the component name
                                 value={reservation.email} // Changed the field name
                                 onChange={handleInputChange}
                             />
+                             {errors.email && <div className="error-message" style={{ color: 'red' }}>{errors.email}</div>}
                         </div>
                         <br></br>
                         <div className="mb-4">
@@ -129,6 +222,7 @@ function UpdateReservation() { // Changed the component name
                                 value={reservation.address} // Changed the field name
                                 onChange={handleInputChange}
                             />
+                             {errors.address && <div className="error-message" style={{ color: 'red' }}>{errors.address}</div>}
                         </div>
                         <br></br>
                         <div className="mb-4">
@@ -144,6 +238,7 @@ function UpdateReservation() { // Changed the component name
                                 value={reservation.phone} // Changed the field name
                                 onChange={handleInputChange}
                             />
+                             {errors.phone && <div className="error-message" style={{ color: 'red' }}>{errors.phone}</div>}
                         </div>
                         <br></br>
                         <div className="mb-4">
@@ -159,6 +254,7 @@ function UpdateReservation() { // Changed the component name
                                 value={reservation.nic}
                                 onChange={handleInputChange}
                             />
+                             {errors.nic && <div className="error-message" style={{ color: 'red' }}>{errors.nic}</div>}
                         </div>
                         <br></br>
                         <div className="mb-4">
@@ -175,6 +271,7 @@ function UpdateReservation() { // Changed the component name
                                 onChange={handleInputChange}
                                 disabled
                             />
+                            
                         </div>
                         <br></br>
                         <div className="mb-4">
@@ -230,6 +327,7 @@ function UpdateReservation() { // Changed the component name
                 </div>
             </div>
         </div>
+        <ToastContainer/>
         </div>
     )
 }

@@ -9,10 +9,11 @@ class Donut extends Component {
     this.state = {
       options: {
         colors:['#ff9100', '#2ec4b6'],
+        labels: ['Active Drivers', 'Inactive Drivers'],
         
       },
-      series: [44, 55],
-      labels: ['A', 'B']
+      series: [10, 2],
+      
     }
   }
 

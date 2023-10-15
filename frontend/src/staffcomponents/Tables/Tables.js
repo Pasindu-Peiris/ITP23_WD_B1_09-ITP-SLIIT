@@ -12,8 +12,26 @@ import { statuschangefunc } from "../../services/Apis";
 import { ToastContainer, toast } from "react-toastify";
 import './table.css';
 
-const Tables = ({ userdata, deleteUser, userGet, handlePrevious, handleNext, page, pageCount, setPage }) => {
+import Swal from 'sweetalert2';
 
+const Tables = ({ userdata, deleteUser, userGet, handlePrevious, handleNext, page, pageCount, setPage }) => {
+  const deleteUserWithConfirmation = (id) => {
+    Swal.fire({
+      title: 'Delete User',
+      text: 'Are you sure you want to delete this user?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Delete',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // User confirmed, proceed with the delete operation
+        deleteUser(id);
+      }
+    });
+  };
+  
   const handleChange = async (id, status) => {
     const response = await statuschangefunc(id, status);
     if (response.status === 200) {
@@ -25,9 +43,9 @@ const Tables = ({ userdata, deleteUser, userGet, handlePrevious, handleNext, pag
   };
 
   const exportToCSV = () => {
-    const header = 'ID,FullName,Email,nic,role,Gender,Status\n';
+    const header = 'ID,FullName,Email,nic,role,mobile,Gender,Status\n';
     const csv = userdata.map((element, index) => {
-      return `${index + 1 + (page - 1) * 4},${element.fname} ${element.lname},${element.email},${element.nic},${element.role},${element.gender === "Male" ? "M" : "F"},${element.status}\n`;
+      return `${index + 1 + (page - 1) * 4},${element.fname} ${element.lname},${element.email},${element.nic},${element.role},${element.mobile},${element.gender === "Male" ? "M" : "F"},${element.status}\n`;
     }).join('');
     const csvData = new Blob([header, csv], { type: 'text/csv' });
     const csvUrl = URL.createObjectURL(csvData);
@@ -37,6 +55,26 @@ const Tables = ({ userdata, deleteUser, userGet, handlePrevious, handleNext, pag
     document.body.appendChild(tempLink);
     tempLink.click();
     document.body.removeChild(tempLink);
+
+    Swal.fire({
+      icon: 'success',
+      iconColor: '#4caf50',
+      title: 'CSV file generated!',
+      text: 'The CSV file has been successfully generated and downloaded.',
+
+      customClass: {
+        container: 'futuristic-swal-container',
+        title: 'futuristic-swal-title',
+        content: 'futuristic-swal-content',
+      },
+     
+      showConfirmButton: true,
+      confirmButtonColor: '#4caf50', 
+
+    });
+
+
+
   };
 
   return (
@@ -62,7 +100,9 @@ const Tables = ({ userdata, deleteUser, userGet, handlePrevious, handleNext, pag
                     <th>Email</th>
                     <th>NIC</th>
                     <th>Role</th>
+                    <th>Mobile</th>
                     <th>Gender</th>
+                    
 
           
               
@@ -85,6 +125,7 @@ const Tables = ({ userdata, deleteUser, userGet, handlePrevious, handleNext, pag
                           <td>{element.email}</td>
                           <td>{element.nic}</td>
                           <td>{element.role}</td>
+                          <td>{element.mobile}</td>
                           <td>{element.gender === "Male" ? "M" : "F"}</td>
 
                         
@@ -121,7 +162,7 @@ const Tables = ({ userdata, deleteUser, userGet, handlePrevious, handleNext, pag
                                   </NavLink>
                                 </Dropdown.Item>
                                 <Dropdown.Item>
-                                  <div onClick={() => deleteUser(element._id)}>
+                                  <div onClick={() => deleteUserWithConfirmation(element._id)}>
                                     <i className="fa-solid fa-trash" style={{ color: "red" }}></i> <span>Delete</span>
                                   </div>
                                 </Dropdown.Item>

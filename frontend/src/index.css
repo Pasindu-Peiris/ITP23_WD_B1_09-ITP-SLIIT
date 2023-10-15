@@ -1,6 +1,8 @@
 
-/* @tailwind components;
-@tailwind utilities; */
+@tailwind components;
+@tailwind utilities;
+@import 'antd/dist/antd.css';
+
 
 
 

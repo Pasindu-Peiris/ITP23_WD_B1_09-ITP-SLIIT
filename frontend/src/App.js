@@ -81,21 +81,22 @@ import Add_driver from "./driverpages/add/Add";
 //AddBookings
 import AddBookings from "./component/AddBooking";
 import AddReservation from "./component/AddReservation";
-import AllBookings from "./component/AllBookings";
-import UpdateBooking from "./component/UpdateBooking";
-import AllReservations from "./component/AllReservations";
-import UpdateReservation from "./component/UpdateReservation";
+import AllBookings from './component/AllBookings';
+import UpdateBooking from './component/UpdateBooking';
+import AllReservations from './component/AllReservations';
+import UpdateReservation from './component/UpdateReservation';
 
-import ADlog from "./component/AdminLogin";
-import AllVehicleOwnerDetails from "./component/Finance/VehicleOwnerDetails";
+
+import ADlog from './component/AdminLogin'
+
 
 function App() {
   return (
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/Register" element={<Register />}></Route>
-          <Route path="/Admin-login-rapid-travels" element={<ADlog />}></Route>
+          <Route path='/Register' element={<Register />}></Route>
+          <Route path='/Admin-login-rapid-travels' element={<ADlog />}></Route>
         </Routes>
       </BrowserRouter>
 
@@ -290,7 +291,7 @@ function App() {
       {/*Bookings and Reservations*/}
       <BrowserRouter>
         <Routes>
-          <Route path="/addBookings" element={<AddBookings />}></Route>
+          <Route path='/addBookings' element={<AddBookings />}></Route>
         </Routes>
       </BrowserRouter>
 

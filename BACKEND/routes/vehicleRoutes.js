@@ -81,6 +81,8 @@ router.put('/addTime/:id', (req, res) => {
                 return res.status(404).json({ message: 'Vehicle not found' });
             }
             vehicle.bookedTimeSlots.push(req.body.bookedTimeSlots);
+            vehicle.totalamount = req.body.totalamount;
+
             return vehicle.save();
         })
         .then(updatedVehicle => {
@@ -90,6 +92,8 @@ router.put('/addTime/:id', (req, res) => {
             res.status(400).json(err);
         });
 });
+
+
 
 router.delete('/deleteVehicle/:id', (req, res) => {
     const id = req.params.id;

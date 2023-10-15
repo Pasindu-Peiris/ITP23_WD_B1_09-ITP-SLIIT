@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import Nav from "./Nav";
 
@@ -37,6 +38,42 @@ export default function BookingForm() {
   const [cvvError, setCvvError] = useState("");
 
 
+   const {vid} = useParams();
+   const [model, setModel] = useState()
+   const [totalamount, setTotalamount] = useState()
+   const [bookedTimeSlots, setBookedTimeSlots] = useState([]);
+
+   useEffect(() => {
+     return () => {
+     }
+   }, [])
+   
+   useEffect(() => {
+    axios
+      .get("/vehicles/upVehicles/" + vid)
+      .then((result) => {
+        console.log(result);
+        setTotalamount(result.data.totalamount);
+        setBookedTimeSlots(result.data.bookedTimeSlots);
+  
+        if (result.data.bookedTimeSlots.length > 0) {
+          const lastBooking = result.data.bookedTimeSlots[result.data.bookedTimeSlots.length - 1];
+          setPickupDate(lastBooking.from);
+          setReturnDate(lastBooking.to);
+        }
+  
+        setVehicleType(result.data.model);
+  
+        console.log(model); // You can keep this line here if you want to log 'model'
+      })
+      .catch((err) => console.log(err));
+  }, []);
+  
+
+  
+  
+
+
 
   const Validate = () => {
     const newErrors ={};
@@ -52,14 +89,12 @@ export default function BookingForm() {
 function sendData(e) {
   e.preventDefault();
 
-  // Calculate the total amount with driver charge
-  let totalAmount = 1500; // Base amount
 
   if (driver === "Yes") {
-    totalAmount += 200; // Add 200 for the driver
+    totalamount += 200; // Add 200 for the driver
   }
 
-  setAmount(totalAmount); // Update the amount state
+  setAmount(totalamount); // Update the amount state
 
   // Validate email format
   const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -147,9 +182,10 @@ function sendData(e) {
 
 
   return (
-    <div>
+    
+    <div className=" " style={{backgroundColor:"#f1f1f3"}}>
      <Nav/>
-    <div className="form-container">
+    <div className="form-container container card w-50" style={{padding:"50px"}}>
   
       <div className="header">
       <h1>Vehicle Booking Form</h1>
@@ -158,7 +194,7 @@ function sendData(e) {
     <div className="form-content">
     <div className="booking-form-container" >
       <h2>Booking Information</h2>
-    
+     
       <form onSubmit={sendData}>
         <div className="form-group1">
           <label htmlFor="name">Full Name</label>
@@ -231,44 +267,50 @@ function sendData(e) {
           />
           <p className="error-message">{nicError}</p>
         </div>
-        <div className="form-group1">
-          <label htmlFor="vehicletype">Select Vehicle</label>
-          <select
-            className="form-control"
-            id="vehicletype"
-            onChange={(e) => {
-              setVehicleType(e.target.value);
-            }}
-          >
-            <option value="">Select Vehicle Type</option>
-            <option value="BMWX3">BMWX3</option>
-            <option value="GTR R34">GTR R34</option>
-            <option value="JEEP 2">JEEP 2</option>
-            <option value="DISCOVERY 4">DISCOVERY 4</option>
-          </select>
+              <div className="form-group1">
+                <label htmlFor="vehicletype">Vehicle Model</label>
+                <input
+  type="text"
+  className="form-control"
+  id="vehicleType"
+  value={vehicletype}
+  placeholder=""
+  onChange={(e) => {
+    setVehicleType(e.target.value);
+  }}
+/>
+
         </div>
-        <div className="form-group">
-          <label htmlFor="pickupdate">Pickup Date</label>
-          <input
-            type="date"
-            className="form-control"
-            id="pickupdate"
-            onChange={(e) => {
-              setPickupDate(e.target.value);
-            }}
-          />
-        </div>
-        <div className="form-group1">
-          <label htmlFor="returndate">Return Date</label>
-          <input
-            type="date"
-            className="form-control"
-            id="returndate"
-            onChange={(e) => {
-              setReturnDate(e.target.value);
-            }}
-          />
-        </div>
+        
+
+<div className="form-group">
+  <label htmlFor="pickupdate">Pickup Date</label>
+  <input
+    type="text"
+    className="form-control"
+    id="pickupdate"
+    value={pickupdate}
+    placeholder="Pickup Date"
+    onChange={(e) => {
+      setPickupDate(e.target.value);
+    }}
+  />
+</div>
+
+<div className="form-group1">
+  <label htmlFor="returndate">Return Date</label>
+  <input
+    type="text"
+    className="form-control"
+    id="returndate"
+    value={returndate}
+    placeholder="Return Date"
+    onChange={(e) => {
+      setReturnDate(e.target.value);
+    }}
+  />
+</div>
+
         <div className="form-group1">
           <label htmlFor="driver">Do you want a Driver</label>
           
@@ -291,9 +333,11 @@ function sendData(e) {
     className="form-control"
     id="totalAmount"
     placeholder="Enter Total Amount"
-    value={amount} // Bind to the amount state
+    value={totalamount} // Bind to the amount state
                 readOnly // Make it non-editable
-   
+                onChange={(e) => {
+                  setAmount(e.target.value);
+                }}
   />
 </div>
 <h2>Payment Information</h2>
@@ -346,7 +390,8 @@ function sendData(e) {
             />
             <p className="error-message">{cvvError}</p>
           </div>
-
+        
+     
 
 
 

@@ -75,22 +75,14 @@ function Home() {
 
                                 <div className='item-1'>
                                     <a href='/vehicle_main' data-aos="zoom-in-down">
-                                        <img src={img1} alt='' style={{width:"35px"}} />
+                                        <img src={img1} alt='' style={{ width: "35px" }} />
                                         <p>SEE MORE</p>
                                     </a>
                                 </div>
 
                                 <div className='item-1'>
                                     <a href='/vehicle_main' data-aos="zoom-in-down">
-                                        <img src={img2} alt='' style={{width:"35px"}} />
-                                        <p>SEE MORE</p>
-                                    </a>
-                                </div>
-
-
-                                <div className='item-1'>
-                                    <a href='/vehicle_main' data-aos="zoom-in-down">
-                                        <img src={img3} alt='' style={{width:"35px"}} />
+                                        <img src={img2} alt='' style={{ width: "35px" }} />
                                         <p>SEE MORE</p>
                                     </a>
                                 </div>
@@ -98,7 +90,15 @@ function Home() {
 
                                 <div className='item-1'>
                                     <a href='/vehicle_main' data-aos="zoom-in-down">
-                                        <img src={img4} alt='' style={{width:"35px"}} />
+                                        <img src={img3} alt='' style={{ width: "35px" }} />
+                                        <p>SEE MORE</p>
+                                    </a>
+                                </div>
+
+
+                                <div className='item-1'>
+                                    <a href='/vehicle_main' data-aos="zoom-in-down">
+                                        <img src={img4} alt='' style={{ width: "35px" }} />
                                         <p>SEE MORE</p>
                                     </a>
 
@@ -107,25 +107,27 @@ function Home() {
 
                                 <div className='item-1'>
                                     <a href='/vehicle_main' data-aos="zoom-in-down">
-                                        <img src={img5} alt='' style={{width:"35px"}} />
+                                        <img src={img5} alt='' style={{ width: "35px" }} />
                                         <p>SEE MORE</p>
                                     </a>
                                 </div>
 
                                 <div className='item-1'>
                                     <a href='/vehicle_main' data-aos="zoom-in-down">
-                                        <img src={img6} alt='' style={{width:"35px"}} />
+                                        <img src={img6} alt='' style={{ width: "35px" }} />
                                         <p>SEE MORE</p>
                                     </a>
                                 </div>
 
                             </div>
 
-                            <SlideBarV />
-                            <div id='about'><AboutUS /></div>
+                          
                             <SlideBarCar />
-                            
-                            
+                            <div id='about'><AboutUS /></div>
+                           
+                            <SlideBarV />
+
+
 
 
                             <div className='text-head' data-aos="zoom-in-up">
@@ -176,10 +178,10 @@ function Home() {
 
 
 
-                           
 
-                            
-                          
+
+
+
 
 
 
@@ -306,6 +308,13 @@ function Home() {
                     }
                 </div>
             )}
+
+
+
+
+
+
+
         </div>
 
     )

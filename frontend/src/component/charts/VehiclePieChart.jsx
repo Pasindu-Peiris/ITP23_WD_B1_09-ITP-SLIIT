@@ -9,10 +9,11 @@ class Donut extends Component {
     this.state = {
       options: {
         colors:['#6351ce', '#6351ce80'],
+        labels: ['A', 'B'],
         
       },
       series: [44, 55],
-      labels: ['A', 'B']
+      
     }
   }
 
@@ -21,9 +22,9 @@ class Donut extends Component {
     return (
         <div class="card">
             <div class="card-body bg-transparent">
-                <h5 class="card-title">No.Of Published Vehicles</h5>
+                <h5 class="card-title fw-bold">Company & Owner Vehicles</h5>
                 <div className="donut">
-                    <Chart options={this.state.options} series={this.state.series} type="donut" width="380" />
+                    <Chart options={this.state.options} series={this.state.series} type="donut" width="380" height="175" />
                 </div>
             </div>
         </div>
