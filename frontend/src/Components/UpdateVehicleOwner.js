@@ -77,29 +77,29 @@ export default function UpdateVehicleOwner() {
 
     function validateName() {
         const nameInput = document.querySelector('[name="name"]');
+        if (!nameInput) return;
         const nameError = document.getElementById('name-error');
+    
         const name = nameInput.value.trim();
-      
+    
         if (name === '') {
-            if (nameError) {
-                nameInput.setCustomValidity('Name is required.');
-                nameError.textContent = 'Name is required.';
-                nameError.style.color = 'red';
-            }
-        } else if (!/^[a-zA-Z\s]*$/.test(name)) {
-            if (nameError) {
-                nameInput.setCustomValidity('Name can only contain letters and spaces.');
-                nameError.textContent = 'Name can only contain letters and spaces.';
-                nameError.style.color = 'red';
-            }
+          nameInput.setCustomValidity('Name is required.');
         } else {
-            if (nameError) {
-                nameInput.setCustomValidity('');
-                nameError.textContent = '';
-                nameError.style.color = 'red';
-            }
+          if (!/^[a-zA-Z\s]*$/.test(name)) {
+            nameInput.setCustomValidity('Name can only contain letters and spaces.');
+          } else {
+            nameInput.setCustomValidity('');
+          }
         }
-    }
+        nameInput.reportValidity();
+      }
+    
+      useEffect(() => {
+        const nameInput = document.querySelector('[name="name"]');
+        if (nameInput) {
+          nameInput.addEventListener('input', validateName);
+        }
+      }, []);
     
       
       function validateEmail() {

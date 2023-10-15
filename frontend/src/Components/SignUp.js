@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Logo from "./logothisal.jpg";
 import backgroundImage from './1587206.jpg';
@@ -51,30 +51,32 @@ export default function SignUp() {
     };
 
     function validateName() {
-        const nameInput = document.querySelector('[name="name"]');
-        const nameError = document.getElementById('name-error');
-        const name = nameInput.value.trim();
-      
-        if (name === '') {
-            if (nameError) {
-                nameInput.setCustomValidity('Name is required.');
-                nameError.textContent = 'Name is required.';
-                nameError.style.color = 'red';
-            }
-        } else if (!/^[a-zA-Z\s]*$/.test(name)) {
-            if (nameError) {
-                nameInput.setCustomValidity('Name can only contain letters and spaces.');
-                nameError.textContent = 'Name can only contain letters and spaces.';
-                nameError.style.color = 'red';
-            }
+      const nameInput = document.querySelector('[name="name"]');
+      if (!nameInput) return;
+      const nameError = document.getElementById('name-error');
+  
+      const name = nameInput.value.trim();
+  
+      if (name === '') {
+        nameInput.setCustomValidity('Name is required.');
+      } else {
+        if (!/^[a-zA-Z\s]*$/.test(name)) {
+          nameInput.setCustomValidity('Name can only contain letters and spaces.');
         } else {
-            if (nameError) {
-                nameInput.setCustomValidity('');
-                nameError.textContent = '';
-                nameError.style.color = 'red';
-            }
+          nameInput.setCustomValidity('');
         }
+      }
+      nameInput.reportValidity();
     }
+  
+    useEffect(() => {
+      const nameInput = document.querySelector('[name="name"]');
+      if (nameInput) {
+        nameInput.addEventListener('input', validateName);
+      }
+    }, []);
+    
+    
       
       function validateEmail() {
         const emailInput = document.querySelector('[name="email"]');
@@ -143,6 +145,8 @@ export default function SignUp() {
           contactError.style.color = 'red';
         }
       }
+
+      
 
       return (
         <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', backgroundImage: `url(${backgroundImage})`, backgroundRepeat: 'no-repeat', backgroundAttachment: 'fixed', backgroundSize: 'cover' }}>
