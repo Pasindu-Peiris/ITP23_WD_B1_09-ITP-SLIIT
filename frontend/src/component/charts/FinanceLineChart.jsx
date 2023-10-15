@@ -19,13 +19,13 @@ class App extends Component {
           id: "basic-bar"
         },
         xaxis: {
-          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
+          categories: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
         }
       },
       series: [
         {
-          name: "series-1",
-          data: [30, 40, 45, 50, 49, 60, 70, 91]
+          name: "Income",
+          data: [0,0,0,0,0,0,0,100000,125000,275000,300000,500000]
         }
       ]
     };
@@ -35,7 +35,7 @@ class App extends Component {
     return (
         <div class="card">
             <div class="card-body bg-transparent">
-                <h5 class="card-title">Financial Income</h5>
+                <h5 class="card-title fw-bold">Financial Income</h5>
                 <div className="app">
                     <div className="row">
                         <div className="mixed-chart">
@@ -43,7 +43,8 @@ class App extends Component {
                                 options={this.state.options}
                                 series={this.state.series}
                                 type="line"
-                                width="500"
+                                width="800"
+                                height="164"
                             />
                         </div>
                     </div>
