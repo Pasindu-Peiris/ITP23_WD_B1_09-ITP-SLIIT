@@ -18,7 +18,9 @@ export default function Cards({ drivers }) {
                 }
                 alt="profile pic"
               />
-              <h3>{`${driver.firstName} ${driver.lastName}`}</h3>
+              {/* {`${driver.firstName} ${driver.lastName}`} */}
+              <div style={{ fontSize: '20px', fontWeight: 'bold', marginBottom: '10px' }}>{`${driver.firstName} ${driver.lastName}`}</div>
+
               <div className="text">
                 <p>
                   <span className="dlabel">License Number:</span>
