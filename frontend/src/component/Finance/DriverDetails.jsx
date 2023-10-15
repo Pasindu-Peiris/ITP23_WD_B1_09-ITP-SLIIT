@@ -1,42 +1,61 @@
 import axios from "axios";
 import React, { useState, useEffect, useRef } from "react";
-import { Table, Col, Container, Row, Button , Form} from "react-bootstrap";
-import { useNavigate, useParams } from "react-router-dom";
+import { Table, Col, Container, Row, Button, Form } from "react-bootstrap";
+import MainLayout from "./MainLayout";
 
 function AllDriverDetails() {
-  const [driverDetails, setDriverDetails] = useState([]);
+  const [drivers, setDrivers] = useState([]);
   const [inputState, setInputState] = useState({
     bonus: "",
   });
 
-  // get link parameter details
-  const { Id } = useParams();
-  const navigate = useNavigate();
+  const [calculationResults, setCalculationResults] = useState([]); // To store calculated net salaries
 
   // Function to update driver details based on bonus
-  async function updateDriverDetailsWithBonus() {
+  async function addDriverSalary() {
     try {
       const response = await axios.post(
-        "http://localhost:8090/finance/updateDriverDetailsWithBonus",
+        "http://localhost:8090/finance/addDriverSal",
         { bonus: inputState.bonus }
       );
-      setDriverDetails(response.data);
+
+      // Update the drivers' data with calculated net salaries
+      const updatedDrivers = drivers.map((driver) => {
+        // Perform your net salary calculation here based on bonus and driver's mileage
+        const netSalary = calculateNetSalary(driver.mileage, inputState.bonus);
+
+        // Update the driver's netSalary property
+        return { ...driver, netSalary };
+      });
+
+      // Set the updated drivers' data
+      setDrivers(updatedDrivers);
+
+      // Set the calculation results to display
+      setCalculationResults(updatedDrivers.map((driver) => driver.netSalary));
     } catch (error) {
       console.error("Error with updating driver details:", error);
     }
   }
 
-  useEffect(() => {
-    // Fetch driver details when the component mounts
-    async function getDriverDetails() {
-      try {
-        const response = await axios.get("http://localhost:8090/driver/");
-        setDriverDetails(response.data);
-      } catch (error) {
-        console.error("Error with GET request:", error);
-      }
-    }
+  // Salary Calculations
+  function calculateNetSalary(mileage, bonus) {
+    const salaryPerKM = 50;
+    const netSalary = (salaryPerKM * mileage * bonus) / 100 + salaryPerKM * mileage;
+    return netSalary;
+  }
 
+  // Get Driver Details
+  async function getDriverDetails() {
+    try {
+      const response = await axios.get("http://localhost:8090/api/drivers");
+      setDrivers(response.data);
+    } catch (error) {
+      console.error("Error with GET request:", error);
+    }
+  }
+
+  useEffect(() => {
     getDriverDetails();
   }, []);
 
@@ -48,11 +67,12 @@ function AllDriverDetails() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    updateDriverDetailsWithBonus();
+    addDriverSalary();
   };
 
   return (
     <>
+      <MainLayout></MainLayout>
       <Container className="mt-5">
         <Row>
           <Col xs={6} className="mb-0">
@@ -72,13 +92,16 @@ function AllDriverDetails() {
                       padding: "10px",
                       fontSize: "18px",
                       border: "2px solid black",
-                      // marginLeft: "80px",
                     }}
                   />
                 </Form>
               </Col>
               <Col xs={12} md={2} className="d-flex justify-content-end">
-                <Button variant="primary" className="btn-lg" onClick={handleSubmit}>
+                <Button
+                  variant="primary"
+                  className="btn-lg"
+                  onClick={handleSubmit}
+                >
                   Calculate
                 </Button>
               </Col>
@@ -104,22 +127,26 @@ function AllDriverDetails() {
                 <tr>
                   <th></th>
                   <th>Name</th>
-                  <th>NIC</th>
+                  <th>Contact Number</th>
                   <th>Email</th>
                   <th>Mileage</th>
                 </tr>
               </thead>
               <tbody>
-                {driverDetails.map((driver, index) => {
-                  const { driver_id } = driver;
-                  if (driver_id) {
+                {drivers.map((driver, index) => {
+                  const { firstName, lastName, ContactNumber, email, mileage } = driver;
+                  if (driver) {
                     return (
-                      <tr key={driver._id}>
+                      <tr
+                        key={driver._id}
+                      >
                         <td>{index + 1}</td>
-                        <td>{driver_id.name}</td>
-                        <td>{driver_id.nic}</td>
-                        <td>{driver_id.email}</td>
-                        <td>{driver.mileage}</td>
+                        <td>
+                          {firstName} {lastName}
+                        </td>
+                        <td>{ContactNumber}</td>
+                        <td>{email}</td>
+                        <td>{mileage} Km</td>
                       </tr>
                     );
                   }

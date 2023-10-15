@@ -5,9 +5,9 @@ const VehicleOwner = require('../models/VehicleOwner'); // Import the VehicleOwn
 // Create a new VehicleOwner
 router.post('/add', async (req, res) => {
     try {
-        const { name, location, email, contact, password, nic } = req.body;
+        const { name, location, email, contact,nic } = req.body;
 
-        const newVehicleOwner = new VehicleOwner({ name, location, email, contact, password, nic });
+        const newVehicleOwner = new VehicleOwner({ name, location, email, contact,nic });
 
         await newVehicleOwner.save();
 
@@ -18,23 +18,7 @@ router.post('/add', async (req, res) => {
     }
 });
 
-// Sign In a VehicleOwner
-router.post('/signin', async (req, res) => {
-    try {
-        const { email, password } = req.body;
 
-        const existingOwner = await VehicleOwner.findOne({ email });
-
-        if (!existingOwner || existingOwner.password !== password) {
-            return res.status(401).json({ error: 'Invalid email or password' });
-        }
-
-        res.json({ message: 'Sign in successful', owner: existingOwner });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Server error' });
-    }
-});
 
 // Get all VehicleOwners
 router.get('/', async (req, res) => {
@@ -51,8 +35,8 @@ router.get('/', async (req, res) => {
 router.put('/update/:id', async (req, res) => {
     try {
         const ownerId = req.params.id;
-        const { name, location, email, contact, password, nic } = req.body;
-        const updatedVehicleOwner = { name, location, email, contact, password, nic };
+        const { name, location, email, contact,nic } = req.body;
+        const updatedVehicleOwner = { name, location, email, contact,nic };
         const result = await VehicleOwner.findByIdAndUpdate(ownerId, updatedVehicleOwner, { new: true });
         if (!result) {
             return res.status(404).json({ error: 'Vehicle Owner not found' });

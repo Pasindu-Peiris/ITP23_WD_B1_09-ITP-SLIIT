@@ -18,6 +18,11 @@
   scroll-behavior: smooth;
 }
 
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
 body {
   font-family: "Oswald", sans-serif;
   font-family: "PT Sans Narrow", sans-serif;
@@ -26,12 +31,33 @@ body {
   font-family: "Ubuntu", sans-serif;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 #sec-from {
   width: 100%;
   height: 110vh;
   background-image: url(./img/home-banner-1.webp);
+  background-size: cover;
+  background-position: left center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 00px;
+  padding: 0px;
+  overflow: hidden;
+}
+
+
+#sec-from-admin {
+  width: 100%;
+  height: 110vh;
+  background-image: url(./img/home3.webp);
   background-size: cover;
   background-position: left center;
   background-repeat: no-repeat;
@@ -107,7 +133,7 @@ body {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .nav-list ul li {
@@ -461,7 +487,7 @@ hr {
   padding: 30px 20px;
   background-color: var(--primary-color);
   border-radius: 8px;
-  box-shadow: 2px 2px 2px 2px #0d0d0d71;
+  
 }
 
 #col-new {
@@ -625,8 +651,6 @@ hr {
 
 
 /*--------------------------Shehan----------------------*/
-
-
 .labsh {
   margin-bottom: 10px;
 
@@ -716,6 +740,44 @@ hr {
 .colored-toast.swal2-icon-warning {
   background-color: #f8bb86 !important;
 }
+
+/* owner */
+.button-25 {
+  background: #888888;
+  border: 1px solid #000000;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.button-25:hover,
+.button-25:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: #888888;
+}
+
+.button-25:active {
+  opacity: .5;
+}
+
 
 
 

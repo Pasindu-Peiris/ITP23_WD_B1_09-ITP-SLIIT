@@ -57,6 +57,7 @@ function TourDetails() {
             console.log(err);
 
         })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 
@@ -211,7 +212,7 @@ function TourDetails() {
                             <p class="card-text fs-6 fw-bold text-success">per group up to 54</p>
                             <p class="card-text fs-6 fw-bold">Reserve now & pay later to book your spot and pay nothing today</p>
 
-                            <a href="!#" class="btn btn-primary w-75 p-2 mt-3 ">BOOK NOW</a>
+                            <a href="/addReservations" class="btn btn-primary w-75 p-2 mt-3 ">BOOK NOW</a>
                         </div>
                     </div>
                 </div>

@@ -18,10 +18,7 @@ const vehicleOwnerSchema = new Schema({
         type: Number,
         required: true
     },
-    password: {
-        type: String,
-        required: true
-    },
+    
     nic: {
         type: String, 
         required: true

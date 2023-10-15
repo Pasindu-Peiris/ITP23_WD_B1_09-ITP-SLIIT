@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect, useRef } from "react";
 import ReactToPrint from "react-to-print";
+import MainLayout from "./MainLayout";
 import {
   Table,
   Col,
@@ -28,16 +29,16 @@ function AllStaffSal() {
     }
   }
 
-
   useEffect(() => {
     getStaffSal();
   }, []);
 
   return (
     <>
+      <MainLayout></MainLayout>
       <Container className="mt-5">
         <Row>
-          <Col xs={12} md={8}>
+          <Col xs={12} md={8} style={{ marginBottom: "20px" }}>
             <h1>Staff Salary Details</h1>
           </Col>
 
@@ -58,8 +59,6 @@ function AllStaffSal() {
             </Form>
           </Col>
         </Row>
-
-        <br />
 
         <Row>
           <Col xs={12}>
@@ -119,7 +118,10 @@ function AllStaffSal() {
                         element;
                       if (element_id) {
                         return (
-                          <tr key={element._id}>
+                          <tr
+                            key={element._id}
+                            style={{ backgroundColor: "#6553cfa3" }}
+                          >
                             <td>{index + 1}</td>
                             <td>{element_id.name}</td>
                             <td>{element_id.nic}</td>

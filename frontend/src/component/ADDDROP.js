@@ -7,36 +7,29 @@ import '../App.css';
 function Dropadd() {
 
 
-    const [fname, setFname] = useState('');
-    const [lname, setLname] = useState('');
+    const [name, setFname] = useState('');
+    const [mtype, setLname] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [deleteddate, setDeleteddate] = useState('');
-    const [images, setImages] = useState('');
-    const [lastlogin, setLastlogin] = useState('');
 
 
     const onSubmit = (e) => {
 
         e.preventDefault();
 
-        const newDropclient = {
-            fname,
-            lname,
+        const newAdmin = {
+            name,
             email,
             password,
-            deleteddate,
-            images,
-            lastlogin
+            mtype
 
         }
-
-        axios.post('http://localhost:8090/dropclient/adddropclient', newDropclient)
+        axios.post('http://localhost:8090/admin/addAdmin/', newAdmin)
             .then((res) => {
                 alert("Done")
             }).catch((err) => {
                 alert("jnjin")
-        })
+            })
     }
 
 
@@ -50,6 +43,7 @@ function Dropadd() {
     return (
         <>
 
+            <h1>Admin</h1>
             <form className='d-flex align-content-center justify-content-center m-5 '
 
                 onSubmit={onSubmit}
@@ -57,35 +51,26 @@ function Dropadd() {
 
                 <div className="" style={{ width: "600px", backgroundColor: "red" }}>
 
-                    <input type="text" placeholder="Enter Course ID"
+                    <input type="text" placeholder=" name"
 
                         onChange={(e) => setFname(e.target.value)}
 
                     /><br></br>
-                    <input type="text" placeholder="Enter Course Name"
-                        onChange={(e) => setLname(e.target.value)}
-                    /><br></br>
-                    <input type="text" placeholder="Enter Course Description"
+
+                    <input type="text" placeholder=" email"
 
                         onChange={(e) => setEmail(e.target.value)}
 
                     /><br></br>
-                    <input type="text" placeholder="Enter Course Instructor"
+
+
+                    <input type="text" placeholder=" passsword"
                         onChange={(e) => setPassword(e.target.value)}
 
                     /><br></br>
-                    <input type="text" placeholder="Enter Course Credits"
-                        onChange={(e) => setDeleteddate(e.target.value)}
 
-                    /><br></br>
-                    <input type="text" placeholder="Enter Course Time"
-                        onChange={(e) => setImages(e.target.value)}
-
-                    /><br></br>
-
-                    <input type="text" placeholder="Enter Course Time"
-                        onChange={(e) => setLastlogin(e.target.value)}
-
+                    <input type="text" placeholder=" mtype"
+                        onChange={(e) => setLname(e.target.value)}
                     /><br></br>
                     <input type='submit' value='Add Course' className='btn btn-primary'
 
@@ -94,15 +79,6 @@ function Dropadd() {
                 </div>
 
             </form>
-
-
-
-
-
-
-
-
-
 
 
 

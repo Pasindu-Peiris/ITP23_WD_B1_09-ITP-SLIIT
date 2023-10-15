@@ -82,16 +82,21 @@ function SlideBarCar() {
                                             infinite>
                                             {Vehicles.length > 0 && Vehicles.map((Vehicle, index) => (
                                                 <div className='cardBlock-1' key={index}>
-                                                    <div class=" m-3">
-                                                        <div class="card" id='cardv '>
+                                                    <div class="m-3">
+                                                        <div class="card" id='cardv-1'>
                                                             <div class="img-wrapper rounded-2xl">
                                                                 {Vehicle.photos?.[0] && (
-                                                                    <img
-                                                                        src={'http://localhost:8090/' + Vehicle.photos?.[0]}
-                                                                        class="d-block w-100"
-                                                                        alt="..."
-                                                                        style={{}}
-                                                                    />
+                                                                   <img
+                                                                   src={'http://localhost:8090/' + Vehicle.photos?.[0]}
+                                                                   class="d-block"
+                                                                   className='rounded-md'
+                                                                   alt="..."
+                                                                   style={{
+                                                                       width: "100%",  // Set the width to 100% of the container
+                                                                       height: "100%",  // Maintain the aspect ratio
+                                                                   }}
+                                                               />
+                                                               
                                                                 )}
                                                             </div>
 
@@ -129,7 +134,8 @@ function SlideBarCar() {
                                                                     </div>
 
                                                                     <div className='sec-11 pt-3'>
-                                                                        <a href='/VehicleDetails' className='btn btn-dark p-2'>Book Now</a>
+                                                                    <a href={`/Vehicle/${Vehicle._id}`} key={Vehicle._id} className="btn btn-dark p-2">Book Now</a>
+
                                                                     </div>
                                                                 </div>
 

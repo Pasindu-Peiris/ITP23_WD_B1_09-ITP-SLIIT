@@ -1,0 +1,42 @@
+.card-profile-stats img{
+    max-width: 190px;
+    border-radius: 50%;
+    border: 1px solid #111;
+}
+
+.email{
+    color: rgb(238,101,122);
+}
+
+.location{
+    color: blue;
+}
+
+.calendar{
+    color: rebeccapurple;
+}
+
+
+.futuristic-card {
+    width: 850px;
+    height: 548px;
+    background: linear-gradient(to bottom right, #ef87ce, #33c6c6);
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0px 0px 30px 5px rgba(0, 0, 0, 0.3);
+    color: rgb(0, 0, 0);
+    
+    transition: all 0.3s ease;
+  }
+  
+  .futuristic-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 0px 50px 10px rgba(0, 0, 0, 0.5);
+
+  }
+
+  .futuristic-card:hover::before {
+    opacity: 1;
+  }
+  
+  

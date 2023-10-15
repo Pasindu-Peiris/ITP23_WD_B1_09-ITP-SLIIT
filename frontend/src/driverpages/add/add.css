@@ -1,0 +1,102 @@
+.dmanagePage {
+    /* height: 100vh; */
+    background: var(--clr-grey-10);
+    display: flex;
+    justify-content: center;
+   
+  }
+  .dheader{
+    margin: 10px 0;
+  }
+  .deditForm {
+    /* flex: 1; */
+    /* max-width: 600px; */
+    background-color: var(--white);
+    border-radius: 10px;
+    border: 0px solid #999;
+    padding: 30px;
+    margin-bottom: 20px;
+    width: 80vw;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  }
+  .dfields{
+    display: flex;
+    flex-flow: row wrap;
+  }
+  .dimgColumn{
+    flex: 5;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-flow: column nowrap;
+  }
+  .dimgColumn img{
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    margin-top: 5px;
+    border-radius: 50%;
+    text-align: center;
+    margin: auto;
+  }
+  .dfileUploadLabel{
+    margin-top: 10px;
+  }
+  .dfieldsColumn{
+    flex: 5;
+  }
+  
+  .dheader h1 {
+    text-align: center;
+    font-size: 28px;
+  }
+  .dfieldRow {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+  .dfieldLabel {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .daddInputs{
+    font-size: 20px;
+    height: 40px;
+    background-color: var(--white);
+    outline: none;
+    border-radius: 10px;
+    color: #666;
+    padding: 5px;
+    margin: 2px;
+    border: 1px solid #d6d6d6;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  }
+  
+  .dbtnContainer {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  
+  /* .dbottomButton{
+    width: 200px;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    padding: 0.5em;
+    background-color: rgb(66, 12, 54);
+    color: var(--white);
+    margin-left: 5px;
+    border: 0;
+  } */
+  .dbottomButton {
+    width: 200px;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    margin-right: 20px;
+    padding: 0.5em;
+    background-color: rgb(66, 12, 54);
+    color: white; /* Modified text color to white */
+    margin-left: 5px;
+    border: 0;
+  }
+  

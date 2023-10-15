@@ -37,18 +37,46 @@ export default function IndexPage() {
 
   
 
-  const generatePDF = () => {
-    const pdf = new jsPDF('p', 'mm', 'a4');
-    const page = document.getElementById('pdf-content');
+  function generateCsv() {
+    // Fetch vehicle data
+    axios.get('/vehicles/getVehicles/' + ownerId)
+      .then((res) => {
+        const vehiclesData = res.data;
   
-    html2canvas(page).then((canvas) => {
-      const imgData = canvas.toDataURL('image/png');
-      const imgWidth = 190; 
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
-      pdf.addImage(imgData, 'PNG', 10, 10, imgWidth, imgHeight);
-      pdf.save('vehicle-details.pdf');
-    });
-  };
+        // Convert the data to CSV format
+        const csvContent = "data:text/csv;charset=utf-8," +
+          "Type,Model,Year,Owner,Current Mileage,Price,Status\n" +
+          vehiclesData.map((vehicle) => {
+            return [
+              vehicle.type,
+              vehicle.model,
+              vehicle.year,
+              vehicle.owner_id.name,
+              vehicle.mileage,
+              vehicle.transmission,
+              vehicle.price,
+              vehicle.status,
+              vehicle.location
+            ].join(",");
+          }).join("\n");
+  
+        // Create a data URI for the CSV file
+        const encodedUri = encodeURI(csvContent);
+  
+        // Create a hidden anchor element to trigger the download
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "vehicles.csv");
+        document.body.appendChild(link);
+  
+        // Trigger the download
+        link.click();
+      })
+      .catch((err) => {
+        console.log(err);
+        // Handle the error as needed
+      });
+  }
 
   // useEffect(() => {
   //   axios.get('/getVehicles/').then(res => {
@@ -154,7 +182,7 @@ export default function IndexPage() {
         <div className="flex flex-1">
 
         <button className=" flex-1 w-32 m-1 p-2 text-black bg-purple-400 border rounded-xl"
-        onClick={generatePDF}>Generate Report
+        onClick={generateCsv}>Generate Report
         </button>
 
           <button

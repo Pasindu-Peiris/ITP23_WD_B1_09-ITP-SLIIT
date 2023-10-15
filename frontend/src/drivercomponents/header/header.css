@@ -1,0 +1,14 @@
+.dprojectHeader {
+  display: flex;
+  justify-content: center;
+  background-color: var(--white);
+  padding: 0.5rem;
+  margin-bottom: 5px;
+  background-color: rgb(66, 12, 54);
+  /* color: var(--white); */
+}
+.dprojectHeader h2 {
+  font-size: 1.5rem;
+  color: white;
+  font-weight: bold;
+}

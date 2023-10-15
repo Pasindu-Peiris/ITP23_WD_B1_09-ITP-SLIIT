@@ -195,10 +195,10 @@ function Profile() {
 
                             <div class="col-lg-5">
 
-                                <nav aria-label="breadcrumb">
+                                <nav aria-label="breadcrumb ">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item "><a href="/" className='text-dark' style={{ fontSize: "1.1rem" }}>Home</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page" style={{ fontSize: "1.1rem" }}>Account Details</li>
+                                        <li class="breadcrumb-item "><a href="/" className='text-dark' style={{ fontSize: "1.1rem" , textDecoration:"none"}}>Home</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page" style={{ fontSize: "1.1rem", textDecoration:"none" }}>Account Details</li>
                                     </ol>
                                 </nav>
 
@@ -275,7 +275,7 @@ function Profile() {
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-sm-9">
-                                                <button className='btn btn-success' style={{ padding: "4px" }}><a href={`/gets/${userData._id}`} className="btn btn-success cix">Update</a></button>
+                                                <button className='btn btn-success' style={{ padding: "4px" }}><a href={`/gets/${userData._id}`} className="btn btn-success cix"><i class="fa-solid fa-pen-to-square" style={{color:" #ffffff"}}></i></a></button>
 
                                             </div>
                                             <div class="col-sm-3">

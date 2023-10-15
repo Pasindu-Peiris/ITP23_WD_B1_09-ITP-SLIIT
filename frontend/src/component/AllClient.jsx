@@ -41,6 +41,9 @@ function AllClient() {
 
     useEffect(() => {
 
+
+
+
         //get all users
         function getClients() {
 
@@ -57,7 +60,11 @@ function AllClient() {
 
 
 
+
+
     }, [])
+
+
 
 
 
@@ -108,7 +115,7 @@ function AllClient() {
     }
 
     //add drop client
-    function hadeldropclient(dropClient){
+    function hadeldropclient(dropClient) {
 
 
         const newDropclient = {
@@ -129,9 +136,9 @@ function AllClient() {
             }).catch((err) => {
                 console.log(err)
             })
-        
+
     }
-    
+
 
 
 
@@ -167,15 +174,23 @@ function AllClient() {
         onBeforeGetContent: () => setIsActionColumnVisible(false),
 
         content: () => conponebtRef.current,
-        
+
         onAfterPrint: () => setIsActionColumnVisible(true),
-        
+
 
     });
 
     var count = 0;
 
-    const  Activity = "true"
+    const Activity = "true"
+
+
+    //check login and derct to home
+    var logincheck = localStorage.getItem("Logedina");
+
+    if (!logincheck === true) {
+        window.location = '/';
+    }
 
     return (
 
@@ -253,7 +268,7 @@ function AllClient() {
                                         <td>{item.lname}</td>
                                         <td>{item.email}</td>
                                         <td>{item.date}</td>
-                                        <td>{ item.status === 'true' ? <span className="px-2  text-dark rounded-4 bg-warning p-1">Online</span> : <span className="px-2 text-light rounded-4 bg-danger p-1">Offline</span>  }</td>
+                                        <td>{item.status === 'true' ? <span className="px-2  text-dark rounded-4 bg-warning p-1">Online</span> : <span className="px-2 text-light rounded-4 bg-danger p-1">Offline</span>}</td>
                                         <td>{item.lastlogin}</td>
 
 
@@ -261,13 +276,13 @@ function AllClient() {
                                         {isActionColumnVisible && (
                                             <td className="mx-auto-1">
 
-                                                <a href={`/get/${item._id}`} className="btn btn-success cix">Update</a>
+                                                <a href={`/get/${item._id}`} className="btn btn-success cix"><i class="fa-solid fa-pen-to-square" style={{ color: "#ffffff" }}></i></a>
 
 
-                                                <button type="button" className="btn btn-danger" onClick={
+                                                <button type="button" className="btn btn-danger ms-2" onClick={
                                                     (e) => hadelDelete(item._id)}
                                                 >
-                                                    Delete
+                                                    <i class="fa-solid fa-trash" style={{ color: "#ffffff" }}></i>
 
                                                 </button>
 
@@ -286,7 +301,7 @@ function AllClient() {
                     </div>
 
                 </div>
-                
+
                 <div className=" d-flex align-items-center justify-content-center pb-4">
                     <button
                         className="btn  text-dark btn-link"
@@ -308,20 +323,23 @@ function AllClient() {
                 </div>
                 <div class="offcanvas-body">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0 mt-3">
+
+
+                        <li className="nav-item px-4 fs-5" style={{ margin: "10px 0px", border: "1px solid #000" }}>
+                            <a className="nav-link active" aria-current="page" href="/Dashboard-admin-rapidTravles">Dashboard</a>
+                        </li>
                         <li className="nav-item px-4 fs-5" style={{ margin: "10px 0px", border: "1px solid #000" }}>
                             <a className="nav-link active" aria-current="page" href="/AllClient">Client Details</a>
                         </li>
                         <li className="nav-item px-4 fs-5" style={{ margin: "10px 0px", border: "1px solid #000" }}>
-                            <a className="nav-link" href="/ClientDisplay">Report Genarate</a>
+                            <a className="nav-link" href="/AllDrop">Delete Client Details</a>
                         </li>
                         <li className="nav-item px-4 fs-5" style={{ margin: "10px 0px", border: "1px solid #000" }}>
-                            <a className="nav-link" href="/AllDrop">Delete Client Details</a>
+                            <a className="nav-link" href="/ClientDisplay">Report Genarate</a>
                         </li>
 
                     </ul>
-
-                    <a className="nav-link nav-item px-3 fs-5 pt-5" href="/Dashboard-admin-rapidTravles" style={{ color: "red", paddingTop: "800px" }}>Log Out</a>
-
+                    
                 </div>
             </div>
 

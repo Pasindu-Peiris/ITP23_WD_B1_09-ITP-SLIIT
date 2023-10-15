@@ -1,6 +1,6 @@
-import axios from "axios";
 import React, { useState, useEffect, useRef } from "react";
 import ReactToPrint from "react-to-print";
+import MainLayout from "./MainLayout";
 import {
   Table,
   Col,
@@ -10,17 +10,26 @@ import {
   Button,
   InputGroup,
 } from "react-bootstrap";
+import axios from "axios";
 
 function AllIncomes() {
-  const [incomes, setIncomes] = useState([]);
+  const [bookings, setBookings] = useState([]);
+  const [reservations, setReservations] = useState([]);
   const [search, setSearch] = useState("");
   const componentRef = useRef(null);
 
-  //Get all incomes
+  // Get all incomes
   async function getIncomes() {
     try {
-      const response = await axios.get("http://localhost:8090/client/userdata");
-      setIncomes(response.data);
+      const bookingResponse = await axios.get(
+        "http://localhost:8090/booking/AllBookings"
+      );
+      const reservationResponse = await axios.get(
+        "http://localhost:8090/reservation/AllReservations"
+      );
+
+      setBookings(bookingResponse.data);
+      setReservations(reservationResponse.data);
     } catch (error) {
       console.error("Error with GET request:", error);
     }
@@ -30,16 +39,14 @@ function AllIncomes() {
     getIncomes();
   }, []);
 
-  //   const totalIncome = incomes.reduce(
-  //     (total, income) => total + income.amount,
-  //     0,
-  //   );
+  const combinedData = [...bookings, ...reservations];
 
   return (
     <>
+      <MainLayout></MainLayout>
       <Container className="mt-5">
         <Row>
-          <Col xs={12} md={8}>
+          <Col xs={12} md={8} style={{ marginBottom: "20px" }}>
             <h1>All Income Details</h1>
           </Col>
 
@@ -60,8 +67,6 @@ function AllIncomes() {
             </Form>
           </Col>
         </Row>
-
-        <br />
 
         <Row>
           <Col xs={12}>
@@ -103,26 +108,27 @@ function AllIncomes() {
                   </tr>
                 </thead>
                 <tbody>
-                  {incomes
-                    .filter((userData) => {
+                  {combinedData
+                    .filter((data) => {
                       return (
                         search.toLowerCase() === "" ||
-                        userData.userData_id?.name
-                          .toLowerCase()
-                          .includes(search.toLowerCase())
+                        data.name.toLowerCase().includes(search.toLowerCase())
                       );
                     })
-                    .map((userData, index) => {
-                      const { userData_id } = userData;
-                      if (userData_id) {
+                    .map((data, index) => {
+                      const { name, nic, email, pickupdate, date, amount } =
+                        data;
+                      if (data) {
                         return (
-                          <tr key={userData._id}>
-                            <td>{index + 1}</td>
-                            <td>{userData_id.name}</td>
-                            <td>{userData_id.nic}</td>
-                            <td>{userData_id.email}</td>
-                            <td>{userData_id.date}</td>
-                            <td>Rs.{userData_id.amount}</td>
+                          <tr
+                            key={index}
+                          >
+                            <td>{index + 1}</td >
+                            <td>{name}</td>
+                            <td>{nic}</td>
+                            <td>{email}</td>
+                            <td>{pickupdate || date}</td>
+                            <td>Rs. {amount}</td>
                           </tr>
                         );
                       }

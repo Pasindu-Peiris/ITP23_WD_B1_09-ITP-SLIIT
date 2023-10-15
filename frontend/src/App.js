@@ -38,8 +38,14 @@ import EditTour from './component/EditTour';
 import GetTours from './component/GetTours';
 
 //charts
-import PieChart from './component/charts/PieChart';
-import BarChart from './component/charts/BarChart';
+import BookingPieChart from './component/charts/BookingPieChart';
+import ToursBarChart from './component/charts/ToursBarChart';
+import ClientsPieChart from './component/charts/ClientsPieChart';
+import FinanceLineChart from './component/charts/FinanceLineChart';
+import VehiclePieChart from './component/charts/VehiclePieChart';
+import StaffPieChart from './component/charts/StaffPieChart';
+import VehicleOwnerPieChart from './component/charts/VehicleOwnerPieChart';
+import DriverPieChart from './component/charts/DriverPieChart';
 
 // Finance
 import DriverSalary from "./component/Finance/DriverSalary";
@@ -50,6 +56,38 @@ import VehicleOwnerSalary from "./component/Finance/VehicleOwnerSalary";
 import VehicleOwnerDetails from "./component/Finance/VehicleOwnerDetails";
 import AllIncomes from "./component/Finance/AllIncomes";
 
+//staff
+// import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from "./staffcomponents/Headers/Headers";
+import Home_staff from "./pages/Home/Home";
+import Register_staff from "./pages/Register/Register";
+import Edit_staff from "./pages/Edit/Edit";
+import Profile_staff from "./pages/Profile/Profile";
+
+//owner
+import SignUp from './Components/SignUp';
+import VehicleOwnerManagement from './Components/VehicleOwnerManagement';
+import ViewVehicleOwner from './Components/ViewVehicleOwner';
+import UpdateVehicleOwner from './Components/UpdateVehicleOwner';
+
+//driver
+import Home_driver from "./driverpages/home/Home";
+import Edit_driver from "./driverpages/edit/Edit";
+import Delete_driver from "./driverpages/delete/Delete";
+import Add_driver from "./driverpages/add/Add";
+//AddBookings
+import AddBookings from "./component/AddBooking";
+import AddReservation from "./component/AddReservation";
+import AllBookings from './component/AllBookings';
+import UpdateBooking from './component/UpdateBooking';
+import AllReservations from './component/AllReservations';
+import UpdateReservation from './component/UpdateReservation';
+
+//nithila
+import AllResBook from './component/AllUserRes'
+import ADlog from './component/AdminLogin'
+
+
 function App() {
   return (
 
@@ -59,6 +97,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/Register' element={<Register />}></Route>
+          <Route path='/Admin-login-rapid-travels' element={<ADlog />}></Route>
+          <Route path='/AllResBook' element={<AllResBook />}></Route>
         </Routes>
       </BrowserRouter>
 
@@ -154,8 +194,14 @@ function App() {
           <Route path="/addTour" element={<AddTour/>}></Route>
           <Route path="/editTours/:id" element={<EditTour/>}></Route>
           <Route path="/getTours" element={<GetTours/>}></Route>
-          <Route path="/pieChart" element={<PieChart/>}></Route>
-          <Route path="/barChart" element={<BarChart/>}></Route>
+          <Route path="/bookingPieChart" element={<BookingPieChart/>}></Route>
+          <Route path="/toursBarChart" element={<ToursBarChart/>}></Route>
+          <Route path="/clientsPieChart" element={<ClientsPieChart/>}></Route>
+          <Route path="/financeLineChart" element={<FinanceLineChart/>}></Route>
+          <Route path="/vehiclePieChart" element={<VehiclePieChart/>}></Route>
+          <Route path="/staffPieChart" element={<StaffPieChart/>}></Route>
+          <Route path="/vehicleOwnerPieChart" element={<VehicleOwnerPieChart/>}></Route>
+          <Route path="/driverPieChart" element={<DriverPieChart/>}></Route>
         </Routes>
       </BrowserRouter>
 
@@ -196,9 +242,82 @@ function App() {
         </Routes>
       </BrowserRouter>
 
+      {/* staff */}
+      <BrowserRouter>
+      <Routes>
+        <Route path='/staff' element={<Home_staff />} />
+        <Route path='/register_staff' element={<Register_staff />} />
+        <Route path='/edit/:id' element={<Edit_staff />} />
+        <Route path='/userprofile/:id' element={<Profile_staff />} />
+      </Routes>
+    </BrowserRouter>
+
+    {/* owner */}
+    <BrowserRouter>
+        <Routes>
+          <Route path="/vowner" element={ <VehicleOwnerManagement/>} />
+          <Route path="/vehicleowner/signup" element={ <SignUp/>} />
+          <Route path="/updatevehicleowner/:id" element={ <UpdateVehicleOwner/>} />
+          <Route path="/vehicleownersmanager" element={ <VehicleOwnerManagement/>} />
+          <Route path="/vehicleowner/:id" element={ <ViewVehicleOwner/>} />
+        </Routes>
+      </BrowserRouter>
+      
+      {/*Bookings and Reservations*/}
+      <BrowserRouter>
+        <Routes>
+          <Route path='/addBookings/:vid' element={<AddBookings />}></Route>
+        </Routes>
+      </BrowserRouter>
+
+      
+
+      <BrowserRouter>
+        <Routes>
+          <Route path='/AllBookings' element={<AllBookings />}></Route>
+        </Routes>
+      </BrowserRouter>
+
+      <BrowserRouter>
+        <Routes>
+          
+          <Route path ='/getBooking/:id' element={<UpdateBooking/>}></Route>
+        </Routes>
+      </BrowserRouter>
+
+
+
+      <BrowserRouter>
+        <Routes>
+          <Route path='/addReservations' element={<AddReservation />}></Route>
+        </Routes>
+      </BrowserRouter>
+
+      <BrowserRouter>
+        <Routes>
+          <Route path='/AllReservations' element={<AllReservations/>}></Route>
+        </Routes>
+      </BrowserRouter>
+
+      <BrowserRouter>
+        <Routes>
+          
+          <Route path ='/getReservation/:id' element={<UpdateReservation/>}></Route>
+        </Routes>
+      </BrowserRouter>
+
      
     
-      
+      {/* driver */}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/driver" element={<Home_driver />} />
+          <Route path="/add_driver" element={<Add_driver />} />
+          <Route path="/driver/edit/:id" element={<Edit_driver />} />
+          <Route path="/driver/delete/:id" element={<Delete_driver />} />
+        </Routes>
+      </BrowserRouter>
+
     </div>
 
   );
