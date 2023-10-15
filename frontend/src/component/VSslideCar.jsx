@@ -91,7 +91,7 @@ function SlideBarCar() {
                                                                    alt="..."
                                                                    style={{
                                                                        width: "100%",  // Set the width to 100% of the container
-                                                                       height: "200px",  // Maintain the aspect ratio
+                                                                       height: "225px",  // Maintain the aspect ratio
                                                                    }}
                                                                />
                                                                
