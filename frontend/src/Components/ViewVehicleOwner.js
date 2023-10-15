@@ -87,8 +87,8 @@ export default function ViewVehicleOwner() {
         >
             <div className="container mt-5">
                 <div className="row d-flex justify-content-center mb-5 align-middle h-100 mt-5">
-                    <div className="col-6 shadow-lg p-4 mb-5 rounded"
-                         style={{
+                    <div className="col-6 shadow-lg p-4 mb-5 rounded-xl"
+                        style={{
                             border: '1px solid #eaeaea',
                             borderRadius: '25px', // Increased border radius
                             boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
@@ -97,9 +97,12 @@ export default function ViewVehicleOwner() {
                             position: 'relative', // Set the position to relative
                         }}
                     >
-                        <h3 style={{ fontSize: '24px' }}>Vehicle Owner Details</h3>
+                        <div className="text-center">
+                            <h3 style={{ fontSize: '30px', fontWeight: 'bold' }}>Vehicle Owner Details</h3>
+                        </div>
+
                         <br />
-                        <div className="text-start">
+                        <div className="text-center d-flex flex-column align-items-center justify-content-center">
                             {/* Owner Details */}
                             <div className="form-group mb-4">
                                 <label style={{ fontWeight: 'bold', fontSize: '18px' }}>Name:</label>
@@ -133,26 +136,36 @@ export default function ViewVehicleOwner() {
                             </div>
                         </div>
 
+
                         {/* Update and Remove Buttons */}
                         <div className="row text-center">
-    <div className="col-6">
-        <Link to={`/updatevehicleowner/${id}`}>
-            <button className="btn btn-dark" style={{marginRight: '5px'}}>Update</button>
-        </Link>
-    </div>
-    <div className="col-6">
-        <button className="btn btn-danger" onClick={handleRemoveConfirmation}>Remove</button>
+                            <div className="col-10">
+                                <div className="row">
+                                    <div className="col-4">
+                                        <a href={`/IndexPage_Update/${id}`} className="btn btn-primary" style={{ width: '100%' }}>
+                                            Manage Vehicles
+                                        </a>
+                                    </div>
+                                    <div className="col-4">
+                                        <Link to={`/updatevehicleowner/${id}`}>
+                                            <button className="btn btn-dark" style={{ width: '100%' }}>Update</button>
+                                        </Link>
+                                    </div>
+
+
+
+                                    <div className="col-4">
+                                        <button className="btn btn-danger" style={{ width: '100%' }} onClick={handleRemoveConfirmation}>Remove</button>
+                                    </div>
+
+
+                                </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="row d-flex justify-content-center mt-5 align-middle h-100 mt-5">
-                    <div className="col-3 shadow-lg p-3 mb-5 bg-white rounded">
-                        <a href={`/IndexPage_Update/${id}`} className="btn btn-primary col-12" style={{ marginTop: '-10px' }}>
-                            Manage Vehicles
-                        </a>
-                    </div>
-                </div>
+
             </div>
 
             {/* Remove Confirmation Modal */}

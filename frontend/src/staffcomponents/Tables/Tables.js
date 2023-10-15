@@ -43,9 +43,9 @@ const Tables = ({ userdata, deleteUser, userGet, handlePrevious, handleNext, pag
   };
 
   const exportToCSV = () => {
-    const header = 'ID,FullName,Email,nic,role,Gender,Status\n';
+    const header = 'ID,FullName,Email,nic,role,mobile,Gender,Status\n';
     const csv = userdata.map((element, index) => {
-      return `${index + 1 + (page - 1) * 4},${element.fname} ${element.lname},${element.email},${element.nic},${element.role},${element.gender === "Male" ? "M" : "F"},${element.status}\n`;
+      return `${index + 1 + (page - 1) * 4},${element.fname} ${element.lname},${element.email},${element.nic},${element.role},${element.mobile},${element.gender === "Male" ? "M" : "F"},${element.status}\n`;
     }).join('');
     const csvData = new Blob([header, csv], { type: 'text/csv' });
     const csvUrl = URL.createObjectURL(csvData);
