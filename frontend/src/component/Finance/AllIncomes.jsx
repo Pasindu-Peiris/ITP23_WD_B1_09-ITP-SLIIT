@@ -120,10 +120,8 @@ function AllIncomes() {
                         data;
                       if (data) {
                         return (
-                          <tr
-                            key={index}
-                          >
-                            <td>{index + 1}</td >
+                          <tr key={index}>
+                            <td>{index + 1}</td>
                             <td>{name}</td>
                             <td>{nic}</td>
                             <td>{email}</td>

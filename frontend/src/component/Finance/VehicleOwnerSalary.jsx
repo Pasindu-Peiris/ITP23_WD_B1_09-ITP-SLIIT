@@ -94,7 +94,6 @@ function AllVehicleOwnerSal() {
                     <th></th>
                     <th>Name</th>
                     <th>NIC</th>
-                    <th>Account Number</th>
                     <th>Email</th>
                     <th>Bonus</th>
                     <th>Payment</th>
@@ -102,27 +101,26 @@ function AllVehicleOwnerSal() {
                 </thead>
                 <tbody>
                   {vehicleOwnerSals
-                    .filter((vehicleOwner) => {
+                    .filter((owner) => {
                       return (
                         search.toLowerCase() === "" ||
-                        vehicleOwner.vehicleOwner_id?.name
+                        owner.owner_id?.name
                           .toLowerCase()
                           .includes(search.toLowerCase())
                       );
                     })
-                    .map((vehicleOwner, index) => {
-                      const { vehicleOwner_id, bonus, netSal } = vehicleOwner;
-                      if (vehicleOwner_id) {
+                    .map((owner, index) => {
+                      const { owner_id, bonus, netSal } = owner;
+                      if (owner_id) {
                         return (
                           <tr
-                            key={vehicleOwner._id}
+                            key={owner._id}
                             style={{ backgroundColor: "#6553cfa3" }}
                           >
                             <td>{index + 1}</td>
-                            <td>{vehicleOwner_id.name}</td>
-                            <td>{vehicleOwner_id.nic}</td>
-                            <td>{vehicleOwner_id.accountNumber}</td>
-                            <td>{vehicleOwner_id.email}</td>
+                            <td>{owner_id.name}</td>
+                            <td>{owner_id.nic}</td>
+                            <td>{owner_id.email}</td>
                             <td>{bonus}%</td>
                             <td>Rs.{netSal}</td>
                           </tr>

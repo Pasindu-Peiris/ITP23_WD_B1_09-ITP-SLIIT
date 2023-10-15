@@ -1,52 +1,25 @@
 import axios from "axios";
-import React, { useState, useEffect, useRef } from "react";
-import { Table, Col, Container, Row, Button, Form } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import {
+  Table,
+  Col,
+  Container,
+  Row,
+  Button,
+  Modal,
+  Form,
+} from "react-bootstrap";
 import MainLayout from "./MainLayout";
+import { Link } from "react-router-dom";
 
 function AllDriverDetails() {
   const [drivers, setDrivers] = useState([]);
-  const [inputState, setInputState] = useState({
-    bonus: "",
-  });
-
-  const [calculationResults, setCalculationResults] = useState([]); // To store calculated net salaries
-
-  // Function to update driver details based on bonus
-  async function addDriverSalary() {
-    try {
-      const response = await axios.post(
-        "http://localhost:8090/finance/addDriverSal",
-        { bonus: inputState.bonus }
-      );
-
-      // Update the drivers' data with calculated net salaries
-      const updatedDrivers = drivers.map((driver) => {
-        // Perform your net salary calculation here based on bonus and driver's mileage
-        const netSalary = calculateNetSalary(driver.mileage, inputState.bonus);
-
-        // Update the driver's netSalary property
-        return { ...driver, netSalary };
-      });
-
-      // Set the updated drivers' data
-      setDrivers(updatedDrivers);
-
-      // Set the calculation results to display
-      setCalculationResults(updatedDrivers.map((driver) => driver.netSalary));
-    } catch (error) {
-      console.error("Error with updating driver details:", error);
-    }
-  }
-
-  // Salary Calculations
-  function calculateNetSalary(mileage, bonus) {
-    const salaryPerKM = 50;
-    const netSalary = (salaryPerKM * mileage * bonus) / 100 + salaryPerKM * mileage;
-    return netSalary;
-  }
+  const [showUpdateModal, setShowUpdateModal] = useState(false);
+  const [selectedDriverId, setSelectedDriverId] = useState(null);
+  const [newBonus, setNewBonus] = useState("");
 
   // Get Driver Details
-  async function getDriverDetails() {
+  async function getDriverSal() {
     try {
       const response = await axios.get("http://localhost:8090/api/drivers");
       setDrivers(response.data);
@@ -56,18 +29,33 @@ function AllDriverDetails() {
   }
 
   useEffect(() => {
-    getDriverDetails();
+    getDriverSal();
   }, []);
 
-  const { bonus } = inputState;
-
-  const handleInput = (name) => (e) => {
-    setInputState({ ...inputState, [name]: e.target.value });
+  // Function to show the update bonus modal
+  const handleShowUpdateModal = (driverId) => {
+    setSelectedDriverId(driverId);
+    setNewBonus("");
+    setShowUpdateModal(true);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    addDriverSalary();
+  // Function to hide the update bonus modal
+  const handleCloseUpdateModal = () => {
+    setShowUpdateModal(false);
+  };
+
+  // Function to update bonus
+  const updateBonus = async () => {
+    try {
+      await axios.put(
+        `http://localhost:8090/finance/updateDriverSal/${selectedDriverId}`,
+        { bonus: newBonus }
+      );
+      getDriverSal(); // Refresh the driver list after updating
+      handleCloseUpdateModal();
+    } catch (error) {
+      console.error("Error updating bonus:", error);
+    }
   };
 
   return (
@@ -79,35 +67,7 @@ function AllDriverDetails() {
             <h1>Driver Details</h1>
           </Col>
         </Row>
-        <Row>
-          <Col xs={12}>
-            <Row className="d-flex justify-content-end">
-              <Col xs={4} md={4} className="text-right">
-                <Form onSubmit={handleSubmit}>
-                  <Form.Control
-                    placeholder="Enter Bonus amount"
-                    value={bonus}
-                    onChange={handleInput("bonus")}
-                    style={{
-                      padding: "10px",
-                      fontSize: "18px",
-                      border: "2px solid black",
-                    }}
-                  />
-                </Form>
-              </Col>
-              <Col xs={12} md={2} className="d-flex justify-content-end">
-                <Button
-                  variant="primary"
-                  className="btn-lg"
-                  onClick={handleSubmit}
-                >
-                  Calculate
-                </Button>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
+
         <Row>
           <Col xs={12} className="mt-2">
             <Table
@@ -130,16 +90,16 @@ function AllDriverDetails() {
                   <th>Contact Number</th>
                   <th>Email</th>
                   <th>Mileage</th>
+                  <th>Calculate</th>
                 </tr>
               </thead>
               <tbody>
                 {drivers.map((driver, index) => {
-                  const { firstName, lastName, ContactNumber, email, mileage } = driver;
+                  const { firstName, lastName, ContactNumber, email, mileage } =
+                    driver;
                   if (driver) {
                     return (
-                      <tr
-                        key={driver._id}
-                      >
+                      <tr key={driver._id}>
                         <td>{index + 1}</td>
                         <td>
                           {firstName} {lastName}
@@ -147,6 +107,23 @@ function AllDriverDetails() {
                         <td>{ContactNumber}</td>
                         <td>{email}</td>
                         <td>{mileage} Km</td>
+                        <td>
+                          {driver.isSalaryAdded === true ? (
+                            <Button
+                              variant="primary"
+                              onClick={() => handleShowUpdateModal(driver._id)}
+                            >
+                              Update Bonus
+                            </Button>
+                          ) : (
+                            <Link
+                              to={`/DriverSalForm/${driver._id}`}
+                              style={{ width: "80px", height: "30px" }}
+                            >
+                              <Button variant="success">Calculate</Button>
+                            </Link>
+                          )}
+                        </td>
                       </tr>
                     );
                   }
@@ -157,6 +134,36 @@ function AllDriverDetails() {
           </Col>
         </Row>
       </Container>
+
+      {/* Update Bonus Modal */}
+      <Modal show={showUpdateModal} onHide={handleCloseUpdateModal}>
+        <Modal.Header closeButton>
+          <Modal.Title style={{ fontSize: "35px" }}>Update Bonus</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group>
+              <Form.Label style={{ fontSize: "25px" }}>
+                Enter New Bonus Amount:
+              </Form.Label>
+              <Form.Control
+                type="number"
+                value={newBonus}
+                onChange={(e) => setNewBonus(e.target.value)}
+                style={{ fontSize: "20px" }}
+              />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" className="btn-lg" onClick={handleCloseUpdateModal}>
+            Close
+          </Button>
+          <Button variant="primary" className="btn-lg" onClick={updateBonus}>
+            Save Changes
+          </Button> 
+        </Modal.Footer>
+      </Modal>
     </>
   );
 }
