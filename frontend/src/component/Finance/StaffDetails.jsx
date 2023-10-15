@@ -5,40 +5,41 @@ import { useNavigate, useParams } from "react-router-dom";
 import MainLayout from "./MainLayout";
 
 function AllStaffDetails() {
-  const [staffDetails, setStaffSal, setStaffDetails] = useState([]);
+  const [userdata, setUserData] = useState([]);
   const [inputState, setInputState] = useState({
     bonus: "",
   });
 
-  // get link parameter details
+  // Get link parameter details
   const { Id } = useParams();
   const navigate = useNavigate();
 
-  //get all Staff List
+  // Function to get all staff details
   async function getStaffDetails() {
     try {
-      const response = await axios.get("http://localhost:8090/user/details");
-      setStaffDetails(response.data);
+      const response = await axios.get("http://localhost:8090/user/details/");
+      // if (Array.isArray(response.data)) {
+      //   setUserData(response.data);
+      // } else {
+      //   console.error("Data received is not an array:", response.data);
+      // }
     } catch (error) {
       console.error("Error with GET request:", error);
     }
   }
 
-  //Add Staff salary
+  // Function to add staff salary
   async function addStaffSal() {
     try {
-      const response = await axios.post(
-        "http://localhost:8090/finance/addStaffSal/"
-      );
-      setStaffSal(response.data);
+      const response = await axios.post("http://localhost:8090/finance/addStaffSal/");
+      // Handle the response as needed
     } catch (error) {
-      console.error("Error with GET request:", error);
+      console.error("Error with POST request:", error);
     }
   }
 
   useEffect(() => {
     getStaffDetails();
-    addStaffSal();
   }, []);
 
   useEffect(() => {
@@ -81,7 +82,11 @@ function AllStaffDetails() {
                 </Form>
               </Col>
               <Col xs={12} md={2} className="d-flex justify-content-end">
-                <Button variant="primary" className="btn-lg">
+                <Button
+                  variant="primary"
+                  className="btn-lg"
+                  onClick={handleSubmit}
+                >
                   Calculate
                 </Button>
               </Col>
@@ -109,24 +114,23 @@ function AllStaffDetails() {
                   <th>Name</th>
                   <th>NIC</th>
                   <th>Email</th>
-                  <th>Account Number</th>
+                  <th>Job Role</th>
                 </tr>
               </thead>
               <tbody>
-                {staffDetails.map((element, index) => {
-                  const { element_id } = element;
-                  if (element_id) {
-                    return (
-                      <tr key={index} style={{ backgroundColor: "#6553cfa3" }}>
-                        <td>{index + 1}</td>
-                        <td>{element_id.name}</td>
-                        <td>{element_id.nic}</td>
-                        <td>{element_id.email}</td>
-                        <td>{element_id.accountNumber}</td>
-                      </tr>
-                    );
-                  }
-                  return null;
+                {userdata.map((element, index) => {
+                  const { fname, lname, email, nic, role } = element;
+                  return (
+                    <tr key={element._id}>
+                      <td>{index + 1}</td>
+                      <td>
+                        {fname} {lname}
+                      </td>
+                      <td>{nic}</td>
+                      <td>{email}</td>
+                      <td>{role}</td>
+                    </tr>
+                  );
                 })}
               </tbody>
             </Table>

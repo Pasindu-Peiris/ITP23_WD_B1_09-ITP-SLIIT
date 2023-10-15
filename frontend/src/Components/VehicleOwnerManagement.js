@@ -4,6 +4,7 @@ import { faFileCsv, faEye, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import backgroundImage from './1096643.jpg';
 import Papa from 'papaparse';
+import Swal from 'sweetalert2';
 
 export default function VehicleOwnerManagement() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -34,21 +35,30 @@ export default function VehicleOwnerManagement() {
   const createCsv = () => {
     const csvData = filteredOwners.map(owner => ({
       Name: owner.name,
-      NIC: owner.nic.toString(),
+      NIC: owner.nic ? owner.nic.toString() : '',
       Location: owner.location,
       Email: owner.email,
-      Contact: owner.contact.toString()
+      Contact: owner.contact ? owner.contact.toString() : ''
     }));
-
+  
     const csv = Papa.unparse(csvData);
     const csvDataUri = `data:text/csv;charset=utf-8,${encodeURIComponent(csv)}`;
-
+  
     const link = document.createElement('a');
     link.setAttribute('href', csvDataUri);
     link.setAttribute('download', 'VehicleOwnersReport.csv');
     document.body.appendChild(link);
     link.click();
+    Swal.fire({
+      icon: 'success',
+      title: 'CSV file generated!',
+      text: 'The CSV file has been successfully generated and downloaded.',
+    });
+
   };
+  
+    
+  
 
   return (
     <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', backgroundImage: `url(${backgroundImage})`, backgroundRepeat: 'no-repeat', backgroundAttachment: 'fixed', backgroundSize: 'cover' }}>
@@ -78,17 +88,22 @@ export default function VehicleOwnerManagement() {
                     </div>
                   </div>
                   <div className="col-1">
-                  <button className="btn btn-primary col-12" onClick={createCsv}>
-  <FontAwesomeIcon icon={faFileCsv} /> 
-</button>
+                    <button
+                      className="btn btn-primary col-12"
+                      onClick={createCsv}
+                      style={{ backgroundColor: 'green', color: 'white' }}
+                    >
+                      <FontAwesomeIcon icon={faFileCsv} />
+                    </button>
+
                   </div>
                   <div className="col-1">
                     <Link to="/vehicleowner/signup">
-                    <button 
-  className="btn btn-primary rounded-2xl bg-slate-500 button-25"
->
-  Add Vehicle Owner
-</button>
+                      <button
+                        className="btn btn-primary rounded-2xl bg-slate-500 button-25"
+                      >
+                        Add Vehicle Owner
+                      </button>
 
                     </Link>
                     <div className="mb-3" />

@@ -117,6 +117,14 @@ function AllDropClient() {
     var count = 0;
 
 
+    //check login and derct to home
+    var logincheck = localStorage.getItem("Logedina");
+
+    if(!logincheck === true){
+        window.location = '/';
+    }
+
+
 
 
     return (

@@ -6,6 +6,8 @@ let admin = require('../models/admin');
 const { hash } = require('bcrypt');
 
 
+
+//add admin route
 router.route('/addAdmin').post((req, res) => {
 
     const name = req.body.name;
@@ -43,7 +45,7 @@ router.route('/loginAdmin').post((req, res) => {
             bcrypt.compare(password, Admin.password).then((match) => {
                 if (match) {
 
-                    const token2 = jwt.sign({ email }, "jwt_secret_key3", { expiresIn: '1d' });
+                    const token2 = jwt.sign({ email }, "jwt_secret_key3", { expiresIn: '10h' });
                     res.json({ status: "Success", token: token2 });
 
                 } else {
@@ -60,6 +62,24 @@ router.route('/loginAdmin').post((req, res) => {
 })
 
 
+
+//get client one client data 
+router.route('/getdataAdmin').post((req, res) => {
+
+    const token2 = req.body.token2;
+    
+    try{
+        const decoded = jwt.verify(token2, "jwt_secret_key3");
+        Admin.findOne({ email: decoded.email }).then(Admin => {
+            res.json(Admin);
+        }).catch((err) => {
+            console.log(err);
+        });
+    }catch(err){
+        res.json("Invalid Token");
+    }
+
+})
 
 
 module.exports = router;

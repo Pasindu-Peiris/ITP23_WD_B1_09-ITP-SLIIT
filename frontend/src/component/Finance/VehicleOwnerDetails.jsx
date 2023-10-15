@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import MainLayout from "./MainLayout";
 
 function AllVehicleOwnerDetails() {
-  const [vehicleOwnerDetails, setVehicleOwnerDetails] = useState([]);
+  const [vehicleOwners, setVehicleOwners] = useState([]);
   const [inputState, setInputState] = useState({
     bonus: "",
   });
@@ -17,8 +17,8 @@ function AllVehicleOwnerDetails() {
   //get all Vehicle Owner's List
   async function getVehicleOwnerDetails() {
     try {
-      const response = await axios.get("http://localhost:8090/vehicleOwner//");
-      setVehicleOwnerDetails(response.data);
+      const response = await axios.get("http://localhost:8090/vehicleOwner/");
+      setVehicleOwners(response.data);
     } catch (error) {
       console.error("Error with GET request:", error);
     }
@@ -30,7 +30,7 @@ function AllVehicleOwnerDetails() {
       const response = await axios.post(
         "http://localhost:8090/finance/addVehicleOwnerSal/"
       );
-      setVehicleOwnerDetails(response.data);
+      setVehicleOwners(response.data);
     } catch (error) {
       console.error("Error with GET request:", error);
     }
@@ -38,7 +38,6 @@ function AllVehicleOwnerDetails() {
 
   useEffect(() => {
     getVehicleOwnerDetails();
-    addVehicleOwnerSal();
   }, []);
 
   useEffect(() => {
@@ -100,6 +99,7 @@ function AllVehicleOwnerDetails() {
               variant="light"
               style={{
                 marginTop: "30px",
+                marginBottom: "30px",
                 padding: "20px",
                 fontSize: "20px",
                 width: "100%",
@@ -116,19 +116,19 @@ function AllVehicleOwnerDetails() {
                 </tr>
               </thead>
               <tbody>
-                {vehicleOwnerDetails.map((owner, index) => {
-                  const { owner_id } = owner;
-                  if (owner_id) {
+                {vehicleOwners.map((owner, index) => {
+                  const { name, nic, contact, email } = owner;
+                  if (owner) {
                     return (
                       <tr
                         key={owner._id}
                         style={{ backgroundColor: "#6553cfa3" }}
                       >
                         <td>{index + 1}</td>
-                        <td>{owner_id.name}</td>
-                        <td>{owner_id.nic}</td>
-                        <td>{owner_id.contact}</td>
-                        <td>{owner_id.email}</td>
+                        <td>{name}</td>
+                        <td>{nic}</td>
+                        <td>{contact}</td>
+                        <td>{email}</td>
                       </tr>
                     );
                   }

@@ -52,6 +52,15 @@ function UpadateUser() {
     }
 
 
+    //check login and derct to home
+    var logincheck = localStorage.getItem("Logedina");
+
+    if(!logincheck === true){
+        window.location = '/';
+    }
+
+
+
 
     return (
         <div className="admin-all admin-next">
