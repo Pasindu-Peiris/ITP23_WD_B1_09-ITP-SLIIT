@@ -233,7 +233,7 @@ function EditTour(){
             <div className="container" style={{ height : "auto",width: "30%", marginLeft: "18%", marginTop: "50px"}}>
             <h4 style={{marginTop: "-40px"}} className="fw-bold"><u>Edit Tour</u></h4>
                 <div>
-                    <label for="tourName" className="form-label px-1 d-flex align-items-center justify-content-between">Tour Name<div className="" id="tourNameError" style={{color: "red", fontSize: "15px", float:"right"}}></div></label>
+                    <label for="tourName" className="form-label form-label px-1 d-flex align-items-center justify-content-between">Tour Name<div className="" id="tourNameError" style={{color: "red", fontSize: "15px", float:"right"}}></div></label>
                     <input type="text" class="form-control" id="tourName" name="tourName" placeholder="Enter tour name" pattern="[A-Za-z._%+\-\s]{5,}" value={tourName} required 
                     onChange={(e) => {
                         setTourName(e.target.value);
