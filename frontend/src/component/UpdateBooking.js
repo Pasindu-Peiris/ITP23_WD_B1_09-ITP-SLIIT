@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Nav from './Nav';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useParams } from 'react-router-dom';
+
 
 function UpdateBooking() {
 
-    
-    const { id } = useParams();
     const [booking, setBooking] = useState({
         name: "",
         email: "",
@@ -27,6 +27,34 @@ function UpdateBooking() {
         phone: "",
         nic: ""
     });
+
+    const { id } = useParams();
+    
+    
+
+    function Notify(message, type) {
+        toast[type](message, {
+            autoClose: 1500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            position: "top-right",
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            style: {
+                width: '300px',
+                height: '100px',
+                fontSize: '22px',
+                alignItems: 'center',
+                fontFamily: "Ropa Sans",
+                display: 'flex',
+                justifyContent: 'center',
+                color: 'white',
+            },
+            bodyClassName: 'custom-toast-body'
+        });
+    }    
 
     //date format
     const formatDate = (dateStr) => {
@@ -102,7 +130,14 @@ const validateAddress = (address) => {
 
         // Validate email, phone, and NIC
         const newErrors = { ...errors };
-        if (name === 'email' && !validateEmail(value)) {
+        
+        if (name === 'name' && !validateName(value)) {
+            newErrors.name = "please Enter valid Name";
+        }
+        else if (name === 'address' && !validateAddress(value)) {
+            newErrors.address = "Please Enter valid Address";
+        }
+        else if (name === 'email' && !validateEmail(value)) {
             newErrors.email = "Invalid email format";
         } else if (name === 'phone' && !validatePhone(value)) {
             newErrors.phone = "Invalid phone format (9 digits required)";
@@ -119,23 +154,8 @@ const validateAddress = (address) => {
 
     }
 
-    const Update = (e) => {
-        e.preventDefault();
+    // Function to validate form data
 
-        if (!validateForm()) {
-            return;
-        }
-
-
-        axios.put("http://localhost:8090/booking/update/" + id, booking).then(result => {
-            alert("Booking Updated")
-            window.location = '/AllBookings';
-        }).catch((err) => {
-            alert("Booking Not Updated");
-            console.log(err)
-        })
-
-        // Function to validate form data
     const validateForm = () => {
         let valid = true;
         const newErrors = {};
@@ -172,6 +192,32 @@ const validateAddress = (address) => {
         return valid;
     }
 
+    
+
+    const Update = (e) => {
+        e.preventDefault();
+
+        if (!validateForm()) {
+            return;
+        }
+
+
+        axios.put("http://localhost:8090/booking/update/" + id, booking).then(result => {
+            Notify('Booking Updated Successfully', 'success');
+            setTimeout(() => {
+                window.location = '/AllBookings';
+            }, 2000);
+            
+        
+        }).catch((err) => {
+            alert("Booking Not Updated");
+            console.log(err)
+           
+        })
+
+        
+    
+
 
 
     }
@@ -202,7 +248,7 @@ const validateAddress = (address) => {
                                 onChange={handleInputChange}
                             />
                             <br></br>
-                             {errors.name && <div className="error-message">{errors.name}</div>}
+                             {errors.name && <div className="error-message" style={{color: 'red'}}>{errors.name}</div>}
                         </div>
                         <br></br>
                         
@@ -219,7 +265,7 @@ const validateAddress = (address) => {
                                 value={booking.email}
                                 onChange={handleInputChange}
                             />
-                             {errors.email && <div className="error-message">{errors.email}</div>}
+                             {errors.email && <div className="error-message" style={{ color: 'red' }}>{errors.email}</div>}
                         </div>
                         <br></br>
                         <div className="mb-4">
@@ -235,7 +281,7 @@ const validateAddress = (address) => {
                                 value={booking.address}
                                 onChange={handleInputChange}
                             />
-                           {errors.address && <div className="error-message">{errors.address}</div>}
+                           {errors.address && <div className="error-message" style={{ color: 'red' }}>{errors.address}</div>}
                         </div>
                         <br></br>
                         <div className="mb-4">
@@ -251,7 +297,7 @@ const validateAddress = (address) => {
                                 value={booking.phone}
                                 onChange={handleInputChange}
                             />
-                            {errors.phone && <div className="error-message">{errors.phone}</div>}
+                            {errors.phone && <div className="error-message" style={{ color: 'red' }}>{errors.phone}</div>}
                         </div>
                         <br></br>
                         {/* Add fields for NIC, Vehicle Type, Pickup Date, Return Date, and Driver */}
@@ -268,7 +314,7 @@ const validateAddress = (address) => {
                                 value={booking.nic}
                                 onChange={handleInputChange}
                             />
-                            {errors.nic && <div className="error-message">{errors.nic}</div>}
+                            {errors.nic && <div className="error-message" style={{ color: 'red' }} >{errors.nic}</div>}
                         </div>
                         <br></br>
                         <div className="mb-4">
@@ -340,6 +386,7 @@ const validateAddress = (address) => {
                 </div>
             </div>
         </div>
+        <ToastContainer/>
         </div>
     )
 }
