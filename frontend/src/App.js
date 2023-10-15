@@ -83,7 +83,8 @@ import UpdateBooking from './component/UpdateBooking';
 import AllReservations from './component/AllReservations';
 import UpdateReservation from './component/UpdateReservation';
 
-
+//nithila
+import AllResBook from './component/AllUserRes'
 import ADlog from './component/AdminLogin'
 
 
@@ -97,6 +98,7 @@ function App() {
         <Routes>
           <Route path='/Register' element={<Register />}></Route>
           <Route path='/Admin-login-rapid-travels' element={<ADlog />}></Route>
+          <Route path='/AllResBook' element={<AllResBook />}></Route>
         </Routes>
       </BrowserRouter>
 
