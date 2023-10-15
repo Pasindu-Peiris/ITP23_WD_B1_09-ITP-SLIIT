@@ -172,6 +172,42 @@ function AdminDashboard() {
         }
 
 
+        if(admin.mtype === "Expense"){
+            document.getElementsByClassName('Admin-hadel-login')[0].style.display="none";
+             document.getElementsByClassName('Admin-hadel-login')[1].style.display="block";
+             document.getElementsByClassName('Admin-hadel-login')[2].style.display="none";
+             document.getElementsByClassName('Admin-hadel-login')[3].style.display="none";
+             document.getElementsByClassName('Admin-hadel-login')[4].style.display="none";
+             document.getElementsByClassName('Admin-hadel-login')[5].style.display="none";
+             document.getElementsByClassName('Admin-hadel-login')[6].style.display="none";
+             document.getElementsByClassName('Admin-hadel-login')[7].style.display="none"; 
+             
+        }
+
+        if(admin.mtype === "staff"){
+            document.getElementsByClassName('Admin-hadel-login')[0].style.display="none";
+             document.getElementsByClassName('Admin-hadel-login')[1].style.display="block";
+             document.getElementsByClassName('Admin-hadel-login')[2].style.display="none";
+             document.getElementsByClassName('Admin-hadel-login')[3].style.display="none";
+             document.getElementsByClassName('Admin-hadel-login')[4].style.display="none";
+             document.getElementsByClassName('Admin-hadel-login')[5].style.display="none";
+             document.getElementsByClassName('Admin-hadel-login')[6].style.display="none";
+             document.getElementsByClassName('Admin-hadel-login')[7].style.display="none"; 
+             
+        }
+
+        if(admin.mtype === "tour"){
+            document.getElementsByClassName('Admin-hadel-login')[0].style.display="none";
+             document.getElementsByClassName('Admin-hadel-login')[1].style.display="block";
+             document.getElementsByClassName('Admin-hadel-login')[2].style.display="none";
+             document.getElementsByClassName('Admin-hadel-login')[3].style.display="none";
+             document.getElementsByClassName('Admin-hadel-login')[4].style.display="none";
+             document.getElementsByClassName('Admin-hadel-login')[5].style.display="none";
+             document.getElementsByClassName('Admin-hadel-login')[6].style.display="none";
+             document.getElementsByClassName('Admin-hadel-login')[7].style.display="none"; 
+             
+        }
+
         if(admin.mtype === "tour"){
             document.getElementsByClassName('Admin-hadel-login')[0].style.display="none";
              document.getElementsByClassName('Admin-hadel-login')[1].style.display="block";
