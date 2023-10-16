@@ -91,8 +91,9 @@ function sendData(e) {
 
 
   if (driver === "Yes") {
-    totalamount += 200; // Add 200 for the driver
+    setTotalamount(totalamount + 200); // Update the amount state
   }
+  
 
   setAmount(totalamount); // Update the amount state
 
@@ -274,8 +275,8 @@ function sendData(e) {
   className="form-control"
   id="vehicleType"
   value={vehicletype}
-  readOnly
   placeholder=""
+  readOnly
   onChange={(e) => {
     setVehicleType(e.target.value);
   }}
@@ -291,8 +292,8 @@ function sendData(e) {
     className="form-control"
     id="pickupdate"
     value={pickupdate}
-    readOnly
     placeholder="Pickup Date"
+    readOnly
     onChange={(e) => {
       setPickupDate(e.target.value);
     }}
@@ -306,8 +307,8 @@ function sendData(e) {
     className="form-control"
     id="returndate"
     value={returndate}
-    readOnly
     placeholder="Return Date"
+    readOnly
     onChange={(e) => {
       setReturnDate(e.target.value);
     }}
@@ -337,7 +338,7 @@ function sendData(e) {
     id="totalAmount"
     placeholder="Enter Total Amount"
     value={totalamount} // Bind to the amount state
-                readOnly // Make it non-editable
+    readOnly
                 onChange={(e) => {
                   setAmount(e.target.value);
                 }}
