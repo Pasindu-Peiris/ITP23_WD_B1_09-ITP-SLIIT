@@ -274,6 +274,7 @@ function sendData(e) {
   className="form-control"
   id="vehicleType"
   value={vehicletype}
+  readOnly
   placeholder=""
   onChange={(e) => {
     setVehicleType(e.target.value);
@@ -290,6 +291,7 @@ function sendData(e) {
     className="form-control"
     id="pickupdate"
     value={pickupdate}
+    readOnly
     placeholder="Pickup Date"
     onChange={(e) => {
       setPickupDate(e.target.value);
@@ -304,6 +306,7 @@ function sendData(e) {
     className="form-control"
     id="returndate"
     value={returndate}
+    readOnly
     placeholder="Return Date"
     onChange={(e) => {
       setReturnDate(e.target.value);
