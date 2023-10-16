@@ -261,8 +261,8 @@ function UpadateUserClient() {
         <div class="new-12">
             <Nav />
 
-            <div className='container pb-1 mt-4' style={{ display: "flex", alignItems: "center", justifyContent: "flex-start", marginTop: "30px", backgroundColor: "" }}>
-                <nav aria-label="breadcrumb ">
+            <div className='container pb-1 mt-4 ms-5 ps-5' style={{ display: "flex", alignItems: "center", justifyContent: "flex-start", marginTop: "30px", backgroundColor: "" }}>
+                <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item "><a href="/" style={{ fontSize: "1.1rem", color: "#000", textDecoration: "none" }}>Home</a></li>
                         <li class="breadcrumb-item"><a href="/profile" style={{ fontSize: "1.1rem", color: "#000", textDecoration: "none" }}>Account Details</a></li>

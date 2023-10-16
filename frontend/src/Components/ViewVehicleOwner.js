@@ -143,7 +143,7 @@ export default function ViewVehicleOwner() {
                                 <div className="row">
                                     <div className="col-4 text-center">
                                         <a href={`/IndexPage_Update/${id}`} className="btn btn-primary" style={{ width: '100%' }}>
-                                            Manage Vehicles
+                                             Vehicles
                                         </a>
                                     </div>
                                     <div className="col-4 text-center">

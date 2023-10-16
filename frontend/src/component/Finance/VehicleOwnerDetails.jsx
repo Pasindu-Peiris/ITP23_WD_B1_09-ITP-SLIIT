@@ -111,12 +111,13 @@ function AllVehicleOwnerDetails() {
                         <td>{nic}</td>
                         <td>{contact}</td>
                         <td>{email}</td>
-                        <td>
+                        <td style={{ textAlign: "center" }}>
 
                         {owner.isSalaryAdded === true ? (
                             <Button
                               variant="primary"
                               onClick={() => handleShowUpdateModal(owner._id)}
+                              
                             >
                               Update Bonus
                             </Button>
@@ -128,9 +129,7 @@ function AllVehicleOwnerDetails() {
                               <Button variant="success">Calculate</Button>
                             </Link>
                           )}
-                          {/* <Link to={`/VehicleSalForm/${owner._id}`}>
-                            <Button>Calculate</Button>
-                          </Link> */}
+                          
                         </td>
                       </tr>
                     );
