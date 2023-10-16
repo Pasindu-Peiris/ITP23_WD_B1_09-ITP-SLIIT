@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Nav from './Nav';
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useParams } from 'react-router-dom';
@@ -224,16 +224,16 @@ const validateAddress = (address) => {
 
     return (
         <div>
-            <Nav/>
-        <div className="update-form">
-            <br></br><br></br><br></br>
-            <div className=" container-dotbox-update">
-                <br></br><br></br><br></br>
+            
+        <div className="update-form card container w-50 ">
+            
+            <div className="mt-5 mx-4">
+               
                 <h2>Update booking details</h2>
             </div>
             <div className="con-update" style={{justifyContent:'center',  width:"100%", margin:"auto 0%"}}>
                 <div className="form-center-update">
-                    <form onSubmit={Update} className="centered-form">
+                    <form onSubmit={Update} className="centered-form mx-4">
                         <div className="mb-4">
                             <label htmlFor="name" className="form-label px-1">Name</label>
                             <input
@@ -247,10 +247,10 @@ const validateAddress = (address) => {
                                 value={booking.name}
                                 onChange={handleInputChange}
                             />
-                            <br></br>
+                            
                              {errors.name && <div className="error-message" style={{color: 'red'}}>{errors.name}</div>}
                         </div>
-                        <br></br>
+                        
                         
                         <div className="mb-4">
                             <label htmlFor="email" className="form-label px-1">Email</label>
@@ -267,7 +267,7 @@ const validateAddress = (address) => {
                             />
                              {errors.email && <div className="error-message" style={{ color: 'red' }}>{errors.email}</div>}
                         </div>
-                        <br></br>
+                        
                         <div className="mb-4">
                             <label htmlFor="address" className="form-label px-1">Address</label>
                             <input
@@ -283,7 +283,7 @@ const validateAddress = (address) => {
                             />
                            {errors.address && <div className="error-message" style={{ color: 'red' }}>{errors.address}</div>}
                         </div>
-                        <br></br>
+                        
                         <div className="mb-4">
                             <label htmlFor="phone" className="form-label px-1">Phone</label>
                             <input
@@ -299,7 +299,7 @@ const validateAddress = (address) => {
                             />
                             {errors.phone && <div className="error-message" style={{ color: 'red' }}>{errors.phone}</div>}
                         </div>
-                        <br></br>
+                        
                         {/* Add fields for NIC, Vehicle Type, Pickup Date, Return Date, and Driver */}
                         <div className="mb-4">
                             <label htmlFor="nic" className="form-label px-1">NIC</label>
@@ -316,7 +316,7 @@ const validateAddress = (address) => {
                             />
                             {errors.nic && <div className="error-message" style={{ color: 'red' }} >{errors.nic}</div>}
                         </div>
-                        <br></br>
+                        
                         <div className="mb-4">
                             <label htmlFor="vehicletype" className="form-label px-1">Vehicle Type</label>
                             <input
@@ -332,7 +332,7 @@ const validateAddress = (address) => {
                                 disabled
                             />
                         </div>
-                        <br></br>
+                        
                         <div className="mb-4">
                             <label htmlFor="pickupdate" className="form-label px-1">Pickup Date</label>
                             <input
@@ -348,7 +348,7 @@ const validateAddress = (address) => {
                                 disabled
                             />
                         </div>
-                        <br></br>
+                        
                         <div className="mb-4">
                             <label htmlFor="returndate" className="form-label px-1">Return Date</label>
                             <input
@@ -364,7 +364,7 @@ const validateAddress = (address) => {
                                 disabled
                             />
                         </div>
-                        <br></br>
+                       
                         <div className="mb-4">
                             <label htmlFor="driver" className="form-label px-1">Driver</label>
                             <input
@@ -380,7 +380,7 @@ const validateAddress = (address) => {
                                 disabled
                             />
                         </div>
-                        <br></br>
+                        
                         <button type="submit" className="btn btn-primary w-100 mt-2 but-1">Update Booking</button>
                     </form>
                 </div>

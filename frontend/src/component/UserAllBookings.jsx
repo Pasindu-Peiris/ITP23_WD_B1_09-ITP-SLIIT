@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect , useRef} from "react";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
-import AdminBandR from "../component/AdminBandR"
+import Nav from "./Nav";
 
 
 
@@ -10,13 +10,13 @@ import AdminBandR from "../component/AdminBandR"
 
 
 
-function AllBookings() {
+function UserAllBookings() {
   const [bookings, setBookings] = useState([]);
   const [searchBlock, setSearch] = useState("");
 
   useEffect(() => {
     function getBookings() {
-      axios.get("http://localhost:8090/booking/AllBookings").then((res) => {
+      axios.get("http://localhost:8090/booking/userAllBookings").then((res) => {
         setBookings(res.data)
         console.log(res)
       }).catch((err) => {
@@ -85,7 +85,7 @@ const formatDate = (dateStr) => {
 
   return (
     <>
-    <AdminBandR></AdminBandR>
+    <Nav/>
     <div className="center-content"> {/* Center the content */}
       
       <div className="admin-all">
@@ -175,4 +175,4 @@ const formatDate = (dateStr) => {
   
 }
 
-export default AllBookings;
+export default UserAllBookings;

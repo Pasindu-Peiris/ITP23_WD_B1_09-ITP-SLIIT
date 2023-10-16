@@ -46,7 +46,7 @@ export default function Home() {
 
   // the jsx code that contains our drivercomponents
   return (
-    <section className="dmain">
+     <section className="dmain">
       {loading && <div>Loading page....</div>}
       <Header />
       <QueryFilter searchDriver={searchDriver} getDrivers={getDrivers} />
@@ -54,8 +54,7 @@ export default function Home() {
       <Pagination
         ndriverpages={ndriverpages}
         currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
+        setCurrentPage={setCurrentPage} />
     </section>
   );
 }
