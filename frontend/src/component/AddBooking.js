@@ -2,6 +2,8 @@ import React, { useState,useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Nav from "./Nav";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 //import "./AddBooking.css"; // Import your CSS file
 
@@ -42,6 +44,30 @@ export default function BookingForm() {
    const [model, setModel] = useState()
    const [totalamount, setTotalamount] = useState()
    const [bookedTimeSlots, setBookedTimeSlots] = useState([]);
+
+   function Notify(message, type) {
+        toast[type](message, {
+            autoClose: 1500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            position: "top-right",
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            style: {
+                width: '300px',
+                height: '100px',
+                fontSize: '22px',
+                alignItems: 'center',
+                fontFamily: "Ropa Sans",
+                display: 'flex',
+                justifyContent: 'center',
+                color: 'white',
+            },
+            bodyClassName: 'custom-toast-body'
+        });
+    }    
 
    useEffect(() => {
      return () => {
@@ -170,8 +196,10 @@ function sendData(e) {
     axios
       .post("http://localhost:8090/booking/addBookings", newBooking)
       .then(() => {
-        alert("Payment Successful");
-        window.location = '/AllBookings';
+        Notify('Booking Updated Successfully', 'success');
+            setTimeout(() => {
+                window.location = '/';
+            }, 2000);
       })
       .catch((err) => {
         alert("Error: " + err);
@@ -408,6 +436,7 @@ function sendData(e) {
     </div>
     </div>
     </div>
+    <ToastContainer/>
     </div>
     
 
