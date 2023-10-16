@@ -205,7 +205,7 @@ const validateAddress = (address) => {
         axios.put("http://localhost:8090/booking/update/" + id, booking).then(result => {
             Notify('Booking Updated Successfully', 'success');
             setTimeout(() => {
-                window.location = '/AllBookings';
+                window.location = '/userAllBookings';
             }, 2000);
             
         

@@ -107,7 +107,7 @@ function AllStaffSal() {
                     .filter((element) => {
                       return (
                         search.toLowerCase() === "" ||
-                        element.element_id?.name
+                        element.name
                           .toLowerCase()
                           .includes(search.toLowerCase())
                       );
@@ -122,7 +122,9 @@ function AllStaffSal() {
                             style={{ backgroundColor: "#6553cfa3" }}
                           >
                             <td>{index + 1}</td>
-                            <td>{element_id.fname} {element_id.lname}</td>
+                            <td>
+                              {element_id.fname} {element_id.lname}
+                            </td>
                             <td>{element_id.nic}</td>
                             <td>{element_id.email}</td>
                             <td>Rs.{ETF}</td>

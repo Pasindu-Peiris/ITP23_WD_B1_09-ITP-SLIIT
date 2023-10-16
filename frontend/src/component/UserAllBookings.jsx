@@ -3,6 +3,7 @@ import React, { useState, useEffect , useRef} from "react";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import Nav from "./Nav";
+import Footer from "./footer";
 
 
 
@@ -168,7 +169,7 @@ const formatDate = (dateStr) => {
                     </button>
                 </div>
       </div>
-      
+      <Footer/>
     </div>
   </>
   )

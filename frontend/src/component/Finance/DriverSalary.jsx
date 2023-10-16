@@ -104,17 +104,14 @@ function AllDriverSal() {
                     .filter((driver) => {
                       return (
                         search.toLowerCase() === "" ||
-                        driver.driver_id?.name
-                          .toLowerCase()
-                          .includes(search.toLowerCase())
+                        driver.name.toLowerCase().includes(search.toLowerCase())
                       );
                     })
                     .map((driver, index) => {
                       const { driver_id, bonus } = driver;
                       if (driver_id) {
-
                         // Calculate netSalary
-                        const salaryPerKM = 350;
+                        const salaryPerKM = 250;
                         const netSalary =
                           (salaryPerKM * driver_id.mileage * bonus) / 100 +
                           salaryPerKM * driver_id.mileage;
