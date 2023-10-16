@@ -112,9 +112,8 @@ function AllDriverSal() {
                     .map((driver, index) => {
                       const { driver_id, bonus } = driver;
                       if (driver_id) {
-
                         // Calculate netSalary
-                        const salaryPerKM = 350;
+                        const salaryPerKM = 250;
                         const netSalary =
                           (salaryPerKM * driver_id.mileage * bonus) / 100 +
                           salaryPerKM * driver_id.mileage;

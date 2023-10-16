@@ -47,12 +47,9 @@ function AllStaffDetails() {
     }
   }
 
-
-
   useEffect(() => {
     getStaffDetails();
   }, []);
-
 
   // Function to show the update bonus modal
   const handleShowUpdateModal = (staffId) => {
@@ -127,7 +124,7 @@ function AllStaffDetails() {
                         <td>{nic}</td>
                         <td>{email}</td>
                         <td>{role}</td>
-                        <td>
+                        <td style={{ textAlign: "center" }}>
                           {element.isSalaryAdded === true ? (
                             <Button
                               variant="primary"
@@ -176,12 +173,16 @@ function AllStaffDetails() {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" className="btn-lg" onClick={handleCloseUpdateModal}>
+          <Button
+            variant="secondary"
+            className="btn-lg"
+            onClick={handleCloseUpdateModal}
+          >
             Close
           </Button>
           <Button variant="primary" className="btn-lg" onClick={updateBonus}>
             Save Changes
-          </Button> 
+          </Button>
         </Modal.Footer>
       </Modal>
     </>

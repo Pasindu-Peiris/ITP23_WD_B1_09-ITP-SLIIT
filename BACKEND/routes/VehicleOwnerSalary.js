@@ -19,7 +19,7 @@ router.post("/addVehicleOwnerSal", async (req, res) => {
   const { owner_id, bonus } = req.body;
 
   // Salary Calculations based on the type of vehicle
-  let payment = 20000;
+  let payment = 38250;
 
   // switch (type) {
   //   case "Car":
@@ -104,13 +104,15 @@ router.route("/getVehicleOwnerSal").get((req, res) => {
     });
 });
 
-// Update Owner salary 
+// Update Owner salary
 router.put("/updateOwnerSal/:ownerId", async (req, res) => {
   const ownerId = req.params.ownerId;
   const { bonus } = req.body;
 
   if (bonus === undefined) {
-    return res.status(400).json({ message: "Bonus field is required for the update." });
+    return res
+      .status(400)
+      .json({ message: "Bonus field is required for the update." });
   }
 
   try {
