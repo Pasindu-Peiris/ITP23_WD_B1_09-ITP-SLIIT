@@ -281,7 +281,7 @@ function AdminDashboard() {
                             <a className="nav-link active fw-bold" aria-current="page" href='/AllIncomes'>Finance Management </a>
                         </li>
                         <li className="nav-item px-4 Admin-hadel-login fs-5 rounded-2" id="block-scopAdmin" style={{ margin: "10px 0px", border: "0px solid #000" }} >
-                            <a className="nav-link active fw-bold" aria-current="page" href="/AllClient">Vehicle Management</a>
+                            <a className="nav-link active fw-bold" aria-current="page" href="/IndexPage_Update/65182b67b5cd7f955f2ec754">Vehicle Management</a>
                         </li>
                         <li className="nav-item px-4 Admin-hadel-login fs-5 rounded-2" id="block-scopAdmin" style={{ margin: "10px 0px", border: "0px solid #000" }} >
                             <a className="nav-link active fw-bold" aria-current="page" href="/staff">Staff Management </a>
