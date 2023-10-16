@@ -172,6 +172,7 @@ function App() {
       {/* vehicles */}
       <BrowserRouter>
         <Routes>
+        <Route path='/addBookings/:vid' element={<AddBookings />}></Route>
           <Route path="/Vehicle_main" element={<IndexPage />} />
           <Route path="/Vehicle/:id" element={<Vehicle />} />
           <Route path="/Vehicle_2/:id" element={<Vehicle2 />} />
@@ -291,7 +292,7 @@ function App() {
       {/*Bookings and Reservations*/}
       <BrowserRouter>
         <Routes>
-          <Route path='/addBookings/:vid' element={<AddBookings />}></Route>
+         
         </Routes>
       </BrowserRouter>
 
