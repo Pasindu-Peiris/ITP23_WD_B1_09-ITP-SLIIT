@@ -104,9 +104,7 @@ function AllDriverSal() {
                     .filter((driver) => {
                       return (
                         search.toLowerCase() === "" ||
-                        driver.driver_id?.name
-                          .toLowerCase()
-                          .includes(search.toLowerCase())
+                        driver.name.toLowerCase().includes(search.toLowerCase())
                       );
                     })
                     .map((driver, index) => {

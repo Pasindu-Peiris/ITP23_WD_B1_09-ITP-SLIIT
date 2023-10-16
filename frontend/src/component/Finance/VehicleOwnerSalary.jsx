@@ -104,9 +104,7 @@ function AllVehicleOwnerSal() {
                     .filter((owner) => {
                       return (
                         search.toLowerCase() === "" ||
-                        owner.owner_id?.name
-                          .toLowerCase()
-                          .includes(search.toLowerCase())
+                        owner.name.toLowerCase().includes(search.toLowerCase())
                       );
                     })
                     .map((owner, index) => {

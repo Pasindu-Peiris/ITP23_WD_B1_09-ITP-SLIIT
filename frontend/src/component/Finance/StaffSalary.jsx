@@ -107,7 +107,7 @@ function AllStaffSal() {
                     .filter((element) => {
                       return (
                         search.toLowerCase() === "" ||
-                        element.element_id?.name
+                        element.name
                           .toLowerCase()
                           .includes(search.toLowerCase())
                       );
