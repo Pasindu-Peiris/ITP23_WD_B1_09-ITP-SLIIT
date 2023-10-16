@@ -250,8 +250,8 @@ function AllClient() {
                                     <th scope="col">Last Name</th>
                                     <th scope="col">Email</th>
                                     <th colSpan="col">Register Date</th>
-                                    <th scope="col">Status</th>
                                     <th colSpan="col">Last Login Date | Time</th>
+                                    <th scope="col">Status</th>
                                     {isActionColumnVisible && <th scope="col" className="mx-auto-1">Action</th>}
                                 </tr>
                             </thead>
@@ -267,9 +267,9 @@ function AllClient() {
                                         <td>{item.fname}</td>
                                         <td>{item.lname}</td>
                                         <td>{item.email}</td>
-                                        <td>{item.date}</td>
-                                        <td>{item.status === 'true' ? <span className="px-2  text-dark rounded-4 bg-warning p-1">Online</span> : <span className="px-2 text-light rounded-4 bg-danger p-1">Offline</span>}</td>
+                                        <td>{item.date}</td> 
                                         <td>{item.lastlogin}</td>
+                                        <td>{item.status === 'true' ? <span className="px-2  text-dark rounded-4 bg-warning p-1">Online</span> : <span className="px-2 text-light rounded-4 bg-danger p-1">Offline</span>}</td>
 
 
 
