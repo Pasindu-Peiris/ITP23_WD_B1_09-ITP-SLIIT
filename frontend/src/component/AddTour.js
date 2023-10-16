@@ -316,7 +316,9 @@ function AddTour() {
                 </div>
                 <div>
                     <label for="date" class="form-label form-label labsh px-1 d-flex align-items-center justify-content-between">Tour Date<div className="" id="dateError" style={{color: "red", fontSize: "15px", float:"right"}}></div></label>
-                    <input type="date" id="date" name="date" class="form-control inputSh"  required min="2023-10-16" max="2024-12-31"
+                    <input type="date" id="date" name="date" class="form-control inputSh"  required min="2023-10-16" max="2024-12-31" onKeyDown={(event) =>{
+                        event.preventDefault();
+                    }}
                     onChange={(e) => {
                         setDate(e.target.value);
 
