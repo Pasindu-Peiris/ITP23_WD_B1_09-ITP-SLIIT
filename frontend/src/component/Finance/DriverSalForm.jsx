@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Col, Container, Form, Card, Button } from "react-bootstrap";
+import { Col, Container, Form, Card, Button, Alert } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import MainLayout from "./MainLayout";
@@ -11,6 +11,7 @@ function SalaryForm() {
   });
 
   const [error, setError] = useState();
+  const [validationError, setValidationError] = useState(null);
 
   // get link parameter details
   const { id } = useParams();
@@ -18,14 +19,18 @@ function SalaryForm() {
 
   const addDriverSal = async () => {
     console.log(inputState);
+    
+    if (!validateBonus(inputState.bonus)) {
+      return;
+    }
+
     try {
       const response = await axios.post(
         `http://localhost:8090/finance/addDriverSal`,
         inputState
       );
-      console.log(response.data); // Log the response data
+      console.log(response.data);
       setError(null);
-
       navigate("/AllDriverSal");
     } catch (err) {
       console.error(err);
@@ -40,12 +45,27 @@ function SalaryForm() {
   const { bonus } = inputState;
 
   const handleInput = (name) => (e) => {
-    setInputState({ ...inputState, [name]: e.target.value });
+    const value = e.target.value;
+    setInputState({ ...inputState, [name]: value });
+
+    if (name === "bonus") {
+      validateBonus(value);
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     addDriverSal();
+  };
+
+  const validateBonus = (bonus) => {
+    const bonusNumber = parseFloat(bonus);
+    if (isNaN(bonusNumber) || bonusNumber < 0 || bonusNumber > 100) {
+      setValidationError("Bonus must be a number between 0 and 100.");
+      return false;
+    }
+    setValidationError(null);
+    return true;
   };
 
   return (
@@ -68,13 +88,15 @@ function SalaryForm() {
                   <br />
                   <Form.Control
                     size="lg"
-                    type="number"
+                    type="text"
                     placeholder="Bonus"
                     value={bonus}
                     onChange={handleInput("bonus")}
                     style={{ height: "58px", fontSize: "20px" }}
                   />
                   <br />
+
+                  {validationError && <Alert variant="danger">{validationError}</Alert>}
 
                   <Button variant="success" className="btn-lg" type="submit">
                     Calculate
