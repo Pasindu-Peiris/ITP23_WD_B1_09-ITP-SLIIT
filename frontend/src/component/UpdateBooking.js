@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Nav from './Nav';
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useParams } from 'react-router-dom';
@@ -224,16 +224,16 @@ const validateAddress = (address) => {
 
     return (
         <div>
-            <Nav/>
-        <div className="update-form">
-            <br></br><br></br><br></br>
-            <div className=" container-dotbox-update">
-                <br></br><br></br><br></br>
+            
+        <div className="update-form card container w-50 ">
+            
+            <div className="mt-5 mx-4">
+               
                 <h2>Update booking details</h2>
             </div>
             <div className="con-update" style={{justifyContent:'center',  width:"100%", margin:"auto 0%"}}>
                 <div className="form-center-update">
-                    <form onSubmit={Update} className="centered-form">
+                    <form onSubmit={Update} className="centered-form mx-4">
                         <div className="mb-4">
                             <label htmlFor="name" className="form-label px-1">Name</label>
                             <input

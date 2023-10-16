@@ -51,6 +51,9 @@ function ToursAndRoutePlanning() {
                 </div>
                 <div class="offcanvas-body">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li className="nav-item px-4 fs-5 rounded-2" id="block-scopAdmin" style={{ margin: "10px 0px", border: "0px solid #000" }}>
+                            <a className="nav-link active fw-bold" aria-current="page" href={`/Dashboard-admin-rapidTravles/`}>Dashboard</a>
+                        </li>
                         <li className="nav-item px-4 fs-5 rounded-2" id="block-scopAdmin" style={{ margin: "10px 0px", border: "0px solid #000" }}>
                             <a className="nav-link active fw-bold" aria-current="page" href={`/addTour/`}>Add Tours</a>
                         </li>
