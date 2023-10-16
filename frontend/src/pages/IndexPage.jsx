@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import Default_Layout from "../Components/Default_Layout";
+import Nav from '../component/Nav';
 import { DatePicker, Modal, Button } from "antd";
 import moment from 'moment'
 import { debounce } from 'lodash';
@@ -218,8 +218,8 @@ export default function IndexPage() {
 
 
   return (
-    <Default_Layout>
-
+    <div>
+      <Nav/>
 
       <div className="py-2 px-2 mx-auto flex items-center">
         <input
@@ -360,6 +360,6 @@ export default function IndexPage() {
               </Link>
             ))}
       </div>
-    </Default_Layout>
+    </div>
   );
 }
