@@ -13,13 +13,11 @@ function SalaryForm() {
   const [error, setError] = useState();
   const [validationError, setValidationError] = useState(null);
 
-  // get link parameter details
+  // Get link parameter details
   const { id } = useParams();
   const navigate = useNavigate();
 
   const addStaffSal = async () => {
-    console.log(inputState);
-
     if (!validateBonus(inputState.bonus)) {
       return;
     }
@@ -27,7 +25,7 @@ function SalaryForm() {
     try {
       const response = await axios.post(
         `http://localhost:8090/finance/addStaffSal`,
-        inputState
+        inputState // Include the bonus value
       );
       console.log(response.data);
       setError(null);
@@ -62,8 +60,10 @@ function SalaryForm() {
     const bonusNumber = parseFloat(bonus);
     if (isNaN(bonusNumber) || bonusNumber < 0 || bonusNumber > 100) {
       setValidationError("Bonus must be a number between 0 and 100.");
+      return false;
     } else {
       setValidationError(null);
+      return true;
     }
   };
 
@@ -80,7 +80,9 @@ function SalaryForm() {
               {error && <p className="error">{error}</p>}
               <Card style={{ width: "30rem" }}>
                 <Card.Body>
-                  <Card.Title style={{ fontSize: "30px" }}>Add Bonus Amount</Card.Title>
+                  <Card.Title style={{ fontSize: "30px" }}>
+                    Add Bonus Amount
+                  </Card.Title>
 
                   <br />
                   <Form.Control
@@ -93,7 +95,9 @@ function SalaryForm() {
                   />
                   <br />
 
-                  {validationError && <Alert variant="danger">{validationError}</Alert>}
+                  {validationError && (
+                    <Alert variant="danger">{validationError}</Alert>
+                  )}
 
                   <Button variant="success" className="btn-lg" type="submit">
                     Calculate

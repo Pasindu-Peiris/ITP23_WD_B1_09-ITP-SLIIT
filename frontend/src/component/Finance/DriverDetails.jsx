@@ -107,7 +107,7 @@ function AllDriverDetails() {
                         <td>{ContactNumber}</td>
                         <td>{email}</td>
                         <td>{mileage} Km</td>
-                        <td>
+                        <td style={{ textAlign: "center" }}>
                           {driver.isSalaryAdded === true ? (
                             <Button
                               variant="primary"
@@ -156,12 +156,16 @@ function AllDriverDetails() {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" className="btn-lg" onClick={handleCloseUpdateModal}>
+          <Button
+            variant="secondary"
+            className="btn-lg"
+            onClick={handleCloseUpdateModal}
+          >
             Close
           </Button>
           <Button variant="primary" className="btn-lg" onClick={updateBonus}>
             Save Changes
-          </Button> 
+          </Button>
         </Modal.Footer>
       </Modal>
     </>

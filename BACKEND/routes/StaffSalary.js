@@ -19,7 +19,7 @@ router.post("/addStaffSal", async (req, res) => {
   const { element_id, bonus } = req.body;
 
   // Salary Calculations
-  const basicSal = 30000;
+  const basicSal = 38200;
   const calculatedETF = basicSal * 0.12;
   const calculatedEPF = basicSal * 0.08;
   const netSal = (basicSal * bonus) / 100 + parseFloat(basicSal);
@@ -29,11 +29,11 @@ router.post("/addStaffSal", async (req, res) => {
     return res.status(400).json({ message: "All fields are required!" });
   }
 
-  if (bonus <= 0 || bonus >= 100) {
-    return res.status(400).json({
-      message: "Bonus amount must be a positive number less than 100!",
-    });
-  }
+  // if (bonus <= 0 || bonus >= 100) {
+  //   return res.status(400).json({
+  //     message: "Bonus amount must be a positive number less than 100!",
+  //   });
+  // }
   try {
     // Update the driver's isSalaryAdded property
     await users.findByIdAndUpdate({ _id: element_id }, { isSalaryAdded: true });
@@ -78,13 +78,15 @@ router.get("/users", async (req, res) => {
   }
 });
 
-// Update Owner salary 
+// Update Owner salary
 router.put("/updateStaffSal/:elementId", async (req, res) => {
   const elementId = req.params.elementId;
   const { bonus } = req.body;
 
   if (bonus === undefined) {
-    return res.status(400).json({ message: "Bonus field is required for the update." });
+    return res
+      .status(400)
+      .json({ message: "Bonus field is required for the update." });
   }
 
   try {
