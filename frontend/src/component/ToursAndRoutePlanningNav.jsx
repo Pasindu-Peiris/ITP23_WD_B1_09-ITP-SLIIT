@@ -37,7 +37,7 @@ function ToursAndRoutePlanning() {
 
                         </ul>
                         <span className="navbar-text">
-                           <a href = "#"><i className="fa-solid fa-circle-user fa-2xl" style={{color: "#000000"}}></i></a>
+                           
                         </span>
                     </div>
                 </div>
