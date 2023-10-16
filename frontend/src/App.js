@@ -85,6 +85,7 @@ import AllBookings from './component/AllBookings';
 import UpdateBooking from './component/UpdateBooking';
 import AllReservations from './component/AllReservations';
 import UpdateReservation from './component/UpdateReservation';
+import UserAllBookings from "./component/UserAllBookings";
 
 
 import ADlog from './component/AdminLogin'
@@ -172,6 +173,7 @@ function App() {
       {/* vehicles */}
       <BrowserRouter>
         <Routes>
+        <Route path='/addBookings/:vid' element={<AddBookings />}></Route>
           <Route path="/Vehicle_main" element={<IndexPage />} />
           <Route path="/Vehicle/:id" element={<Vehicle />} />
           <Route path="/Vehicle_2/:id" element={<Vehicle2 />} />
@@ -291,7 +293,7 @@ function App() {
       {/*Bookings and Reservations*/}
       <BrowserRouter>
         <Routes>
-          <Route path='/addBookings/:vid' element={<AddBookings />}></Route>
+         
         </Routes>
       </BrowserRouter>
 
@@ -300,6 +302,15 @@ function App() {
           <Route path="/AllBookings" element={<AllBookings />}></Route>
         </Routes>
       </BrowserRouter>
+
+      
+      <BrowserRouter>
+        <Routes>
+          <Route path="/userAllBookings" element={<UserAllBookings />}></Route>
+        </Routes>
+      </BrowserRouter>
+
+      
 
       <BrowserRouter>
         <Routes>

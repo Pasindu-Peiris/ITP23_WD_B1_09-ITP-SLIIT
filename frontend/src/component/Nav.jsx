@@ -55,7 +55,7 @@ function Nav() {
                                 Logedin === "true" ?
                                     <div className="d-flex mx-4">
                                         <button className="btn btn-dark p-1" type="submit" style={{}}><a href="/profile" style={{ textDecoration: "none", color: "white", padding: "2px 5px ", fontSize: "1.1rem" }}> <img src={iconP} alt='' />  </a></button>
-                                        <button className="btn btn-dark p-1 mx-3" type="button" style={{}}><a href='!#'  style={{ textDecoration: "none", color: "white", padding: "9px 9px ", fontSize: "1.1rem" }}> <i class="fa-solid fa-car" style={{color:"#fff"}}></i>  </a></button>
+                                        <button className="btn btn-dark p-1 mx-3" type="button" style={{}}><a href='/userAllBookings'  style={{ textDecoration: "none", color: "white", padding: "9px 9px ", fontSize: "1.1rem" }}> <i class="fa-solid fa-car" style={{color:"#fff"}}></i>  </a></button>
 
 
                                     </div> :
