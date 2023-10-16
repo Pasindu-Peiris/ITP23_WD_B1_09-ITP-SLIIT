@@ -2,8 +2,9 @@ import axios from "axios";
 import React, { useState, useEffect , useRef} from "react";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
-import Nav from "./Nav";
-import Footer from "./footer";
+import AdminBandR from "../component/AdminBandR"
+
+
 
 
 
@@ -83,9 +84,10 @@ const formatDate = (dateStr) => {
 
 
   return (
-  
+    <>
+    <AdminBandR></AdminBandR>
     <div className="center-content"> {/* Center the content */}
-      <Nav />
+      
       <div className="admin-all">
         <div className="container-box-2 container">
           <h2>Registered booking details</h2>
@@ -166,9 +168,11 @@ const formatDate = (dateStr) => {
                     </button>
                 </div>
       </div>
-      <Footer/>
+      
     </div>
+  </>
   )
+  
 }
 
 export default AllBookings;
