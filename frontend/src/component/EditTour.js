@@ -315,7 +315,7 @@ function EditTour(){
                 </div>
                 <div>
                     <label for="date" class="form-label form-label labsh px-1 d-flex align-items-center justify-content-between">Tour Date<div className="" id="dateError" style={{color: "red", fontSize: "15px", float:"right"}}></div></label>
-                    <input type="date" id="date" name="date" class="form-control inputSh"  required value={date}
+                    <input type="date" id="date" name="date" class="form-control inputSh"  required value={date} max="2024-12-31"
                     onChange={(e) => {
                         setDate(e.target.value);
 

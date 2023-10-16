@@ -20,6 +20,7 @@ function AddTour() {
     window.onload = function () {                                   //from www.java2s.com
         var today = new Date().toISOString().split('T')[0];
         document.getElementsByName("date")[0].setAttribute('min', today);
+        document.getElementsByName("date")[0].setAttribute('max', "2024-12-31")
 
     }
 
