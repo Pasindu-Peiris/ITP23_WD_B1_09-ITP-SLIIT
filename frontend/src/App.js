@@ -85,6 +85,7 @@ import AllBookings from './component/AllBookings';
 import UpdateBooking from './component/UpdateBooking';
 import AllReservations from './component/AllReservations';
 import UpdateReservation from './component/UpdateReservation';
+import UserAllBookings from "./component/UserAllBookings";
 
 
 import ADlog from './component/AdminLogin'
@@ -300,6 +301,15 @@ function App() {
           <Route path="/AllBookings" element={<AllBookings />}></Route>
         </Routes>
       </BrowserRouter>
+
+      
+      <BrowserRouter>
+        <Routes>
+          <Route path="/userAllBookings" element={<UserAllBookings />}></Route>
+        </Routes>
+      </BrowserRouter>
+
+      
 
       <BrowserRouter>
         <Routes>
