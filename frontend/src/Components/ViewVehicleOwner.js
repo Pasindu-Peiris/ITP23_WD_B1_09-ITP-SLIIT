@@ -138,23 +138,20 @@ export default function ViewVehicleOwner() {
 
 
                         {/* Update and Remove Buttons */}
-                        <div className="row text-center">
+                        <div className="row text-center align-items-center justify-content-center">
                             <div className="col-10">
                                 <div className="row">
-                                    <div className="col-4">
+                                    <div className="col-4 text-center">
                                         <a href={`/IndexPage_Update/${id}`} className="btn btn-primary" style={{ width: '100%' }}>
                                             Manage Vehicles
                                         </a>
                                     </div>
-                                    <div className="col-4">
+                                    <div className="col-4 text-center">
                                         <Link to={`/updatevehicleowner/${id}`}>
                                             <button className="btn btn-dark" style={{ width: '100%' }}>Update</button>
                                         </Link>
                                     </div>
-
-
-
-                                    <div className="col-4">
+                                    <div className="col-4 text-center">
                                         <button className="btn btn-danger" style={{ width: '100%' }} onClick={handleRemoveConfirmation}>Remove</button>
                                     </div>
 
