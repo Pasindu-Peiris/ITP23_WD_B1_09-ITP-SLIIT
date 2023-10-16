@@ -1,10 +1,13 @@
-import "../../App";
-import Logo from "../../tourImages/Logo.png";
-import SideNavLogo from "../../tourImages/sideNavico.png";
+import "../App";
 
-function MainLayout() {
+import Logo from "../tourImages/Logo.png";
+
+import SideNavLogo from "../tourImages/sideNavico.png";
+
+function AdminBandR() {
   return (
     <>
+    
       <nav
         className="navbar navbar-expand-lg bg-light"
         style={{ height: "10px" }}
@@ -74,19 +77,6 @@ function MainLayout() {
         </div>
         <div class="offcanvas-body">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-          <li
-              className="nav-item px-4 fs-5 rounded-2"
-              id="block-scopAdmin"
-              style={{ margin: "10px 0px", border: "0px solid #000" }}
-            >
-              <a
-                className="nav-link active fw-bold"
-                aria-current="page"
-                href="/Dashboard-admin-rapidTravles"
-              >
-                Dashboard
-              </a>
-            </li>
             <li
               className="nav-item px-4 fs-5 rounded-2"
               id="block-scopAdmin"
@@ -95,9 +85,9 @@ function MainLayout() {
               <a
                 className="nav-link active fw-bold"
                 aria-current="page"
-                href="AllIncomes"
+                href="/AllBookings"
               >
-                All Incomes
+                Booking Details
               </a>
             </li>
             <li
@@ -105,79 +95,28 @@ function MainLayout() {
               id="block-scopAdmin"
               style={{ margin: "10px 0px", border: "0px solid #000" }}
             >
-              <a className="nav-link fw-bold" href="/AllStaffList">
-                Staff Details
-              </a>
-            </li>
-            <li
-              className="nav-item px-4 fs-5 rounded-2"
-              id="block-scopAdmin"
-              style={{ margin: "10px 0px", border: "0px solid #000" }}
-            >
-              <a className="nav-link fw-bold" href="/AllDriverList">
-                Driver Details
-              </a>
-            </li>
-            <li
-              className="nav-item px-4 fs-5 rounded-2"
-              id="block-scopAdmin"
-              style={{ margin: "10px 0px", border: "0px solid #000" }}
-            >
-              <a
-                className="nav-link active fw-bold"
-                aria-current="page"
-                href="/AllVehicleOwnerList"
-              >
-                Vehicle Owner Details
-              </a>
-            </li>
-            <li
-              className="nav-item px-4 fs-5 rounded-2"
-              id="block-scopAdmin"
-              style={{ margin: "10px 0px", border: "0px solid #000" }}
-            >
-              <a
-                className="nav-link active fw-bold"
-                aria-current="page"
-                href="/AllStaffSal"
-              >
-                Staff Salary Details
-              </a>
-            </li>
-            <li
-              className="nav-item px-4 fs-5 rounded-2"
-              id="block-scopAdmin"
-              style={{ margin: "10px 0px", border: "0px solid #000" }}
-            >
-              <a
-                className="nav-link active fw-bold"
-                aria-current="page"
-                href="/AllDriverSal"
-              >
-                Drivers Salary Details
-              </a>
-            </li>
-            <li
-              className="nav-item px-4 fs-5 rounded-2"
-              id="block-scopAdmin"
-              style={{ margin: "10px 0px", border: "0px solid #000" }}
-            >
-              <a
-                className="nav-link active fw-bold"
-                aria-current="page"
-                href="/AllVehicleOwnerSal"
-              >
-                Vehicle Owners Salary Details
+              <a className="nav-link fw-bold" href="/AllReservations">
+                Reservation Details
               </a>
             </li>
             
+            
+            
           </ul>
 
-          
+          <button
+            id="logout"
+            type="button"
+            class="btn btn-outline-danger"
+            style={{ marginTop: "30px" }}
+          >
+            <i class="fa-solid fa-right-from-bracket"></i>&nbsp;&nbsp;
+            <b>Log Out</b>
+          </button>
         </div>
       </div>
     </>
   );
 }
 
-export default MainLayout;
+export default AdminBandR;

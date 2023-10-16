@@ -6,10 +6,10 @@ const VehicleOwnerSalary = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "VehicleOwner",
     },
-    Vehicle_id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Vehicles",
-    },
+    // Vehicle_id: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   ref: "Vehicles",
+    // },
     bonus: {
       type: Number,
       required: true,

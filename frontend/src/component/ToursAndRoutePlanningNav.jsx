@@ -6,6 +6,10 @@ import AddTour from './AddTour';
 
 function ToursAndRoutePlanning() {
 
+    function logout(){
+        window.location = '/Admin-login-rapid-travels'
+    }
+
     return (
         <>
 
@@ -33,7 +37,7 @@ function ToursAndRoutePlanning() {
 
                         </ul>
                         <span className="navbar-text">
-                           <a href = "#"><i className="fa-solid fa-circle-user fa-2xl" style={{color: "#000000"}}></i></a>
+                           
                         </span>
                     </div>
                 </div>
@@ -47,6 +51,9 @@ function ToursAndRoutePlanning() {
                 </div>
                 <div class="offcanvas-body">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li className="nav-item px-4 fs-5 rounded-2" id="block-scopAdmin" style={{ margin: "10px 0px", border: "0px solid #000" }}>
+                            <a className="nav-link active fw-bold" aria-current="page" href={`/Dashboard-admin-rapidTravles/`}>Dashboard</a>
+                        </li>
                         <li className="nav-item px-4 fs-5 rounded-2" id="block-scopAdmin" style={{ margin: "10px 0px", border: "0px solid #000" }}>
                             <a className="nav-link active fw-bold" aria-current="page" href={`/addTour/`}>Add Tours</a>
                         </li>
@@ -56,7 +63,7 @@ function ToursAndRoutePlanning() {
                     </ul>
 
 
-                    <button id="logout" type="button" class="btn btn-outline-danger" style={{ marginTop: "30px" }}><i class="fa-solid fa-right-from-bracket"></i>&nbsp;&nbsp;<b>Log Out</b></button>
+                    <button id="logout" type="button" onClick={logout} class="btn btn-outline-danger" style={{ marginTop: "30px" }}><i class="fa-solid fa-right-from-bracket"></i>&nbsp;&nbsp;<b>Log Out</b></button>
                 </div>
             </div>
 

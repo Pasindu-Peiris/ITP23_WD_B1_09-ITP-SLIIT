@@ -23,11 +23,11 @@ function AdminDashboard() {
     const [admin, setAdmin] = useState('');
     const [adminMess, setAdminMess] = useState('');
 
-    const[tours, setTours] = useState([]);
-    const[clients, setClient] = useState([]);
-    const[vehicles, setVehicles] = useState([]);
-    const[drivers, setDrivers] = useState([]);
-    
+    const [tours, setTours] = useState([]);
+    const [clients, setClient] = useState([]);
+    const [vehicles, setVehicles] = useState([]);
+    const [drivers, setDrivers] = useState([]);
+
     let tourCounter = 0;
     const tourCount = tours.map(tour => {
         tourCounter++;
@@ -86,18 +86,18 @@ function AdminDashboard() {
 
     useEffect(() => {
         axios.get('http://localhost:8090/vehicles/getVehicles').then(res => {
-          setVehicles(res.data);
-    
+            setVehicles(res.data);
+
         });
-      }, []);
+    }, []);
 
     useEffect(() => {
-        axios.get("http://localhost:8090/api/drivers").then(res =>{
+        axios.get("http://localhost:8090/api/drivers").then(res => {
             setDrivers(res.data);
         });
-        
-    },[]);
-    
+
+    }, []);
+
 
 
     useEffect(() => {
@@ -147,8 +147,8 @@ function AdminDashboard() {
     //logout function
     function logout() {
         localStorage.removeItem("Logedina");
-        localStorage.removeItem("token2");   
-    
+        localStorage.removeItem("token2");
+
         window.location = '/Admin-login-rapid-travels'
     }
 
@@ -159,23 +159,67 @@ function AdminDashboard() {
 
     const hadelAdmin = () => {
         if (admin.mtype === "client") {
-            
-             document.getElementsByClassName('Admin-hadel-login')[0].style.display="none";
-             document.getElementsByClassName('Admin-hadel-login')[1].style.display="none";
-             document.getElementsByClassName('Admin-hadel-login')[2].style.display="block";
-             document.getElementsByClassName('Admin-hadel-login')[3].style.display="none";
-             document.getElementsByClassName('Admin-hadel-login')[4].style.display="none";
-             document.getElementsByClassName('Admin-hadel-login')[5].style.display="none";
-             document.getElementsByClassName('Admin-hadel-login')[6].style.display="none";
-             document.getElementsByClassName('Admin-hadel-login')[7].style.display="none";  
-    
+
+            document.getElementsByClassName('Admin-hadel-login')[0].style.display = "none";
+            document.getElementsByClassName('Admin-hadel-login')[1].style.display = "none";
+            document.getElementsByClassName('Admin-hadel-login')[2].style.display = "block";
+            document.getElementsByClassName('Admin-hadel-login')[3].style.display = "none";
+            document.getElementsByClassName('Admin-hadel-login')[4].style.display = "none";
+            document.getElementsByClassName('Admin-hadel-login')[5].style.display = "none";
+            document.getElementsByClassName('Admin-hadel-login')[6].style.display = "none";
+            document.getElementsByClassName('Admin-hadel-login')[7].style.display = "none";
+
         }
-     }
+
+        if (admin.mtype === "Exp") {
+
+            document.getElementsByClassName('Admin-hadel-login')[0].style.display = "none";
+            document.getElementsByClassName('Admin-hadel-login')[1].style.display = "none";
+            document.getElementsByClassName('Admin-hadel-login')[2].style.display = "none";
+            document.getElementsByClassName('Admin-hadel-login')[3].style.display = "block";
+            document.getElementsByClassName('Admin-hadel-login')[4].style.display = "none";
+            document.getElementsByClassName('Admin-hadel-login')[5].style.display = "none";
+            document.getElementsByClassName('Admin-hadel-login')[6].style.display = "none";
+            document.getElementsByClassName('Admin-hadel-login')[7].style.display = "none";
+
+        }
+
+        if (admin.mtype === "All") {
+
+            document.getElementsByClassName('Admin-hadel-login')[0].style.display = "block";
+            document.getElementsByClassName('Admin-hadel-login')[1].style.display = "block";
+            document.getElementsByClassName('Admin-hadel-login')[2].style.display = "block";
+            document.getElementsByClassName('Admin-hadel-login')[3].style.display = "block";
+            document.getElementsByClassName('Admin-hadel-login')[4].style.display = "block";
+            document.getElementsByClassName('Admin-hadel-login')[5].style.display = "block";
+            document.getElementsByClassName('Admin-hadel-login')[6].style.display = "block";
+            document.getElementsByClassName('Admin-hadel-login')[7].style.display = "block";
+
+        }
+
+        if (admin.mtype === "tour") {
+
+            document.getElementsByClassName('Admin-hadel-login')[0].style.display = "none";
+            document.getElementsByClassName('Admin-hadel-login')[1].style.display = "block";
+            document.getElementsByClassName('Admin-hadel-login')[2].style.display = "none";
+            document.getElementsByClassName('Admin-hadel-login')[3].style.display = "none";
+            document.getElementsByClassName('Admin-hadel-login')[4].style.display = "none";
+            document.getElementsByClassName('Admin-hadel-login')[5].style.display = "none";
+            document.getElementsByClassName('Admin-hadel-login')[6].style.display = "none";
+            document.getElementsByClassName('Admin-hadel-login')[7].style.display = "none";
+
+            
+        }
+
+
+
+
+    }
 
     hadelAdmin();
 
 
-    
+
 
 
 
@@ -225,7 +269,7 @@ function AdminDashboard() {
                 <div class="offcanvas-body">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item px-4 Admin-hadel-login fs-5 rounded-2" id="block-scopAdmin" style={{ margin: "10px 0px", border: "0px solid #000" }} >
-                            <a className="nav-link active fw-bold" aria-current="page" href='!#' >Booking And Reservation </a>
+                            <a className="nav-link active fw-bold" aria-current="page" href='/AllBookings' >Booking And Reservation </a>
                         </li>
                         <li className="nav-item px-4 Admin-hadel-login fs-5 rounded-2" id="block-scopAdmin" style={{ margin: "10px 0px", border: "0px solid #000" }} >
                             <a className="nav-link fw-bold" href="/addTour">Tours And Route Planning</a>
@@ -234,19 +278,19 @@ function AdminDashboard() {
                             <a className="nav-link fw-bold" href='/AllClient' >Client Management </a>
                         </li>
                         <li className="nav-item px-4 Admin-hadel-login fs-5 rounded-2" id="block-scopAdmin" style={{ margin: "10px 0px", border: "0px solid #000" }} >
-                            <a className="nav-link active fw-bold" aria-current="page" href='!#'>Finance Management </a>
+                            <a className="nav-link active fw-bold" aria-current="page" href='/AllIncomes'>Finance Management </a>
                         </li>
                         <li className="nav-item px-4 Admin-hadel-login fs-5 rounded-2" id="block-scopAdmin" style={{ margin: "10px 0px", border: "0px solid #000" }} >
                             <a className="nav-link active fw-bold" aria-current="page" href="/AllClient">Vehicle Management</a>
                         </li>
                         <li className="nav-item px-4 Admin-hadel-login fs-5 rounded-2" id="block-scopAdmin" style={{ margin: "10px 0px", border: "0px solid #000" }} >
-                            <a className="nav-link active fw-bold" aria-current="page" href="/AllClient">Staff Management </a>
+                            <a className="nav-link active fw-bold" aria-current="page" href="/staff">Staff Management </a>
                         </li>
                         <li className="nav-item px-4 Admin-hadel-login fs-5 rounded-2" id="block-scopAdmin" style={{ margin: "10px 0px", border: "0px solid #000" }} >
-                            <a className="nav-link active fw-bold" aria-current="page" href="/AllClient">Vehicle Owner Management </a>
+                            <a className="nav-link active fw-bold" aria-current="page" href="/vowner">Vehicle Owner Management </a>
                         </li>
                         <li className="nav-item px-4 Admin-hadel-login fs-5 rounded-2" id="block-scopAdmin" style={{ margin: "10px 0px", border: "0px solid #000" }} >
-                            <a className="nav-link active fw-bold" aria-current="page" href="/AllClient">Driver Management</a>
+                            <a className="nav-link active fw-bold" aria-current="page" href="/driver">Driver Management</a>
                         </li>
 
                     </ul>
@@ -257,11 +301,11 @@ function AdminDashboard() {
             </div>
 
             <div className='row px-5 col-12 ' style={{ height: "auto", width: "100%", top: "0px", right: "0px" }}>
-                <div className='container-fluid col-12 mx-auto px-5 rounded-3' style={{ width: "100%", height: "35vh", backgroundColor: "#6553cfa3"}}>
+                <div className='container-fluid col-12 mx-auto px-5 rounded-3' style={{ width: "100%", height: "35vh", backgroundColor: "#6553cfa3" }}>
                     <h1 className="text-center mt-5 fw-bolder">Dashboard</h1>
                 </div>
                 <div className='container-fluid row mx-auto px-1 d-flex align-content-center justify-content-center' style={{ marginTop: "100px" }}>
-                    <div class="card mx-2 p-2" style={{ width: "18rem", marginTop: "-180px" }}>
+                    <div class="card mx-2 p-2" id="dashCard" style={{ width: "18rem", marginTop: "-180px" }}>
                         <div class="">
                             <div className='d-flex align-items-center justify-content-between px-3'>
                                 <h5 class="card-title fs-4">Tours</h5>
@@ -273,7 +317,7 @@ function AdminDashboard() {
                         </div>
                     </div>
 
-                    <div class="card mx-2 p-2" style={{ width: "18rem", marginTop: "-180px" }}>
+                    <div class="card mx-2 p-2" id="dashCard" style={{ width: "18rem", marginTop: "-180px" }}>
                         <div class="">
                             <div className='d-flex align-items-center justify-content-between px-3'>
                                 <h5 class="card-title fs-4">Clients</h5>
@@ -286,7 +330,7 @@ function AdminDashboard() {
                     </div>
 
 
-                    <div class="card mx-2 p-2" style={{ width: "18rem", marginTop: "-180px" }}>
+                    <div class="card mx-2 p-2" id="dashCard" style={{ width: "18rem", marginTop: "-180px" }}>
                         <div class="">
                             <div className='d-flex align-items-center justify-content-between px-3'>
                                 <h5 class="card-title fs-4">Vehicles</h5>
@@ -299,7 +343,7 @@ function AdminDashboard() {
                     </div>
 
 
-                    <div class="card mx-2 p-2" style={{ width: "18rem", marginTop: "-180px" }}>
+                    <div class="card mx-2 p-2" id="dashCard" style={{ width: "18rem", marginTop: "-180px" }}>
                         <div class="">
                             <div className='d-flex align-items-center justify-content-between px-3'>
                                 <h5 class="card-title fs-4">Drivers</h5>
@@ -324,10 +368,10 @@ function AdminDashboard() {
                         <BookingPieChart />
                     </div>
                     <div className='col-4'>
-                        <ClientsPieChart/>
+                        <ClientsPieChart />
                     </div>
                     <div className='col-4'>
-                        <ToursBarChart/>
+                        <ToursBarChart />
                     </div >
                 </div>
 
@@ -339,22 +383,22 @@ function AdminDashboard() {
                         <StaffPieChart />
                     </div>
                     <div className='col-4'>
-                        
+
                     </div >
                 </div>
 
-                <div className='container-fluid row mx-auto px-6 pb-5' style={{ marginTop: "60px"}}>
+                <div className='container-fluid row mx-auto px-6 pb-5' style={{ marginTop: "60px" }}>
                     <div className='col-4'>
                         <DriverPieChart />
                     </div>
                     <div className='col-8'>
-                        <FinanceLineChart/>
+                        <FinanceLineChart />
                     </div>
                 </div>
             </div>
 
-            <div className='container-fluid rounded-top px-5 text-center bg-dark d-flex aline-item-center justify-content-center' style={{height:"10vh"}}>
-                <p className='fw-bold fs-5 mt-4 text-light'>Rapid Travels</p>
+            <div className='container-fluid rounded-top px-5 text-center bg-dark d-flex aline-item-center justify-content-center' style={{ height: "10vh" }}>
+                <p className='fw-bold fs-5 mt-4 text-light'>Rapid Travels PVT.(Ltd)</p>
             </div>
 
 

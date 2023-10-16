@@ -41,6 +41,10 @@ const DriverSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    isSalaryAdded : {
+      type : Boolean,
+      default : false
+    }
   },
   { timestamps: true }
 );

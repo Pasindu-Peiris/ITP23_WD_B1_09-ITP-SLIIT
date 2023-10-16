@@ -41,6 +41,16 @@ function AllIncomes() {
 
   const combinedData = [...bookings, ...reservations];
 
+
+
+
+  //check login and derct to home
+  var logincheck = localStorage.getItem("Logedina");
+
+  if (!logincheck === true) {
+      window.location = '/';
+  }
+
   return (
     <>
       <MainLayout></MainLayout>
@@ -120,10 +130,8 @@ function AllIncomes() {
                         data;
                       if (data) {
                         return (
-                          <tr
-                            key={index}
-                          >
-                            <td>{index + 1}</td >
+                          <tr key={index}>
+                            <td>{index + 1}</td>
                             <td>{name}</td>
                             <td>{nic}</td>
                             <td>{email}</td>

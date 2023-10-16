@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Nav from './Nav';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useParams } from 'react-router-dom';
+
 
 function UpdateBooking() {
 
-    
-    const { id } = useParams();
     const [booking, setBooking] = useState({
         name: "",
         email: "",
@@ -27,6 +27,34 @@ function UpdateBooking() {
         phone: "",
         nic: ""
     });
+
+    const { id } = useParams();
+    
+    
+
+    function Notify(message, type) {
+        toast[type](message, {
+            autoClose: 1500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            position: "top-right",
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            style: {
+                width: '300px',
+                height: '100px',
+                fontSize: '22px',
+                alignItems: 'center',
+                fontFamily: "Ropa Sans",
+                display: 'flex',
+                justifyContent: 'center',
+                color: 'white',
+            },
+            bodyClassName: 'custom-toast-body'
+        });
+    }    
 
     //date format
     const formatDate = (dateStr) => {
@@ -102,7 +130,14 @@ const validateAddress = (address) => {
 
         // Validate email, phone, and NIC
         const newErrors = { ...errors };
-        if (name === 'email' && !validateEmail(value)) {
+        
+        if (name === 'name' && !validateName(value)) {
+            newErrors.name = "please Enter valid Name";
+        }
+        else if (name === 'address' && !validateAddress(value)) {
+            newErrors.address = "Please Enter valid Address";
+        }
+        else if (name === 'email' && !validateEmail(value)) {
             newErrors.email = "Invalid email format";
         } else if (name === 'phone' && !validatePhone(value)) {
             newErrors.phone = "Invalid phone format (9 digits required)";
@@ -119,23 +154,8 @@ const validateAddress = (address) => {
 
     }
 
-    const Update = (e) => {
-        e.preventDefault();
+    // Function to validate form data
 
-        if (!validateForm()) {
-            return;
-        }
-
-
-        axios.put("http://localhost:8090/booking/update/" + id, booking).then(result => {
-            alert("Booking Updated")
-            window.location = '/AllBookings';
-        }).catch((err) => {
-            alert("Booking Not Updated");
-            console.log(err)
-        })
-
-        // Function to validate form data
     const validateForm = () => {
         let valid = true;
         const newErrors = {};
@@ -172,22 +192,48 @@ const validateAddress = (address) => {
         return valid;
     }
 
+    
+
+    const Update = (e) => {
+        e.preventDefault();
+
+        if (!validateForm()) {
+            return;
+        }
+
+
+        axios.put("http://localhost:8090/booking/update/" + id, booking).then(result => {
+            Notify('Booking Updated Successfully', 'success');
+            setTimeout(() => {
+                window.location = '/userAllBookings';
+            }, 2000);
+            
+        
+        }).catch((err) => {
+            alert("Booking Not Updated");
+            console.log(err)
+           
+        })
+
+        
+    
+
 
 
     }
 
     return (
         <div>
-            <Nav/>
-        <div className="update-form">
-            <br></br><br></br><br></br>
-            <div className=" container-dotbox-update">
-                <br></br><br></br><br></br>
+            
+        <div className="update-form card container w-50 ">
+            
+            <div className="mt-5 mx-4">
+               
                 <h2>Update booking details</h2>
             </div>
             <div className="con-update" style={{justifyContent:'center',  width:"100%", margin:"auto 0%"}}>
                 <div className="form-center-update">
-                    <form onSubmit={Update} className="centered-form">
+                    <form onSubmit={Update} className="centered-form mx-4">
                         <div className="mb-4">
                             <label htmlFor="name" className="form-label px-1">Name</label>
                             <input
@@ -201,10 +247,10 @@ const validateAddress = (address) => {
                                 value={booking.name}
                                 onChange={handleInputChange}
                             />
-                            <br></br>
-                             {errors.name && <div className="error-message">{errors.name}</div>}
+                            
+                             {errors.name && <div className="error-message" style={{color: 'red'}}>{errors.name}</div>}
                         </div>
-                        <br></br>
+                        
                         
                         <div className="mb-4">
                             <label htmlFor="email" className="form-label px-1">Email</label>
@@ -219,9 +265,9 @@ const validateAddress = (address) => {
                                 value={booking.email}
                                 onChange={handleInputChange}
                             />
-                             {errors.email && <div className="error-message">{errors.email}</div>}
+                             {errors.email && <div className="error-message" style={{ color: 'red' }}>{errors.email}</div>}
                         </div>
-                        <br></br>
+                        
                         <div className="mb-4">
                             <label htmlFor="address" className="form-label px-1">Address</label>
                             <input
@@ -235,9 +281,9 @@ const validateAddress = (address) => {
                                 value={booking.address}
                                 onChange={handleInputChange}
                             />
-                           {errors.address && <div className="error-message">{errors.address}</div>}
+                           {errors.address && <div className="error-message" style={{ color: 'red' }}>{errors.address}</div>}
                         </div>
-                        <br></br>
+                        
                         <div className="mb-4">
                             <label htmlFor="phone" className="form-label px-1">Phone</label>
                             <input
@@ -251,9 +297,9 @@ const validateAddress = (address) => {
                                 value={booking.phone}
                                 onChange={handleInputChange}
                             />
-                            {errors.phone && <div className="error-message">{errors.phone}</div>}
+                            {errors.phone && <div className="error-message" style={{ color: 'red' }}>{errors.phone}</div>}
                         </div>
-                        <br></br>
+                        
                         {/* Add fields for NIC, Vehicle Type, Pickup Date, Return Date, and Driver */}
                         <div className="mb-4">
                             <label htmlFor="nic" className="form-label px-1">NIC</label>
@@ -268,9 +314,9 @@ const validateAddress = (address) => {
                                 value={booking.nic}
                                 onChange={handleInputChange}
                             />
-                            {errors.nic && <div className="error-message">{errors.nic}</div>}
+                            {errors.nic && <div className="error-message" style={{ color: 'red' }} >{errors.nic}</div>}
                         </div>
-                        <br></br>
+                        
                         <div className="mb-4">
                             <label htmlFor="vehicletype" className="form-label px-1">Vehicle Type</label>
                             <input
@@ -286,7 +332,7 @@ const validateAddress = (address) => {
                                 disabled
                             />
                         </div>
-                        <br></br>
+                        
                         <div className="mb-4">
                             <label htmlFor="pickupdate" className="form-label px-1">Pickup Date</label>
                             <input
@@ -302,7 +348,7 @@ const validateAddress = (address) => {
                                 disabled
                             />
                         </div>
-                        <br></br>
+                        
                         <div className="mb-4">
                             <label htmlFor="returndate" className="form-label px-1">Return Date</label>
                             <input
@@ -318,7 +364,7 @@ const validateAddress = (address) => {
                                 disabled
                             />
                         </div>
-                        <br></br>
+                       
                         <div className="mb-4">
                             <label htmlFor="driver" className="form-label px-1">Driver</label>
                             <input
@@ -334,12 +380,13 @@ const validateAddress = (address) => {
                                 disabled
                             />
                         </div>
-                        <br></br>
+                        
                         <button type="submit" className="btn btn-primary w-100 mt-2 but-1">Update Booking</button>
                     </form>
                 </div>
             </div>
         </div>
+        <ToastContainer/>
         </div>
     )
 }

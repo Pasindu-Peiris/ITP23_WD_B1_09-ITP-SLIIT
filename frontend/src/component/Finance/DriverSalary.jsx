@@ -17,7 +17,7 @@ function AllDriverSal() {
   const [search, setSearch] = useState("");
   const componentRef = useRef(null);
 
-  //get all Driver's Salaries
+  // Get all Driver's Salaries
   async function getDriverSal() {
     try {
       const response = await axios.get(
@@ -94,6 +94,7 @@ function AllDriverSal() {
                     <th>Name</th>
                     <th>Contact Number</th>
                     <th>Email</th>
+                    <th>Mileage</th>
                     <th>Bonus</th>
                     <th>Net Salary</th>
                   </tr>
@@ -103,25 +104,32 @@ function AllDriverSal() {
                     .filter((driver) => {
                       return (
                         search.toLowerCase() === "" ||
-                        driver.driver_id?.name
-                          .toLowerCase()
-                          .includes(search.toLowerCase())
+                        driver.name.toLowerCase().includes(search.toLowerCase())
                       );
                     })
                     .map((driver, index) => {
-                      const { driver_id, bonus, netSal } = driver;
+                      const { driver_id, bonus } = driver;
                       if (driver_id) {
+                        // Calculate netSalary
+                        const salaryPerKM = 250;
+                        const netSalary =
+                          (salaryPerKM * driver_id.mileage * bonus) / 100 +
+                          salaryPerKM * driver_id.mileage;
+
                         return (
                           <tr
                             key={driver._id}
                             style={{ backgroundColor: "#6553cfa3" }}
                           >
                             <td>{index + 1}</td>
-                            <td>{driver_id.name}</td>
+                            <td>
+                              {driver_id.firstName} {driver_id.lastName}
+                            </td>
                             <td>{driver_id.ContactNumber}</td>
                             <td>{driver_id.email}</td>
+                            <td>{driver_id.mileage} Km</td>
                             <td>{bonus}%</td>
-                            <td>Rs.{netSal}</td>
+                            <td>Rs.{netSalary}</td>
                           </tr>
                         );
                       }

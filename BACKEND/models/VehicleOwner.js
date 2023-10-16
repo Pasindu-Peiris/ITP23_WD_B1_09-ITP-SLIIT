@@ -22,7 +22,11 @@ const vehicleOwnerSchema = new Schema({
     nic: {
         type: String, 
         required: true
-    }
+    },
+    isSalaryAdded : {
+        type : Boolean,
+        default : false
+      }
 });
 
 const VehicleOwner = mongoose.model("VehicleOwner", vehicleOwnerSchema);

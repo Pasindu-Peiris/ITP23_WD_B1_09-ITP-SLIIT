@@ -50,6 +50,17 @@ router.route("/AllBookings").get((req, res) => {
         });
 });
 
+router.route("/userAllBookings").get((req, res) => {
+    Booking.find()
+        .then((bookings) => {
+            res.json(bookings);
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json({ error: err.message });
+        });
+});
+
 router.route("/update/:id").put(async (req, res) => {
     let bookId = req.params.id;
     const {

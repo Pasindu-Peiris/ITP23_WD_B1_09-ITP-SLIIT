@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import Nav from "./Nav";
-
+import AdminBandR from "../component/AdminBandR"
 
 
 
@@ -77,8 +77,10 @@ function AllReservations() {
   };
 
   return (
+    <>
+    <AdminBandR></AdminBandR>
     <div>
-    <Nav/>
+    
     <div className="center-content">
       <div className="admin-all">
         <div className="container-box-2 container">
@@ -150,6 +152,7 @@ function AllReservations() {
     </div>
     
     </div>
+    </>
   )
 }
 

@@ -1,40 +1,49 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { Table, Col, Container, Row, Button, Form } from "react-bootstrap";
-import { useNavigate, useParams } from "react-router-dom";
+import {
+  Table,
+  Col,
+  Container,
+  Row,
+  Button,
+  Modal,
+  Form,
+} from "react-bootstrap";
+import { Link } from "react-router-dom";
 import MainLayout from "./MainLayout";
 
 function AllStaffDetails() {
-  const [userdata, setUserData] = useState([]);
-  const [inputState, setInputState] = useState({
-    bonus: "",
-  });
+  const [users, setUsers] = useState([]);
+  const [showUpdateModal, setShowUpdateModal] = useState(false);
+  const [selectedStaffId, setSelectedStaffId] = useState(null);
+  const [newBonus, setNewBonus] = useState("");
 
-  // Get link parameter details
-  const { Id } = useParams();
-  const navigate = useNavigate();
+  // useEffect(() => {
+  //   // Define the URL for your API endpoint
+  //   const apiUrl = "http://localhost:8090/finance/users";
 
-  // Function to get all staff details
+  //   // Make a GET request to the API
+  //   fetch(apiUrl)
+  //     .then((response) => {
+  //       if (!response.ok) {
+  //         throw new Error(`HTTP error! Status: ${response.status}`);
+  //       }
+  //       return response.json();
+  //     })
+  //     .then((data) => {
+  //       setUsers(data); // Set the fetched data to the state
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching user data:", error);
+  //     });
+  // }, []);
+
   async function getStaffDetails() {
     try {
-      const response = await axios.get("http://localhost:8090/user/details/");
-      // if (Array.isArray(response.data)) {
-      //   setUserData(response.data);
-      // } else {
-      //   console.error("Data received is not an array:", response.data);
-      // }
+      const response = await axios.get("http://localhost:8090/finance/users");
+      setUsers(response.data);
     } catch (error) {
       console.error("Error with GET request:", error);
-    }
-  }
-
-  // Function to add staff salary
-  async function addStaffSal() {
-    try {
-      const response = await axios.post("http://localhost:8090/finance/addStaffSal/");
-      // Handle the response as needed
-    } catch (error) {
-      console.error("Error with POST request:", error);
     }
   }
 
@@ -42,55 +51,39 @@ function AllStaffDetails() {
     getStaffDetails();
   }, []);
 
-  useEffect(() => {
-    setInputState({ ...inputState, element_id: Id });
-  }, [Id]);
-
-  const { bonus } = inputState;
-
-  const handleInput = (name) => (e) => {
-    setInputState({ ...inputState, [name]: e.target.value });
+  // Function to show the update bonus modal
+  const handleShowUpdateModal = (staffId) => {
+    setSelectedStaffId(staffId);
+    setNewBonus("");
+    setShowUpdateModal(true);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    addStaffSal();
+  // Function to hide the update bonus modal
+  const handleCloseUpdateModal = () => {
+    setShowUpdateModal(false);
+  };
+
+  // Function to update bonus
+  const updateBonus = async () => {
+    try {
+      await axios.put(
+        `http://localhost:8090/finance/updateStaffSal/${selectedStaffId}`,
+        { bonus: newBonus }
+      );
+      getStaffDetails();
+      handleCloseUpdateModal();
+    } catch (error) {
+      console.error("Error updating bonus:", error);
+    }
   };
 
   return (
     <>
-      <MainLayout></MainLayout>
+      <MainLayout />
       <Container className="mt-5">
         <Row>
           <Col xs={6} className="mb-0">
             <h1>Staff Details</h1>
-          </Col>
-          <Col xs={12}>
-            <Row className="d-flex justify-content-end">
-              <Col xs={4} md={4} className="text-right">
-                <Form onSubmit={handleSubmit}>
-                  <Form.Control
-                    placeholder="Enter Bonus amount"
-                    value={bonus}
-                    onChange={handleInput("bonus")}
-                    style={{
-                      padding: "10px",
-                      fontSize: "18px",
-                      border: "2px solid black",
-                    }}
-                  />
-                </Form>
-              </Col>
-              <Col xs={12} md={2} className="d-flex justify-content-end">
-                <Button
-                  variant="primary"
-                  className="btn-lg"
-                  onClick={handleSubmit}
-                >
-                  Calculate
-                </Button>
-              </Col>
-            </Row>
           </Col>
         </Row>
         <Row>
@@ -115,28 +108,83 @@ function AllStaffDetails() {
                   <th>NIC</th>
                   <th>Email</th>
                   <th>Job Role</th>
+                  <th>Calculate</th>
                 </tr>
               </thead>
               <tbody>
-                {userdata.map((element, index) => {
+                {users.map((element, index) => {
                   const { fname, lname, email, nic, role } = element;
-                  return (
-                    <tr key={element._id}>
-                      <td>{index + 1}</td>
-                      <td>
-                        {fname} {lname}
-                      </td>
-                      <td>{nic}</td>
-                      <td>{email}</td>
-                      <td>{role}</td>
-                    </tr>
-                  );
+                  if (element) {
+                    return (
+                      <tr key={element._id}>
+                        <td>{index + 1}</td>
+                        <td>
+                          {fname} {lname}
+                        </td>
+                        <td>{nic}</td>
+                        <td>{email}</td>
+                        <td>{role}</td>
+                        <td style={{ textAlign: "center" }}>
+                          {element.isSalaryAdded === true ? (
+                            <Button
+                              variant="primary"
+                              onClick={() => handleShowUpdateModal(element._id)}
+                            >
+                              Update Bonus
+                            </Button>
+                          ) : (
+                            <Link
+                              to={`/staffSalForm/${element._id}`}
+                              style={{ width: "80px", height: "30px" }}
+                            >
+                              <Button variant="success">Calculate</Button>
+                            </Link>
+                          )}
+                        </td>
+                      </tr>
+                    );
+                  }
+                  return null;
                 })}
               </tbody>
             </Table>
           </Col>
         </Row>
       </Container>
+
+      {/* Update Bonus Modal */}
+      <Modal show={showUpdateModal} onHide={handleCloseUpdateModal}>
+        <Modal.Header closeButton>
+          <Modal.Title style={{ fontSize: "35px" }}>Update Bonus</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group>
+              <Form.Label style={{ fontSize: "25px" }}>
+                Enter New Bonus Amount:
+              </Form.Label>
+              <Form.Control
+                type="number"
+                value={newBonus}
+                onChange={(e) => setNewBonus(e.target.value)}
+                style={{ fontSize: "20px" }}
+              />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button
+            variant="secondary"
+            className="btn-lg"
+            onClick={handleCloseUpdateModal}
+          >
+            Close
+          </Button>
+          <Button variant="primary" className="btn-lg" onClick={updateBonus}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 }
