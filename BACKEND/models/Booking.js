@@ -41,7 +41,7 @@ const bookingSchema = new Schema({
     },
     driver: {
         type: String, // Add Driver field
-        required: true
+        // required: true
     },
     amount: {
         type: String,
