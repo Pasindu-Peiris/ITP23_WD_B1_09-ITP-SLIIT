@@ -1,6 +1,10 @@
 # ITP23_WD_B1_09 ITP | IT2080
 SLIIT Bsc(Hons) Information Technology 2 Year 2 Semester ITP Module [ IT2080 ] MERN Stack Project | "Rapid Travels" | 2023
 
+# About System
+
+Rapid Travels is a domestic tours and travel management company which provides domestic tours and travel services within Sri Lanka. The system is an integrated management system which combines multiple management systems namely rental management system, flight management system, boat tours reservation system and finally bus reservation system.
+
 | Name  | Function |
 | ------------- | ------------- |
 | IT21827976 Kaluarachchi D.N.N.W| Booking and Reservation  |
