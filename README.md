@@ -42,3 +42,5 @@ This step is only required for launching the project for the first time after cl
 
 
 ### Open http://localhost:3000 to view it in your browser.
+Client and Admin Login <br>
+`Assignments & Required Files>Admin & Client Login.txt`<br>
