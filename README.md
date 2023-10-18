@@ -3,7 +3,7 @@ SLIIT Bsc(Hons) Information Technology 2 Year 2 Semester ITP Module [ IT2080 ] M
 
 ## About System
 
-Rapid Travels is a domestic tours and travel management company which provides domestic tours and travel services within Sri Lanka.<br/> The system is an integrated management system which combines multiple management systems namely rental management system, <br/>flight management system, boat tours reservation system and finally bus reservation system.
+Rapid Travels is a domestic tours and travel management company which provides domestic tours and travel services within Sri Lanka. The system is an integrated management system which combines multiple management systems namely rental management system, flight management system, boat tours reservation system and finally bus reservation system.
 
 
 ## Team members
@@ -41,4 +41,4 @@ This step is only required for launching the project for the first time after cl
 `File directory\frontend> npm update`<br>
 
 
-## Open http://localhost:3000 to view it in your browser.
+### Open http://localhost:3000 to view it in your browser.
