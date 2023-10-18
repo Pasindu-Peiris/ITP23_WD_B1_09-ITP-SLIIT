@@ -1,0 +1,16 @@
+Admin
+======================
+
+url : http://localhost:3000/Admin-login-rapid-travels
+
+User Name : nithila123@gmail.com
+Password  : Nithila123@
+
+
+Client
+======================
+
+url : http://localhost:3000/login
+
+user Name : Nithila123@gmail.com
+password : Nithila#25246A
