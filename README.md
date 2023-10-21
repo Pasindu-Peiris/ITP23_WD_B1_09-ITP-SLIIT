@@ -29,7 +29,7 @@ This step is only required for launching the project for the first time after cl
 
 
 2 | Run Backend | Open New Terminal<br>
-`File directory> cd .\BACKEND\`<br>
+`File directory> cd .\BACKEND`<br>
 `File directory\BACKEND> npm start`
 
 3 | Run the code if any error is given
