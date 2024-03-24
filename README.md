@@ -10,14 +10,14 @@ Rapid Travels is a domestic tours and travel management company which provides d
 
 | Name  | Function |
 | ------------- | ------------- |
-| IT21827976 Kaluarachchi D.N.N.W | Booking and Reservation  |
-| IT21823398 Fernando P.S.R | Tours and Route Planning |
-| IT21831454 Ihalagamage P.P.P | Client Management|
-| IT21806490 Theekshana M.A.N | Finance Management |
-| IT21802744 Saldin M Z | Vehicle Management |
-| IT21805196 THIRANJAYA M P N N|  Staff Management |
-| IT2815850 Senanayake S A T D| Vehicle Owner Management|
-| IT21818752 Bandaranayake U.A.B.W.M.R.K| Driver Management|
+|  Kaluarachchi D.N.N.W | Booking and Reservation  |
+|  Fernando P.S.R | Tours and Route Planning |
+|  Ihalagamage P.P.P | Client Management|
+|  Theekshana M.A.N | Finance Management |
+|  Saldin M Z | Vehicle Management |
+|  THIRANJAYA M P N N|  Staff Management |
+|  Senanayake S A T D| Vehicle Owner Management|
+|  Bandaranayake U.A.B.W.M.R.K| Driver Management|
 
 ## Run Project 
 
